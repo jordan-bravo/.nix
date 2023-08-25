@@ -27,10 +27,6 @@
     ../shared/zsh.nix
   ];
 
-  services = {
-    copyq.enable = true;
-  };
-
   home = {
     sessionVariables = {
       EDITOR = "nvim";
