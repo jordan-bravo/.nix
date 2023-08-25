@@ -44,7 +44,7 @@
       cs = "cfg status";
       l = "ls -lAhF";
       la = "ls -AhF";
-      htux = "cd ~/.setup/tux && nvim ~/.setup/tux/home.nix";
+      htux = "cd ~/.nix/tux && nvim ~/.nix/tux/home.nix";
       hypc = "nvim ~/.config/hypr/hyprland.conf";
       kitc = "nvim ~/.config/kitty/kitty.conf";
       kits = "nvim ~/.config/kitty/session.conf";
