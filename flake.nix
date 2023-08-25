@@ -37,6 +37,20 @@
             }
           ];
         };
+        emu = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./emu/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.jordan = {
+                imports = [ ./emu/home.nix ];
+              };
+            }
+          ];
+        };
       };
       darwinConfigurations = {
         mbp = nix-darwin.lib.darwinSystem {
