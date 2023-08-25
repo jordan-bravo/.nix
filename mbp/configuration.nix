@@ -1,4 +1,4 @@
-# ~/.setup/mbp/configuration.nix
+# ~/.nix/mbp/configuration.nix
 
 { config, pkgs, ... }:
 

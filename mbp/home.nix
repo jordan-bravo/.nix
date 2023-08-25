@@ -1,4 +1,4 @@
-# ~/.setup/mbp/home.nix
+# ~/.nix/mbp/home.nix
 
 { config, pkgs, ... }:
 
