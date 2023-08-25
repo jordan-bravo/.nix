@@ -18,14 +18,12 @@ in
     android-studio # Develop Android apps
     appimage-run # Run AppImages on NixOS
     adwaita-qt # Adwaita style for Qt apps
-    bat # Modern replacement for cat
     bisq-desktop # Decentralized Bitcoin exchange
     bitwarden # Password manager
     brave # Web browser
     # cantarell-fonts # Fonts for waybar
-    copyq # Clipboard manager
+    # copyq # Clipboard manager
     dconf2nix # Convert dconf settings to nix configs
-    devbox # Create isolated shells for development
     dino # XMPP client
     distrobox # Run containers of any Linux distro
     docker-compose # Docker Compose plugin for Docker
@@ -36,11 +34,9 @@ in
     firefox # Web browser
     # font-awesome # Fonts for waybar
     freetube # YouTube client
-    fzf # Command line fuzzy finder
     gajim # XMPP client
     gcc # Build tool (needed by NeoVim's Treesitter)
-    gh # GitHub CLI
-    git # Version control
+    # git # Version control
     gnome.dconf-editor # Edit GNOME options
     gnome.gnome-session # GNOME session manager, e.g. `gnome-session-quit`
     gnome.gnome-tweaks # Extra options for GNOME
@@ -54,26 +50,21 @@ in
     gnomeExtensions.unblank # Keep display on when Gnome locks
     gnomeExtensions.vitals # System info
     gnomeExtensions.space-bar # Adds workspaces to status bar
-    gtklock # Screen lock
+    gnumake # Build tool (needed by Ruby)
+    # gtklock # Screen lock
     gtklock-userinfo-module # Screen lock user info
-    hollywood # Make terminal look like a hollywood hacker terminal
+    # hollywood # Make terminal look like a hollywood hacker terminal
     ivpn # VPN
     ivpn-service # VPN
     jdk11 # Java Development Kit v11
     jitsi-meet # Video calling (not sure if both packages are needed)
     jitsi # Video calling (not sure if both packages are needed)
-    jq # JSON processor
     killall # Tool to kill processes
-    kitty # Terminal
-    gnumake # Build tool (needed by Ruby)
-    lsd # The next gen ls command
+    # kitty # Terminal
     lua-language-server # LSP language server for Lua
     luajit # JIT compiler for Lua 5.1
     luajitPackages.luacheck # A static analyzer & linter for Lua
-    neovim # Text editor
     nextcloud-client # Nextcloud sync client
-    nil # Language server for Nixlang
-    nixpkgs-fmt # Formatter for Nixlang
     nodejs_20 # NodeJS 20
     obsidian # Note-taking
     onlyoffice-bin # Office suite
@@ -89,7 +80,6 @@ in
     python311Packages.pip # Tool for installing Python packages
     ripgrep # Search tool
     ruby_3_2 # Ruby language
-    rustup # Rust toolchain installer. Rust required for Nix language server
     signal-desktop # Signal desktop
     slack # Desktop client for Slack
     sparrow # Bitcoin wallet
@@ -104,8 +94,6 @@ in
     tree # View directory tree structure
     vlc # Media player
     waybar # Status bar
-    # wezterm # Terminal emulator
-    wget # File retriever
     wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
     wofi # App launcher
     #xdg-desktop-portal-hyprland # Necessary for Hyprland
@@ -113,59 +101,14 @@ in
     yarn # Package manger for JavaScript
     zlib # Build tool (needed by Ruby)
     zoom-us # Video conferencing
-    # zsh-autocomplete # Type-ahead completion
-    # zsh-autosuggestions # Based on history
-    zsh-powerlevel10k # Zsh prompt theming
 
   ];
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/j/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    EDITOR = "nvim";
     GTK_THEME = "Adwaita:dark";
   };
 
   dconf.enable = true;
-  imports = [ ../shared/dconf.nix ../shared/git.nix ../shared/kitty.nix ../shared/wezterm.nix ../shared/zsh.nix ];
-
-  programs = {
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
-    gpg.enable = true;
-    #gtklock = {
-    #  enable = true;
-    #};
-    home-manager.enable = true;
-    vscode = {
-      enable = true;
-    };
-  };
-
+  imports = [ ../shared/home.nix ];
 
   # gtk = {
   #   enable = true;
@@ -177,11 +120,6 @@ in
   #   # platformTheme = "gnome";
   #   style.name = "adwaita-dark";
   # };
-
-  services = {
-    copyq.enable = true;
-    # kdeconnect.enable = true;
-  };
 
   xdg = {
     enable = true;
