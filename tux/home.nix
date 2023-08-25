@@ -121,6 +121,10 @@ in
   #   style.name = "adwaita-dark";
   # };
 
+  services = {
+    copyq.enable = true;
+  };
+
   xdg = {
     enable = true;
     configHome = "${homeDirectory}/.config";
