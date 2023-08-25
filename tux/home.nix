@@ -149,7 +149,7 @@ in
   };
 
   dconf.enable = true;
-  imports = [ ./dconf.nix ./git.nix ./kitty.nix ../wezterm.nix ./zsh.nix ];
+  imports = [ ../shared/dconf.nix ../shared/git.nix ../shared/kitty.nix ../shared/wezterm.nix ../shared/zsh.nix ];
 
   programs = {
     direnv = {
