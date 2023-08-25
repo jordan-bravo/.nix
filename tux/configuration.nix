@@ -1,3 +1,5 @@
+# ~/.nix/tux/configuration.nix
+
 { config, pkgs, ... }:
 
 {
@@ -80,12 +82,7 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh; # Set the default shell for this user
     packages = with pkgs; [
-      # firefox
       git
-      # gnome.gnome-tweaks
-      # kitty
-      # neovim
-      # vim
     ];
   };
 

@@ -49,7 +49,7 @@
       kitc = "nvim ~/.config/kitty/kitty.conf";
       kits = "nvim ~/.config/kitty/session.conf";
       gexit = "gnome-session-quit --no-prompt";
-      nixr = "sudo nixos-rebuild switch --flake ~/.setup";
+      nixr = "sudo nixos-rebuild switch --flake ~/.nix";
       notify-piano = "play ~/Documents/piano.wav";
       sauce = "source $HOME/.config/zsh/.zshrc";
       sshk = "kitty +kitten ssh";

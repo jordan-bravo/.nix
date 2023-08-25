@@ -1,4 +1,4 @@
-# ~/.setup/tux/home.nix
+# ~/.nix/tux/home.nix
 
 { config, pkgs, lib, ... }:
 
@@ -104,7 +104,7 @@ in
     tree # View directory tree structure
     vlc # Media player
     waybar # Status bar
-    wezterm # Terminal emulator
+    # wezterm # Terminal emulator
     wget # File retriever
     wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
     wofi # App launcher
@@ -149,7 +149,7 @@ in
   };
 
   dconf.enable = true;
-  imports = [ ./dconf.nix ./git.nix ./kitty.nix ./wezterm.nix ./zsh.nix ];
+  imports = [ ./dconf.nix ./git.nix ./kitty.nix ../wezterm.nix ./zsh.nix ];
 
   programs = {
     direnv = {
