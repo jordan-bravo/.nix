@@ -40,8 +40,8 @@
     ];
     shellAliases = {
       cfg = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
-      s = "git status";
       cs = "cfg status";
+      darr = "darwin-rebuild switch --flake ~/.nix";
       l = "ls -lAhF";
       la = "ls -AhF";
       htux = "cd ~/.nix/tux && nvim ~/.nix/tux/home.nix";
@@ -51,6 +51,7 @@
       gexit = "gnome-session-quit --no-prompt";
       nixr = "sudo nixos-rebuild switch --flake ~/.nix";
       notify-piano = "play ~/Documents/piano.wav";
+      s = "git status";
       sauce = "source $HOME/.config/zsh/.zshrc";
       sshk = "kitty +kitten ssh";
       vim = "nvim";

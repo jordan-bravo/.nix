@@ -7,8 +7,9 @@
 
   users.users.jordan.home = "/Users/jordan";
 
-  # environment.systemPackages = with pkgs; [
-  # ];
+  environment.systemPackages = with pkgs; [
+    # firefox
+  ];
 
   services.nix-daemon.enable = true;
 
