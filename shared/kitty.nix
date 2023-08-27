@@ -64,6 +64,7 @@
       # kitty_mod = "ctrl+shift";
       # startup_session = ./session.conf;
       macos_option_as_alt = "both";
+      wayland_titlebar_color = "#3b3b3b"; # options: "background", "system", "gray", "#3b3b3b"
       window_alert_on_bell = false;
     };
     shellIntegration.enableZshIntegration = true;

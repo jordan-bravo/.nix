@@ -54,19 +54,19 @@ with lib.hm.gvariant;
       dynamic-workspaces = false;
       workspaces-only-on-primary = true;
     };
-    # "org/gnome/settings-daemon/plugins/media-keys" = {
-    #   custom-keybindings = [ "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
-    # };
-    # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-    #   binding = "<Alt>5";
-    #   command = "dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-5 \"['<Alt>5']\"";
-    #   name = "Switch to workspace 5";
-    # };
-    # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-    #   binding = "<Shift><Alt>5";
-    #   command = "dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-5 \"['<Shift><Alt>5']\"";
-    #   name = "Move to workspace 5";
-    # };
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [ "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      binding = "<Alt>5";
+      command = "dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-5 \"['<Alt>5']\"";
+      name = "Switch to workspace 5";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Shift><Alt>5";
+      command = "dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-5 \"['<Shift><Alt>5']\"";
+      name = "Move to workspace 5";
+    };
     "org/gnome/settings-daemon/plugins/power" = {
       idle-dim = false;
       power-saver-profile-on-low-battery = true;
@@ -121,10 +121,13 @@ with lib.hm.gvariant;
       extend-height = true;
     };
     "org/gnome/shell/extensions/just-perfection" = {
-      accessibility-menue = false;
+      accessibility-menu = false;
     };
     "org/gnome/shell/extensions/unblank" = {
       time = 1800;
+    };
+    "org/gnome/shell/keybindings" = {
+      toggle-overview = [ "<Super>space" ];
     };
     "org/gtk/settings/file-chooser" = {
       clock-format = "24h";
