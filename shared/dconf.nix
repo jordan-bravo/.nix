@@ -84,7 +84,7 @@ with lib.hm.gvariant;
         "just-perfection-desktop@just-perfection"
         "nextcloud-folder@cosinus.org"
         "space-bar@luchrioh"
-        # "unblank@sun.wxg@gmail.com"
+        # "unblank@sun.wxg@gmail.com" # unblank breaks some keybindings
         # "Vitals@CoreCoding.com"
       ];
       favorite-apps = [
