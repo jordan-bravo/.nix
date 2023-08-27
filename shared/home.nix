@@ -1,3 +1,5 @@
+# ~/.nix/shared/home.nix
+
 { pkgs, ... }:
 
 {
@@ -33,10 +35,12 @@
     };
     stateVersion = "23.05";
     packages = with pkgs; [
+      element-desktop # Matrix client
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
+      obsidian # Note-taking
       rustup # Rust toolchain installer. Rust required for Nix language server
       wget # File retriever
       # zsh-powerlevel10k # Zsh prompt theming
