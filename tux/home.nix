@@ -92,6 +92,7 @@ in
     trash-cli # CLI trash tool written in Python
     # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
     tree # View directory tree structure
+    # ulauncher # Application launcher
     vlc # Media player
     waybar # Status bar
     wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
