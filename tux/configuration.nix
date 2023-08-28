@@ -73,9 +73,9 @@
     experimental-features = [ "nix-command" "flakes" ];
     keep-outputs = true;
     keep-derivations = true;
+    # package = pkgs.nixFlakes;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jordan = {
     isNormalUser = true;
     description = "jordan";
@@ -86,38 +86,14 @@
     ];
   };
 
-  # Enable automatic login for the user.
-  # services.xserver.displayManager.autoLogin.enable = true;
-  # services.xserver.displayManager.autoLogin.user = "jordan";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  # systemd.services."getty@tty1".enable = false;
-  # systemd.services."autovt@tty1".enable = false;
-
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  # # wget
-  # ];
-
-  # Many programs look at /etc/shells to determine if a user is a "normal" user and not a "system" user. Therefore it is recommended to add the user shells to this list. To add a shell to /etc/shells use the following line in your config: 
-  # environment.shells = with pkgs; [ zsh ];
 
   environment.pathsToLink = [ "/share/zsh" ];
   environment.variables = {
     "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
   };
 
-  # The system.stateVersion value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.05";
 
   # Setup keyfile
   boot.initrd.secrets = {
@@ -150,11 +126,4 @@
   # There is an outstanding bug in NixOS that causes rebuilds to fail sometimes, this is the workaround.
   # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1645442729
   systemd.services.NetworkManager-wait-online.enable = false;
-
-  # This section was used on previous tux config but might not be needed.
-  # nix.settings = {
-  # 	package = pkgs.nixFlakes;
-  # };
-
-
 }
