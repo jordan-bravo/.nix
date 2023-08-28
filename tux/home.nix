@@ -96,14 +96,10 @@ in
       zlib # Build tool (needed by Ruby)
       zoom-us # Video conferencing
     ];
-  };
-  home.username = username;
-  home.homeDirectory = homeDirectory;
-
-  home.stateVersion = "23.05";
-
-  home.sessionVariables = {
-    GTK_THEME = "Adwaita:dark";
+    sessionVariables = {
+      GTK_THEME = "Adwaita:dark";
+    };
+    stateVersion = "23.05";
   };
 
   dconf.enable = true;
