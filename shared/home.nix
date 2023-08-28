@@ -3,6 +3,8 @@
 { pkgs, ... }:
 
 {
+  fonts.fontconfig.enable = true;
+
   # Programs with little to no config required are enabled here. 
   programs = {
     bat.enable = true;
@@ -42,6 +44,9 @@
       nixpkgs-fmt # Formatter for Nixlang
       obsidian # Note-taking
       rustup # Rust toolchain installer. Rust required for Nix language server
+      slack # Desktop client for Slack
+      trash-cli # Command line interface to the freedesktop.org trash can
+      # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       wget # File retriever
       # zsh-powerlevel10k # Zsh prompt theming
     ];

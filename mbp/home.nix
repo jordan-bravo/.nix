@@ -8,23 +8,17 @@ let
 
 in
 {
-  fonts.fontconfig.enable = true;
-  home.username = username;
-  home.homeDirectory = homeDirectory;
-
-
-  home.packages = with pkgs; [
-    # (nerdfonts.override { fonts = [ "FiraCode" "NerdFontsSymbolsOnly" ]; })
-    delta # A syntax-highlighting pager for git
-    # gnupg
-    # lazygit
-    onefetch
-    # sl # Steam Locomotive run across your terminal when you type sl
-    # firefox # Web browser
-    # brave # Web browser
-    # wget # File retriever
-    # git # Version control system
-  ];
+  home = {
+    username = username;
+    homeDirectory = homeDirectory;
+    packages = with pkgs; [
+      delta # A syntax-highlighting pager for git
+      # lazygit
+      onefetch
+      python2
+      # python310Full
+    ];
+  };
 
   xdg = {
     enable = true;

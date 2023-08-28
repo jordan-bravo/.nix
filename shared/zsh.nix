@@ -49,6 +49,25 @@
       kitc = "nvim ~/.config/kitty/kitty.conf";
       kits = "nvim ~/.config/kitty/session.conf";
       gexit = "gnome-session-quit --no-prompt";
+      nixos = ''
+        qemu-system-aarch64 \
+          -monitor stdio \
+          -machine virt \
+          -accel hvf \
+          -cpu host \
+          -smp 4 \
+          -m 8000 \
+          -bios QEMU_EFI.fd \
+          -device virtio-gpu-pci \
+          -display default,show-cursor=on \
+          -device qemu-xhci \
+          -device usb-kbd \
+          -device usb-tablet \
+          -device intel-hda \
+          -device hda-duplex \
+          -drive file=nixos-23.05.raw,format=raw,if=virtio,cache=writethrough \
+          -cdrom nixos-gnome-23.05.2979.fc944919f743-aarch64-linux.iso
+      '';
       nixr = "sudo nixos-rebuild switch --flake ~/.nix";
       notify-piano = "play ~/Documents/piano.wav";
       s = "git status";

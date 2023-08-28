@@ -6,12 +6,17 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
     # extraLuaConfig = ''
     #   
     # '';
     # extraLuaConfig = builtins.readFile ./nvim/init.lua;
+    extraPackages = with pkgs; [
+      luajitPackages.luacheck
+    ];
+    viAlias = true;
+    vimAlias = true;
+    withNodeJs = true;
+    withPython3 = true;
   };
   xdg.configFile.nvim = {
     recursive = true;
