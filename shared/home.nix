@@ -5,7 +5,7 @@
 {
   fonts.fontconfig.enable = true;
 
-  # Programs with little to no config required are enabled here. 
+  # Programs with little to no config are enabled here. 
   programs = {
     bat.enable = true;
     direnv = {
@@ -28,6 +28,7 @@
     ../shared/git.nix
     ../shared/kitty.nix
     ../shared/neovim.nix
+    ../shared/ssh.nix
     ../shared/wezterm.nix
     ../shared/zsh.nix
   ];
@@ -49,7 +50,6 @@
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       wget # File retriever
-      # zsh-powerlevel10k # Zsh prompt theming
     ];
   };
 }

@@ -1,3 +1,4 @@
+# ~/.nix/shared/kitty.nix
 {
   programs.kitty = {
     enable = true;

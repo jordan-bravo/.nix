@@ -1,3 +1,4 @@
+# ~/.nix/shared/zsh.nix
 { pkgs, ... }:
 
 {
