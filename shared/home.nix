@@ -11,6 +11,7 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+      enableZshIntegration = true;
     };
     fzf.enable = true;
     gh.enable = true;

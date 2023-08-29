@@ -15,9 +15,6 @@ in
       delta # A syntax-highlighting pager for git
       # lazygit
       onefetch
-      (hiPrio python2)
-      python310Full
-      # (hiPrio python310Full)
     ];
   };
 
