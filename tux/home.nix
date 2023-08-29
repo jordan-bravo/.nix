@@ -49,8 +49,8 @@ in
       # gtklock # Screen lock
       gtklock-userinfo-module # Screen lock user info
       # hollywood # Make terminal look like a hollywood hacker terminal
-      ivpn # VPN
-      ivpn-service # VPN
+      # ivpn # VPN
+      # ivpn-service # VPN
       jdk11 # Java Development Kit v11
       jitsi-meet # Video calling (not sure if both packages are needed)
       jitsi # Video calling (not sure if both packages are needed)
