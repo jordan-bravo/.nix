@@ -1,3 +1,4 @@
+# ~/.nix/shared/wezterm.nix
 {
   programs.wezterm = {
     enable = true;

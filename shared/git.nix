@@ -1,3 +1,4 @@
+# ~/.nix/shared/git.nix
 {
   programs.git = {
     aliases = {
@@ -35,12 +36,12 @@
         autoSetupRemote = true;
       };
     };
-    includes = [
-      {
-        path = "~/bd/.gitconfig-bd";
-        condition = "gitdir:~/bd";
-      }
-    ];
+    # includes = [
+    #   {
+    #     path = "~/bd/.gitconfig-bd";
+    #     condition = "gitdir:~/bd";
+    #   }
+    # ];
     userName = "Jordan Bravo";
     userEmail = "jordan@bravo.cc";
     signing = {

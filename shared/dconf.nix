@@ -1,3 +1,4 @@
+# ~/.nix/shared/dconf.nix
 { lib, ... }:
 
 with lib.hm.gvariant;
