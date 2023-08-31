@@ -14,15 +14,16 @@ in
     packages = with pkgs; [
       delta # A syntax-highlighting pager for git
       # lazygit
-      onefetch
     ];
   };
+
+  imports = [ ../shared/home.nix ];
+
+  programs.rtx.enable = true;
 
   xdg = {
     enable = true;
     configHome = "${homeDirectory}/.config";
   };
-
-  imports = [ ../shared/home.nix ];
 
 }

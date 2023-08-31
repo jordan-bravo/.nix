@@ -42,8 +42,10 @@
       element-desktop # Matrix client
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
+      neofetch # Show system info
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
+      onefetch # Git repo summary
       obsidian # Note-taking
       rustup # Rust toolchain installer. Rust required for Nix language server
       slack # Desktop client for Slack
