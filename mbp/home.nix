@@ -12,8 +12,7 @@ in
     username = username;
     homeDirectory = homeDirectory;
     packages = with pkgs; [
-      delta # A syntax-highlighting pager for git
-      # lazygit
+      # delta # A syntax-highlighting pager for git
     ];
   };
 

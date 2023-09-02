@@ -18,6 +18,9 @@
       # Keep prompt at bottom of terminal window
       printf '\n%.0s' {1..$LINES}
     '';
+    localVariables = {
+      PATH = "/opt/homebrew/bin:$PATH";
+    };
     plugins = [
       {
         name = "zsh-autocomplete";

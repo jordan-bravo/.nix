@@ -1,4 +1,5 @@
 # ~/.nix/shared/git.nix
+# test change
 {
   programs.git = {
     aliases = {
@@ -7,17 +8,17 @@
     };
     delta = {
       enable = true;
+      options = {
+        navigate = true;
+        light = false;
+        side-by-side = true;
+      };
     };
     enable = true;
     extraConfig = {
       core = {
         editor = "nvim";
         excludesfile = "~/.gitignore-global";
-      };
-      delta = {
-        navigate = true;
-        light = false;
-        side-by-side = true;
       };
       diff = {
         tool = "nvimdiff";

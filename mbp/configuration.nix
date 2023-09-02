@@ -9,7 +9,6 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    # firefox
   ];
 
   networking.hostName = "mbp";
