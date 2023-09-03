@@ -156,18 +156,21 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-
+  -- JavaScript / TypeScript
+  -- Lua
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
+      diagnostics = {
+        -- Get the language server to recognize the "vim" global variabe
+        globals = { "vim" },
+      },
     },
   },
+  -- Python
+  pyright = {},
+  ruff_lsp = {},
 }
 
 -- Setup neovim lua configuration
