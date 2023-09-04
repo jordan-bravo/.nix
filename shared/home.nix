@@ -43,6 +43,7 @@
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
       neofetch # Show system info
+      neovim # Text editor
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
       onefetch # Git repo summary
