@@ -9,11 +9,14 @@ let
 in
 {
   home = {
-    username = username;
+    file = {
+       
+    };
     homeDirectory = homeDirectory;
     packages = with pkgs; [
       # delta # A syntax-highlighting pager for git
     ];
+    username = username;
   };
 
   imports = [ ../shared/home.nix ];
@@ -23,6 +26,17 @@ in
   xdg = {
     enable = true;
     configHome = "${homeDirectory}/.config";
+    configFile = {
+      # "skhd/skhdrc".source = ./skhd.conf;
+      skhd = {
+        recursive = true;
+        source = ./skhd;
+      };
+      yabai = {
+        recursive = true;
+        source = ./yabai;
+      };
+    };
   };
 
 }
