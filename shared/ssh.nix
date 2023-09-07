@@ -9,7 +9,7 @@
         user = "git";
         identityFile = "~/.ssh/ssh_id_ed25519_j.b@bd.key";
         extraOptions = {
-          "UseKeychain" = "no";
+          # "UseKeychain" = "no";
           # "AddKeysToAgent" = "yes";
         };
       };
@@ -18,7 +18,7 @@
         user = "git";
         identityFile = "~/.ssh/ssh_id_ed25519_j@b.key";
         extraOptions = {
-          "UseKeychain" = "no";
+          # "UseKeychain" = "no";
           # "AddKeysToAgent" = "yes";
         };
       };

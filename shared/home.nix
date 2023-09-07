@@ -20,6 +20,10 @@
     jq.enable = true;
     lsd.enable = true;
     ripgrep.enable = true;
+    rtx = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     vscode.enable = true;
   };
 
@@ -42,14 +46,17 @@
       element-desktop # Matrix client
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
+      lua-language-server # Lua LSP
       neofetch # Show system info
       neovim # Text editor
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
       onefetch # Git repo summary
       obsidian # Note-taking
+      # rust-analyzer # Rust LSP
       rustup # Rust toolchain installer. Rust required for Nix language server
       slack # Desktop client for Slack
+      stylua # Lua code formatter
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       wget # File retriever

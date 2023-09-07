@@ -7,7 +7,7 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     -- Automatically install LSPs to stdpath for neovim
-    { "williamboman/mason.nvim", config = true },
+    { "williamboman/mason.nvim", },
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     -- Useful status updates for LSP
@@ -21,16 +21,30 @@ return {
   },
   config = function()
     -- [[ Configure LSP ]]
+    require("mason").setup({
+      -- PATH = "prepend",
+    })
     require("mason-tool-installer").setup({
       ensure_installed = {
+        -- JavaScript / TypeScript
+        "prettier",                  -- fomatter
+        "prettierd",
+        "eslint_d",
+        "eslint-lsp",                -- eslint
+        "typescript-language-server", -- tsserver
         -- Lua
-        "lua-language-server", -- lua_ls
-        "stylua",              -- lua formatter
+        "lua-language-server",       -- lua_ls
+        -- "stylua",                    -- lua formatter
+        -- Nix
+        "nil",                       -- nil_ls
+
         -- Python
-        "black",               -- formatter
-        "pyright",             -- type checker
-        "ruff",                -- linter
-        "ruff-lsp",            -- ruff_lsp
+        "black",                     -- formatter
+        "pyright",                   -- type checker
+        "ruff",                      -- linter
+        "ruff-lsp",                  -- ruff_lsp
+        -- Rust
+        "rust-analyzer",             -- rust_analyzer
       },
       -- if set to true this will check each tool for updates. If updates
       -- are available the tool will be updated. This setting does not
@@ -117,7 +131,10 @@ return {
         null_ls.builtins.diagnostics.ruff,
 
         -- Refactoring for Go, Javascript, Lua, Python, TypeScript
-        -- null_ls.builtins.code_actions.refactoring,
+        null_ls.builtins.code_actions.refactoring,
+
+        -- Rust
+        null_ls.builtins.formatting.rustfmt,
       },
     })
   end

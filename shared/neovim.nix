@@ -18,8 +18,8 @@
     withNodeJs = true;
     withPython3 = true;
   };
-  xdg.configFile.nvim = {
-    recursive = true;
-    source = ./nvim;
-  };
+  # xdg.configFile.nvim = {
+  #   recursive = true;
+  #   source = ./nvim;
+  # };
 }
