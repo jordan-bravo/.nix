@@ -29,6 +29,10 @@
       enableZshIntegration = true;
     };
     vscode.enable = true;
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 
   # Programs with extensive config are imported from separate modules.
