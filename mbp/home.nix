@@ -9,9 +9,7 @@ let
 in
 {
   home = {
-    file = {
-       
-    };
+    file = { };
     homeDirectory = homeDirectory;
     packages = with pkgs; [
       # delta # A syntax-highlighting pager for git

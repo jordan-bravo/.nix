@@ -1,6 +1,10 @@
 # ~/.nix/shared/home.nix
 
-{ pkgs, ... }:
+{ pkgs, flake-inputs, ... }:
+
+# let
+#   rust-analyzer = flake-inputs.fenix.packages.${pkgs.system}.rust-analyzer;
+# in
 
 {
   fonts.fontconfig.enable = true;
@@ -42,7 +46,11 @@
       EDITOR = "nvim";
     };
     stateVersion = "23.05";
+    # packages = [
+    #   rust-analyzer
+    # ] ++ (with pkgs; [
     packages = with pkgs; [
+      # cargo # Rust package manager
       element-desktop # Matrix client
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
@@ -54,12 +62,15 @@
       onefetch # Git repo summary
       obsidian # Note-taking
       # rust-analyzer # Rust LSP
-      rustup # Rust toolchain installer. Rust required for Nix language server
+      # rustc # Rust compiler
+      # rustfmt # Rust formatter
+      rustup # Rust toolchain installer
       slack # Desktop client for Slack
       stylua # Lua code formatter
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       wget # File retriever
+    # ]);
     ];
   };
 }

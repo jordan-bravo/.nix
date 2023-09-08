@@ -38,7 +38,8 @@ in
         sketchybar --update
         echo "sketchybar configuration loaded..."
       '';
-      extraPackages = [ # Extra packages to add to PATH
+      extraPackages = [
+        # Extra packages to add to PATH
         pkgs.jq
       ];
     };

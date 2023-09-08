@@ -49,5 +49,5 @@
       key = "E11FA432F965854B";
       signByDefault = true;
     };
-  }; 
+  };
 }

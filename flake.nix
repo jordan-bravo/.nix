@@ -58,7 +58,7 @@
           system = "aarch64-darwin";
           modules = [
             ./mbp/configuration.nix
-	    # { nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ]; }
+            # { nixpkgs.overlays = [ inputs.nixpkgs-firefox-darwin.overlay ]; }
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

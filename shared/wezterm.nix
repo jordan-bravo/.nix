@@ -26,5 +26,5 @@
       -- and finally, return the configuration to wezterm
       return config
     '';
-  }; 
+  };
 }
