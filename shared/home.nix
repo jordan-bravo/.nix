@@ -54,6 +54,7 @@
       element-desktop # Matrix client
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
+      kitty # Terminal
       lua-language-server # Lua LSP
       neofetch # Show system info
       neovim # Text editor

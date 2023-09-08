@@ -6,6 +6,16 @@
       name = "Fira Code";
       size = 14;
     };
+    shellIntegration.enableZshIntegration = true;
+    settings = {
+      enable_audio_bell = false;
+      enabled_layouts = "horizontal, stack, vertical, grid";
+      hide_window_decorations = "titlebar-only"; # options: true, "titlebar-only", "titlebar-and-corners"
+      # startup_session = ./session.conf;
+      macos_option_as_alt = "both";
+      wayland_titlebar_color = "#3b3b3b"; # options: "background", "system", "gray", "#3b3b3b"
+      window_alert_on_bell = false;
+    };
     keybindings = {
       "kitty_mod+u" = "scroll_page_up";
       "kitty_mod+d" = "scroll_page_down";
@@ -25,17 +35,6 @@
       "kitty_mod+c" = "copy_to_clipboard";
       "kitty_mod+v" = "paste_from_clipboard";
     };
-    settings = {
-      enable_audio_bell = false;
-      enabled_layouts = "horizontal, stack, vertical, grid";
-      hide_window_decorations = "titlebar-only"; # options: true, "titlebar-only", "titlebar-and-corners"
-      # kitty_mod = "ctrl+shift";
-      # startup_session = ./session.conf;
-      macos_option_as_alt = "both";
-      wayland_titlebar_color = "#3b3b3b"; # options: "background", "system", "gray", "#3b3b3b"
-      window_alert_on_bell = false;
-    };
-    shellIntegration.enableZshIntegration = true;
-    # theme = "Adwaita dark";
+    theme = "VSCode_Dark";
   };
 }
