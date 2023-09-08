@@ -64,6 +64,8 @@
       neovim # Text editor
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
+      nodePackages.pyright
+      nodePackages.typescript-language-server
       onefetch # Git repo summary
       obsidian # Note-taking
       # rust-analyzer # Rust LSP
