@@ -1,5 +1,4 @@
 # ~/.nix/shared/git.nix
-# test change
 {
   programs.git = {
     aliases = {
