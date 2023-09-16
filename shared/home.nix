@@ -64,10 +64,11 @@
       neovim # Text editor
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
-      nodePackages.prettier
-      nodePackages.prettier_d_slim
-      nodePackages.pyright
-      nodePackages.typescript-language-server
+      nodePackages.prettier # Formatter for JavaScript and other languages
+      nodePackages.prettier_d_slim # Prettier daemon for faster formatting
+      nodePackages.pyright # Python static type checker
+      nodePackages.typescript # TypeScript language
+      nodePackages.typescript-language-server # LSP for JS and TS
       onefetch # Git repo summary
       obsidian # Note-taking
       # rust-analyzer # Rust LSP
