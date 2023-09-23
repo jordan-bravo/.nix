@@ -46,6 +46,7 @@
       cfg = "git --git-dir=$HOME/.cfg/ --work-tree=$HOME";
       cs = "cfg status";
       darr = "darwin-rebuild switch --flake ~/.nix";
+      dca = "docker compose -f ~/bd/alta-customer-manager/docker-compose.local.yml"
       l = "ls -lAhF";
       la = "ls -AhF";
       htux = "cd ~/.nix/tux && nvim ~/.nix/tux/home.nix";
