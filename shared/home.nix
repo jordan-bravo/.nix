@@ -12,6 +12,10 @@
   # Programs with little to no config are enabled here. 
   programs = {
     bat.enable = true;
+    broot = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
