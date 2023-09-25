@@ -56,6 +56,7 @@ in
       jitsi # Video calling (not sure if both packages are needed)
       killall # Tool to kill processes
       # kitty # Terminal
+      ledger-live-desktop # App for ledger hardware signing device
       lua-language-server # LSP language server for Lua
       luajit # JIT compiler for Lua 5.1
       luajitPackages.luacheck # A static analyzer & linter for Lua

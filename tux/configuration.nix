@@ -10,48 +10,83 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 
-  networking.hostName = "tux"; # Define your hostname.
+  # Setup keyfile
+  boot.initrd.secrets = {
+    "/crypto_keyfile.bin" = null;
+  };
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  # Enable swap on luks
+  boot.initrd.luks.devices."luks-7e6c1e38-88c4-4f94-b580-eaa693d54233" = {
+    device = "/dev/disk/by-uuid/7e6c1e38-88c4-4f94-b580-eaa693d54233";
+    keyFile = "/crypto_keyfile.bin";
+  };
 
-  # Set your time zone.
-  time.timeZone = "America/New_York";
+  environment = {
+    pathsToLink = [ "/share/zsh" ];
+    variables = {
+      "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
+    };
+  };
+
+  hardware = {
+    ledger.enable = true; # Ledger hardware signing device.
+  };
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "en_US.UTF-8";
+      LC_IDENTIFICATION = "en_US.UTF-8";
+      LC_MEASUREMENT = "en_US.UTF-8";
+      LC_MONETARY = "en_US.UTF-8";
+      LC_NAME = "en_US.UTF-8";
+      LC_NUMERIC = "en_US.UTF-8";
+      LC_PAPER = "en_US.UTF-8";
+      LC_TELEPHONE = "en_US.UTF-8";
+      LC_TIME = "en_US.UTF-8";
+    };
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-    xkbOptions = "caps:escape_shifted_capslock";
+  networking = {
+    hostName = "tux";
+    networkmanager.enable = true;
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # Enable flakes
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    keep-outputs = true;
+    keep-derivations = true;
+    # package = pkgs.nixFlakes;
+  };
+
+  nixpkgs.config.allowUnfree = true;
+
+  services = {
+    flatpak.enable = true;
+    ivpn.enable = true;
+    printing.enable = true;
+    tailscale.enable = true;
+    xserver = {
+      # Enable the X11 windowing system.  I think this is required even with Wayland.
+      enable = true;
+      # Enable the GNOME Desktop Environment.
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+      layout = "us";
+      # Enable touchpad support (enabled default in most desktopManager).
+      # libinput.enable = true;
+      xkbVariant = "";
+      xkbOptions = "caps:escape_shifted_capslock";
+    };
+  };
+
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -65,16 +100,10 @@
     pulse.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  system.stateVersion = "23.05";
 
-  # Enable flakes
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    keep-outputs = true;
-    keep-derivations = true;
-    # package = pkgs.nixFlakes;
-  };
+  # Set your time zone.
+  time.timeZone = "America/New_York";
 
   users.users.jordan = {
     isNormalUser = true;
@@ -85,28 +114,6 @@
       git
     ];
   };
-
-  nixpkgs.config.allowUnfree = true;
-
-  environment.pathsToLink = [ "/share/zsh" ];
-  environment.variables = {
-    "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
-  };
-
-  system.stateVersion = "23.05";
-
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/crypto_keyfile.bin" = null;
-  };
-
-  # Enable swap on luks
-  boot.initrd.luks.devices."luks-7e6c1e38-88c4-4f94-b580-eaa693d54233".device = "/dev/disk/by-uuid/7e6c1e38-88c4-4f94-b580-eaa693d54233";
-  boot.initrd.luks.devices."luks-7e6c1e38-88c4-4f94-b580-eaa693d54233".keyFile = "/crypto_keyfile.bin";
-
-  services.flatpak.enable = true;
-  services.ivpn.enable = true;
-  services.tailscale.enable = true;
 
   programs.zsh.enable = true;
 
