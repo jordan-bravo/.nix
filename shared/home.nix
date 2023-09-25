@@ -7,7 +7,6 @@
 # in
 
 {
-  fonts.fontconfig.enable = true;
 
   # Programs with little to no config are enabled here. 
   programs = {
@@ -66,6 +65,7 @@
       lua-language-server # Lua LSP
       neofetch # Show system info
       neovim # Text editor
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
       nodePackages.prettier # Formatter for JavaScript and other languages
@@ -75,6 +75,7 @@
       nodePackages.typescript-language-server # LSP for JS and TS
       onefetch # Git repo summary
       obsidian # Note-taking
+      python310Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python
       # rust-analyzer # Rust LSP
       # rustc # Rust compiler
       # rustfmt # Rust formatter

@@ -8,6 +8,7 @@ let
 
 in
 {
+  fonts.fontconfig.enable = true;
   home = {
     homeDirectory = homeDirectory;
     username = username;
@@ -71,7 +72,7 @@ in
       postgresql # SQL database
       nodePackages.prettier # Code formatter for HTML/CSS/JS
       prettierd # Prettier daemon for improved performance
-      pyright # Static type checker for Python
+      # pyright # Static type checker for Python
       python311 # Python 3.11
       python311Packages.pip # Tool for installing Python packages
       ripgrep # Search tool
