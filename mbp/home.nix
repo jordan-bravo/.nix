@@ -13,6 +13,7 @@ in
     homeDirectory = homeDirectory;
     packages = with pkgs; [
       # delta # A syntax-highlighting pager for git
+      (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
     ];
     username = username;
   };
@@ -24,17 +25,17 @@ in
   xdg = {
     enable = true;
     configHome = "${homeDirectory}/.config";
-    configFile = {
-      # "skhd/skhdrc".source = ./skhd.conf;
-      skhd = {
-        recursive = true;
-        source = ./skhd;
-      };
-      yabai = {
-        recursive = true;
-        source = ./yabai;
-      };
-    };
+    # configFile = {
+    #   # "skhd/skhdrc".source = ./skhd.conf;
+    #   skhd = {
+    #     recursive = true;
+    #     source = ./skhd;
+    #   };
+    #   yabai = {
+    #     recursive = true;
+    #     source = ./yabai;
+    #   };
+    # };
   };
 
 }
