@@ -24,7 +24,6 @@ in
       distrobox # Run containers of any Linux distro
       docker-compose # Docker Compose plugin for Docker
       dunst # Notification daemon
-      element-desktop # Matrix client
       evolution # Client for calendar, mail, address book
       fira-code # Font
       firefox # Web browser
@@ -68,7 +67,6 @@ in
       openssl # Cryptographic library
       pinta # Image editor
       polkit_gnome # Authentication agent
-      postman # API development environment
       postgresql # SQL database
       nodePackages.prettier # Code formatter for HTML/CSS/JS
       prettierd # Prettier daemon for improved performance

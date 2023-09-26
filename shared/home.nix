@@ -75,6 +75,7 @@
       nodePackages.typescript-language-server # LSP for JS and TS
       onefetch # Git repo summary
       obsidian # Note-taking
+      postman # API development environment
       python310Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python
       # rust-analyzer # Rust LSP
       # rustc # Rust compiler
