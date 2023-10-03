@@ -31,7 +31,10 @@
       enable = true;
       enableZshIntegration = true;
     };
-    vscode.enable = true;
+    vscode = {
+      enable = true;
+      package = pkgs.vscodium;
+    };
     zoxide = {
       enable = true;
       enableZshIntegration = true;
