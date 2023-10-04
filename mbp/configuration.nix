@@ -32,12 +32,12 @@ in
   services = {
     nix-daemon.enable = true;
     sketchybar = {
-      enable = true;
-      config = ''
-        sketchybar --bar height=24
-        sketchybar --update
-        echo "sketchybar configuration loaded..."
-      '';
+      enable = false;
+      # config = ''
+      #   sketchybar --bar height=24
+      #   sketchybar --update
+      #   echo "sketchybar configuration loaded..."
+      # '';
       # extraPackages = [
       #   # Extra packages to add to PATH
       #   pkgs.jq
