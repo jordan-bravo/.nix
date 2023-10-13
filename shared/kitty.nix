@@ -3,7 +3,6 @@
   programs.kitty = {
     enable = true;
     font = {
-      # name = "Fira Code";
       name = "FiraCode Nerd Font Mono";
       size = 14;
     };
@@ -14,6 +13,7 @@
       hide_window_decorations = "titlebar-only"; # options: true, "titlebar-only", "titlebar-and-corners"
       # startup_session = ./session.conf;
       macos_option_as_alt = "both";
+      scrollback_lines = 4000;
       wayland_titlebar_color = "#3b3b3b"; # options: "background", "system", "gray", "#3b3b3b"
       window_alert_on_bell = false;
     };
