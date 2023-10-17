@@ -19,7 +19,7 @@ with lib.hm.gvariant;
       show-in-lock-screen = false;
     };
     "org/gnome/desktop/peripherals/touchpad" = {
-      speed = 0.45;
+      speed = 0.40;
       tap-to-click = true;
     };
     "org/gnome/desktop/privacy" = {
