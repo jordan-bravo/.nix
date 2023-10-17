@@ -56,6 +56,9 @@
   networking = {
     hostName = "tux";
     networkmanager.enable = true;
+    nameservers = [
+      "194.242.2.2" "2a07:e340::2"
+    ];
   };
 
   # Enable flakes
@@ -72,6 +75,15 @@
     flatpak.enable = true;
     ivpn.enable = true;
     printing.enable = true;
+    resolved = {
+      enable = true;
+      dnssec = "false";
+      domains = [ "~." ];
+      fallbackDns = [ "194.242.2.2#dns.mullvad.net" ];
+      extraConfig = ''
+        DNSOverTLS=yes
+      '';
+    };
     tailscale.enable = true;
     xserver = {
       # Enable the X11 windowing system.  I think this is required even with Wayland.
