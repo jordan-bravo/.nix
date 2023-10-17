@@ -66,14 +66,11 @@ in
       onlyoffice-bin # Office suite
       openssl # Cryptographic library
       pinta # Image editor
+      pipx # Install and run Python applications in isolated environments
       polkit_gnome # Authentication agent
       postgresql # SQL database
-      nodePackages.prettier # Code formatter for HTML/CSS/JS
-      prettierd # Prettier daemon for improved performance
-      # pyright # Static type checker for Python
-      python311 # Python 3.11
-      python311Packages.pip # Tool for installing Python packages
-      ripgrep # Search tool
+      qbittorrent # Featureful free software BitTorrent client
+      ricochet # Anonymous peer-to-peer instant messaging over Tor
       ruby_3_2 # Ruby language
       signal-desktop # Signal desktop
       slack # Desktop client for Slack

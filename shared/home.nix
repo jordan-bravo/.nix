@@ -27,10 +27,10 @@
     jq.enable = true;
     lsd.enable = true;
     ripgrep.enable = true;
-    rtx = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    # rtx = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    # };
     vscode = {
       enable = true;
       package = pkgs.vscodium;
@@ -78,8 +78,13 @@
       nodePackages.typescript-language-server # LSP for JS and TS
       onefetch # Git repo summary
       obsidian # Note-taking
+      poetry # Python dependency management and packaging made easy
       postman # API development environment
-      python310Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python
+      pyright # Static type checker for Python
+      python311 # Python 3.11
+      python311Packages.pip # Tool for installing Python packages
+      python311Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python
+      ripgrep # Search tool
       # rust-analyzer # Rust LSP
       # rustc # Rust compiler
       # rustfmt # Rust formatter
