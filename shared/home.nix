@@ -1,11 +1,23 @@
 # ~/.nix/shared/home.nix
 
-{ pkgs, flake-inputs, ... }:
+{ pkgs, ... }:
+
+# Note: if you uncomment the rust- analyzer section below, make sure to add flake-inputs to the function arguments above so it looks like this:
+# { pkgs, flake-inputs, ... }:
 
 # let
 #   rust-analyzer = flake-inputs.fenix.packages.${pkgs.system}.rust-analyzer;
 # in
 
+let
+  # username = config.users.users.jordan.name;
+  username = "jordan";
+  homeDirectory = 
+    if pkgs.stdenv.isDarwin then
+      "/Users/${username}"
+    else
+      "/home/${username}";
+in
 {
 
   # Programs with little to no config are enabled here. 
@@ -41,7 +53,7 @@
     };
   };
 
-  # Programs with extensive config are imported from separate modules.
+  # Programs with more extensive config are imported from separate modules.
   imports = [
     ../shared/git.nix
     ../shared/kitty.nix
@@ -61,11 +73,15 @@
     # ] ++ (with pkgs; [
     packages = with pkgs; [
       # cargo # Rust package manager
+      delta # A syntax-highlighting pager for git
       element-desktop # Matrix client
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
-      kitty # Terminal
-      lua-language-server # Lua LSP
+      freetube # YouTube client
+      # kitty # Terminal
+      lua-language-server # LSP language server for Lua
+      luajit # JIT compiler for Lua 5.1
+      luajitPackages.luacheck # A static analyzer & linter for Lua
       neofetch # Show system info
       neovim # Text editor
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
@@ -77,9 +93,9 @@
       nodePackages.typescript # TypeScript language
       nodePackages.typescript-language-server # LSP for JS and TS
       onefetch # Git repo summary
-      obsidian # Note-taking
+      # obsidian # Note-taking
       poetry # Python dependency management and packaging made easy
-      postman # API development environment
+      # postman # API development environment
       pyenv # Simple Python version management
       pyright # Static type checker for Python
       python311 # Python 3.11
@@ -90,13 +106,21 @@
       # rust-analyzer # Rust LSP
       # rustc # Rust compiler
       # rustfmt # Rust formatter
+      ruby_3_2 # Ruby language
       rustup # Rust toolchain installer
       slack # Desktop client for Slack
       stylua # Lua code formatter
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       wget # File retriever
+      yarn # Package manger for JavaScript
     # ]);
     ];
   };
+
+  xdg = {
+    enable = true;
+    configHome = "${homeDirectory}/.config";
+  };
+
 }

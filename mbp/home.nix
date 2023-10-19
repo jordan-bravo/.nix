@@ -2,19 +2,11 @@
 
 { config, pkgs, ... }:
 
-let
-  username = "jordan";
-  homeDirectory = "/Users/${username}";
-
-in
 {
   home = {
-    file = { };
-    homeDirectory = homeDirectory;
+    # file = { };
     packages = with pkgs; [
-      # delta # A syntax-highlighting pager for git
     ];
-    username = username;
   };
 
   imports = [ ../shared/home.nix ];
@@ -28,20 +20,20 @@ in
     export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:''${PATH}"
   '';
 
-  xdg = {
-    enable = true;
-    configHome = "${homeDirectory}/.config";
-    # configFile = {
-    #   # "skhd/skhdrc".source = ./skhd.conf;
-    #   skhd = {
-    #     recursive = true;
-    #     source = ./skhd;
-    #   };
-    #   yabai = {
-    #     recursive = true;
-    #     source = ./yabai;
-    #   };
-    # };
-  };
+  # xdg = {
+  #   enable = true;
+  #   configHome = "${homeDirectory}/.config";
+  #   # configFile = {
+  #   #   # "skhd/skhdrc".source = ./skhd.conf;
+  #   #   skhd = {
+  #   #     recursive = true;
+  #   #     source = ./skhd;
+  #   #   };
+  #   #   yabai = {
+  #   #     recursive = true;
+  #   #     source = ./yabai;
+  #   #   };
+  #   # };
+  # };
 
 }
