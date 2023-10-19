@@ -5,6 +5,8 @@
   inputs = {
     # All flake references used to build my NixOS setup.  These are dependencies.
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix packages
+    # VSCode / VSCodium extensions
+    # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     # Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -12,7 +14,6 @@
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
     #hyprland.url = "github:hyprwm/Hyprland";
   };
 

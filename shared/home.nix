@@ -46,6 +46,19 @@ in
     vscode = {
       enable = true;
       package = pkgs.vscodium;
+      extensions = with pkgs.vscode-extensions; [
+        asvetliakov.vscode-neovim
+        charliermarsh.ruff # Not available in 23.05
+        ms-python.python
+      ];
+      userSettings = {
+        "editor.lineNumbers" = "relative";
+        "extensions.experimental.affinity" = {
+          "asvetliakov.vscode-neovim" = 1;
+        };
+        "vscode-neovim.neovimClean" = true;
+        "workbench.startupEditor" = "none";
+      };
     };
     zoxide = {
       enable = true;
