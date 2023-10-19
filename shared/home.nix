@@ -93,7 +93,7 @@ in
       nodePackages.typescript # TypeScript language
       nodePackages.typescript-language-server # LSP for JS and TS
       onefetch # Git repo summary
-      # obsidian # Note-taking
+      obsidian # Note-taking
       poetry # Python dependency management and packaging made easy
       # postman # API development environment
       pyenv # Simple Python version management
