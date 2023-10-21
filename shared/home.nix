@@ -85,6 +85,7 @@ in
     #   rust-analyzer
     # ] ++ (with pkgs; [
     packages = with pkgs; [
+      # black # Python code formatter
       # cargo # Rust package manager
       delta # A syntax-highlighting pager for git
       element-desktop # Matrix client
@@ -110,16 +111,18 @@ in
       poetry # Python dependency management and packaging made easy
       # postman # API development environment
       pyenv # Simple Python version management
-      pyright # Static type checker for Python
+      # pyright # Static type checker for Python
       python311 # Python 3.11
       python311Packages.black # Python code formatter
       python311Packages.pip # Tool for installing Python packages
-      python311Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python
+      # python311Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python
       ripgrep # Search tool
       # rust-analyzer # Rust LSP
       # rustc # Rust compiler
       # rustfmt # Rust formatter
       ruby_3_2 # Ruby language
+      ruff # An extremely fast Python linter
+      ruff-lsp # Ruff LSP for Python
       rustup # Rust toolchain installer
       slack # Desktop client for Slack
       stylua # Lua code formatter
