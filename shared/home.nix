@@ -39,10 +39,10 @@ in
     jq.enable = true;
     lsd.enable = true;
     ripgrep.enable = true;
-    # rtx = {
-    #   enable = true;
-    #   enableZshIntegration = true;
-    # };
+    rtx = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     vscode = {
       enable = true;
       package = pkgs.vscodium;
@@ -85,8 +85,7 @@ in
     #   rust-analyzer
     # ] ++ (with pkgs; [
     packages = with pkgs; [
-      # black # Python code formatter
-      # cargo # Rust package manager
+      cargo # Rust package manager
       delta # A syntax-highlighting pager for git
       element-desktop # Matrix client
       fd # A simple, fast and user-friendly alternative to find
@@ -123,7 +122,7 @@ in
       ruby_3_2 # Ruby language
       ruff # An extremely fast Python linter
       ruff-lsp # Ruff LSP for Python
-      rustup # Rust toolchain installer
+      # rustup # Rust toolchain installer
       slack # Desktop client for Slack
       stylua # Lua code formatter
       trash-cli # Command line interface to the freedesktop.org trash can
