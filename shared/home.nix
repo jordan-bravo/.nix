@@ -85,6 +85,7 @@ in
     #   rust-analyzer
     # ] ++ (with pkgs; [
     packages = with pkgs; [
+      borgbackup # Deduplicating archiver with compression and encryption
       cargo # Rust package manager
       delta # A syntax-highlighting pager for git
       element-desktop # Matrix client
