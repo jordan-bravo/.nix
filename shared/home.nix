@@ -42,6 +42,11 @@ in
     rtx = {
       enable = true;
       enableZshIntegration = true;
+      settings = {
+        settings = {
+          legacy_version_file = false;
+        };
+      };
     };
     vscode = {
       enable = true;
@@ -108,6 +113,7 @@ in
       nodePackages.typescript-language-server # LSP for JS and TS
       onefetch # Git repo summary
       obsidian # Note-taking
+      pgcli # Command-line interface for PostgreSQL
       poetry # Python dependency management and packaging made easy
       # postman # API development environment
       pyenv # Simple Python version management

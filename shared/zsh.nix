@@ -17,6 +17,11 @@
 
       # Keep prompt at bottom of terminal window
       printf '\n%.0s' {1..$LINES}
+
+      # If BD NPM token exists, source it
+      if [ -f $HOME/bd/.bd-npm ]; then
+        source $HOME/bd/.bd-npm
+      fi
     '';
     localVariables = {
       PATH = "/opt/homebrew/bin:$PATH";
