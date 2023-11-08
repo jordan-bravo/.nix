@@ -39,10 +39,6 @@
     };
     includes = [
       {
-        condition = "gitdir:~/scm/";
-        path = "~/scm/.gitconfig";
-      }
-      {
         condition = "gitdir:~/bd/";
         path = "~/bd/.gitconfig-bd";
       }
