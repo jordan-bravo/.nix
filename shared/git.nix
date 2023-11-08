@@ -39,15 +39,13 @@
     };
     includes = [
       {
-        path = "~/bd/.gitconfig-bd";
+        condition = "gitdir:~/scm/";
+        path = "~/scm/.gitconfig";
+      }
+      {
         condition = "gitdir:~/bd/";
+        path = "~/bd/.gitconfig-bd";
       }
     ];
-    userName = "Jordan Bravo";
-    userEmail = "jordan@bravo.cc";
-    signing = {
-      key = "E11FA432F965854B";
-      signByDefault = true;
-    };
   };
 }
