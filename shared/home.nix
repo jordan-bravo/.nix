@@ -38,6 +38,12 @@ in
     home-manager.enable = true;
     jq.enable = true;
     lsd.enable = true;
+    pyenv = {
+      enable = true;
+      # To enable zsh integration manually, use the command:
+      # eval "$(pyenv init -)"
+      enableZshIntegration = false;
+    };
     ripgrep.enable = true;
     rtx = {
       enable = true;
@@ -116,7 +122,7 @@ in
       pgcli # Command-line interface for PostgreSQL
       poetry # Python dependency management and packaging made easy
       # postman # API development environment
-      pyenv # Simple Python version management
+      # pyenv # Simple Python version management
       python311Packages.black # Python code formatter
       python311Packages.pip # Tool for installing Python packages
       # python311Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python
