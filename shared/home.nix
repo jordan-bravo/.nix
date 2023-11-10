@@ -103,7 +103,7 @@ in
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
       freetube # YouTube client
-      # kitty # Terminal
+      heroku # Heroku CLI
       lua-language-server # LSP language server for Lua
       luajit # JIT compiler for Lua 5.1
       luajitPackages.luacheck # A static analyzer & linter for Lua
@@ -122,7 +122,6 @@ in
       pgcli # Command-line interface for PostgreSQL
       poetry # Python dependency management and packaging made easy
       # postman # API development environment
-      # pyenv # Simple Python version management
       python311Packages.black # Python code formatter
       python311Packages.pip # Tool for installing Python packages
       # python311Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python
@@ -139,7 +138,7 @@ in
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       wget # File retriever
-      yarn # Package manger for JavaScript
+      yarn # Package manager for JavaScript
     # ]);
     ];
   };
