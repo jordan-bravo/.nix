@@ -115,7 +115,7 @@
   system.stateVersion = "23.05";
 
   # Set your time zone.
-  time.timeZone = "America/Chicago";
+  time.timeZone = "America/New_York";
 
   users.users.jordan = {
     isNormalUser = true;

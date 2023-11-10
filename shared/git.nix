@@ -40,7 +40,7 @@
     includes = [
       {
         condition = "gitdir:~/bd/";
-        path = "~/bd/.gitconfig-bd";
+        path = "~/bd/.misc/.gitconfig-bd";
       }
     ];
   };

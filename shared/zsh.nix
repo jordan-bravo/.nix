@@ -19,8 +19,8 @@
       printf '\n%.0s' {1..$LINES}
 
       # If BD NPM token exists, source it
-      if [ -f $HOME/bd/.misc/.bd-npm ]; then
-        source $HOME/bd/.misc/.bd-npm
+      if [ -f $HOME/bd/.misc/.npm-bd ]; then
+        source $HOME/bd/.misc/.npm-bd
       fi
     '';
     localVariables = {

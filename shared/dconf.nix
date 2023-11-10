@@ -26,7 +26,7 @@ with lib.hm.gvariant;
       remove-old-trash-files = true;
     };
     "org/gnome/desktop/screensaver" = {
-      lock-delay = mkUint32 0;
+      lock-delay = mkUint32 30;
       lock-enabled = true;
     };
     "org/gnome/desktop/session" = {
