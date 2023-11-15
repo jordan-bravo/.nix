@@ -1,10 +1,10 @@
-# ~/.setup/flake.nix
+# ~/.nix/flake.nix
 {
   description = "Jordan's NixOS / Darwin / Home Manager Configuration Flake";
 
   inputs = {
     # All flake references used to build my NixOS setup.  These are dependencies.
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix packages
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     # VSCode / VSCodium extensions
     # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     # Darwin
@@ -39,20 +39,12 @@
             }
           ];
         };
-        emu = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [
-            ./emu/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.jordan = {
-                imports = [ ./emu/home.nix ];
-              };
-            }
-          ];
-        };
+      };
+      homeConfigurations = {
+      	jordan = home-manager.lib.homeManagerConfiguration {
+	  pkgs = nixpkgs.legacyPackages.x86_64-linux;
+	  modules = [ ./thinky/home.nix ];
+	};
       };
       darwinConfigurations = {
         mbp = nix-darwin.lib.darwinSystem {
