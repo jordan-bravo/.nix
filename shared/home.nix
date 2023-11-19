@@ -45,15 +45,15 @@ in
       enableZshIntegration = false;
     };
     ripgrep.enable = true;
-    rtx = {
-      enable = true;
-      enableZshIntegration = true;
-      settings = {
-        settings = {
-          legacy_version_file = false;
-        };
-      };
-    };
+    # rtx = {
+    #   enable = true;
+    #   enableZshIntegration = true;
+    #   settings = {
+    #     settings = {
+    #       legacy_version_file = false;
+    #     };
+    #   };
+    # };
     vscode = {
       enable = true;
       package = pkgs.vscodium;
@@ -92,9 +92,6 @@ in
       EDITOR = "nvim";
     };
     stateVersion = "23.05";
-    # packages = [
-    #   rust-analyzer
-    # ] ++ (with pkgs; [
     packages = with pkgs; [
       borgbackup # Deduplicating archiver with compression and encryption
       cargo # Rust package manager
@@ -117,11 +114,12 @@ in
       nodePackages.pyright # Python static type checker
       nodePackages.typescript # TypeScript language
       nodePackages.typescript-language-server # LSP for JS and TS
-      onefetch # Git repo summary
       obsidian # Note-taking
+      onefetch # Git repo summary
       pgcli # Command-line interface for PostgreSQL
       poetry # Python dependency management and packaging made easy
       # postman # API development environment
+      # python311 # A high-level dynamically-typed programming language
       python311Packages.black # Python code formatter
       python311Packages.pip # Tool for installing Python packages
       # python311Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python
@@ -139,7 +137,22 @@ in
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       wget # File retriever
       yarn # Package manager for JavaScript
-    # ]);
+      
+      # For building Python
+      automake # GNU standard-compliant makefile generator
+      bzip2 # High-quality data compression program
+      findutils # GNU Find Utilities, the basic directory searching utilities of the GNU operating system
+      gdbm # GNU dbm key/value database library
+      libffi # A foreign function call interface library
+      libnsl # Client interface library for NIS(YP) and NIS+
+      libuuid # A set of system utilities for Linux
+      ncurses # Free software emulation of curses in SVR4 and more
+      openssl # A cryptographic library that implements the SSL and TLS protocols
+      readline # Library for interactive line editing
+      sqlite # A self-contained, serverless, zero-configuration, transactional SQL database engine
+      tk # A widget toolkit that provides a library of basic elements for building a GUI in many different programming languages
+      xz # A general-purpose data compression software, successor of LZMA
+      zlib # For building Python
     ];
   };
 

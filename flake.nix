@@ -18,11 +18,17 @@
   };
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs:
+    # let 
+    #   pkgs = import nixpkgs { system = "x86_64-linux"; };
+    # in
     {
       nixosConfigurations = {
         tux = nixpkgs.lib.nixosSystem {
           #specialArgs = {inherit inputs;}; # this is the important part for Hyprland
+          specialArgs = { inherit inputs; };
           system = "x86_64-linux";
+          # pkgs = import nixpkgs { system = "x86_64-linux"; };
+	  # pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
             ./tux/configuration.nix
             #hyprland.nixosModules.default
@@ -33,6 +39,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.users.jordan = {
                 imports = [ ./tux/home.nix ];
               };

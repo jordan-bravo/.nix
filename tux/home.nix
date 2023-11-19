@@ -95,7 +95,7 @@
   };
 
   dconf.enable = true;
-  imports = [ ../shared/home.nix ];
+  imports = [ ../shared/home.nix ../shared/linux-home.nix ];
 
   services = {
     copyq.enable = true;

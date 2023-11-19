@@ -101,5 +101,5 @@
     copyq.enable = true;
   };
 
-  imports = [ ../shared/home.nix ];
+  imports = [ ../shared/dconf.nix ../shared/home.nix ];
 }

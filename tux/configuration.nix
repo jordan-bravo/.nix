@@ -67,6 +67,7 @@
     keep-outputs = true;
     keep-derivations = true;
     # package = pkgs.nixFlakes;
+    # registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
   nixpkgs.config.allowUnfree = true;
