@@ -119,7 +119,7 @@ in
       pgcli # Command-line interface for PostgreSQL
       poetry # Python dependency management and packaging made easy
       # postman # API development environment
-      # python311 # A high-level dynamically-typed programming language
+      python311 # A high-level dynamically-typed programming language
       python311Packages.black # Python code formatter
       python311Packages.pip # Tool for installing Python packages
       # python311Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python

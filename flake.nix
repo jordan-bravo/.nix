@@ -4,7 +4,7 @@
 
   inputs = {
     # All flake references used to build my NixOS setup.  These are dependencies.
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # VSCode / VSCodium extensions
     # nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     # Darwin
@@ -24,9 +24,8 @@
     {
       nixosConfigurations = {
         tux = nixpkgs.lib.nixosSystem {
-          #specialArgs = {inherit inputs;}; # this is the important part for Hyprland
-          specialArgs = { inherit inputs; };
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           # pkgs = import nixpkgs { system = "x86_64-linux"; };
 	  # pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
@@ -45,6 +44,7 @@
               };
             }
           ];
+          specialArgs.flake-inputs = inputs;
         };
       };
       homeConfigurations = {
