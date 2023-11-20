@@ -10,7 +10,9 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 `mbp`: My work laptop, a MacBook Pro with M1 (ARM) chip running MacOS.
 
-`shared`: Configuration that can be shared across all hosts.
+`thinky`: Another work laptop, ThinkPad, currently running Ubuntu 22.04 and using the Nix package manager and Home Manager.
+
+`shared`: Configuration that can be shared across multiple hosts.
 
 ## TODO
 
