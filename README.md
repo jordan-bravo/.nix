@@ -16,6 +16,6 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ## TODO
 
-- [Neovim configuration](https://github.com/jordan-bravo/nvim) is currently not managed by Nix.  I plan to add all Neovim configuration to Nix.
+- My [Neovim configuration](https://github.com/jordan-bravo/nvim) is currently not managed by Nix.  I plan to add all Neovim configuration to Nix.
 - Add Hyprland on Linux hosts.
 - Convert servers from Ubuntu to NixOS.
