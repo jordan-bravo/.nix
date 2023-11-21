@@ -5,12 +5,11 @@
 let
   username = "jordan";
   homeDirectory = "/Users/${username}";
-
 in
 {
-  environment.systemPackages = with pkgs; [
-  ];
-
+  # Add system-wide packages here
+  # environment.systemPackages = with pkgs; [
+  # ];
   networking.hostName = "mbp";
 
   nix = {

@@ -6,6 +6,7 @@
   home = {
     # file = { };
     packages = with pkgs; [
+      # hello
     ];
   };
 
