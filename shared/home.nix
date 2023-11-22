@@ -40,20 +40,20 @@ in
     lsd.enable = true;
     pyenv = {
       enable = true;
-      # To enable zsh integration manually, use the command:
+      # To enable pyenv zsh integration manually, use the command:
       # eval "$(pyenv init -)"
       enableZshIntegration = false;
     };
     ripgrep.enable = true;
-    # rtx = {
-    #   enable = true;
-    #   enableZshIntegration = true;
-    #   settings = {
-    #     settings = {
-    #       legacy_version_file = false;
-    #     };
-    #   };
-    # };
+    rtx = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        settings = {
+          legacy_version_file = false;
+        };
+      };
+    };
     vscode = {
       enable = true;
       package = pkgs.vscodium;
