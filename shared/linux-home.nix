@@ -42,6 +42,7 @@
       jitsi-meet # Video calling (not sure if both packages are needed)
       jitsi # Video calling (not sure if both packages are needed)
       killall # Tool to kill processes
+      krename # A powerful batch renamer for KDE
       ledger-live-desktop # App for ledger hardware signing device
       nextcloud-client # Nextcloud sync client
       nodejs_20 # NodeJS 20
