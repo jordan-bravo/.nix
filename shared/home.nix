@@ -110,7 +110,6 @@ in
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
       nodePackages.prettier # Formatter for JavaScript and other languages
-      nodePackages.prettier_d_slim # Prettier daemon for faster formatting
       nodePackages.pyright # Python static type checker
       nodePackages.typescript # TypeScript language
       nodePackages.typescript-language-server # LSP for JS and TS
@@ -119,6 +118,7 @@ in
       pgcli # Command-line interface for PostgreSQL
       poetry # Python dependency management and packaging made easy
       # postman # API development environment
+      prettierd # Prettier daemon for faster formatting
       python311 # A high-level dynamically-typed programming language
       python311Packages.black # Python code formatter
       python311Packages.pip # Tool for installing Python packages
