@@ -97,6 +97,7 @@ in
       cargo # Rust package manager
       delta # A syntax-highlighting pager for git
       element-desktop # Matrix client
+      eslint_d # ESLint daemon for increased performance
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
       freetube # YouTube client
@@ -109,6 +110,7 @@ in
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
+      nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.prettier # Formatter for JavaScript and other languages
       nodePackages.pyright # Python static type checker
       nodePackages.typescript # TypeScript language
