@@ -139,6 +139,7 @@ in
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       wget # File retriever
       yarn # Package manager for JavaScript
+      zellij # A terminal workspace with batteries included
       
     ];
   };
