@@ -14,8 +14,12 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 `shared`: Configuration that can be shared across multiple hosts.
 
-## TODO
+## TODO (High Level)
 
 - My [Neovim configuration](https://github.com/jordan-bravo/nvim) is currently not managed by Nix.  I plan to add all Neovim configuration to Nix.
 - Add Hyprland on Linux hosts.
 - Convert servers from Ubuntu to NixOS.
+
+### Task List (Low Level)
+
+- Configure zsh autosuggest/autocomplete (which one? both?) to avoid using arrow keys for completion.
