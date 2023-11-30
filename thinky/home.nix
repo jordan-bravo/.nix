@@ -9,6 +9,24 @@ in
   targets.genericLinux.enable = true;
   nixpkgs.config.allowUnfree = true;
   home = {
+    file = {
+      kittyNixgl = {
+        enable = true;
+        target = ".local/share/applications/kitty-nixgl.desktop";
+        text = ''
+          [Desktop Entry]
+          Version=1.0
+          Type=Application
+          Name=kittygl
+          GenericName= Terminal emulator
+          Comment=Fast, feature-rich, GPU based terminal
+          TryExec=nixGLIntel kitty
+          Exec=nixGLIntel kitty
+          Icon=kitty
+          Categories=System;TerminalEmulator;
+        '';
+      };
+    };
     homeDirectory = "/home/${username}";
     packages = [
       pkgs.nixgl.nixGLIntel
