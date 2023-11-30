@@ -56,7 +56,7 @@
       qbittorrent # Featureful free software BitTorrent client
       ricochet # Anonymous peer-to-peer instant messaging over Tor
       signal-desktop # Signal desktop
-      slack # Desktop client for Slack
+      # slack # Desktop client for Slack
       sparrow # Bitcoin wallet
       spot # Native Spotify client for the GNOME desktop
       standardnotes # Note-taking

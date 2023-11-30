@@ -13,11 +13,16 @@
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # NixGL for graphics driver issues on non-NixOS
+    nixgl.url = "github:guibou/nixGL";
   };
 
-  outputs = { self, nixpkgs, nix-darwin, nixpkgs-darwin, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nix-darwin, nixpkgs-darwin, home-manager, nixgl, ... }@inputs:
     let 
       pkgs-darwin = import nixpkgs-darwin { system = "aarch64-darwin"; config.allowUnfree = true; }; 
+      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; overlays = [ nixgl.overlay ]; };
+      # You can now reference pkgs.nixgl.nixGLIntel
+      username = "jordan";
     in 
     {
       nixosConfigurations = {
@@ -36,12 +41,12 @@
               };
             }
           ];
-          # specialArgs.flake-inputs = inputs;
         };
       };
       homeConfigurations = {
       	jordan = home-manager.lib.homeManagerConfiguration {
-	  pkgs = nixpkgs.legacyPackages.x86_64-linux;
+	  pkgs = pkgs;
+          extraSpecialArgs = { inherit nixgl pkgs; };
 	  modules = [ ./thinky/home.nix ];
 	};
       };
