@@ -2,11 +2,14 @@
 
 { config, pkgs, lib, ... }:
 
+let
+  username = "jordan";
+in
 {
   targets.genericLinux.enable = true;
   nixpkgs.config.allowUnfree = true;
   home = {
-    homeDirectory = "/home/jordan";
+    homeDirectory = "/home/${username}";
     packages = [
       pkgs.nixgl.nixGLIntel
       # pkgs.makeDesktopItem {
@@ -16,7 +19,7 @@
       #   categories = [ "Terminal" "Console" ]; # Customize categories as needed
       # }
     ];
-    username = "jordan";
+    username = "${username}";
   };
 
   imports = [ ../shared/home.nix ../shared/linux-home.nix ];

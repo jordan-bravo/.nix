@@ -22,7 +22,6 @@
       pkgs-darwin = import nixpkgs-darwin { system = "aarch64-darwin"; config.allowUnfree = true; }; 
       pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; overlays = [ nixgl.overlay ]; };
       # You can now reference pkgs.nixgl.nixGLIntel
-      username = "jordan";
     in 
     {
       nixosConfigurations = {
