@@ -15,6 +15,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # NixGL for graphics driver issues on non-NixOS
     nixgl.url = "github:guibou/nixGL";
+    # Configure Firefox extensions via Home Manager
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nix-darwin, nixpkgs-darwin, home-manager, nixgl, ... }@inputs:
@@ -44,8 +49,8 @@
       };
       homeConfigurations = {
       	jordan = home-manager.lib.homeManagerConfiguration {
-	  pkgs = pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs; };
+	  pkgs = pkgs; # equivalent to: inherit pkgs;
+          extraSpecialArgs = { inherit nixgl pkgs inputs; }; # possibly replace set contents with: inherit inputs;
 	  modules = [ ./thinky/home.nix ];
 	};
       };

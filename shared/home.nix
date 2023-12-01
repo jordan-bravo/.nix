@@ -10,7 +10,6 @@
 # in
 
 let
-  # username = config.users.users.jordan.name;
   username = "jordan";
   homeDirectory = 
     if pkgs.stdenv.isDarwin then
@@ -40,7 +39,7 @@ in
     lsd.enable = true;
     pyenv = {
       enable = true;
-      # To enable pyenv zsh integration manually, use the command:
+      # To manually activate pyenv in zsh, use the command:
       # eval "$(pyenv init -)"
       enableZshIntegration = false;
     };

@@ -22,6 +22,6 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ### Task List (Low Level)
 
-- Add `~/.local/share/applications/kitty-nixgl.desktop` to Ubuntu host.
+- Configure Firefox in Home Manager.
 - Configure zsh autosuggest/autocomplete (which one? both?) to avoid using arrow keys for completion.
 - Remove repetition by declaring username only once in flake.nix, then passing to other modules.

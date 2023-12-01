@@ -117,5 +117,5 @@
     copyq.enable = true;
   };
 
-  imports = [ ../shared/dconf.nix ../shared/home.nix ];
+  imports = [ ../shared/dconf.nix ../shared/home.nix ../shared/firefox.nix ];
 }
