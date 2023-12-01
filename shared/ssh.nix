@@ -10,7 +10,7 @@
         identityFile = "~/.ssh/ssh_id_ed25519_j.b@bd.key";
         extraOptions = {
           # "UseKeychain" = "no";
-          # "AddKeysToAgent" = "yes";
+          # "AddKeysToAgent" = "yes"; # MacOS
         };
       };
       "github.com" = {
@@ -19,7 +19,7 @@
         identityFile = "~/.ssh/ssh_id_ed25519_j@b.key";
         extraOptions = {
           # "UseKeychain" = "no";
-          # "AddKeysToAgent" = "yes";
+          # "AddKeysToAgent" = "yes"; # MacOS
         };
       };
     };

@@ -1,5 +1,5 @@
 # ~/.nix/shared/zsh.nix
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.zsh = {
@@ -8,6 +8,11 @@
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
+    history = {
+      expireDuplicatesFirst = true;
+      ignoreAllDups = true;
+      path = "${config.xdg.dataHome}/zsh/zsh_history";
+    };
     initExtra = ''
       # If bat exists, use instead of cat
       type bat > /dev/null 2>&1 && alias cat=bat
@@ -23,9 +28,6 @@
         source $HOME/bd/.misc/.npm-bd
       fi
     '';
-    localVariables = {
-      PATH = "/opt/homebrew/bin:$PATH";
-    };
     plugins = [
       {
         name = "zsh-autocomplete";

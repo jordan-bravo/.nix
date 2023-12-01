@@ -9,24 +9,6 @@ in
   targets.genericLinux.enable = true;
   nixpkgs.config.allowUnfree = true;
   home = {
-    file = {
-      kittyNixgl = {
-        enable = true;
-        target = ".local/share/applications/kitty-nixgl.desktop";
-        text = ''
-          [Desktop Entry]
-          Version=1.0
-          Type=Application
-          Name=kittygl
-          GenericName= Terminal emulator
-          Comment=Fast, feature-rich, GPU based terminal
-          TryExec=nixGLIntel kitty
-          Exec=nixGLIntel kitty
-          Icon=kitty
-          Categories=System;TerminalEmulator;
-        '';
-      };
-    };
     homeDirectory = "/home/${username}";
     packages = [
       pkgs.nixgl.nixGLIntel
@@ -39,10 +21,19 @@ in
     ];
     username = "${username}";
   };
+  programs.zsh.profileExtra = "export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS";
 
   imports = [ ../shared/home.nix ../shared/linux-home.nix ];
 
-  # programs.kitty.package = pkgs.nixgl.nixGLIntel;
+  xdg.desktopEntries.kitty = {
+    name = "Kitty";
+    genericName = "Terminal Emulator";
+    comment = "Fast, feature-rich, GPU based terminal";
+    # tryExec = "nixGLIntel kitty";
+    exec = "nixGLIntel kitty";
+    icon = "kitty";
+    categories = [ "System" "TerminalEmulator" ];
+  };
 
   # xdg.systemDirs.data = [ "/home/jordan/.nix-profile/share" "/usr/local/share/" "/usr/share/" "/var/lib/snapd/desktop" ];
 }
