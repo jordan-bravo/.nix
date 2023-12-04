@@ -45,7 +45,6 @@ in
     };
     ripgrep.enable = true;
     rtx = {
-      enable = true;
       enableZshIntegration = true;
       settings = {
         settings = {

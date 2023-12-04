@@ -12,6 +12,7 @@
 
   imports = [ ../shared/home.nix ./zsh.nix ];
 
+  programs.rtx.enable = true;
   programs.zsh = {
     initExtra = ''
       # python versions for alta-legacy

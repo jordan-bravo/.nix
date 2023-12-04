@@ -15,13 +15,15 @@ in
   };
   home = {
     homeDirectory = "/home/${username}";
-    packages = [
-      pkgs.nixgl.nixGLIntel
+    packages = with pkgs; [
+      gnome.gnome-calendar
+      nixgl.nixGLIntel
     ];
     username = "${username}";
   };
   imports = [ ../shared/home.nix ../shared/linux-home.nix ];
   nixpkgs.config.allowUnfree = true;
+  programs.rtx.enable = true;
   programs.zsh.profileExtra = "export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS";
   targets.genericLinux.enable = true;
   xdg.desktopEntries.kitty = {
