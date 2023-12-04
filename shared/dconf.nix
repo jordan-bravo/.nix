@@ -12,8 +12,8 @@ with lib.hm.gvariant;
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
-      text-scaling-factor = 1.0; # BitLab LG
-      # text-scaling-factor = 1.45;
+      # text-scaling-factor = 1.0; # BitLab LG
+      text-scaling-factor = 1.25; # Home Innocn
     };
     "org/gnome/desktop/notifications" = {
       show-banners = false;
