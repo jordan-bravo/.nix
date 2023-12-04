@@ -92,6 +92,7 @@ in
     };
     stateVersion = "23.05";
     packages = with pkgs; [
+      android-studio # The Official IDE for Android (stable channel)
       borgbackup # Deduplicating archiver with compression and encryption
       cargo # Rust package manager
       delta # A syntax-highlighting pager for git
@@ -101,6 +102,7 @@ in
       fira-code # Font
       freetube # YouTube client
       heroku # Heroku CLI
+      jdk11 # The open-source Java Development Kit
       lua-language-server # LSP language server for Lua
       luajit # JIT compiler for Lua 5.1
       luajitPackages.luacheck # A static analyzer & linter for Lua
@@ -110,6 +112,7 @@ in
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
       nodePackages.eslint # An AST-based pattern checker for JavaScript
+      nodePackages.pnpm # Fast, disk space efficient package manager
       nodePackages.prettier # Formatter for JavaScript and other languages
       nodePackages.pyright # Python static type checker
       nodePackages.typescript # TypeScript language
@@ -136,6 +139,7 @@ in
       stylua # Lua code formatter
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
+      watchman # Watches files and takes action when they change
       wget # File retriever
       yarn # Package manager for JavaScript
       zellij # A terminal workspace with batteries included

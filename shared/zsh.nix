@@ -27,6 +27,11 @@
       if [ -f $HOME/bd/.misc/.npm-bd ]; then
         source $HOME/bd/.misc/.npm-bd
       fi
+
+      # For Android Development
+      export ANDROID_HOME=$HOME/Android/Sdk
+      export PATH=$PATH:$ANDROID_HOME/emulator
+      export PATH=$PATH:$ANDROID_HOME/platform-tools
     '';
     plugins = [
       {
