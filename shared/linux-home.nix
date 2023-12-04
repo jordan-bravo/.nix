@@ -45,7 +45,7 @@
       openssl # Cryptographic library
       pinta # Image editor
       polkit_gnome # Authentication agent
-      postgresql # SQL database
+      # postgresql # SQL database
       qbittorrent # Featureful free software BitTorrent client
       ricochet # Anonymous peer-to-peer instant messaging over Tor
       signal-desktop # Signal desktop
