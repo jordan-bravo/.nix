@@ -2,16 +2,19 @@
 
 { config, pkgs, lib, ... }:
 
-# let
-#   username = "jordan";
-#   homeDirectory = "/home/${username}";
-#
-# in
 {
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        text-scaling-factor = 1.45; # tux built-in
+        # text-scaling-factor = 1.25; # Home Innocn
+        # text-scaling-factor = 1.0; # BitLab LG
+      };
+    };  
+  };
   fonts.fontconfig.enable = true;
   home = {
-    # homeDirectory = homeDirectory;
-    # username = username;
     packages = with pkgs; [
 
     ];
@@ -20,12 +23,5 @@
     };
     stateVersion = "23.05";
   };
-
-  dconf.enable = true;
   imports = [ ../shared/home.nix ../shared/linux-home.nix ];
-
-  services = {
-    copyq.enable = true;
-  };
-
 }

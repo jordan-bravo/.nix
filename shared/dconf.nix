@@ -12,8 +12,6 @@ with lib.hm.gvariant;
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
-      text-scaling-factor = 1.0; # BitLab LG
-      # text-scaling-factor = 1.45;
     };
     "org/gnome/desktop/notifications" = {
       show-banners = false;
@@ -100,7 +98,9 @@ with lib.hm.gvariant;
         "org.telegram.desktop.desktop"
         "signal-desktop.desktop"
         "element-desktop.desktop"
+        "slack.desktop"
         "vlc.desktop"
+        "freetube.desktop"
         "sparrow-desktop.desktop"
         "org.gnome.Settings.desktop"
         "org.gnome.tweaks.desktop"
