@@ -3,16 +3,10 @@
 
 { config, pkgs, lib, ... }:
 
-# let
-#   username = "jordan";
-#   homeDirectory = "/home/${username}";
-#
-# in
 {
+  dconf.enable = true;
   fonts.fontconfig.enable = true;
   home = {
-    # homeDirectory = homeDirectory;
-    # username = username;
     packages = with pkgs; [
       # android-studio # Develop Android apps
       appimage-run # Run AppImages on NixOS
@@ -50,13 +44,11 @@
       onlyoffice-bin # Office suite
       openssl # Cryptographic library
       pinta # Image editor
-      # pipx # Install and run Python applications in isolated environments
       polkit_gnome # Authentication agent
       postgresql # SQL database
       qbittorrent # Featureful free software BitTorrent client
       ricochet # Anonymous peer-to-peer instant messaging over Tor
       signal-desktop # Signal desktop
-      # slack # Desktop client for Slack
       sparrow # Bitcoin wallet
       spot # Native Spotify client for the GNOME desktop
       standardnotes # Note-taking
@@ -89,33 +81,14 @@
       gnomeExtensions.vitals # System info in status bar
       gnomeExtensions.space-bar # Adds workspaces to status bar
 
-      # For building Python
-      # automake # GNU standard-compliant makefile generator
-      # bzip2 # High-quality data compression program
-      # findutils # GNU Find Utilities, the basic directory searching utilities of the GNU operating system
-      # gdbm # GNU dbm key/value database library
-      # libffi # A foreign function call interface library
-      # libnsl # Client interface library for NIS(YP) and NIS+
-      # libuuid # A set of system utilities for Linux
-      # ncurses # Free software emulation of curses in SVR4 and more
-      # openssl # A cryptographic library that implements the SSL and TLS protocols
-      # readline # Library for interactive line editing
-      # sqlite # A self-contained, serverless, zero-configuration, transactional SQL database engine
-      # tk # A widget toolkit that provides a library of basic elements for building a GUI in many different programming languages
-      # xz # A general-purpose data compression software, successor of LZMA
-      # zlib # For building Python
     ];
     sessionVariables = {
       GTK_THEME = "Adwaita:dark";
     };
     stateVersion = "23.05";
   };
-
-  dconf.enable = true;
-
+  imports = [ ../shared/dconf.nix ../shared/home.nix ../shared/firefox.nix ];
   services = {
     copyq.enable = true;
   };
-
-  imports = [ ../shared/dconf.nix ../shared/home.nix ../shared/firefox.nix ];
 }
