@@ -11,6 +11,9 @@ in
       hotkey =  [];
       unicode-hotkey =  [];
     };
+    "org/gnome/desktop/input-sources" = {
+      xkb-options = [ "caps:escape_shifted_capslock" ];
+    };
     "org/gnome/desktop/interface" = {
       text-scaling-factor = 1.45; # thinky built-in
       # text-scaling-factor = 1.25; # Home Innocn
