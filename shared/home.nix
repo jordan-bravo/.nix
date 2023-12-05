@@ -89,7 +89,7 @@ in
     sessionVariables = {
       EDITOR = "nvim";
     };
-    stateVersion = "23.05";
+    stateVersion = "23.11";
     packages = with pkgs; [
       android-studio # The Official IDE for Android (stable channel)
       borgbackup # Deduplicating archiver with compression and encryption

@@ -74,7 +74,6 @@
     sessionVariables = {
       GTK_THEME = "Adwaita:dark";
     };
-    stateVersion = "23.05";
   };
   imports = [ ../shared/dconf.nix ../shared/home.nix ../shared/firefox.nix ];
   services = {

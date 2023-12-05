@@ -24,10 +24,6 @@
       ricochet # Anonymous peer-to-peer instant messaging over Tor
       sparrow # Bitcoin wallet
     ];
-    sessionVariables = {
-      GTK_THEME = "Adwaita:dark";
-    };
-    stateVersion = "23.05";
   };
   imports = [ ../shared/home.nix ../shared/linux-home.nix ];
 }
