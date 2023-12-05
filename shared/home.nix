@@ -101,7 +101,6 @@ in
       fira-code # Font
       freetube # YouTube client
       heroku # Heroku CLI
-      jdk11 # The open-source Java Development Kit
       lua-language-server # LSP language server for Lua
       luajit # JIT compiler for Lua 5.1
       luajitPackages.luacheck # A static analyzer & linter for Lua
@@ -125,11 +124,9 @@ in
       python311 # A high-level dynamically-typed programming language
       python311Packages.black # Python code formatter
       python311Packages.pip # Tool for installing Python packages
-      # python311Packages.python-lsp-ruff # Ruff linting plugin and LSP for Python
-      ripgrep # Search tool
-      # rust-analyzer # Rust LSP
+      rust-analyzer # Rust LSP
       # rustc # Rust compiler
-      # rustfmt # Rust formatter
+      rustfmt # Rust formatter
       ruby_3_2 # Ruby language
       ruff # An extremely fast Python linter
       ruff-lsp # Ruff LSP for Python
@@ -142,7 +139,6 @@ in
       wget # File retriever
       yarn # Package manager for JavaScript
       zellij # A terminal workspace with batteries included
-      
     ];
   };
 

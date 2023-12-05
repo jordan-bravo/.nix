@@ -7,6 +7,10 @@ let
 in
 {
   dconf.settings = {
+    "desktop/ibus/panel/emoji" = {
+      hotkey =  [];
+      unicode-hotkey =  [];
+    };
     "org/gnome/desktop/interface" = {
       text-scaling-factor = 1.45; # thinky built-in
       # text-scaling-factor = 1.25; # Home Innocn

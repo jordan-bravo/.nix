@@ -16,7 +16,13 @@
   fonts.fontconfig.enable = true;
   home = {
     packages = with pkgs; [
-
+      appimage-run # Run AppImages on NixOS
+      bisq-desktop # Decentralized Bitcoin exchange
+      ledger-live-desktop # App for ledger hardware signing device
+      signal-desktop # Signal desktop
+      qbittorrent # Featureful free software BitTorrent client
+      ricochet # Anonymous peer-to-peer instant messaging over Tor
+      sparrow # Bitcoin wallet
     ];
     sessionVariables = {
       GTK_THEME = "Adwaita:dark";

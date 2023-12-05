@@ -8,10 +8,7 @@
   fonts.fontconfig.enable = true;
   home = {
     packages = with pkgs; [
-      # android-studio # Develop Android apps
-      appimage-run # Run AppImages on NixOS
       adwaita-qt # Adwaita style for Qt apps
-      bisq-desktop # Decentralized Bitcoin exchange
       bitwarden # Password manager
       brave # Web browser
       # cantarell-fonts # Fonts for waybar
@@ -25,31 +22,23 @@
       # font-awesome # Fonts for waybar
       gajim # XMPP client
       gcc # Build tool (needed by NeoVim's Treesitter)
-      # git # Version control
       gnumake # Build tool (needed by Ruby)
       # gtklock # Screen lock
       gtklock-userinfo-module # Screen lock user info
-      # hollywood # Make terminal look like a hollywood hacker terminal
       # ivpn # VPN
       # ivpn-service # VPN
-      # jdk11 # Java Development Kit v11
+      jdk11 # Java Development Kit v11
       jitsi-meet # Video calling (not sure if both packages are needed)
       jitsi # Video calling (not sure if both packages are needed)
       killall # Tool to kill processes
       krename # A powerful batch renamer for KDE
-      ledger-live-desktop # App for ledger hardware signing device
       nextcloud-client # Nextcloud sync client
       nodejs_20 # NodeJS 20
-      # obsidian # Note-taking
       onlyoffice-bin # Office suite
       openssl # Cryptographic library
       pinta # Image editor
       polkit_gnome # Authentication agent
       # postgresql # SQL database
-      qbittorrent # Featureful free software BitTorrent client
-      ricochet # Anonymous peer-to-peer instant messaging over Tor
-      signal-desktop # Signal desktop
-      sparrow # Bitcoin wallet
       spot # Native Spotify client for the GNOME desktop
       standardnotes # Note-taking
       tailscale # Mesh VPN
@@ -59,7 +48,7 @@
       tree # View directory tree structure
       # ulauncher # Application launcher
       vlc # Media player
-      waybar # Status bar
+      # waybar # Status bar
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       wofi # App launcher
       #xdg-desktop-portal-hyprland # Necessary for Hyprland
