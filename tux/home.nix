@@ -19,6 +19,8 @@
       appimage-run # Run AppImages on NixOS
       bisq-desktop # Decentralized Bitcoin exchange
       ledger-live-desktop # App for ledger hardware signing device
+      python311 # A high-level dynamically-typed programming language
+      python311Packages.pip # Tool for installing Python packages
       signal-desktop # Signal desktop
       qbittorrent # Featureful free software BitTorrent client
       ricochet # Anonymous peer-to-peer instant messaging over Tor

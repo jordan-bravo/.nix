@@ -118,12 +118,9 @@ in
       obsidian # Note-taking
       onefetch # Git repo summary
       pgcli # Command-line interface for PostgreSQL
-      poetry # Python dependency management and packaging made easy
       # postman # API development environment
       prettierd # Prettier daemon for faster formatting
-      python311 # A high-level dynamically-typed programming language
       python311Packages.black # Python code formatter
-      python311Packages.pip # Tool for installing Python packages
       rust-analyzer # Rust LSP
       # rustc # Rust compiler
       rustfmt # Rust formatter

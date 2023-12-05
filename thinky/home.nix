@@ -15,16 +15,28 @@ in
       xkb-options = [ "caps:escape_shifted_capslock" ];
     };
     "org/gnome/desktop/interface" = {
-      text-scaling-factor = 1.45; # thinky built-in
-      # text-scaling-factor = 1.25; # Home Innocn
+      # text-scaling-factor = 1.45; # thinky built-in
+      text-scaling-factor = 1.25; # Home Innocn
       # text-scaling-factor = 1.0; # BitLab LG
     };
   };
   home = {
+    file = {
+      "daemon.json" = {
+        enable = false;
+        text = ''
+          {
+            "exampleKey": "exampleValue"
+          }
+        '';
+      };
+    };
     homeDirectory = "/home/${username}";
     packages = with pkgs; [
-      gnome.gnome-calendar
-      nixgl.nixGLIntel
+      # docker # Container engine
+      gnome.gnome-calendar # Gnome calendar
+      nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
+      # python310 # A high-level dynamically-typed programming language
     ];
     username = "${username}";
   };
