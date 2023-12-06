@@ -18,7 +18,7 @@ with lib.hm.gvariant;
       show-in-lock-screen = false;
     };
     "org/gnome/desktop/peripherals/touchpad" = {
-      speed = 0.30;
+      speed = 0.25;
       tap-to-click = true;
     };
     "org/gnome/desktop/privacy" = {
@@ -112,6 +112,7 @@ with lib.hm.gvariant;
         "firefox.desktop:1"
         "kitty.desktop:2"
         "signal-desktop.desktop:3"
+        "slack.desktop:3"
         "org.gnome.Evolution.desktop:3"
         "obsidian.desktop:4"
         "sparrow-desktop.desktop:5"
