@@ -21,8 +21,8 @@
       firefox # Web browser
       # font-awesome # Fonts for waybar
       gajim # XMPP client
-      gcc # Build tool (needed by NeoVim's Treesitter)
-      gnumake # Build tool (needed by Ruby)
+      # gcc # Build tool (needed by NeoVim's Treesitter)
+      # gnumake # Build tool (needed by Ruby)
       # gtklock # Screen lock
       gtklock-userinfo-module # Screen lock user info
       # ivpn # VPN
@@ -35,7 +35,7 @@
       nextcloud-client # Nextcloud sync client
       nodejs_20 # NodeJS 20
       onlyoffice-bin # Office suite
-      openssl # Cryptographic library
+      # openssl # Cryptographic library
       pinta # Image editor
       polkit_gnome # Authentication agent
       # postgresql # SQL database
