@@ -35,6 +35,7 @@ in
     packages = with pkgs; [
       # docker # Container engine
       gnome.gnome-calendar # Gnome calendar
+      infisical # Manages secrets
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       # python310 # A high-level dynamically-typed programming language
     ];
@@ -43,7 +44,12 @@ in
   imports = [ ../shared/home.nix ../shared/linux-home.nix ];
   nixpkgs.config.allowUnfree = true;
   programs.rtx.enable = true;
-  programs.zsh.profileExtra = "export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS";
+  programs.zsh.envExtra = ''
+    export QT_STYLE_OVERRIDE="adwaita-dark"
+  '';
+  programs.zsh.profileExtra = ''
+    export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS"
+  '';
   targets.genericLinux.enable = true;
   xdg.desktopEntries.kitty = {
     name = "Kitty";
