@@ -1,10 +1,10 @@
-# ~/.nix/shared/firefix.nix
+# ~/.nix/shared/firefox.nix
 
 { config, pkgs, inputs, ... }:
 
 {
   programs.firefox = {
-    enable = false;
+    enable = true;
     profiles.jordan = {
       search = {
         default = "Startpage";  
