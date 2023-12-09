@@ -100,6 +100,7 @@ in
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
       freetube # YouTube client
+      gnumake # A tool to control the generation of non-source files from sources
       heroku # Heroku CLI
       lua-language-server # LSP language server for Lua
       luajit # JIT compiler for Lua 5.1
