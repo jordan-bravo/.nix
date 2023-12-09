@@ -131,12 +131,9 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  system.stateVersion = "23.05";
-
+  system.stateVersion = "23.11";
   # Set your time zone.
   time.timeZone = "America/New_York";
-
   users.users.jordan = {
     isNormalUser = true;
     description = "jordan";
@@ -146,14 +143,13 @@
       git
     ];
   };
-
   programs.zsh.enable = true;
-
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
-
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
   virtualisation.docker = {
     enable = true;
     # rootless = {
