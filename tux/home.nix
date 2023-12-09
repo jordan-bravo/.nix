@@ -4,12 +4,12 @@
 
 {
   dconf = {
-    enable = true;
+    # enable = true;
     settings = {
       "org/gnome/desktop/interface" = {
-        text-scaling-factor = 1.45; # tux built-in
+        text-scaling-factor = 0.9; # BitLab LG
         # text-scaling-factor = 1.25; # Home Innocn
-        # text-scaling-factor = 1.0; # BitLab LG
+        # text-scaling-factor = 1.45; # tux built-in
       };
     };  
   };
