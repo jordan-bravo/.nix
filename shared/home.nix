@@ -101,6 +101,8 @@ in
       fira-code # Font
       freetube # YouTube client
       gnumake # A tool to control the generation of non-source files from sources
+      go # The Go / Golang programming language
+      gopls # Official language server for Go / Golang
       heroku # Heroku CLI
       lua-language-server # LSP language server for Lua
       luajit # JIT compiler for Lua 5.1
