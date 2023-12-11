@@ -11,7 +11,7 @@
         # text-scaling-factor = 1.25; # Home Innocn
         # text-scaling-factor = 1.45; # tux built-in
       };
-    };  
+    };
   };
   fonts.fontconfig.enable = true;
   home = {

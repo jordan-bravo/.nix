@@ -7,7 +7,7 @@
     enable = true;
     profiles.jordan = {
       search = {
-        default = "Startpage";  
+        default = "Startpage";
         privateDefault = "Startpage";
         engines = {
           "Nix Packages" = {

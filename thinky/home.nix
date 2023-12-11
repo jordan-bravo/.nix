@@ -8,8 +8,8 @@ in
 {
   dconf.settings = {
     "desktop/ibus/panel/emoji" = {
-      hotkey =  [];
-      unicode-hotkey =  [];
+      hotkey = [ ];
+      unicode-hotkey = [ ];
     };
     "org/gnome/desktop/input-sources" = {
       xkb-options = [ "caps:escape_shifted_capslock" ];

@@ -23,11 +23,11 @@
   };
 
   outputs = { self, nixpkgs, nix-darwin, nixpkgs-darwin, home-manager, nixgl, ... }@inputs:
-    let 
-      pkgs-darwin = import nixpkgs-darwin { system = "aarch64-darwin"; config.allowUnfree = true; }; 
+    let
+      pkgs-darwin = import nixpkgs-darwin { system = "aarch64-darwin"; config.allowUnfree = true; };
       pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; overlays = [ nixgl.overlay ]; };
       # You can now reference pkgs.nixgl.nixGLIntel
-    in 
+    in
     {
       nixosConfigurations = {
         tux = nixpkgs.lib.nixosSystem {
@@ -48,11 +48,11 @@
         };
       };
       homeConfigurations = {
-      	jordan = home-manager.lib.homeManagerConfiguration {
-	  pkgs = pkgs; # equivalent to: inherit pkgs;
+        jordan = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs inputs; }; # possibly replace set contents with: inherit inputs;
-	  modules = [ ./thinky/home.nix ];
-	};
+          modules = [ ./thinky/home.nix ];
+        };
       };
       darwinConfigurations = {
         mbp = nix-darwin.lib.darwinSystem {
