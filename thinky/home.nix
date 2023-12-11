@@ -17,7 +17,7 @@ in
     "org/gnome/desktop/interface" = {
       # text-scaling-factor = 1.0; # BitLab LG
       # text-scaling-factor = 1.15; # Home Innocn
-      text-scaling-factor = 1.45; # thinky built-in
+      text-scaling-factor = 1.5; # thinky built-in
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       speed = 0.3;

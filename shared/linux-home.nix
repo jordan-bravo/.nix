@@ -51,7 +51,7 @@
       # waybar # Status bar
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       wofi # App launcher
-      #xdg-desktop-portal-hyprland # Necessary for Hyprland
+      # xdg-desktop-portal-hyprland # Necessary for Hyprland
       xorg.xwininfo # Display info for X windows and nothing for Wayland windows
       zoom-us # Video conferencing
 
