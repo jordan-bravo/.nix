@@ -11,6 +11,13 @@
         # text-scaling-factor = 1.25; # Home Innocn
         # text-scaling-factor = 1.45; # tux built-in
       };
+      "org/gnome/desktop/peripherals/touchpad" = {
+        speed = 0.25;
+        tap-to-click = true;
+      };
+      "org/gnome/desktop/sound" = {
+        allow-volume-above-100-percent = true;
+      };
     };
   };
   fonts.fontconfig.enable = true;

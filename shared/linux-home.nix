@@ -16,7 +16,7 @@
       distrobox # Run containers of any Linux distro
       docker-compose # Docker Compose plugin for Docker
       dunst # Notification daemon
-      evolution # Client for calendar, mail, address book
+      # evolution # Client for calendar, mail, address book
       fira-code # Font
       firefox # Web browser
       # font-awesome # Fonts for waybar
@@ -33,7 +33,7 @@
       killall # Tool to kill processes
       krename # A powerful batch renamer for KDE
       nextcloud-client # Nextcloud sync client
-      nodejs_20 # NodeJS 20
+      nodejs_18 # NodeJS 20
       onlyoffice-bin # Office suite
       # openssl # Cryptographic library
       pinta # Image editor

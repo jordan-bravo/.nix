@@ -17,10 +17,6 @@ with lib.hm.gvariant;
       show-banners = false;
       show-in-lock-screen = false;
     };
-    "org/gnome/desktop/peripherals/touchpad" = {
-      speed = 0.2;
-      tap-to-click = true;
-    };
     "org/gnome/desktop/privacy" = {
       remove-old-trash-files = true;
     };
@@ -32,7 +28,6 @@ with lib.hm.gvariant;
       idle-delay = mkUint32 600;
     };
     "org/gnome/desktop/sound" = {
-      allow-volume-above-100-percent = true;
       event-sounds = false;
     };
     "org/gnome/desktop/wm/keybindings" = {
@@ -90,7 +85,7 @@ with lib.hm.gvariant;
       favorite-apps = [
         "firefox.desktop"
         "brave-browser.desktop"
-        "org.gnome.Evolution.desktop"
+        "thunderbird.desktop"
         "org.gnome.Calendar.desktop"
         "org.gnome.Nautilus.desktop"
         "kitty.desktop"
@@ -113,7 +108,7 @@ with lib.hm.gvariant;
         "kitty.desktop:2"
         "signal-desktop.desktop:3"
         "slack.desktop:3"
-        "org.gnome.Evolution.desktop:3"
+        "thunderbird.desktop:3"
         "obsidian.desktop:4"
         "sparrow-desktop.desktop:5"
       ];
