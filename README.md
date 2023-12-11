@@ -22,6 +22,7 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ### Task List (Low Level)
 
+- Tux: activating kitty scrollback buffer causes icons to turn into codes.
 - Thinky: home manager switch command leads to MediaKeys systemd service failing.
 - Configure zsh autosuggest/autocomplete (which one? both?) to avoid using arrow keys for completion.
 - Remove repetition by declaring username only once in flake.nix, then passing to other modules.

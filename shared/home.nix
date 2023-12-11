@@ -11,7 +11,7 @@
 
 let
   username = "jordan";
-  homeDirectory = 
+  homeDirectory =
     if pkgs.stdenv.isDarwin then
       "/Users/${username}"
     else
@@ -96,6 +96,7 @@ in
       cargo # Rust package manager
       delta # A syntax-highlighting pager for git
       element-desktop # Matrix client
+      emmet-ls # Emmet support based on LSP
       eslint_d # ESLint daemon for increased performance
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
@@ -133,8 +134,10 @@ in
       # rustup # Rust toolchain installer
       slack # Desktop client for Slack
       stylua # Lua code formatter
+      tailwindcss-language-server # LSP functionality for Tailwind CSS
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
+      vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
       watchman # Watches files and takes action when they change
       wget # File retriever
       yarn # Package manager for JavaScript
