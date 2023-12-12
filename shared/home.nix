@@ -133,6 +133,7 @@ in
       ruff-lsp # Ruff LSP for Python
       # rustup # Rust toolchain installer
       slack # Desktop client for Slack
+      speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       stylua # Lua code formatter
       tailwindcss-language-server # LSP functionality for Tailwind CSS
       trash-cli # Command line interface to the freedesktop.org trash can
