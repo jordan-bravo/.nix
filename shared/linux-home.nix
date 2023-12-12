@@ -27,7 +27,7 @@
       gtklock-userinfo-module # Screen lock user info
       # ivpn # VPN
       # ivpn-service # VPN
-      jdk11 # Java Development Kit v11
+      jdk17 # Java Development Kit
       jitsi-meet # Video calling (not sure if both packages are needed)
       jitsi # Video calling (not sure if both packages are needed)
       killall # Tool to kill processes
