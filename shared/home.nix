@@ -92,8 +92,10 @@ in
     stateVersion = "23.11";
     packages = with pkgs; [
       android-studio # The Official IDE for Android (stable channel)
+      beekeeper-studio # SQL database client
       borgbackup # Deduplicating archiver with compression and encryption
       cargo # Rust package manager
+      # dbeaver # SQL database client
       delta # A syntax-highlighting pager for git
       element-desktop # Matrix client
       emmet-ls # Emmet support based on LSP
