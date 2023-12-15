@@ -43,15 +43,7 @@ in
       # eval "$(pyenv init -)"
       enableZshIntegration = false;
     };
-    ripgrep = {
-      enable = true;
-      arguments = [
-        "--glob=!.git/*"
-        "--hidden"
-        "--glob=!node_modules/*"
-        "--smart-case"
-      ];
-    };
+    ripgrep.enable = true;
     rtx = {
       enableZshIntegration = true;
       settings = {
@@ -159,6 +151,30 @@ in
   xdg = {
     enable = true;
     configHome = "${homeDirectory}/.config";
+      configFile = {
+        ripgreprc = {
+          enable = true;
+          text = ''
+            # Search hidden files / directories (e.g. dotfiles) by default
+            --hidden
+
+            # Ignore node_modules anywhere
+            --glob=!**/node_modules/**
+
+            # Ignore package-lock.json
+            # --glob=!package-lock.json
+
+            # Using glob patterns to include/exclude files or folders
+            --glob=!.git/*
+            
+            # Ignore case when patter is all lowercase
+            --smart-case
+
+            # Don't respect ignore files (.gitignore, .ignore, etc.)
+            --no-ignore
+          '';
+        };
+      };
   };
 
 }

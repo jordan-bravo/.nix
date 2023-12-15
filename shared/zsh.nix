@@ -28,6 +28,9 @@
         source $HOME/bd/.misc/.npm-bd
       fi
 
+      # Ripgrep config file
+      export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgreprc
+
       # For Android Development
       export ANDROID_HOME=$HOME/Android/Sdk
       export PATH=$PATH:$ANDROID_HOME/emulator
