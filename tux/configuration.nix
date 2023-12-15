@@ -92,6 +92,16 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  programs = {
+    adb.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    virt-manager.enable = true;
+    zsh.enable = true;
+  };
+
   services = {
     flatpak.enable = true;
     ivpn.enable = true;
@@ -106,6 +116,9 @@
       '';
     };
     tailscale.enable = true;
+    udev.packages = [
+      pkgs.android-udev-rules
+    ];
     xserver = {
       # Enable the X11 windowing system.  I think this is required even with Wayland.
       enable = true;
@@ -138,18 +151,12 @@
   users.users.jordan = {
     isNormalUser = true;
     description = "jordan";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "adbusers" "docker" "networkmanager" "wheel" ];
     shell = pkgs.zsh; # Set the default shell for this user
     packages = with pkgs; [
       git
     ];
   };
-  programs.zsh.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-  programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
   virtualisation.docker = {
     enable = true;

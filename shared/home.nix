@@ -43,7 +43,15 @@ in
       # eval "$(pyenv init -)"
       enableZshIntegration = false;
     };
-    ripgrep.enable = true;
+    ripgrep = {
+      enable = true;
+      arguments = [
+        "--glob=!.git/*"
+        "--hidden"
+        "--glob=!node_modules/*"
+        "--smart-case"
+      ];
+    };
     rtx = {
       enableZshIntegration = true;
       settings = {
