@@ -57,7 +57,7 @@ in
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
         asvetliakov.vscode-neovim
-        charliermarsh.ruff # Not available in 23.05
+        charliermarsh.ruff
         ms-python.python
       ];
       userSettings = {
@@ -92,6 +92,7 @@ in
     stateVersion = "23.11";
     packages = with pkgs; [
       android-studio # The Official IDE for Android (stable channel)
+      android-tools # Android SDK platform tools
       beekeeper-studio # SQL database client
       borgbackup # Deduplicating archiver with compression and encryption
       cargo # Rust package manager
@@ -134,6 +135,7 @@ in
       ruff # An extremely fast Python linter
       ruff-lsp # Ruff LSP for Python
       # rustup # Rust toolchain installer
+      sdkmanager # A drop-in replacement for sdkmanager from the Android SDK written in Python
       slack # Desktop client for Slack
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       stylua # Lua code formatter

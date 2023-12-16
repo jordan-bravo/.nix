@@ -34,5 +34,11 @@
       sparrow # Bitcoin wallet
     ];
   };
-  imports = [ ../shared/home.nix ../shared/linux-home.nix ];
+  imports = [ 
+    ../shared/home.nix
+    ../shared/linux-home.nix
+    # android-nixpkgs.hmModule {
+    #   
+    # }
+  ];
 }
