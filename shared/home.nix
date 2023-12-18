@@ -168,6 +168,7 @@ in
 
             # Using glob patterns to include/exclude files or folders
             --glob=!.git/*
+            --glob=!.venv/*
             
             # Ignore case when patter is all lowercase
             --smart-case
