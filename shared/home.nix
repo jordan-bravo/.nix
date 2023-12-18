@@ -135,7 +135,7 @@ in
       ruff # An extremely fast Python linter
       ruff-lsp # Ruff LSP for Python
       # rustup # Rust toolchain installer
-      sdkmanager # A drop-in replacement for sdkmanager from the Android SDK written in Python
+      # sdkmanager # A drop-in replacement for sdkmanager from the Android SDK written in Python
       slack # Desktop client for Slack
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       stylua # Lua code formatter

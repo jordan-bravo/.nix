@@ -32,12 +32,12 @@
       export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgreprc
 
       # For Android Development
-      export ANDROID_HOME=$HOME/Android/Sdk
-      export PATH=$PATH:$ANDROID_HOME/emulator
-      export PATH=$PATH:$ANDROID_HOME/platform-tools
-      export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-      export PATH=$PATH:$ANDROID_HOME/build-tools/33.0.0
-      export PATH=$PATH:$ANDROID_HOME/emulator/bin64
+      # export ANDROID_HOME=$HOME/Android/Sdk
+      # export PATH=$PATH:$ANDROID_HOME/emulator
+      # export PATH=$PATH:$ANDROID_HOME/platform-tools
+      # export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+      # export PATH=$PATH:$ANDROID_HOME/build-tools/33.0.0
+      # export PATH=$PATH:$ANDROID_HOME/emulator/bin64
     '';
     plugins = [
       {

@@ -27,13 +27,13 @@
       gtklock-userinfo-module # Screen lock user info
       # ivpn # VPN
       # ivpn-service # VPN
-      jdk17 # Java Development Kit
+      jdk11 # Java Development Kit
       jitsi-meet # Video calling (not sure if both packages are needed)
       jitsi # Video calling (not sure if both packages are needed)
       killall # Tool to kill processes
       krename # A powerful batch renamer for KDE
       nextcloud-client # Nextcloud sync client
-      nodejs_18 # NodeJS 20
+      nodejs_18 # NodeJS
       onlyoffice-bin # Office suite
       # openssl # Cryptographic library
       pinta # Image editor

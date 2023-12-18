@@ -116,9 +116,9 @@
       '';
     };
     tailscale.enable = true;
-    udev.packages = [
-      pkgs.android-udev-rules
-    ];
+    # udev.packages = [
+    #   pkgs.android-udev-rules
+    # ];
     xserver = {
       # Enable the X11 windowing system.  I think this is required even with Wayland.
       enable = true;
