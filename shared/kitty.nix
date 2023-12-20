@@ -4,14 +4,14 @@
     enable = true;
     font = {
       name = "FiraCode Nerd Font Mono";
-      size = 14;
+      size = 8;
     };
     shellIntegration.enableZshIntegration = true;
     settings = {
       enable_audio_bell = false;
       enabled_layouts = "horizontal, stack, vertical, grid";
       hide_window_decorations = "titlebar-only"; # options: true, "titlebar-only", "titlebar-and-corners"
-      # startup_session = ./session.conf;
+      startup_session = "./kitty-session.conf";
       macos_option_as_alt = "both";
       scrollback_lines = 10000;
       wayland_titlebar_color = "#3b3b3b"; # options: "background", "system", "gray", "#3b3b3b"
