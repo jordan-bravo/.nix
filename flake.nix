@@ -30,7 +30,7 @@
   outputs = { self, nixpkgs, nix-darwin, nixpkgs-darwin, home-manager, nixgl, android-nixpkgs, ... }@inputs:
     let
       pkgs-darwin = import nixpkgs-darwin { system = "aarch64-darwin"; config.allowUnfree = true; };
-      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; overlays = [ nixgl.overlay ]; };
+      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; config.permittedInsecurePackages = [ "electron-25.9.0" ]; overlays = [ nixgl.overlay ]; };
       # You can now reference pkgs.nixgl.nixGLIntel
     in
     {
