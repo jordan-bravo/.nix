@@ -44,7 +44,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
               home-manager.users.jordan = {
                 imports = [ ./tux/home.nix ];
               };
@@ -55,7 +55,7 @@
       homeConfigurations = {
         jordan = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs inputs; }; # possibly replace set contents with: inherit inputs;
+          extraSpecialArgs = { inherit nixgl pkgs inputs; };
           modules = [ ./thinky/home.nix ];
         };
       };
