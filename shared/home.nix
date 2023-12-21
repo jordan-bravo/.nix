@@ -136,6 +136,7 @@ in
       ruff-lsp # Ruff LSP for Python
       # rustup # Rust toolchain installer
       # sdkmanager # A drop-in replacement for sdkmanager from the Android SDK written in Python
+      signal-desktop # Signal desktop
       slack # Desktop client for Slack
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       stylua # Lua code formatter
