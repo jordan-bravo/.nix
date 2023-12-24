@@ -75,6 +75,7 @@ with lib.hm.gvariant;
         "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
         "dash-to-dock@micxgx.gmail.com"
+        "forge@jmmaranan.com" # Window tiler for Gnome
         "gsconnect@andyholmes.github.io"
         "just-perfection-desktop@just-perfection"
         "nextcloud-folder@cosinus.org"
