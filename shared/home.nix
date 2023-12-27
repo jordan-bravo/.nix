@@ -80,12 +80,23 @@ in
     ../shared/git.nix
     ../shared/kitty.nix
     ../shared/neovim.nix
+    ../shared/powerlevel10k.nix
     ../shared/ssh.nix
     ../shared/wezterm.nix
     ../shared/zsh.nix
   ];
 
   home = {
+    file = {
+      "myfile.json" = {
+        enable = false;
+        text = ''
+          {
+            "exampleKey": "exampleValue"
+          }
+        '';
+      };
+    };
     sessionVariables = {
       EDITOR = "nvim";
     };

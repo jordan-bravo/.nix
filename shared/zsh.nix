@@ -54,17 +54,13 @@
         src = pkgs.zsh-powerlevel10k;
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
-      {
-        name = "powerlevel10k-config";
-        src = ./p10k-config;
-        file = ".p10k.zsh";
-      }
     ];
     shellAliases = {
       darr = "darwin-rebuild switch --flake ~/.nix";
       l = "ls -lAhF";
       la = "ls -AhF";
-      hypc = "nvim ~/.config/hypr/hyprland.conf";
+      hmr = "home-manager switch --flake ~/.nix";
+      hypc = "vim ~/.config/hypr/hyprland.conf";
       gexit = "gnome-session-quit --no-prompt";
       nixr = "sudo nixos-rebuild switch --flake ~/.nix";
       notify-piano = "play ~/Documents/piano.wav";
@@ -72,8 +68,8 @@
       sauce = "source $HOME/.config/zsh/.zshrc";
       sshk = "kitty +kitten ssh";
       vim = "nvim";
-      waybarc = "nvim ~/.config/waybar/config.jsonc";
-      waybars = "nvim ~/.config/waybar/style.css";
+      waybarc = "vim ~/.config/waybar/config.jsonc";
+      waybars = "vim ~/.config/waybar/style.css";
       yubi-add = "ssh-add -s /usr/local/lib/libykcs11.dylib";
     };
     syntaxHighlighting = {
