@@ -102,6 +102,7 @@ in
     };
     stateVersion = "23.11";
     packages = with pkgs; [
+      aerc # An email client for your terminal
       android-studio # The Official IDE for Android (stable channel)
       android-tools # Android SDK platform tools
       beekeeper-studio # SQL database client
