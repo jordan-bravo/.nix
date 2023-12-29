@@ -1,6 +1,6 @@
 # ~/.nix/thinky/home.nix
 
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   username = "jordan";

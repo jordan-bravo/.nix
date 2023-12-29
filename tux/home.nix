@@ -1,6 +1,6 @@
 # ~/.nix/tux/home.nix
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   dconf = {
@@ -40,4 +40,20 @@
     #   
     # }
   ];
+  xdg.configFile."kitty/kitty-session.conf" = {
+    enable = true;
+      text = ''
+        # How to set the title of the first tab to .nix?
+        # Set the working directory for windows in the current tab
+        cd ~/.nix
+        launch zsh
+        # launch vim
+
+        # Create a new tab for scm
+        new_tab scm
+        cd ~/scm/
+        launch zsh
+        # launch vim
+      '';
+  };
 }

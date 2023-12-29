@@ -52,6 +52,15 @@ in
         };
       };
     };
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        gcloud = {
+          disabled = true;
+        };
+      };
+    };
     vscode = {
       enable = true;
       package = pkgs.vscodium;
@@ -80,7 +89,7 @@ in
     ../shared/git.nix
     ../shared/kitty.nix
     ../shared/neovim.nix
-    ../shared/powerlevel10k.nix
+    # ../shared/powerlevel10k.nix
     ../shared/ssh.nix
     ../shared/wezterm.nix
     ../shared/zsh.nix

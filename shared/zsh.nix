@@ -13,6 +13,9 @@
       ignoreAllDups = true;
       path = "${config.xdg.dataHome}/zsh/zsh_history";
     };
+    envExtra = ''
+      export LESSUTFCHARDEF=e000-f8ff:p,f0000-10ffff:p
+    '';
     initExtra = ''
       # If bat exists, use instead of cat
       type bat > /dev/null 2>&1 && alias cat=bat
@@ -49,11 +52,11 @@
           sha256 = "0NW0TI//qFpUA2Hdx6NaYdQIIUpRSd0Y4NhwBbdssCs=";
         };
       }
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
+      # {
+      #   name = "powerlevel10k";
+      #   src = pkgs.zsh-powerlevel10k;
+      #   file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      # }
     ];
     shellAliases = {
       darr = "darwin-rebuild switch --flake ~/.nix";
