@@ -136,7 +136,7 @@ in
       luajit # JIT compiler for Lua 5.1
       luajitPackages.luacheck # A static analyzer & linter for Lua
       neofetch # Show system info
-      # neovim # Text editor / IDE
+      neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
