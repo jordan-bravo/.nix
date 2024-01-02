@@ -3,18 +3,18 @@
 { config, inputs, pkgs, ... }:
 {
   # vimjoyer approach
-  # nixpkgs = {
-  #   overlays = [
-  #     (final: prev: {
-  #       vimPlugins = prev.vimPlugins // {
-  #         colorscheme-vscode = prev.vimUtils.buildVimPlugin {
-  #           name = "vscode";
-  #           src = inputs.colorscheme-vscode;
-  #         };
-  #       };
-  #     })
-  #   ];
-  # };
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        vimPlugins = prev.vimPlugins // {
+          colorscheme-vscode = prev.vimUtils.buildVimPlugin {
+            name = "vscode";
+            src = inputs.colorscheme-vscode;
+          };
+        };
+      })
+    ];
+  };
 
   programs.neovim = 
   let
@@ -22,7 +22,7 @@
     toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
   in
   {
-    enable = true;
+    enable = false;
     defaultEditor = true;
     # extraLuaConfig = builtins.readFile ./nvim/init.lua;
     extraPackages = with pkgs; [
@@ -39,13 +39,13 @@
       cmp-fuzzy-buffer
       cmp-nvim-lsp
       cmp-path
-      # {
-      #   plugin = pkgs.vimPlugins.colorscheme-vscode;
-      #   type = "lua";
-      #   config = ''
-      #     vim.cmd.colorscheme("vscode")
-      #   '';
-      # }
+      {
+        plugin = colorscheme-vscode;
+        type = "lua";
+        config = ''
+          vim.cmd.colorscheme("vscode")
+        '';
+      }
       comment-nvim
       conform-nvim
       dressing-nvim
