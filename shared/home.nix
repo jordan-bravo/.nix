@@ -18,7 +18,6 @@ let
       "/home/${username}";
 in
 {
-
   # Programs with little to no config are enabled here. 
   programs = {
     bat.enable = true;
@@ -100,6 +99,7 @@ in
 
   home = {
     file = {
+      # this is just here to remind me of the syntax to create files
       "myfile.json" = {
         enable = false;
         text = ''
@@ -112,7 +112,7 @@ in
     sessionVariables = {
       EDITOR = "nvim";
     };
-    stateVersion = "23.11";
+    # stateVersion = "23.11";
     packages = with pkgs; [
       aerc # An email client for your terminal
       android-studio # The Official IDE for Android (stable channel)
@@ -136,7 +136,7 @@ in
       luajit # JIT compiler for Lua 5.1
       luajitPackages.luacheck # A static analyzer & linter for Lua
       neofetch # Show system info
-      neovim # Text editor
+      # neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nil # Language server for Nixlang
       nixpkgs-fmt # Formatter for Nixlang
@@ -151,7 +151,8 @@ in
       pgcli # Command-line interface for PostgreSQL
       # postman # API development environment
       prettierd # Prettier daemon for faster formatting
-      python311Packages.black # Python code formatter
+      # python311Packages.black # Python code formatter
+      python311Packages.debugpy # An implementation of the Debug Adapter Protocol for Python
       rust-analyzer # Rust LSP
       # rustc # Rust compiler
       rustfmt # Rust formatter
@@ -167,6 +168,7 @@ in
       tailwindcss-language-server # LSP functionality for Tailwind CSS
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
+      vimPlugins.nvim-dap-ui # UI elements for the Debug Adapter Protocol in Neovim
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
       watchman # Watches files and takes action when they change
       wget # File retriever

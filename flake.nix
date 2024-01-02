@@ -25,12 +25,19 @@
       url = "github:tadfisher/android-nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Neovim plugins that aren't in nixpkgs
+    colorscheme-vscode.url = "github:Mofiqul/vscode.nvim";
+    colorscheme-vscode.flake = false;
   };
 
   outputs = { self, nixpkgs, nix-darwin, nixpkgs-darwin, home-manager, nixgl, android-nixpkgs, ... }@inputs:
     let
       pkgs-darwin = import nixpkgs-darwin { system = "aarch64-darwin"; config.allowUnfree = true; };
-      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; config.permittedInsecurePackages = [ "electron-25.9.0" ]; overlays = [ nixgl.overlay ]; };
+      pkgs = import nixpkgs { 
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+        config.permittedInsecurePackages = [ "electron-25.9.0" ];
+        overlays = [ nixgl.overlay ]; };
       # You can now reference pkgs.nixgl.nixGLIntel
     in
     {
@@ -52,8 +59,20 @@
           ];
         };
       };
+      # homeConfigurations = {
+      #   jordan = home-manager.lib.homeManagerConfiguration {
+      #     pkgs = pkgs; # equivalent to: inherit pkgs;
+      #     extraSpecialArgs = { inherit nixgl pkgs inputs; };
+      #     modules = [ ./thinky/home.nix ];
+      #   };
+      # };
       homeConfigurations = {
-        jordan = home-manager.lib.homeManagerConfiguration {
+        tux = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs; # equivalent to: inherit pkgs;
+          extraSpecialArgs = { inherit pkgs inputs; };
+          modules = [ ./tux/home.nix ];
+        };
+        thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs inputs; };
           modules = [ ./thinky/home.nix ];

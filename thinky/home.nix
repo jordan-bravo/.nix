@@ -2,9 +2,6 @@
 
 { pkgs, ... }:
 
-let
-  username = "jordan";
-in
 {
   dconf.settings = {
     "desktop/ibus/panel/emoji" = {
@@ -38,7 +35,6 @@ in
         '';
       };
     };
-    homeDirectory = "/home/${username}";
     packages = with pkgs; [
       # docker # Container engine
       gnome.gnome-calendar # Gnome calendar
@@ -46,14 +42,13 @@ in
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       # python310 # A high-level dynamically-typed programming language
     ];
-    username = "${username}";
+    homeDirectory = "/home/${config.home.username}";
+    stateVersion = "23.11";
+    username = "jordan";
   };
   imports = [ ../shared/home.nix ../shared/linux-home.nix ];
   nixpkgs.config.allowUnfree = true;
   programs.rtx.enable = true;
-  programs.zsh.envExtra = ''
-    export QT_STYLE_OVERRIDE="adwaita-dark"
-  '';
   programs.zsh.profileExtra = ''
     export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS"
   '';

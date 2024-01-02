@@ -154,7 +154,7 @@
     extraGroups = [ "adbusers" "docker" "networkmanager" "wheel" ];
     shell = pkgs.zsh; # Set the default shell for this user
     packages = with pkgs; [
-      git
+      home-manager
     ];
   };
   virtualisation.libvirtd.enable = true;

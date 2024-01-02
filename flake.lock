@@ -22,6 +22,22 @@
         "type": "github"
       }
     },
+    "colorscheme-vscode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1703125067,
+        "narHash": "sha256-DnVDm0m3cvdPKZuCSRzBdHKgPXGB4X3nBsykFJjfzvY=",
+        "owner": "Mofiqul",
+        "repo": "vscode.nvim",
+        "rev": "39841d05ab4a5c03ea0985196b9f3dfa48d83411",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mofiqul",
+        "repo": "vscode.nvim",
+        "type": "github"
+      }
+    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -224,6 +240,7 @@
     "root": {
       "inputs": {
         "android-nixpkgs": "android-nixpkgs",
+        "colorscheme-vscode": "colorscheme-vscode",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",

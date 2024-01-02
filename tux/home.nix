@@ -16,7 +16,7 @@
         tap-to-click = true;
       };
       "org/gnome/desktop/sound" = {
-        allow-volume-above-100-percent = true;
+        allow-volume-above-100-percent = false;
       };
     };
   };
@@ -32,6 +32,9 @@
       ricochet # Anonymous peer-to-peer instant messaging over Tor
       sparrow # Bitcoin wallet
     ];
+    homeDirectory = "/home/${config.home.username}";
+    stateVersion = "23.11";
+    username = "jordan";
   };
   imports = [ 
     ../shared/home.nix
@@ -40,6 +43,7 @@
     #   
     # }
   ];
+  nixpkgs.config.allowUnfree = true;
   xdg.configFile."kitty/kitty-session.conf" = {
     enable = true;
       text = ''

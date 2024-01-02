@@ -15,6 +15,7 @@
     };
     envExtra = ''
       export LESSUTFCHARDEF=e000-f8ff:p,f0000-10ffff:p
+      export QT_STYLE_OVERRIDE="adwaita-dark"
     '';
     initExtra = ''
       # If bat exists, use instead of cat
@@ -70,6 +71,8 @@
       s = "git status";
       sauce = "source $HOME/.config/zsh/.zshrc";
       sshk = "kitty +kitten ssh";
+      tur="sudo tailscale up --reset";
+      tuv="sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true";
       vim = "nvim";
       waybarc = "vim ~/.config/waybar/config.jsonc";
       waybars = "vim ~/.config/waybar/style.css";
