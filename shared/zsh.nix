@@ -63,7 +63,8 @@
       darr = "darwin-rebuild switch --flake ~/.nix";
       l = "ls -lAhF";
       la = "ls -AhF";
-      hmr = "home-manager switch --flake ~/.nix";
+      hmk = "home-manager switch --flake ~/.nix#thinky";
+      hmt = "home-manager switch --flake ~/.nix#tux";
       hypc = "vim ~/.config/hypr/hyprland.conf";
       gexit = "gnome-session-quit --no-prompt";
       nixr = "sudo nixos-rebuild switch --flake ~/.nix";
