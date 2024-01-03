@@ -128,7 +128,7 @@
       layout = "us";
       # Enable touchpad support (enabled default in most desktopManager).
       # libinput.enable = true;
-      xkbVariant = "";
+      # xkbVariant = "";
       xkbOptions = "caps:escape_shifted_capslock";
     };
   };
