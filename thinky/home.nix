@@ -75,13 +75,15 @@
         '';
       };
     };
-    desktopEntries.kitty = {
-      name = "Kitty";
-      genericName = "Terminal Emulator";
-      comment = "Fast, feature-rich, GPU based terminal";
-      exec = "nixGLIntel kitty";
-      icon = "kitty";
-      categories = [ "System" "TerminalEmulator" ];
+    desktopEntries = {
+      kitty = {
+        name = "Kitty";
+        genericName = "Terminal Emulator";
+        comment = "Fast, feature-rich, GPU based terminal";
+        exec = "nixGLIntel kitty";
+        icon = "kitty";
+        categories = [ "System" "TerminalEmulator" ];
+      };
     };
   };
 }

@@ -164,6 +164,7 @@ in
       signal-desktop # Signal desktop
       slack # Desktop client for Slack
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
+      speedtest-rs # Command line internet speedtest tool written in rust
       stylua # Lua code formatter
       tailwindcss-language-server # LSP functionality for Tailwind CSS
       trash-cli # Command line interface to the freedesktop.org trash can
