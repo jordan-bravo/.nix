@@ -90,7 +90,7 @@ in
   imports = [
     ../shared/git.nix
     ../shared/kitty.nix
-    ../shared/neovim.nix
+    # ../shared/neovim.nix
     # ../shared/powerlevel10k.nix
     ../shared/ssh.nix
     ../shared/wezterm.nix

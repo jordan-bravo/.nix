@@ -26,18 +26,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Neovim plugins that aren't in nixpkgs
-    colorscheme-vscode.url = "github:Mofiqul/vscode.nvim";
-    colorscheme-vscode.flake = false;
+    # colorscheme-vscode.url = "github:Mofiqul/vscode.nvim";
+    # colorscheme-vscode.flake = false;
+    nixneovim = {
+      url = "github:nixneovim/nixneovim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nix-darwin, nixpkgs-darwin, home-manager, nixgl, android-nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, nix-darwin, nixpkgs-darwin, home-manager, nixgl, android-nixpkgs, nixneovim, ... }@inputs:
     let
       pkgs-darwin = import nixpkgs-darwin { system = "aarch64-darwin"; config.allowUnfree = true; };
       pkgs = import nixpkgs { 
         system = "x86_64-linux";
         config.allowUnfree = true;
         config.permittedInsecurePackages = [ "electron-25.9.0" ];
-        overlays = [ nixgl.overlay ]; };
+        overlays = [
+          nixgl.overlay
+          nixneovim.overlays.default
+        ];
+      };
       # You can now reference pkgs.nixgl.nixGLIntel
     in
     {
@@ -47,30 +55,17 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./tux/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
-              home-manager.users.jordan = {
-                imports = [ ./tux/home.nix ];
-              };
-            }
           ];
         };
       };
-      # homeConfigurations = {
-      #   jordan = home-manager.lib.homeManagerConfiguration {
-      #     pkgs = pkgs; # equivalent to: inherit pkgs;
-      #     extraSpecialArgs = { inherit nixgl pkgs inputs; };
-      #     modules = [ ./thinky/home.nix ];
-      #   };
-      # };
       homeConfigurations = {
         tux = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit pkgs inputs; };
-          modules = [ ./tux/home.nix ];
+          modules = [
+            ./tux/home.nix
+            # { nix.registry.nixpkgs.flake = nixpkgs; }
+          ];
         };
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;

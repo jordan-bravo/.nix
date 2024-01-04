@@ -2,19 +2,56 @@
 
 { config, inputs, pkgs, ... }:
 {
-  # vimjoyer approach
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        vimPlugins = prev.vimPlugins // {
-          colorscheme-vscode = prev.vimUtils.buildVimPlugin {
-            name = "vscode";
-            src = inputs.colorscheme-vscode;
-          };
-        };
-      })
-    ];
+
+  ###### NixNeovim
+
+  programs.nixneovim = {
+    enable = false;
+    extraConfigVim = ''
+    '';
+    defaultEditor = true;
+    plugins = {
+      lspconfig = {
+	enable = true;
+	servers = {
+	  nil.enable = true;
+	};
+      };
+      treesitter = {
+	enable = true;
+	indent = true;
+      };
+      # pkgs.vimExtraPlugins.vscode-nvim
+      # vscode-nvim.enable = true;
+    };
+    viAlias = true;
+    vimAlias = true;
   };
+
+  imports = [ inputs.nixneovim.nixosModules.default ../shared/nvim/options.nix ];
+
+
+
+
+
+
+
+
+
+  ###### Neovim standard
+  
+  # nixpkgs = {
+  #   overlays = [
+  #     (final: prev: {
+  #       vimPlugins = prev.vimPlugins // {
+  #         colorscheme-vscode = prev.vimUtils.buildVimPlugin {
+  #           name = "vscode";
+  #           src = inputs.colorscheme-vscode;
+  #         };
+  #       };
+  #     })
+  #   ];
+  # };
 
   programs.neovim = 
   let
@@ -40,10 +77,14 @@
       cmp-nvim-lsp
       cmp-path
       {
+	# plugin = pkgs.vimUtils.buildVimPlugin {
+	#   name = "vscode";
+	#   src = inputs.colorscheme-vscode;
+	# };
         plugin = colorscheme-vscode;
         type = "lua";
         config = ''
-          vim.cmd.colorscheme("vscode")
+	  require('vscode').setup({})
         '';
       }
       comment-nvim
@@ -109,13 +150,4 @@
     withNodeJs = true;
     withPython3 = true;
   };
-  # xdg.configFile.nvim = {
-  #   recursive = true;
-  #   source = ./nvim;
-  # };
-
-  # programs.neovim.extraLuaConfig = ''
-  #   vim.cmd.colorscheme("nvcode")
-  # '';
-  imports = [ ../shared/nvim/options.nix ];
 }
