@@ -76,6 +76,17 @@
       };
     };
     desktopEntries = {
+      # brave-browser = {
+      #   name = "Brave";
+      #   genericName = "Web Browser";
+      #   comment = "Access the Inernet";
+      #   exec = "/nix/store/7pr6j2qjhlf0j4i1wxzzvg3lxr3hyccc-brave-1.61.109/bin/brave %U";
+      #   startupNotify = true;
+      #   terminal = false;
+      #   icon = "brave-browser";
+      #   type = "Application";
+      #   categories = [ "Network" "WebBrowser" ];
+      # };
       kitty = {
         name = "Kitty";
         genericName = "Terminal Emulator";
