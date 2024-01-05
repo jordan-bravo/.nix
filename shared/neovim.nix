@@ -17,6 +17,20 @@
           nil.enable = true;
         };
       };
+      nvim-tree = {
+        enable = true;
+        # autoClose = true;
+        diagnostics = {
+          enable = false;
+          icons = {
+            error = "";
+            hint = "";
+            info = "";
+            warning = "";
+          };
+        };
+        disableNetrw = true;
+      };
       treesitter = {
         enable = true;
         indent = true;

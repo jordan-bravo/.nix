@@ -28,9 +28,6 @@
       url = "github:tadfisher/android-nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Neovim plugins that aren't in nixpkgs
-    # colorscheme-vscode.url = "github:Mofiqul/vscode.nvim";
-    # colorscheme-vscode.flake = false;
     nixneovim = {
       url = "github:nixneovim/nixneovim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,10 +62,7 @@
         tux = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit pkgs inputs; };
-          modules = [
-            ./tux/home.nix
-            # { nix.registry.nixpkgs.flake = nixpkgs; }
-          ];
+          modules = [ ./tux/home.nix ];
         };
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
