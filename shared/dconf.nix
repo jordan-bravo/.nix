@@ -122,6 +122,7 @@ with lib.hm.gvariant;
       dock-position = "LEFT";
       extend-height = true;
       intellihide-mode = "ALL_WINDOWS"; # FOCUS_APPLICATION_WINDOWS
+      show-dock-urgent-notify = false;
     };
     "org/gnome/shell/extensions/just-perfection" = {
       accessibility-menu = false;
