@@ -119,6 +119,7 @@ in
       android-studio # The Official IDE for Android (stable channel)
       android-tools # Android SDK platform tools
       beekeeper-studio # SQL database client
+      bitcoind # Peer-to-peer electronic cash system
       borgbackup # Deduplicating archiver with compression and encryption
       cargo # Rust package manager
       # dbeaver # SQL database client
