@@ -3,9 +3,6 @@
 
 with lib.hm.gvariant;
 
-/org/gnome/shell/extensions/dash-to-dock/intellihide-mode
-  'ALL_WINDOWS'
-
 {
   dconf.settings = {
     "org/gnome/desktop/calendar" = {
