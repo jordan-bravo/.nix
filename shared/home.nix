@@ -123,6 +123,7 @@ in
       cargo # Rust package manager
       # dbeaver # SQL database client
       delta # A syntax-highlighting pager for git
+      discord # All-in-one cross-platform voice and text chat for gamers
       element-desktop # Matrix client
       emmet-ls # Emmet support based on LSP
       eslint_d # ESLint daemon for increased performance
