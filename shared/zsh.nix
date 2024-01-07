@@ -72,8 +72,8 @@
       s = "git status";
       sauce = "source $HOME/.config/zsh/.zshrc";
       sshk = "kitty +kitten ssh";
-      tur="sudo tailscale up --reset";
-      tuv="sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true";
+      vd = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false";
+      ve = "sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true";
       vim = "nvim";
       waybarc = "vim ~/.config/waybar/config.jsonc";
       waybars = "vim ~/.config/waybar/style.css";
