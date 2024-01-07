@@ -3,6 +3,9 @@
 
 with lib.hm.gvariant;
 
+/org/gnome/shell/extensions/dash-to-dock/intellihide-mode
+  'ALL_WINDOWS'
+
 {
   dconf.settings = {
     "org/gnome/desktop/calendar" = {
@@ -121,6 +124,7 @@ with lib.hm.gvariant;
     "org/gnome/shell/extensions/dash-to-dock" = {
       dock-position = "LEFT";
       extend-height = true;
+      intellihide-mode = "ALL_WINDOWS"; # FOCUS_APPLICATION_WINDOWS
     };
     "org/gnome/shell/extensions/just-perfection" = {
       accessibility-menu = false;
