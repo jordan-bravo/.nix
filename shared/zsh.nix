@@ -64,6 +64,7 @@
       l = "ls -lAhF";
       la = "ls -AhF";
       hmk = "home-manager switch --flake ~/.nix#thinky";
+      hms = "home-manager switch --flake ~/.nix#$(hostname)";
       hmx = "home-manager switch --flake ~/.nix#tux";
       hypc = "vim ~/.config/hypr/hyprland.conf";
       gexit = "gnome-session-quit --no-prompt";
