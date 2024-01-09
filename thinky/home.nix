@@ -38,7 +38,8 @@
       infisical # Manages secrets
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       neovim # Text editor / IDE
-      # python310 # A high-level dynamically-typed programming language
+      python311Packages.debugpy # An implementation of the Debug Adapter Protocol for Python
+      python311 # A high-level dynamically-typed programming language
     ];
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "23.11";
