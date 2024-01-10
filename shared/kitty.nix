@@ -4,10 +4,11 @@
     enable = true;
     font = {
       name = "FiraCode Nerd Font Mono";
-      size = 14;
+      size = 8;
     };
     shellIntegration.enableZshIntegration = true;
     settings = {
+      dynamic_background_opacity = "yes";
       enable_audio_bell = false;
       enabled_layouts = "horizontal, stack, vertical, grid";
       hide_window_decorations = "titlebar-only"; # options: true, "titlebar-only", "titlebar-and-corners"
