@@ -7,16 +7,129 @@
 
   programs.nixneovim = {
     enable = true;
-    viAlias = true;
-    vimAlias = true;
+    augroups = {
+      highlightOnYank = {
+        autocmds = [
+          {
+            event = "TextYankPost";
+            pattern = "*";
+            luaCallback = ''
+              vim.highlight.on_yank {
+                higroup = (
+                  vim.fn['hlexists'] 'HighlightedyankRegion' > 0 and 'HighlightedyankRegion' or 'IncSearch'
+                ),
+                timeout = 200,
+              }
+            '';
+          }
+        ];
+      };
+    };
+    colorscheme = "nvcode";
     defaultEditor = true;
+    extraPlugins = [
+      pkgs.vimExtraPlugins.vscode-nvim
+    ];
+    mappings = {
+      # normalVisualOp = {
+      #   ";" = "':'"; # vimscript between ' '
+      # };
+      normal = {
+        "<leader>w" = {
+          action = "'<cmd>w<cr>'"; # vimscript between ' '
+          silent = true;
+        };
+        "<leader>h" = "function() print(\"hi\") end"; # Lua code without ' '
+      };
+    };
     plugins = {
+      barbar = {
+        enable = true;
+      };
+      bufdelete = {
+        enable = true;
+      };
+      comment = {
+        enable = true;
+      };
+      copilot = {
+        enable = false;
+      };
+      dashboard = {
+        enable = false;
+      };
+      diffview = {
+        enable = true;
+      };
+      endwise = {
+        enable = true;
+      };
+      fugitive = {
+        enable = true;
+      };
+      ghosttext = {
+        enable = false;
+      };
+      git-messenger = {
+        enable = true;
+      };
+      gitsigns = {
+        enable = true;
+      };
+      hbac = { # heuristic buffer auto-close
+        enable = false;
+      };
+      headlines = {
+        enable = true;
+      };
+      incline = {
+        enable = false;
+      };
+      indent-blankline = {
+        enable = true;
+      };
+      intellitab.enable = true;
+      lsp-lines = {
+        enable = false;
+      };
+      lsp-progress = {
+        enable = true;
+      };
+      lsp-signature = {
+        enable = true;
+      };
       lspconfig = {
         enable = true;
         servers = {
+          bashls.enable = true;
+          lua-language-server.enable = true;
           nil.enable = true;
+          pyright.enable = true;
+          ruff-lsp.enable = true;
         };
       };
+      lspkind.enable = true;
+      lualine = {
+        enable = true;
+        theme = "codedark";
+      };
+      neogit.enable = false;
+      nest.enable = false;
+      nix.enable = false; # find out what this does
+      notify.enable = true;
+      nvim-autopairs.enable = true;
+      nvim-cmp = {
+        enable = false;
+      };
+      nvim-dap = {
+        enable = true;
+        # adapters = {};
+      };
+      nvim-dap-ui = {
+        enable = true;
+      };
+      nvim-jqx.enable = false;
+      nvim-lightbulb.enable = false;
       nvim-tree = {
         enable = true;
         # autoClose = true;
@@ -31,21 +144,42 @@
         };
         disableNetrw = true;
       };
+      origami.enable = false;
+      plenary.enable = true;
+      project-nvim = {
+        enable = false;
+      };
+      scrollbar.enable = true;
+      surround.enable = true;
+      telescope = {
+        enable = true;
+      };
+      todo-comments.enable = true;
       treesitter = {
         enable = true;
+        folding = true;
+        # grammars = [
+        #   pkgs.vimPlugins.nvim-treesitter-parsers.bash
+        #   pkgs.vimPlugins.nvim-treesitter-parsers.javascript
+        #   pkgs.vimPlugins.nvim-treesitter-parsers.jq
+        #   pkgs.vimPlugins.nvim-treesitter-parsers.json
+        #   pkgs.vimPlugins.nvim-treesitter-parsers.lua
+        #   pkgs.vimPlugins.nvim-treesitter-parsers.markdown
+        #   pkgs.vimPlugins.nvim-treesitter-parsers.python
+        #   pkgs.vimPlugins.nvim-treesitter-parsers.typescript
+        # ];
         indent = true;
+        installAllGrammars = true;
       };
+      treesitter-context.enable = false;
+      ts-context-commentstring.enable = true;
+      which-key.enable = false;
       # pkgs.vimExtraPlugins.vscode-nvim
       # vscode-nvim.enable = true;
     };
-    # extraPlugins =  with pkgs.vimExtraPlugins [
-    #   vscode-nvim
-    # ];
-    extraPlugins = [
-      pkgs.vimExtraPlugins.vscode-nvim
-    ];
-    # extraConfigVim = ''
-    # '';
+    usePluginDefaults = true;
+    viAlias = true;
+    vimAlias = true;
   };
 
   imports = [ inputs.nixneovim.nixosModules.default ../shared/nvim/options.nix ];
