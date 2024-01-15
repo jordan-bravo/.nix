@@ -67,7 +67,7 @@ in
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
         asvetliakov.vscode-neovim
-        charliermarsh.ruff
+        # charliermarsh.ruff
         ms-python.python
       ];
       userSettings = {
