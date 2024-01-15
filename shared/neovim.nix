@@ -25,11 +25,11 @@
         ];
       };
     };
-    colorscheme = "nvcode";
+    colorscheme = "slate";
     defaultEditor = true;
-    extraPlugins = [
-      pkgs.vimExtraPlugins.vscode-nvim
-    ];
+    # extraPlugins = [
+    #   pkgs.vimExtraPlugins.vscode-nvim
+    # ];
     mappings = {
       # normalVisualOp = {
       #   ";" = "':'"; # vimscript between ' '

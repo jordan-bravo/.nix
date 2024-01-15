@@ -69,6 +69,6 @@
     })
 
     -- vim.cmd.colorscheme("vscode")
-    require('vscode').load()
+    -- require('vscode').load()
   '';
 }

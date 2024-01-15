@@ -81,6 +81,37 @@ in
         "editor.fontFamily" = "FiraCode Nerd Font Mono";
       };
     };
+    /*
+      keybinds {
+          search {
+              bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+          }
+
+          shared_among "search" "scroll" {
+              bind "Home" { ScrollToTop; }
+              bind "End" { ScrollToBottom; }
+          }
+      }
+    */
+    zellij = {
+      enable = false;
+      enableZshIntegration = true;
+      settings = {
+        ui.pane_frames.rounded_corners = true;
+        keybinds = {
+          search = {
+            bind = ''
+              "/" { SwitchToMode "EnterSearch"; SearchInput 0; }'';
+          };
+          # shared_among."search"."scroll" = {
+          #   bind = [
+          #     ""Home" { ScrollToTop''\; }"
+          #     ""End" { ScrollToBottom''\; }"
+          #   ];
+          # };
+        };
+      };
+    };
     zoxide = {
       enable = true;
       enableZshIntegration = true;
@@ -101,11 +132,22 @@ in
   home = {
     file = {
       # this is just here to remind me of the syntax to create files
-      "myfile.json" = {
-        enable = false;
+      ".config/zellij/config.kdl" = {
+        enable = true;
         text = ''
-          {
-            "exampleKey": "exampleValue"
+          search {
+              bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+          }
+
+          shared_among "search" "scroll" {
+              bind "Home" { ScrollToTop; }
+              bind "End" { ScrollToBottom; }
+          }
+
+          ui {
+              pane_frames {
+                  rounded_corners true;
+              }
           }
         '';
       };
@@ -225,6 +267,29 @@ in
           --no-ignore
         '';
       };
+      # zellij = {
+      #     "config.kdl" = {
+      #     enable = true;
+      #     text = ''
+      #       keybinds {
+      #           search {
+      #               bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
+      #           }
+  
+      #           shared_among "search" "scroll" {
+      #               bind "Home" { ScrollToTop; }
+      #               bind "End" { ScrollToBottom; }
+      #           }
+      #       }
+  
+      #       ui {
+      #           pane_frames {
+      #               rounded_corners true
+      #           }
+      #       }
+      #     '';
+      #   };
+      # };
     };
   };
 
