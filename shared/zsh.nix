@@ -33,7 +33,7 @@
       fi
 
       # Ripgrep config file
-      export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgreprc
+      # export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgreprc
 
       # For Android Development
       # export ANDROID_HOME=$HOME/Android/Sdk

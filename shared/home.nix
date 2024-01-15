@@ -42,7 +42,6 @@ in
       # eval "$(pyenv init -)"
       enableZshIntegration = false;
     };
-    ripgrep.enable = true;
     rtx = {
       enableZshIntegration = true;
       settings = {
@@ -81,37 +80,6 @@ in
         "editor.fontFamily" = "FiraCode Nerd Font Mono";
       };
     };
-    /*
-      keybinds {
-          search {
-              bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
-          }
-
-          shared_among "search" "scroll" {
-              bind "Home" { ScrollToTop; }
-              bind "End" { ScrollToBottom; }
-          }
-      }
-    */
-    zellij = {
-      enable = false;
-      enableZshIntegration = true;
-      settings = {
-        ui.pane_frames.rounded_corners = true;
-        keybinds = {
-          search = {
-            bind = ''
-              "/" { SwitchToMode "EnterSearch"; SearchInput 0; }'';
-          };
-          # shared_among."search"."scroll" = {
-          #   bind = [
-          #     ""Home" { ScrollToTop''\; }"
-          #     ""End" { ScrollToBottom''\; }"
-          #   ];
-          # };
-        };
-      };
-    };
     zoxide = {
       enable = true;
       enableZshIntegration = true;
@@ -124,31 +92,22 @@ in
     ../shared/kitty.nix
     # ../shared/neovim.nix
     # ../shared/powerlevel10k.nix
+    ../shared/ripgrep.nix
     ../shared/ssh.nix
     ../shared/wezterm.nix
+    ../shared/zellij.nix
     ../shared/zsh.nix
   ];
 
   home = {
     file = {
-      zellij = {
-        target = ".config/zellij/config.kdl";
-        enable = true;
+      # This is here for syntax reference.
+      example-file = {
+        target = ".config/example-file/config.yaml";
+        enable = false;
         text = ''
-          search {
-              bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
-          }
-
-          shared_among "search" "scroll" {
-              bind "Home" { ScrollToTop; }
-              bind "End" { ScrollToBottom; }
-          }
-
-          ui {
-              pane_frames {
-                  rounded_corners true;
-              }
-          }
+          Example:
+            Your text goes here
         '';
       };
     };
@@ -220,77 +179,13 @@ in
       watchman # Watches files and takes action when they change
       wget # File retriever
       yarn # Package manager for JavaScript
-      zellij # A terminal workspace with batteries included
+      # zellij # A terminal workspace with batteries included
     ];
   };
 
   xdg = {
     enable = true;
     configHome = "${homeDirectory}/.config";
-    configFile = {
-      ripgreprc = {
-        enable = true;
-        text = ''
-          # Don't let ripgrep vomit really long lines to my terminal, and show a preview.
-          --max-columns=150
-          --max-columns-preview
-
-          # Search hidden files / directories (e.g. dotfiles) by default
-          --hidden
-
-          # Ignore node_modules anywhere
-          --glob=!**/node_modules/**
-
-          # Ignore package-lock.json
-          # --glob=!package-lock.json
-
-          # Using glob patterns to include/exclude files or folders
-          --glob=!.git/*
-          --glob=!.venv/*
-          --glob=!.cache/*
-          --glob=!.mozilla/*
-          --glob=!.infisical/*
-          --glob=!.gnupg/*
-          --glob=!.nix-defexpr/*
-          --glob=!.node_repl_history
-          --glob=!.npm/*
-          --glob=!.pki/*
-          --glob=!.thunderbird/*
-          --glob=!.var/*
-          --glob=!.config/BraveSoftware/Brave-Browser/Default/Extensions/*
-          --glob=!.local/share/zsh/*
-          
-          # Ignore case when patter is all lowercase
-          --smart-case
-
-          # Don't respect ignore files (.gitignore, .ignore, etc.)
-          --no-ignore
-        '';
-      };
-      # zellij = {
-      #     "config.kdl" = {
-      #     enable = true;
-      #     text = ''
-      #       keybinds {
-      #           search {
-      #               bind "/" { SwitchToMode "EnterSearch"; SearchInput 0; }
-      #           }
-  
-      #           shared_among "search" "scroll" {
-      #               bind "Home" { ScrollToTop; }
-      #               bind "End" { ScrollToBottom; }
-      #           }
-      #       }
-  
-      #       ui {
-      #           pane_frames {
-      #               rounded_corners true
-      #           }
-      #       }
-      #     '';
-      #   };
-      # };
-    };
   };
 
 }
