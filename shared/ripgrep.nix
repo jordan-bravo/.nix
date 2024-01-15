@@ -1,7 +1,5 @@
 # ~/.nix/shared/ripgrep.nix
 
-{ pkgs, ... }:
-
 {
   programs.ripgrep = {
     enable = true;
