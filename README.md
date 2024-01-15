@@ -6,17 +6,17 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ## Hosts
 
-`tux`: My main personal laptop running NixOS.
+`tux`: My main personal laptop running NixOS and using Home Manager.  ISA: `x86_64-linux`
 
-`mbp`: My work laptop, a MacBook Pro with M1 (ARM) chip running MacOS.
+`thinky`: My work laptop, currently running Ubuntu 22.04 and using the Nix package manager and Home Manager. ISA: `x86_64-linux`
 
-`thinky`: Another work laptop, ThinkPad, currently running Ubuntu 22.04 and using the Nix package manager and Home Manager.
+`mbp`: My former work laptop, a MacBook with M1 (ARM) chip running MacOS, using Nix-Darwin and Home Manager. No longer in use, config might be outdated. ISA: `aarch64-darwin`
 
 `shared`: Configuration that can be shared across multiple hosts.
 
 ## TODO (High Level)
 
-- My [Neovim configuration](https://github.com/jordan-bravo/nvim) is currently not managed by Nix.  I plan to add all Neovim configuration to Nix.
+- (in progress) My [Neovim configuration](https://github.com/jordan-bravo/nvim) is currently not managed by Nix.  I plan to add all Neovim configuration to Nix.
 - Add Hyprland on Linux hosts.
 - Convert servers from Ubuntu to NixOS.
 
@@ -32,7 +32,7 @@ I have tried to put as much of the configuration as possible into Home Manager i
 - On non-NixOS systems, how to declaritively configure things not available in home manger?
     - Postgres/Redis <-- solution for Alta is to run these in containers
     - Docker <-- Possibly replace with Podman which doesn't require root and might be nixable
-    - Flatpak
+    - Flatpak <-- No way that I know of to declaritively configure Flatpaks
 
 ---
 
