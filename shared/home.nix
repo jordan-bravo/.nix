@@ -131,8 +131,8 @@ in
 
   home = {
     file = {
-      # this is just here to remind me of the syntax to create files
-      ".config/zellij/config.kdl" = {
+      zellij = {
+        target = ".config/zellij/config.kdl";
         enable = true;
         text = ''
           search {
