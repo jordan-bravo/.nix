@@ -1,7 +1,5 @@
 # ~/.nix/shared/zellij.nix
 
-{ pkgs, ... }:
-
 {
   programs.zellij = {
     enable = true;
