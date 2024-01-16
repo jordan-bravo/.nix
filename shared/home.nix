@@ -71,13 +71,15 @@ in
         ms-python.python
       ];
       userSettings = {
+        "editor.fontFamily" = "FiraCode Nerd Font Mono";
         "editor.lineNumbers" = "relative";
         "extensions.experimental.affinity" = {
           "asvetliakov.vscode-neovim" = 1;
         };
+        "keyboard.dispatch" = "keyCode";
         "vscode-neovim.neovimClean" = true;
+        "window.menuBarVisibility" = "toggle";
         "workbench.startupEditor" = "none";
-        "editor.fontFamily" = "FiraCode Nerd Font Mono";
       };
     };
     zoxide = {
