@@ -143,6 +143,7 @@ in
       # neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nil # Language server for Nixlang
+      nixd # Nix langauge server
       nixpkgs-fmt # Formatter for Nixlang
       nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.pnpm # Fast, disk space efficient package manager
