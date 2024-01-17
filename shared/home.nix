@@ -42,14 +42,15 @@ in
       # eval "$(pyenv init -)"
       enableZshIntegration = false;
     };
-    rtx = {
-      enableZshIntegration = true;
-      settings = {
-        settings = {
-          legacy_version_file = false;
-        };
-      };
-    };
+    # Note: rtx was renamed to mise.  It's not yet in home manager.
+    # rtx = {
+    #   enableZshIntegration = true;
+    #   settings = {
+    #     settings = {
+    #       legacy_version_file = false;
+    #     };
+    #   };
+    # };
     starship = {
       enable = true;
       enableZshIntegration = true;
@@ -141,6 +142,7 @@ in
       lua-language-server # LSP language server for Lua
       luajit # JIT compiler for Lua 5.1
       luajitPackages.luacheck # A static analyzer & linter for Lua
+      mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
       # neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
