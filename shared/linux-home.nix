@@ -18,7 +18,7 @@
       dunst # Notification daemon
       # evolution # Client for calendar, mail, address book
       fira-code # Font
-      firefox # Web browser
+      # firefox # Web browser
       # font-awesome # Fonts for waybar
       gajim # XMPP client
       # gcc # Build tool (needed by NeoVim's Treesitter)
