@@ -40,7 +40,7 @@
       pkgs = import nixpkgs { 
         system = "x86_64-linux";
         config.allowUnfree = true;
-        config.permittedInsecurePackages = [ "electron-25.9.0" ];
+        config.permittedInsecurePackages = [ "electron-25.9.0" "electron-19.1.9" ];
         overlays = [
           nixgl.overlay
           nixneovim.overlays.default
