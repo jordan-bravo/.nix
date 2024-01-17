@@ -160,8 +160,11 @@ in
       pgcli # Command-line interface for PostgreSQL
       # postman # API development environment
       prettierd # Prettier daemon for faster formatting
+      # (lib.hiPrio python2) # End of life Python 2.7.18
+      (lib.hiPrio (python2.withPackages (ps: [ps.pip ]))) # pip2 for Python 2
+      python310 # 3.10.13
       # python311Packages.black # Python code formatter
-      python311Packages.debugpy # An implementation of the Debug Adapter Protocol for Python
+      # python311Packages.debugpy # An implementation of the Debug Adapter Protocol for Python
       rust-analyzer # Rust LSP
       # rustc # Rust compiler
       rustfmt # Rust formatter

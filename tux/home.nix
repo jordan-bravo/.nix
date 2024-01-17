@@ -7,9 +7,9 @@
     # enable = true;
     settings = {
       "org/gnome/desktop/interface" = {
-        # text-scaling-factor = 0.9; # BitLab LG
-        text-scaling-factor = 1.25; # Home Innocn
-        # text-scaling-factor = 1.45; # tux built-in
+        # text-scaling-factor = 0.8; # BitLab LG
+        # text-scaling-factor = 1.25; # Home Innocn
+        text-scaling-factor = 1.45; # tux built-in
       };
       "org/gnome/desktop/peripherals/touchpad" = {
         speed = 0.25;
@@ -26,8 +26,8 @@
       appimage-run # Run AppImages on NixOS
       bisq-desktop # Decentralized Bitcoin exchange
       # ledger-live-desktop # App for ledger hardware signing device
-      python311 # A high-level dynamically-typed programming language
-      python311Packages.pip # Tool for installing Python packages
+      # python311 # A high-level dynamically-typed programming language
+      # python311Packages.pip # Tool for installing Python packages
       qbittorrent # Featureful free software BitTorrent client
       ricochet # Anonymous peer-to-peer instant messaging over Tor
       sparrow # Bitcoin wallet
