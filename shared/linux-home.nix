@@ -15,7 +15,7 @@
       dino # XMPP client
       distrobox # Run containers of any Linux distro
       docker-compose # Docker Compose plugin for Docker
-      dunst # Notification daemon
+      # dunst # Notification daemon
       # evolution # Client for calendar, mail, address book
       fira-code # Font
       # firefox # Web browser
