@@ -23,7 +23,12 @@
           };
         };
       };
-    };
+      layout = {
+      	default_tab_template = {
+					"pane borderless=true" = [];
+				};
+			};
+		};
   };
 }
 
@@ -50,4 +55,9 @@
               rounded_corners true
           }
       }
+			layout {
+				default_tab_template {
+					pane borderless=true
+				}
+			}
     */
