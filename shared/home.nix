@@ -135,7 +135,6 @@ in
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
       freetube # YouTube client
-      gnumake # A tool to control the generation of non-source files from sources
       go # The Go / Golang programming language
       gopls # Official language server for Go / Golang
       heroku # Heroku CLI
@@ -160,9 +159,8 @@ in
       pgcli # Command-line interface for PostgreSQL
       # postman # API development environment
       prettierd # Prettier daemon for faster formatting
-      # (lib.hiPrio python2) # End of life Python 2.7.18
-      (lib.hiPrio (python2.withPackages (ps: [ps.pip ]))) # pip2 for Python 2
-      python310 # 3.10.13
+      # (lib.hiPrio (python2.withPackages (ps: [ ps.pip ]))) # pip2 for Python 2
+      # python310 # 3.10.13
       # python311Packages.black # Python code formatter
       # python311Packages.debugpy # An implementation of the Debug Adapter Protocol for Python
       rust-analyzer # Rust LSP
@@ -187,7 +185,25 @@ in
       watchman # Watches files and takes action when they change
       wget # File retriever
       yarn # Package manager for JavaScript
-      # zellij # A terminal workspace with batteries included
+
+			# Packages for building Python
+			automake # GNU standard-compliant makefile generator
+			bzip2 # High-quality data compression program
+			findutils # GNU Find Utilities, the basic directory searching utilities of the GNU operating system
+			gcc # GNU Compiler Collection
+			gdbm # GNU dbm key/value database library
+			gnumake # A tool to control the generation of non-source files from sources
+			libffi # A foreign function call interface library
+			libnsl # Client interface library for NIS(YP) and NIS+
+			libuuid # A set of system utilities for Linux
+			ncurses # Free software emulation of curses in SVR4 and more
+			openssl # A cryptographic library that implements the SSL and TLS protocols
+			gnupatch # GNU Patch, a program to apply differences to files
+			readline # Library for interactive line editing
+			sqlite # A self-contained, serverless, zero-configuration, transactional SQL database engine
+			tk # A widget toolkit that provides a library of basic elements for building a GUI in many different programming languages
+			xz # A general-purpose data compression software, successor of LZMA
+			zlib # For building Python
     ];
   };
 
