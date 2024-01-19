@@ -25,7 +25,7 @@
         ];
       };
     };
-    colorscheme = "slate";
+    colorscheme = "habamax";
     defaultEditor = true;
     # extraPlugins = [
     #   pkgs.vimExtraPlugins.vscode-nvim
@@ -76,7 +76,8 @@
       gitsigns = {
         enable = true;
       };
-      hbac = { # heuristic buffer auto-close
+      hbac = {
+        # heuristic buffer auto-close
         enable = false;
       };
       headlines = {
@@ -100,9 +101,114 @@
       };
       lspconfig = {
         enable = true;
+        onAttach = ''
+          opts.buffer = bufnr
+          
+          opts.desc = "Show LSP references"
+          vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+          
+          opts.desc = "Go to declaration"
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+          
+          opts.desc = "Show LSP definitions"
+          vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+          
+          opts.desc = "Show LSP implementations"
+          vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+          
+          opts.desc = "Show LSP type definitions"
+          vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+          
+          opts.desc = "See available code actions"
+          vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+          
+          opts.desc = "Smart rename"
+          vim.keymap.set("n", "<leader>rs", vim.lsp.buf.rename, opts) -- smart rename
+          
+          opts.desc = "Show buffer diagnostics"
+          vim.keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+          
+          opts.desc = "Show line diagnostics"
+          vim.keymap.set("n", "<leader>z", vim.diagnostic.open_float, opts) -- show diagnostics for line
+          
+          opts.desc = "Go to previous diagnostic"
+          vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+          
+          opts.desc = "Go to next diagnostic"
+          vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+          
+          opts.desc = "Show documentation for what is under cursor"
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+          
+          opts.desc = "Restart LSP"
+          vim.keymap.set("n", "<leader>rl", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+          
+          opts.desc = "[D]ocument [S]ymbols"
+          vim.keymap.set("n", "<leader>ds", require("telescope.builtin").lsp_document_symbols,
+          	{ buffer = bufnr, desc = opts.desc })
+          
+          opts.desc = "[W]orkspace [S]ymbols"
+          vim.keymap.set("n", "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols,
+          	{ buffer = bufnr, desc = opts.desc })
+          
+          -- See `:help K` for why this keymap
+          opts.desc = "Hover Documentation"
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = opts.desc })
+          
+          opts.desc = "Signature Documentation"
+          vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = opts.desc })
+          
+          -- Lesser used LSP functionality
+          opts.desc = "[G]oto [D]eclaration"
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr, desc = opts.desc })
+          
+          opts.desc = "[W]orkspace [A]dd Folder"
+          vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, { buffer = bufnr, desc = opts.desc })
+          
+          opts.desc = "[W]orkspace [R]emove Folder"
+          vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { buffer = bufnr, desc = opts.desc })
+          
+          -- local list_workspace_folders = function()
+          --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+          -- end
+          -- opts.desc = "[W]orkspace [L]ist Folders"
+          -- vim.keymap.set("n", "<leader>wl", list_workspace_folders(), { buffer = bufnr, desc = opts.desc })
+          				'';
         servers = {
           bashls.enable = true;
-          lua-language-server.enable = true;
+          lua-language-server = {
+            enable = false;
+            extraConfig = ''
+                on_init = function(client)
+              	local path = client.workspace_folders[1].name
+              	if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+              		client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+              			Lua = {
+              				runtime = {
+              					-- Tell the language server which version of Lua you're using
+              					-- (most likely LuaJIT in the case of Neovim)
+              					version = 'LuaJIT'
+              				},
+              				-- Make the server aware of Neovim runtime files
+              				workspace = {
+              					checkThirdParty = false,
+              					library = {
+              						vim.env.VIMRUNTIME
+              						-- "''${3rd}/luv/library"
+              						-- "''${3rd}/busted/library",
+              					}
+              					-- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+              					-- library = vim.api.nvim_get_runtime_file("", true)
+              				}
+              			}
+              		})
+
+              		client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+              	end
+              	return true
+                end
+            '';
+          };
           nil.enable = true;
           pyright.enable = true;
           ruff-lsp.enable = true;
@@ -193,7 +299,7 @@
 
 
   ###### Neovim standard
-  
+
   # nixpkgs = {
   #   overlays = [
   #     (final: prev: {
@@ -231,14 +337,14 @@
   #     cmp-nvim-lsp
   #     cmp-path
   #     {
-	# # plugin = pkgs.vimUtils.buildVimPlugin {
-	# #   name = "vscode";
-	# #   src = inputs.colorscheme-vscode;
-	# # };
+  # # plugin = pkgs.vimUtils.buildVimPlugin {
+  # #   name = "vscode";
+  # #   src = inputs.colorscheme-vscode;
+  # # };
   #       plugin = colorscheme-vscode;
   #       type = "lua";
   #       config = ''
-	#   require('vscode').setup({})
+  #   require('vscode').setup({})
   #       '';
   #     }
   #     comment-nvim
@@ -273,24 +379,24 @@
   #     vim-rhubarb
   #     vim-sleuth
   #     which-key-nvim
-      
+
   #     # parsers for treesitter
   #     {
-	# plugin = (nvim-treesitter.withPlugins (p: [
-	#   p.tree-sitter-bash
-	#   p.tree-sitter-css
-	#   p.tree-sitter-go
-	#   p.tree-sitter-html
-	#   p.tree-sitter-javascript
-	#   p.tree-sitter-json
-	#   p.tree-sitter-lua
-	#   p.tree-sitter-nix
-	#   p.tree-sitter-python
-	#   p.tree-sitter-scss
-	#   p.tree-sitter-typescript
-	#   p.tree-sitter-vim
-	# ]));
-	# config = toLuaFile ./nvim/treesitter.lua;
+  # plugin = (nvim-treesitter.withPlugins (p: [
+  #   p.tree-sitter-bash
+  #   p.tree-sitter-css
+  #   p.tree-sitter-go
+  #   p.tree-sitter-html
+  #   p.tree-sitter-javascript
+  #   p.tree-sitter-json
+  #   p.tree-sitter-lua
+  #   p.tree-sitter-nix
+  #   p.tree-sitter-python
+  #   p.tree-sitter-scss
+  #   p.tree-sitter-typescript
+  #   p.tree-sitter-vim
+  # ]));
+  # config = toLuaFile ./nvim/treesitter.lua;
   #     }
   #     # The following nvim plugins aren't in nixpkgs:
   #     # fladson/vim-kitty

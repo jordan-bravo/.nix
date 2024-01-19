@@ -32,7 +32,7 @@
       "--glob=!.var/*"
       "--glob=!.config/BraveSoftware/Brave-Browser/Default/Extensions/*"
       "--glob=!.local/share/zsh/*"
-      
+
       # Ignore case when patter is all lowercase
       "--smart-case"
 

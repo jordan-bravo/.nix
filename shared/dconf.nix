@@ -21,7 +21,7 @@ with lib.hm.gvariant;
       show-in-lock-screen = false;
     };
     "org/gnome/desktop/peripherals/mouse" = {
-    	natural-scroll = true;
+      natural-scroll = true;
     };
     "org/gnome/desktop/privacy" = {
       remove-old-trash-files = true;
@@ -107,7 +107,7 @@ with lib.hm.gvariant;
         "org.gnome.Settings.desktop"
         "org.gnome.tweaks.desktop"
         "com.mattjakeman.ExtensionManager.desktop"
-				"discord.desktop"
+        "discord.desktop"
       ];
     };
     "org/gnome/shell/extensions/auto-move-windows" = {

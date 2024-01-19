@@ -8,8 +8,8 @@
     settings = {
       "org/gnome/desktop/interface" = {
         # text-scaling-factor = 0.8; # BitLab LG
-        # text-scaling-factor = 1.25; # Home Innocn
-        text-scaling-factor = 1.45; # tux built-in
+        text-scaling-factor = 1.25; # Home Innocn
+        # text-scaling-factor = 1.45; # tux built-in
       };
       "org/gnome/desktop/peripherals/touchpad" = {
         speed = 0.25;
@@ -36,7 +36,7 @@
     stateVersion = "23.11";
     username = "jordan";
   };
-  imports = [ 
+  imports = [
     ../shared/home.nix
     ../shared/linux-home.nix
     ../shared/neovim.nix
@@ -47,18 +47,18 @@
   nixpkgs.config.allowUnfree = true;
   xdg.configFile."kitty/kitty-session.conf" = {
     enable = true;
-      text = ''
-        # How to set the title of the first tab to .nix?
-        # Set the working directory for windows in the current tab
-        cd ~/.nix
-        launch zsh
-        # launch vim
+    text = ''
+      # How to set the title of the first tab to .nix?
+      # Set the working directory for windows in the current tab
+      cd ~/.nix
+      launch zsh
+      # launch vim
 
-        # Create a new tab for scm
-        new_tab scm
-        cd ~/scm/
-        launch zsh
-        # launch vim
-      '';
+      # Create a new tab for scm
+      new_tab scm
+      cd ~/scm/
+      launch zsh
+      # launch vim
+    '';
   };
 }

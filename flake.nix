@@ -37,15 +37,15 @@
   outputs = { self, nixpkgs, nix-darwin, nixpkgs-darwin, home-manager, nixgl, android-nixpkgs, nixneovim, ... }@inputs:
     let
       pkgs-darwin = import nixpkgs-darwin { system = "aarch64-darwin"; config.allowUnfree = true; };
-      pkgs = import nixpkgs { 
+      pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
-					"electron-19.1.9"
-					"electron-25.9.0"
-					"python-2.7.18.7"
-					"python-2.7.18.7-env"
-				];
+          "electron-19.1.9"
+          "electron-25.9.0"
+          "python-2.7.18.7"
+          "python-2.7.18.7-env"
+        ];
         overlays = [
           nixgl.overlay
           nixneovim.overlays.default
