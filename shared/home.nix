@@ -37,11 +37,11 @@ in
     jq.enable = true;
     lsd.enable = true;
     pyenv = {
-      enable = true;
+      enable = false;
       # To manually activate pyenv in zsh, use the command:
       # eval "$(pyenv init -)"
       enableZshIntegration = false;
-			rootDirectory = "${config.xdg.dataHome}/pyenv";
+      rootDirectory = "${config.xdg.dataHome}/pyenv";
     };
     # Note: rtx was renamed to mise.  It's not yet in home manager.
     # rtx = {
@@ -163,8 +163,8 @@ in
       # inputs.nixpkgs-py27.legacyPackages.${pkgs.system}.python2
       (lib.hiPrio (inputs.nixpkgs-py27.legacyPackages.${pkgs.system}.python2.withPackages (ps: [ ps.certifi ps.pip ps.setuptools ps.virtualenv ]))) # pip2 for Python 2
       pkgs.python310 # 3.10.13
-			# pkgs.python310Packages.setuptools # Utilities to facilitate the installation of Python packages
-			# pkgs.python310Packages.virtualenv # A tool to create isolated Python environments
+      # pkgs.python310Packages.setuptools # Utilities to facilitate the installation of Python packages
+      # pkgs.python310Packages.virtualenv # A tool to create isolated Python environments
       # pkgs.python311Packages.black # Python code formatter
       # pkgs.python311Packages.debugpy # An implementation of the Debug Adapter Protocol for Python
       pkgs.rust-analyzer # Rust LSP

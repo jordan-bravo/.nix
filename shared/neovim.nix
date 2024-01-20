@@ -32,7 +32,9 @@
     };
     defaultEditor = true;
     extraConfigLua = ''
-      vim.opt.foldenable = false
+      vim.opt.foldenable = false -- don't start with text folded
+      vim.opt.shiftwidth = 0 -- set shiftwidth equal to tabstop
+      vim.opt.filetype = "on" -- not sure if this is necessary
     '';
     # extraPlugins = [
     #   pkgs.vimExtraPlugins.vscode-nvim
@@ -42,11 +44,13 @@
       #   ";" = "':'"; # vimscript between ' '
       # };
       normal = {
+        # Example with vimpscript
         "<leader>w" = {
           action = "'<cmd>w<cr>'"; # vimscript between ' '
           silent = true;
         };
-        "<leader>h" = "function() print(\"hi\") end"; # Lua code without ' '
+        # Example with Lua
+        "<leader>h" = "function() print(\"hi\") end"; # Doesn't require single quotes: ' '
       };
     };
     plugins = {
@@ -293,6 +297,21 @@
     usePluginDefaults = true;
     viAlias = true;
     vimAlias = true;
+  };
+
+  home.file = {
+    ".config/nvim/after/ftplugin/go.lua" = {
+      enable = true;
+      text = ''
+        vim.opt.tabstop = 4
+      '';
+    };
+    ".config/nvim/after/ftplugin/nix.lua" = {
+      enable = true;
+      text = ''
+        vim.opt.tabstop = 2
+      '';
+    };
   };
 
   imports = [ inputs.nixneovim.nixosModules.default ../shared/nvim/options.nix ];

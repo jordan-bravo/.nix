@@ -32,17 +32,17 @@
       url = "github:nixneovim/nixneovim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-		nixpkgs-python = {
-			url = "github:cachix/nixpkgs-python";
+    nixpkgs-python = {
+      url = "github:cachix/nixpkgs-python";
       # inputs.nixpkgs.follows = "nixpkgs";
-		};
-		nixpkgs-py27 = {
-			url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
-		};
+    };
+    nixpkgs-py27 = {
+      url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
+    };
   };
 
-  outputs = { 
-    self
+  outputs =
+    { self
     , home-manager
     , nixpkgs
     , nix-darwin
@@ -52,12 +52,12 @@
     , nixgl
     , android-nixpkgs
     , nixneovim
-    , ... 
+    , ...
     }@inputs:
     let
       pkgs-darwin = import nixpkgs-darwin {
-        system = "aarch64-darwin"; 
-        config.allowUnfree = true; 
+        system = "aarch64-darwin";
+        config.allowUnfree = true;
       };
       pkgs = import nixpkgs {
         system = "x86_64-linux";
