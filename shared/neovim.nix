@@ -25,8 +25,15 @@
         ];
       };
     };
-    colorscheme = "habamax";
+    colorschemes = {
+      vscode = {
+        enable = true;
+      };
+    };
     defaultEditor = true;
+    extraConfigLua = ''
+      vim.opt.foldenable = false
+    '';
     # extraPlugins = [
     #   pkgs.vimExtraPlugins.vscode-nvim
     # ];
