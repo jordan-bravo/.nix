@@ -60,21 +60,18 @@
       # }
     ];
     shellAliases = {
-      darr = "darwin-rebuild switch --flake ~/.nix";
       l = "ls -lAhF";
       la = "ls -AhF";
-      hmk = "home-manager switch --flake ~/.nix#thinky";
       hms = "home-manager switch --flake ~/.nix#$(hostname)";
-      hmx = "home-manager switch --flake ~/.nix#tux";
-      hypc = "vim ~/.config/hypr/hyprland.conf";
       gexit = "gnome-session-quit --no-prompt";
       nixr = "sudo nixos-rebuild switch --flake ~/.nix";
-      notify-piano = "play ~/Documents/piano.wav";
       s = "git status";
       sauce = "source $HOME/.config/zsh/.zshrc";
       sshk = "kitty +kitten ssh";
-      vd = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false";
-      ve = "sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true";
+			tsd = "sudo tailscale down";
+      tse = "sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true";
+      tsu = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false";
+			tss = "tailscale status";
       vim = "nvim";
       waybarc = "vim ~/.config/waybar/config.jsonc";
       waybars = "vim ~/.config/waybar/style.css";

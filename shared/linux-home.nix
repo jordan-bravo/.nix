@@ -24,7 +24,7 @@
       # gcc # Build tool (needed by NeoVim's Treesitter)
       # gnumake # Build tool (needed by Ruby)
       # gtklock # Screen lock
-      gtklock-userinfo-module # Screen lock user info
+      # gtklock-userinfo-module # Screen lock user info
       # ivpn # VPN
       # ivpn-service # VPN
       jdk11 # Java Development Kit
@@ -50,7 +50,7 @@
       vlc # Media player
       # waybar # Status bar
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
-      wofi # App launcher
+      # wofi # App launcher
       # xdg-desktop-portal-hyprland # Necessary for Hyprland
       xorg.xwininfo # Display info for X windows and nothing for Wayland windows
       zoom-us # Video conferencing

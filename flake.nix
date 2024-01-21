@@ -42,8 +42,7 @@
   };
 
   outputs =
-    { self
-    , home-manager
+    { home-manager
     , nixpkgs
     , nix-darwin
     , nixpkgs-darwin

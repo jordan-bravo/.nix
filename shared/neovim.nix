@@ -55,13 +55,14 @@
         }))
       end, { desc = "[/] Fuzzily search in current buffer" })
 
-      vim.keymap.set("n", "<leader>gf", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
+      vim.keymap.set("n", "<leader>if", require("telescope.builtin").git_files, { desc = "Search G[i]t [F]iles" })
       vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
       vim.keymap.set("n", "<leader>f", require("telescope.builtin").find_files, { desc = "Find [F]iles" })
       vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
       vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
       vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
       vim.keymap.set("n", "<leader>t", require("telescope.builtin").live_grep, { desc = "Find [T]ext" })
+      vim.keymap.set("n", "<leader>g", require("telescope.builtin").live_grep, { desc = "Find by [G]rep" })
       vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
     '';
     extraPlugins = [
@@ -289,13 +290,13 @@
           };
         };
         disableNetrw = true;
-				filters = {
-					dotfiles = false;
-				};
-				git = {
-					enable = true;
-					ignore = false;
-				};
+        filters = {
+          dotfiles = false;
+        };
+        git = {
+          enable = true;
+          ignore = false;
+        };
       };
       origami.enable = false;
       plenary.enable = true;
@@ -306,21 +307,21 @@
       surround.enable = true;
       telescope = {
         enable = true;
-				# extraConfig = {
-				# 	defaults = {
-				# 		# need to figure out how to configure telescope within nixneovim
-				# 		mappings = {
-				# 			i = {
-				# 				["<C-u>"] = false,
-				# 				["<C-d>"] = false,
-				# 				["<C-k>"] = actions.move_selection_previous, -- move to prev result,
-				# 				["<C-j>"] = actions.move_selection_next, -- move to next result,
-				# 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- 
-				# 			},
-				# 			
-				# 		};
-				# 	};
-				# };
+        # extraConfig = {
+        # 	defaults = {
+        # 		# need to figure out how to configure telescope within nixneovim
+        # 		mappings = {
+        # 			i = {
+        # 				["<C-u>"] = false,
+        # 				["<C-d>"] = false,
+        # 				["<C-k>"] = actions.move_selection_previous, -- move to prev result,
+        # 				["<C-j>"] = actions.move_selection_next, -- move to next result,
+        # 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- 
+        # 			},
+        # 			
+        # 		};
+        # 	};
+        # };
       };
       todo-comments.enable = true;
       treesitter = {
