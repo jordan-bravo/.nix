@@ -33,10 +33,40 @@
     defaultEditor = true;
     # extraConfigLua is generated at bottom of init.lua,
     # whereas extraLuaConfig is generated at top
-    # extraConfigLua = ''
-    # '';
+    extraConfigLua = ''
+      -- TODO: Make telescope search all files, including hidden files and those listed in .gitignore.  Default is to exclude those.
+      -- local find_files = function()
+      --   require("telescope.builtin").find_files({
+      --     find_command = { "rg", "--files", "--hidden", },
+      --   })
+      -- end
+
+      -- Enable telescope fzf native, if installed
+      pcall(require("telescope").load_extension, "fzf")
+
+      -- See `:help telescope.builtin`
+      vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
+      vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
+      vim.keymap.set("n", "<leader>/", function()
+        -- You can pass additional configuration to telescope to change theme, layout, etc.
+        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+          winblend = 10,
+          previewer = false,
+        }))
+      end, { desc = "[/] Fuzzily search in current buffer" })
+
+      vim.keymap.set("n", "<leader>gf", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
+      vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
+      vim.keymap.set("n", "<leader>f", require("telescope.builtin").find_files, { desc = "Find [F]iles" })
+      vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
+      vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
+      vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
+      vim.keymap.set("n", "<leader>t", require("telescope.builtin").live_grep, { desc = "Find [T]ext" })
+      vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+    '';
     extraPlugins = [
       pkgs.vimExtraPlugins.nvim-web-devicons
+      pkgs.vimExtraPlugins.telescope-fzf-native-nvim
     ];
     mappings = {
       # normalVisualOp = {

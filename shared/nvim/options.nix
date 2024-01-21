@@ -6,8 +6,9 @@
     
     vim.g.mapleader = " "
     vim.g.maplocalleader = " "
-    -- not sure if next line is needed to enable leader key
-    -- vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+
+    -- Since leader key is space, unmap space when in normal mode
+    vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
     -- Don't start with text folded
     vim.opt.foldenable = false
@@ -66,17 +67,6 @@
     
     vim.o.termguicolors = true
     
-    -- [[ Highlight on yank ]]
-    -- See `:help vim.highlight.on_yank()`
-    local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-    vim.api.nvim_create_autocmd("TextYankPost", {
-      callback = function()
-        vim.highlight.on_yank()
-      end,
-      group = highlight_group,
-      pattern = "*",
-    })
-    
     -- [[ Keymaps ]]
 
     -- Toggle File Explorer
@@ -104,6 +94,6 @@
     vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
     
     -- Buffer keymap options table
-    local opts = { noremap = true, silent = true }
+    local opts = { noremap = true, silent = true } 
   '';
 }
