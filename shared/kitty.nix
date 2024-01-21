@@ -4,7 +4,7 @@
     enable = true;
     font = {
       name = "FiraCode Nerd Font Mono";
-      size = 14;
+      size = 10;
     };
     shellIntegration.enableZshIntegration = true;
     settings = {
@@ -43,6 +43,9 @@
       "kitty_mod+5" = "goto_tab 5";
       "kitty_mod+6" = "goto_tab 6";
       "kitty_mod+7" = "goto_tab 7";
+			# unmap by setting to blank
+			"ctrl+tab" = "";
+			"ctrl+shift+tab" = "";
     };
     theme = "VSCode_Dark";
   };

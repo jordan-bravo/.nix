@@ -3,11 +3,11 @@
 {
   programs.zellij = {
     enable = true;
-    enableZshIntegration = true;
+    enableZshIntegration = false;
     settings = {
       ui.pane_frames.rounded_corners = true;
       keybinds = {
-        search = {
+        scroll = {
           "bind \"/\"" = {
             SwitchToMode = "EnterSearch";
             SearchInput = 0;
@@ -25,7 +25,7 @@
       };
       layout = {
         default_tab_template = {
-          "pane borderless=true" = [ ];
+          "pane borderless=true split_direction=\"vertical\"" = [ ];
         };
       };
     };
@@ -34,29 +34,29 @@
 
 /*
   keybinds {
-        search {
-            bind "/" { 
-                SwitchToMode "EnterSearch"
-                SearchInput 0
-            }
-        }
-        shared_among "search" "scroll" {
-            bind "End" { 
+      scroll {
+          bind "/" { 
+              SwitchToMode "EnterSearch"
+              SearchInput 0
+          }
+      }
+      shared_among "search" "scroll" {
+          bind "End" { 
               ScrollToBottom
-            }
-            bind "Home" {
+          }
+          bind "Home" {
               ScrollToTop
-            }
-        }
+          }
+      }
   }
   ui {
-        pane_frames {
-            rounded_corners true
-        }
+      pane_frames {
+          rounded_corners true
+      }
   }
   layout {
-        default_tab_template {
-            pane borderless=true
-        }
+      default_tab_template {
+          pane borderless=true
+      }
   }
 */

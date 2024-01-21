@@ -6,7 +6,17 @@
     
     vim.g.mapleader = " "
     vim.g.maplocalleader = " "
-    
+    -- not sure if next line is needed to enable leader key
+    -- vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+
+    -- Don't start with text folded
+    vim.opt.foldenable = false
+
+    -- set shiftwidth equal to tabstop
+    vim.opt.shiftwidth = 0
+
+    -- vim.opt.filetype = "on" -- not sure if this is necessary
+
     -- Disable netrw and replace with a plugin
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
@@ -54,7 +64,6 @@
     -- Set completeopt to have a better completion experience
     vim.o.completeopt = "menuone,noselect"
     
-    -- NOTE: You should make sure your terminal supports this
     vim.o.termguicolors = true
     
     -- [[ Highlight on yank ]]
@@ -67,8 +76,34 @@
       group = highlight_group,
       pattern = "*",
     })
+    
+    -- [[ Keymaps ]]
 
-    -- vim.cmd.colorscheme("vscode")
-    -- require('vscode').load()
+    -- Toggle File Explorer
+    vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
+
+    -- Toggle diagnostic virtual text (plugin required)
+    -- vim.keymap.set("n", "<leader>v", "<Plug>(toggle-lsp-diag-vtext)", { silent = true, desc = "Toggle Virtual Text" })
+        
+    -- Diagnostic keymaps
+    vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+    -- Close current buffer
+    vim.keymap.set("n", "<leader>k", ":bd<CR>", { silent = true })
+    
+    -- Remap for dealing with word wrap
+    vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+    vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+      
+    -- Navigate buffers
+    -- vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
+    vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })
+    -- vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", { silent = true })
+    vim.keymap.set("n", "<S-Tab>", ":bprev<CR>", { silent = true })
+    vim.keymap.set("n", "<C-l>", "<C-w>l", { silent = true })
+    vim.keymap.set("n", "<C-h>", "<C-w>h", { silent = true })
+    
+    -- Buffer keymap options table
+    local opts = { noremap = true, silent = true }
   '';
 }
