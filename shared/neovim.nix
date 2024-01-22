@@ -1,6 +1,6 @@
 # ~/.nix/shared/neovim.nix
 
-{ config, inputs, pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
 
   ###### NixNeovim
@@ -70,9 +70,6 @@
       pkgs.vimExtraPlugins.telescope-fzf-native-nvim
     ];
     mappings = {
-      # normalVisualOp = {
-      #   ";" = "':'"; # vimscript between ' '
-      # };
       normal = {
         # Example with vimpscript
         "<leader>w" = {
@@ -258,7 +255,7 @@
       lspkind.enable = true;
       lualine = {
         enable = true;
-        theme = "codedark";
+        theme = "vscode";
       };
       neogit.enable = false;
       nest.enable = false;
