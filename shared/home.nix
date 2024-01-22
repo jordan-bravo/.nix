@@ -157,24 +157,24 @@ in
       pkgs.nodePackages.typescript-language-server # LSP for JS and TS
       pkgs.obsidian # Note-taking
       pkgs.onefetch # Git repo summary
-      pkgs.pgcli # Command-line interface for PostgreSQL
-      pkgs.# postman # API development environment
+      # pkgs.pgcli # Command-line interface for PostgreSQL
+      # pkgs.postman # API development environment
       pkgs.prettierd # Prettier daemon for faster formatting
       # inputs.nixpkgs-py27.legacyPackages.${pkgs.system}.python2
-      (lib.hiPrio (inputs.nixpkgs-py27.legacyPackages.${pkgs.system}.python2.withPackages (ps: [ ps.certifi ps.pip ps.setuptools ps.virtualenv ]))) # pip2 for Python 2
-      pkgs.python310 # 3.10.13
+      # (lib.hiPrio (inputs.nixpkgs-py27.legacyPackages.${pkgs.system}.python2.withPackages (ps: [ ps.certifi ps.pip ps.setuptools ps.virtualenv ]))) # pip2 for Python 2
+      # pkgs.python310 # 3.10.13
       # pkgs.python310Packages.setuptools # Utilities to facilitate the installation of Python packages
       # pkgs.python310Packages.virtualenv # A tool to create isolated Python environments
       # pkgs.python311Packages.black # Python code formatter
       # pkgs.python311Packages.debugpy # An implementation of the Debug Adapter Protocol for Python
       pkgs.rust-analyzer # Rust LSP
-      # rustc # Rust compiler
+      # pkgs.rustc # Rust compiler
       pkgs.rustfmt # Rust formatter
       pkgs.ruby_3_2 # Ruby language
       pkgs.ruff # An extremely fast Python linter
       pkgs.ruff-lsp # Ruff LSP for Python
-      # rustup # Rust toolchain installer
-      # sdkmanager # A drop-in replacement for sdkmanager from the Android SDK written in Python
+      # pkgs.rustup # Rust toolchain installer
+      # pkgs.sdkmanager # A drop-in replacement for sdkmanager from the Android SDK written in Python
       pkgs.scc # Code counter with complexity calculations and COCOMO estimates written in Go
       pkgs.signal-desktop # Signal desktop
       pkgs.slack # Desktop client for Slack
