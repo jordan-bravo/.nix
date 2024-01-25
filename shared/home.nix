@@ -126,12 +126,16 @@ in
       pkgs.beekeeper-studio # SQL database client
       pkgs.bitcoind # Peer-to-peer electronic cash system
       pkgs.borgbackup # Deduplicating archiver with compression and encryption
+			pkgs.bottom # A cross-platform graphical process/system monitor with a customizable interface
       pkgs.cargo # Rust package manager
       # pkgs.dbeaver # SQL database client
       pkgs.delta # A syntax-highlighting pager for git
       pkgs.discord # All-in-one cross-platform voice and text chat for gamers
+			pkgs.dogdns # Command-line DNS client
+			pkgs.du-dust # du + rust = dust. Like du but more intuitive
+			pkgs.duf # Disk Usage/Free Utility, a df alternative
       pkgs.element-desktop # Matrix client
-      pkgs.emmet-ls # Emmet support based on LSP
+      # pkgs.emmet-ls # Emmet support based on LSP
       pkgs.eslint_d # ESLint daemon for increased performance
       pkgs.fd # A simple, fast and user-friendly alternative to find
       pkgs.fira-code # Font
@@ -142,24 +146,25 @@ in
       pkgs.lua-language-server # LSP language server for Lua
       pkgs.luajit # JIT compiler for Lua 5.1
       pkgs.luajitPackages.luacheck # A static analyzer & linter for Lua
-      pkgs.mise # (formerly rtx) Runtime/environment manager
+      # pkgs.mise # (formerly rtx) Runtime/environment manager
       pkgs.neofetch # Show system info
       # pkgs.neovim # Text editor / IDE
       (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
       pkgs.nil # Language server for Nixlang
       pkgs.nixd # Nix langauge server
       pkgs.nixpkgs-fmt # Formatter for Nixlang
-      pkgs.nodePackages.eslint # An AST-based pattern checker for JavaScript
+      # pkgs.nodePackages.eslint # An AST-based pattern checker for JavaScript
       pkgs.nodePackages.pnpm # Fast, disk space efficient package manager
-      pkgs.nodePackages.prettier # Formatter for JavaScript and other languages
-      pkgs.nodePackages.pyright # Python static type checker
-      pkgs.nodePackages.typescript # TypeScript language
-      pkgs.nodePackages.typescript-language-server # LSP for JS and TS
+      # pkgs.nodePackages.prettier # Formatter for JavaScript and other languages
+      # pkgs.nodePackages.pyright # Python static type checker
+      # pkgs.nodePackages.typescript # TypeScript language
+      # pkgs.nodePackages.typescript-language-server # LSP for JS and TS
       pkgs.obsidian # Note-taking
       pkgs.onefetch # Git repo summary
       # pkgs.pgcli # Command-line interface for PostgreSQL
       # pkgs.postman # API development environment
       pkgs.prettierd # Prettier daemon for faster formatting
+			pkgs.procs # A modern replacement for ps written in Rust
       # inputs.nixpkgs-py27.legacyPackages.${pkgs.system}.python2
       # (lib.hiPrio (inputs.nixpkgs-py27.legacyPackages.${pkgs.system}.python2.withPackages (ps: [ ps.certifi ps.pip ps.setuptools ps.virtualenv ]))) # pip2 for Python 2
       # pkgs.python310 # 3.10.13
@@ -181,13 +186,14 @@ in
       pkgs.speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       pkgs.speedtest-rs # Command line internet speedtest tool written in rust
       pkgs.stylua # Lua code formatter
-      pkgs.tailwindcss-language-server # LSP functionality for Tailwind CSS
+      # pkgs.tailwindcss-language-server # LSP functionality for Tailwind CSS
       pkgs.trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
-      pkgs.vimPlugins.nvim-dap-ui # UI elements for the Debug Adapter Protocol in Neovim
+      # pkgs.vimPlugins.nvim-dap-ui # UI elements for the Debug Adapter Protocol in Neovim
       pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
       pkgs.watchman # Watches files and takes action when they change
       pkgs.wget # File retriever
+			pkgs.xh # Friendly and fast tool for sending HTTP requests
       pkgs.yarn # Package manager for JavaScript
 
       # Packages for building Python

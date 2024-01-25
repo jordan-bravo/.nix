@@ -4,7 +4,7 @@
     enable = true;
     font = {
       name = "FiraCode Nerd Font Mono";
-      size = 10;
+      size = 11;
     };
     shellIntegration.enableZshIntegration = true;
     settings = {
