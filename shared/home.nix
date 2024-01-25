@@ -194,7 +194,7 @@ in
       # automake # GNU standard-compliant makefile generator
       # bzip2 # High-quality data compression program
       # findutils # GNU Find Utilities, the basic directory searching utilities of the GNU operating system
-      # gcc # GNU Compiler Collection
+      pkgs.gcc # GNU Compiler Collection
       # gdbm # GNU dbm key/value database library
       # gnumake # A tool to control the generation of non-source files from sources
       # libffi # A foreign function call interface library

@@ -68,10 +68,10 @@
       s = "git status";
       sauce = "source $HOME/.config/zsh/.zshrc";
       sshk = "kitty +kitten ssh";
-			tsd = "sudo tailscale down";
+      tsd = "sudo tailscale down";
       tse = "sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true";
       tsu = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false";
-			tss = "tailscale status";
+      tss = "tailscale status";
       vim = "nvim";
       waybarc = "vim ~/.config/waybar/config.jsonc";
       waybars = "vim ~/.config/waybar/style.css";

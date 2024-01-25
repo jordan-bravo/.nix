@@ -250,7 +250,7 @@
           nil.enable = true;
           pyright.enable = true;
           ruff-lsp.enable = true;
-					rust-analyzer.enable = true;
+          rust-analyzer.enable = true;
         };
       };
       lspkind.enable = true;
@@ -264,7 +264,13 @@
       notify.enable = true;
       nvim-autopairs.enable = true;
       nvim-cmp = {
-        enable = false;
+        enable = true;
+        snippet.luasnip.enable = true;
+        sources = {
+          # buffer.enable = true;
+          # luasnip.enable = true;
+          nvim_lsp.enable = true;
+        };
       };
       nvim-dap = {
         enable = true;
@@ -279,13 +285,13 @@
         enable = true;
         # autoClose = true;
         diagnostics = {
-          enable = false;
-          icons = {
-            error = "";
-            hint = "";
-            info = "";
-            warning = "";
-          };
+          enable = true;
+          # icons = {
+          #   error = "";
+          #   hint = "";
+          #   info = "";
+          #   warning = "";
+          # };
         };
         disableNetrw = true;
         filters = {

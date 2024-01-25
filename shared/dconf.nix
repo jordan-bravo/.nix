@@ -49,14 +49,19 @@ with lib.hm.gvariant;
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "close,minimize,maximize:appmenu";
       dynamic-workspaces = false;
-      num-workspaces = 5;
+      num-workspaces = 6;
     };
     "org/gnome/mutter" = {
       dynamic-workspaces = false;
       workspaces-only-on-primary = true;
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+      custom-keybindings = [
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
+      ];
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Alt>5";
@@ -67,6 +72,16 @@ with lib.hm.gvariant;
       binding = "<Shift><Alt>5";
       command = "dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-5 \"['<Shift><Alt>5']\"";
       name = "Move to workspace 5";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
+      binding = "<Alt>6";
+      command = "dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-6 \"['<Alt>6']\"";
+      name = "Switch to workspace 6";
+    };
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+      binding = "<Shift><Alt>6";
+      command = "dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-6 \"['<Shift><Alt>6']\"";
+      name = "Move to workspace 6";
     };
     "org/gnome/settings-daemon/plugins/power" = {
       idle-dim = false;
