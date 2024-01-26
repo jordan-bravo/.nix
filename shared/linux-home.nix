@@ -16,17 +16,11 @@
       distrobox # Run containers of any Linux distro
       docker-compose # Docker Compose plugin for Docker
       # dunst # Notification daemon
-      # evolution # Client for calendar, mail, address book
       fira-code # Font
-      # firefox # Web browser
       # font-awesome # Fonts for waybar
       gajim # XMPP client
-      # gcc # Build tool (needed by NeoVim's Treesitter)
-      # gnumake # Build tool (needed by Ruby)
       # gtklock # Screen lock
       # gtklock-userinfo-module # Screen lock user info
-      # ivpn # VPN
-      # ivpn-service # VPN
       jdk11 # Java Development Kit
       jitsi-meet # Video calling (not sure if both packages are needed)
       jitsi # Video calling (not sure if both packages are needed)
@@ -51,7 +45,6 @@
       # waybar # Status bar
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       # wofi # App launcher
-      # xdg-desktop-portal-hyprland # Necessary for Hyprland
       xorg.xwininfo # Display info for X windows and nothing for Wayland windows
       zoom-us # Video conferencing
 

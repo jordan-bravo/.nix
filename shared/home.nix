@@ -126,14 +126,14 @@ in
       pkgs.beekeeper-studio # SQL database client
       pkgs.bitcoind # Peer-to-peer electronic cash system
       pkgs.borgbackup # Deduplicating archiver with compression and encryption
-			pkgs.bottom # A cross-platform graphical process/system monitor with a customizable interface
+      pkgs.bottom # A cross-platform graphical process/system monitor with a customizable interface
       pkgs.cargo # Rust package manager
       # pkgs.dbeaver # SQL database client
       pkgs.delta # A syntax-highlighting pager for git
       pkgs.discord # All-in-one cross-platform voice and text chat for gamers
-			pkgs.dogdns # Command-line DNS client
-			pkgs.du-dust # du + rust = dust. Like du but more intuitive
-			pkgs.duf # Disk Usage/Free Utility, a df alternative
+      pkgs.dogdns # Command-line DNS client
+      pkgs.du-dust # du + rust = dust. Like du but more intuitive
+      pkgs.duf # Disk Usage/Free Utility, a df alternative
       pkgs.element-desktop # Matrix client
       # pkgs.emmet-ls # Emmet support based on LSP
       pkgs.eslint_d # ESLint daemon for increased performance
@@ -146,6 +146,7 @@ in
       pkgs.lua-language-server # LSP language server for Lua
       pkgs.luajit # JIT compiler for Lua 5.1
       pkgs.luajitPackages.luacheck # A static analyzer & linter for Lua
+      pkgs.lsof # A tool to list open files
       # pkgs.mise # (formerly rtx) Runtime/environment manager
       pkgs.neofetch # Show system info
       # pkgs.neovim # Text editor / IDE
@@ -164,12 +165,14 @@ in
       # pkgs.pgcli # Command-line interface for PostgreSQL
       # pkgs.postman # API development environment
       pkgs.prettierd # Prettier daemon for faster formatting
-			pkgs.procs # A modern replacement for ps written in Rust
+      pkgs.procs # A modern replacement for ps written in Rust
       # inputs.nixpkgs-py27.legacyPackages.${pkgs.system}.python2
       # (lib.hiPrio (inputs.nixpkgs-py27.legacyPackages.${pkgs.system}.python2.withPackages (ps: [ ps.certifi ps.pip ps.setuptools ps.virtualenv ]))) # pip2 for Python 2
       # pkgs.python310 # 3.10.13
       # pkgs.python310Packages.setuptools # Utilities to facilitate the installation of Python packages
       # pkgs.python310Packages.virtualenv # A tool to create isolated Python environments
+      pkgs.python311 # Python 3.11
+      pkgs.python311Packages.base58 # Base58 and Base58Check implementation
       # pkgs.python311Packages.black # Python code formatter
       # pkgs.python311Packages.debugpy # An implementation of the Debug Adapter Protocol for Python
       pkgs.rust-analyzer # Rust LSP
@@ -193,7 +196,7 @@ in
       pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
       pkgs.watchman # Watches files and takes action when they change
       pkgs.wget # File retriever
-			pkgs.xh # Friendly and fast tool for sending HTTP requests
+      pkgs.xh # Friendly and fast tool for sending HTTP requests
       pkgs.yarn # Package manager for JavaScript
 
       # Packages for building Python
