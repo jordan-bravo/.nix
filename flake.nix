@@ -97,6 +97,11 @@
           extraSpecialArgs = { inherit nixgl pkgs inputs; };
           modules = [ ./thinky/home.nix ];
         };
+        lenny = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs; # equivalent to: inherit pkgs;
+          extraSpecialArgs = { inherit nixgl pkgs inputs; };
+          modules = [ ./lenny/home.nix ];
+        };
       };
       darwinConfigurations = {
         mbp = nix-darwin.lib.darwinSystem {
