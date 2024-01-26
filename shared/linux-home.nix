@@ -17,6 +17,7 @@
       docker-compose # Docker Compose plugin for Docker
       # dunst # Notification daemon
       fira-code # Font
+      firefox # Web browser
       # font-awesome # Fonts for waybar
       gajim # XMPP client
       # gtklock # Screen lock

@@ -64,6 +64,8 @@
         config.permittedInsecurePackages = [
           "electron-19.1.9"
           "electron-25.9.0"
+          "nodejs_14"
+          "nodejs_16"
           "python-2.7.18.7"
           "python-2.7.18.7-env"
         ];

@@ -4,7 +4,7 @@
 
 {
   programs.firefox = {
-    enable = true;
+    enable = false;
     profiles.jordan = {
       search = {
         default = "Startpage";
