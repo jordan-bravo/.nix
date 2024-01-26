@@ -125,6 +125,9 @@
       # Enable the GNOME Desktop Environment.
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
+      # Enable the KDE Plasma Desktop Environment.
+      # displayManager.sddm.enable = true;
+      # desktopManager.plasma5.enable = true;
       layout = "us";
       # Enable touchpad support (enabled default in most desktopManager).
       # libinput.enable = true;
