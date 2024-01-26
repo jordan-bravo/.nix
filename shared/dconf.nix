@@ -2,7 +2,6 @@
 { lib, ... }:
 
 with lib.hm.gvariant;
-
 {
   dconf.settings = {
     "org/gnome/desktop/calendar" = {
@@ -15,6 +14,9 @@ with lib.hm.gvariant;
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
+      cursor-theme = "Adwaita";
+      gtk-theme = "Adwaita";
+      icon-theme = "Adwaita";
     };
     "org/gnome/desktop/notifications" = {
       show-banners = false;
