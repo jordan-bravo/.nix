@@ -1,6 +1,10 @@
 # ~/.nix/shared/neovim.nix
 
 { inputs, pkgs, ... }:
+let
+	move_selection_next = [];
+	move_selection_previous = [];
+in
 {
 
   ###### NixNeovim
@@ -311,21 +315,27 @@
       surround.enable = true;
       telescope = {
         enable = true;
-        # extraConfig = {
-        # 	defaults = {
-        # 		# need to figure out how to configure telescope within nixneovim
-        # 		mappings = {
-        # 			i = {
-        # 				["<C-u>"] = false,
-        # 				["<C-d>"] = false,
-        # 				["<C-k>"] = actions.move_selection_previous, -- move to prev result,
-        # 				["<C-j>"] = actions.move_selection_next, -- move to next result,
-        # 				["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- 
-        # 			},
-        # 			
-        # 		};
-        # 	};
-        # };
+        # need to figure out how to configure telescope within nixneovim
+     #    extraConfig = {
+					# mappings = {
+					# 	i = {
+					# 		"<C-u>" = false;
+					# 		"<C-d>" = false;
+					# 		"<C-k>" = telescope.actions.move_selection_previous;
+					# 		"<C-j>" = telescope.actions.move_selection_next;
+					# 		# "<C-q>" = "actions.send_selected_to_qflist + actions.open_qflist";
+					# 	};
+					# };
+					# # pickers = {
+					# # 	find_files = {
+					# # 		hidden = true;
+					# # 	};
+					# # };
+			  # };
+     #    extraLua.pre = ''
+     #    	local actions = require("telescope.actions")
+					# local move_selection_previous = actions.move_selection_previous
+     #    '';
       };
       todo-comments.enable = true;
       treesitter = {

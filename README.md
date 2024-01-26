@@ -22,6 +22,7 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ### Task List (Low Level)
 
+- Neovim: When searching in Telescope, map C-k, C-j to up, down (move_selection_previous, move_selection_next)
 - Zellij: remap ctrl-h (enters move mode) because it's used by neovim to move windows
 - home-manager switch command leads to MediaKeys systemd service failing.
 - Configure zsh autosuggest/autocomplete (which one? both?) to avoid using arrow keys for completion.
