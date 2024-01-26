@@ -39,7 +39,6 @@
   imports = [
     ../shared/home.nix
     ../shared/linux-home.nix
-    ../shared/neovim.nix
     # android-nixpkgs.hmModule {
     #   
     # }

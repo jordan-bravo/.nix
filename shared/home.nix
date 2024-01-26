@@ -94,7 +94,7 @@ in
   imports = [
     ../shared/git.nix
     ../shared/kitty.nix
-    # ../shared/neovim.nix
+    ../shared/neovim.nix
     # ../shared/powerlevel10k.nix
     ../shared/ripgrep.nix
     ../shared/ssh.nix
