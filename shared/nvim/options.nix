@@ -13,8 +13,17 @@
     -- Don't start with text folded
     vim.opt.foldenable = false
 
-    -- set shiftwidth equal to tabstop
+		-- Set default tabstop
+		vim.opt.tabstop = 4
+
+		-- Insert spaces when pressing tab
+		vim.opt.expandtab = true
+
+    -- Set shiftwidth equal to tabstop
     vim.opt.shiftwidth = 0
+
+    -- Set softtabstop equal to tabstop
+    vim.opt.softtabstop = 0
 
     -- vim.opt.filetype = "on" -- not sure if this is necessary
 
