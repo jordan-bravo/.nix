@@ -64,6 +64,14 @@ in
         asvetliakov.vscode-neovim
         # charliermarsh.ruff
         ms-python.python
+      # ];
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "roc-lang-unofficial";
+          publisher = "ivandemchenko";
+          version = "1.2.0";
+          sha256 = "sha256-lMN6GlUM20ptg1c6fNp8jwSzlCzE1U0ugRyhRLYGPGE=";
+        }
       ];
       userSettings = {
         "editor.fontFamily" = "FiraCode Nerd Font Mono";
@@ -114,6 +122,7 @@ in
     # stateVersion = "23.11";
     packages = with pkgs; [
       aerc # An email client for your terminal
+      audacity # Music player
       android-studio # The Official IDE for Android (stable channel)
       android-tools # Android SDK platform tools
       beekeeper-studio # SQL database client
