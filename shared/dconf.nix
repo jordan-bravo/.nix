@@ -33,7 +33,7 @@ with lib.hm.gvariant;
       lock-enabled = true;
     };
     "org/gnome/desktop/session" = {
-      idle-delay = mkUint32 600;
+      idle-delay = mkUint32 1200;
     };
     "org/gnome/desktop/sound" = {
       event-sounds = false;
@@ -126,6 +126,7 @@ with lib.hm.gvariant;
         "com.mattjakeman.ExtensionManager.desktop"
         "discord.desktop"
       ];
+      last-selected-power-profile = "performance";
     };
     "org/gnome/shell/extensions/auto-move-windows" = {
       application-list = [

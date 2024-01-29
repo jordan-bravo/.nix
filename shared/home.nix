@@ -186,6 +186,7 @@ in
       # tailwindcss-language-server # LSP functionality for Tailwind CSS
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
+      vorta # Desktop Backup Client for Borg
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
       watchman # Watches files and takes action when they change
       wget # File retriever
