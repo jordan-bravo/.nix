@@ -24,6 +24,7 @@ with lib.hm.gvariant;
     };
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = true;
+      speed = -0.33;
     };
     "org/gnome/desktop/privacy" = {
       remove-old-trash-files = true;

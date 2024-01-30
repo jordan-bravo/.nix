@@ -22,6 +22,11 @@
           # "AddKeysToAgent" = "yes"; # MacOS
         };
       };
+      "sovserv" = {
+        hostname = "sovserv";
+        user = "main";
+        identityFile = "~/.ssh/ssh_id_ed25519_j@b.key";
+      };
     };
   };
 }
