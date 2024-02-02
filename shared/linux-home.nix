@@ -47,6 +47,7 @@
       # ulauncher # Application launcher
       vlc # Media player
       # waybar # Status bar
+      waypipe # A network proxy for Wayland clients (applications)
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       # wofi # App launcher
       xorg.xwininfo # Display info for X windows and nothing for Wayland windows
