@@ -13,6 +13,7 @@ in
 {
   # Programs with little to no config are enabled here. 
   programs = {
+    alacritty.enable = true;
     bat.enable = true;
     broot = {
       enable = true;
@@ -23,7 +24,7 @@ in
       nix-direnv.enable = true;
       enableZshIntegration = true;
     };
-    fzf.enable = true;
+    fzf.enable = false;
     gh.enable = true;
     gpg.enable = true;
     home-manager.enable = true;
