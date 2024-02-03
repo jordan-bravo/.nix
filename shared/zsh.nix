@@ -7,7 +7,7 @@
     dotDir = ".config/zsh";
     enable = true;
     enableAutosuggestions = true;
-    enableCompletion = true;
+    enableCompletion = false;
     history = {
       expireDuplicatesFirst = true;
       ignoreAllDups = true;
@@ -31,6 +31,12 @@
       if [ -f $HOME/bd/.misc/.npm-bd ]; then
         source $HOME/bd/.misc/.npm-bd
       fi
+
+      # Accept next word from zsh autosuggestion with Ctrl+U
+      bindkey ^U forward-word
+
+      # Fix bug with up arrow (nixos.wiki/wiki/Zsh)
+      bindkey "''${key[Up]}" up-line-or-search
 
       # Ripgrep config file
       # export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgreprc
