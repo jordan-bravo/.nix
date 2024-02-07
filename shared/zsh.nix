@@ -70,6 +70,7 @@
       la = "ls -AhF";
       hms = "home-manager switch --flake ~/.nix#$(hostname)";
       gexit = "gnome-session-quit --no-prompt";
+      mise-activate = "eval \"$(~/.local/bin/mise activate zsh)\"";
       nixr = "sudo nixos-rebuild switch --flake ~/.nix";
       s = "git status";
       sauce = "source $HOME/.config/zsh/.zshrc";
