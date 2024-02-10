@@ -269,10 +269,32 @@ in
       nvim-autopairs.enable = true;
       nvim-cmp = {
         enable = true;
+        mapping = {
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<Tab>" = {
+            modes = [ "i" "s" ];
+            action = ''
+              function(fallback)
+                if cmp.visible() then
+                  cmp.select_next_item()
+                elseif luasnip.expandable() then
+                  luasnip.expand()
+                elseif luasnip.expand_or_jumpable() then
+                  luasnip.expand_or_jump()
+                elseif check_backspace() then
+                  fallback()
+                else
+                  fallback()
+                end
+              end
+            '';
+          };
+        };
+
         snippet.luasnip.enable = true;
         sources = {
           # buffer.enable = true;
-          # luasnip.enable = true;
+          luasnip.enable = true;
           nvim_lsp.enable = true;
         };
       };

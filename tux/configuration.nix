@@ -63,24 +63,17 @@
   };
 
   # Enable flakes
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    keep-outputs = true;
-    keep-derivations = true;
-    # package = pkgs.nixFlakes;
-    # registry.nixpkgs.flake = inputs.nixpkgs;
-  };
-
-  # nix.registry.nixpkgs = {
-  #   from = {
-  #     id = "nixpkgs";
-  #     type = "indirect";
-  #   };
-  #   flake = flake-inputs.nixpkgs;
-  # };
-
-
   nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      keep-outputs = true;
+      keep-derivations = true;
+      # package = pkgs.nixFlakes;
+      # registry.nixpkgs.flake = inputs.nixpkgs;
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    };
+
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
     registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
@@ -98,6 +91,10 @@
       enable = true;
       enableSSHSupport = true;
     };
+    programs.hyprland.enable = false;
+    # Optional, hint electron apps to use wayland:
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
     virt-manager.enable = true;
     zsh.enable = true;
   };
@@ -107,7 +104,7 @@
     ivpn.enable = true;
     printing.enable = true;
     resolved = {
-      enable = true;
+      enable = false;
       dnssec = "false";
       domains = [ "~." ];
       fallbackDns = [ "194.242.2.2#dns.mullvad.net" ];

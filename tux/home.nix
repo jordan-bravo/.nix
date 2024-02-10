@@ -7,9 +7,9 @@
     # enable = true;
     settings = {
       "org/gnome/desktop/interface" = {
-        text-scaling-factor = 0.9; # BitLab LG
+        # text-scaling-factor = 0.9; # BitLab LG
         # text-scaling-factor = 1.25; # Home Innocn
-        # text-scaling-factor = 1.45; # tux built-in
+        text-scaling-factor = 1.45; # tux built-in
       };
       "org/gnome/desktop/peripherals/touchpad" = {
         speed = 0.25;
@@ -39,6 +39,7 @@
   imports = [
     ../shared/home.nix
     ../shared/linux-home.nix
+    ../shared/hyprland.nix
     # android-nixpkgs.hmModule {
     #   
     # }

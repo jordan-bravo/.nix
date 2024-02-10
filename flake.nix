@@ -9,7 +9,7 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-		# Manage the system on non-NixOS Linux distros
+    # Manage the system on non-NixOS Linux distros
     # system-manager = {
     #   url = "github:numtide/system-manager";
     #   inputs.nixpkgs.follows = "nixpkgs";

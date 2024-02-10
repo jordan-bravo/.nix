@@ -65,7 +65,7 @@ in
         asvetliakov.vscode-neovim
         # charliermarsh.ruff
         ms-python.python
-      # ];
+        # ];
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "roc-lang-unofficial";
