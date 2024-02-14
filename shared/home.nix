@@ -152,7 +152,7 @@ in
       lsof # A tool to list open files
       # mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
-      # neovim # Text editor / IDE
+      neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nil # Language server for Nixlang
       nixd # Nix langauge server

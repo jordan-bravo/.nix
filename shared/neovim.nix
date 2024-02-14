@@ -10,7 +10,7 @@ in
   ###### NixNeovim
 
   programs.nixneovim = {
-    enable = true;
+    enable = false;
     augroups = {
       highlightOnYank = {
         autocmds = [
@@ -377,19 +377,19 @@ in
 
   home.file = {
     ".config/nvim/after/ftplugin/go.lua" = {
-      enable = true;
+      enable = false;
       text = ''
         vim.opt.tabstop = 4
       '';
     };
     ".config/nvim/after/ftplugin/nix.lua" = {
-      enable = true;
+      enable = false;
       text = ''
         vim.opt.tabstop = 2
       '';
     };
     ".config/nvim/.stylua.toml" = {
-      enable = true;
+      enable = false;
       text = ''
         indent_type = "Spaces"
         indent_width = 2
