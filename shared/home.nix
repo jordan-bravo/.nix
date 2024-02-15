@@ -146,8 +146,10 @@ in
       go # The Go / Golang programming language
       gopls # Official language server for Go / Golang
       heroku # Heroku CLI
+      lazygit # Simple terminal UI for git commands # nvim dep
       lua-language-server # LSP language server for Lua
       luajit # JIT compiler for Lua 5.1
+      luajitPackages.jsregexp # JavaScript (ECMA19) regular expressions for lua (nvim dep)
       luajitPackages.luacheck # A static analyzer & linter for Lua
       lsof # A tool to list open files
       # mise # (formerly rtx) Runtime/environment manager
@@ -200,7 +202,7 @@ in
       # findutils # GNU Find Utilities, the basic directory searching utilities of the GNU operating system
       gcc # GNU Compiler Collection
       # gdbm # GNU dbm key/value database library
-      # gnumake # A tool to control the generation of non-source files from sources
+      gnumake # A tool to control the generation of non-source files from sources # nvim dep
       # libffi # A foreign function call interface library
       # libnsl # Client interface library for NIS(YP) and NIS+
       # libuuid # A set of system utilities for Linux
