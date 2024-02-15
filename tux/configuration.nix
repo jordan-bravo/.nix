@@ -31,7 +31,10 @@
     variables = {
       "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
     };
+  # Hint electron apps to use wayland:
+    sessionVariables.NIXOS_OZONE_WL = "1";
   };
+
 
   hardware = {
     ledger.enable = true; # Ledger hardware signing device.
@@ -91,10 +94,7 @@
       enable = true;
       enableSSHSupport = true;
     };
-    programs.hyprland.enable = false;
-    # Optional, hint electron apps to use wayland:
-    environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
+    hyprland.enable = false;
     virt-manager.enable = true;
     zsh.enable = true;
   };
@@ -125,11 +125,13 @@
       # Enable the KDE Plasma Desktop Environment.
       # displayManager.sddm.enable = true;
       # desktopManager.plasma5.enable = true;
-      layout = "us";
       # Enable touchpad support (enabled default in most desktopManager).
       # libinput.enable = true;
       # xkbVariant = "";
-      xkbOptions = "caps:escape_shifted_capslock";
+      xkb = {
+        layout = "us";
+        options = "caps:escape_shifted_capslock";
+      };
     };
   };
 
