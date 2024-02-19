@@ -104,7 +104,7 @@
     ivpn.enable = true;
     printing.enable = true;
     resolved = {
-      enable = false;
+      enable = true;
       dnssec = "false";
       domains = [ "~." ];
       fallbackDns = [ "194.242.2.2#dns.mullvad.net" ];

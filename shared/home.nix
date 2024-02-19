@@ -144,20 +144,19 @@ in
       fira-code # Font
       freetube # YouTube client
       go # The Go / Golang programming language
-      gopls # Official language server for Go / Golang
+      gopls # Official language server for Go / Golang # nvim-dep
       heroku # Heroku CLI
-      lazygit # Simple terminal UI for git commands # nvim dep
-      lua-language-server # LSP language server for Lua
+      lazygit # Simple terminal UI for git commands # nvim-dep
+      lua-language-server # LSP language server for Lua # nvim-dep
       luajit # JIT compiler for Lua 5.1
-      luajitPackages.jsregexp # JavaScript (ECMA19) regular expressions for lua (nvim dep)
+      luajitPackages.jsregexp # JavaScript (ECMA19) regular expressions for lua # nvim-dep
       luajitPackages.luacheck # A static analyzer & linter for Lua
       lsof # A tool to list open files
       # mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
       neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
-      nil # Language server for Nixlang
-      nixd # Nix langauge server
+      nixd # Nix langauge server # nvim-dep
       nixpkgs-fmt # Formatter for Nixlang
       # nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.pnpm # Fast, disk space efficient package manager
@@ -174,10 +173,10 @@ in
       python311 # Python 3.11
       python311Packages.base58 # Base58 and Base58Check implementation
       # rustc # Rust compiler
-      rustfmt # Rust formatter
+      rustfmt # Rust formatter # nvim-dep
       ruby_3_2 # Ruby language
-      ruff # An extremely fast Python linter
-      ruff-lsp # Ruff LSP for Python
+      ruff # An extremely fast Python linter # nvim-dep
+      ruff-lsp # Ruff LSP for Python #nvim-dep
       # rustup # Rust toolchain installer
       # sdkmanager # A drop-in replacement for sdkmanager from the Android SDK written in Python
       scc # Code counter with complexity calculations and COCOMO estimates written in Go
@@ -200,9 +199,9 @@ in
       # automake # GNU standard-compliant makefile generator
       # bzip2 # High-quality data compression program
       # findutils # GNU Find Utilities, the basic directory searching utilities of the GNU operating system
-      gcc # GNU Compiler Collection
+      gcc # GNU Compiler Collection # nvim-dep # nvim-dep
       # gdbm # GNU dbm key/value database library
-      gnumake # A tool to control the generation of non-source files from sources # nvim dep
+      gnumake # A tool to control the generation of non-source files from sources # nvim-dep
       # libffi # A foreign function call interface library
       # libnsl # Client interface library for NIS(YP) and NIS+
       # libuuid # A set of system utilities for Linux
