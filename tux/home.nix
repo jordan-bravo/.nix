@@ -17,7 +17,7 @@
         tap-to-click = true;
       };
       "org/gnome/desktop/sound" = {
-        allow-volume-above-100-percent = false;
+        allow-volume-above-100-percent = true;
       };
     };
   };

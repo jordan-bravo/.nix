@@ -131,13 +131,13 @@ with lib.hm.gvariant;
     };
     "org/gnome/shell/extensions/auto-move-windows" = {
       application-list = [
-        "firefox.desktop:1"
+        # "firefox.desktop:1"
         "kitty.desktop:2"
-        "signal-desktop.desktop:3"
+        # "signal-desktop.desktop:3"
         "slack.desktop:3"
         "thunderbird.desktop:3"
         "obsidian.desktop:4"
-        "sparrow-desktop.desktop:5"
+        # "sparrow-desktop.desktop:5"
       ];
       extend-height = true;
     };

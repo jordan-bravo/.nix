@@ -164,7 +164,7 @@ in
       # nodePackages.pyright # Python static type checker
       # nodePackages.typescript # TypeScript language
       # nodePackages.typescript-language-server # LSP for JS and TS
-      obsidian # Note-taking
+      # obsidian # Note-taking # Weird bug in gnome on tux, can't see window
       onefetch # Git repo summary
       # pgcli # Command-line interface for PostgreSQL
       # postman # API development environment
