@@ -116,6 +116,59 @@ in
             Your text goes here
         '';
       };
+      zellij-config = {
+        target = ".config/zellij/config.kdl";
+        enable = true;
+        text = ''
+          pane_frames false
+          keybinds {
+              move {
+                  bind "Ctrl x" { SwitchToMode "Normal"; }
+              }
+              normal {
+                  unbind "Ctrl h"
+                  unbind "Ctrl b"
+                  unbind "Ctrl o"
+                  }
+              scroll {
+                  bind "/" {
+                      SwitchToMode "EnterSearch"
+                      SearchInput 0
+                  }
+              }
+              session {
+                  bind "Alt s" { SwitchToMode "Normal"; }
+                  unbind "Ctrl o"
+              }
+              shared_among "search" "scroll" {
+                  bind "End" "G" {
+                      ScrollToBottom
+                  }
+                  bind "Home" {
+                      ScrollToTop
+                  }
+              }
+              shared_except "session" "locked" {
+                  bind "Alt s" { SwitchToMode "Session"; }
+                  unbind "Ctrl o"
+              }
+              shared_except "move" "locked" {
+                  bind "Ctrl x" { SwitchToMode "Move"; }
+              }
+              // these are the defaults for entersearch
+              // might want to change or add to them later
+              entersearch {
+                  bind "Ctrl c" "Esc" { SwitchToMode "Scroll"; }
+                  bind "Enter" { SwitchToMode "Search"; }
+              }
+          }
+          ui {
+              pane_frames {
+                  rounded_corners true
+              }
+          }
+        '';
+      };
     };
     sessionVariables = {
       EDITOR = "nvim";
@@ -154,6 +207,7 @@ in
       lsof # A tool to list open files
       # mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
+      neovide # A simple graphical user interface for Neovim
       neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nixd # Nix langauge server # nvim-dep
@@ -194,6 +248,7 @@ in
       wget # File retriever
       xh # Friendly and fast tool for sending HTTP requests
       yarn # Package manager for JavaScript
+      zellij # Terminal multiplexer
 
       # Packages for building Python
       # automake # GNU standard-compliant makefile generator

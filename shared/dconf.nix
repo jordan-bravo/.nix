@@ -52,7 +52,7 @@ with lib.hm.gvariant;
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "close,minimize,maximize:appmenu";
       dynamic-workspaces = false;
-      num-workspaces = 5;
+      num-workspaces = 6;
     };
     "org/gnome/mutter" = {
       dynamic-workspaces = false;
