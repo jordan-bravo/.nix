@@ -34,7 +34,7 @@ with lib.hm.gvariant;
       lock-enabled = true;
     };
     "org/gnome/desktop/session" = {
-      idle-delay = mkUint32 1200;
+      idle-delay = mkUint32 2400; # The number of seconds of inactivity before the session is considered idle.
     };
     "org/gnome/desktop/sound" = {
       event-sounds = false;
@@ -89,7 +89,7 @@ with lib.hm.gvariant;
     "org/gnome/settings-daemon/plugins/power" = {
       idle-dim = false;
       power-saver-profile-on-low-battery = true;
-      sleep-inactive-ac-timeout = 7200;
+      sleep-inactive-ac-timeout = 7200; # The amount of time in seconds the computer on AC power needs to be inactive before it goes to sleep. A value of 0 means never.
       sleep-inactive-ac-type = "nothing";
       sleep-inactive-battery-timeout = 1200;
     };
