@@ -188,6 +188,7 @@ in
       delta # A syntax-highlighting pager for git
       discord # All-in-one cross-platform voice and text chat for gamers
       dogdns # Command-line DNS client
+      dpkg # The Debian package manager
       du-dust # du + rust = dust. Like du but more intuitive
       duf # Disk Usage/Free Utility, a df alternative
       element-desktop # Matrix client
@@ -197,20 +198,13 @@ in
       fira-code # Font
       freetube # YouTube client
       go # The Go / Golang programming language
-      gopls # Official language server for Go / Golang # nvim-dep
       heroku # Heroku CLI
-      lazygit # Simple terminal UI for git commands # nvim-dep
-      lua-language-server # LSP language server for Lua # nvim-dep
-      luajit # JIT compiler for Lua 5.1
-      luajitPackages.jsregexp # JavaScript (ECMA19) regular expressions for lua # nvim-dep
-      luajitPackages.luacheck # A static analyzer & linter for Lua
       lsof # A tool to list open files
       # mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
       neovide # A simple graphical user interface for Neovim
       neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
-      nixd # Nix langauge server # nvim-dep
       nixpkgs-fmt # Formatter for Nixlang
       # nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.pnpm # Fast, disk space efficient package manager
@@ -227,10 +221,7 @@ in
       python311 # Python 3.11
       python311Packages.base58 # Base58 and Base58Check implementation
       # rustc # Rust compiler
-      rustfmt # Rust formatter # nvim-dep
       ruby_3_2 # Ruby language
-      ruff # An extremely fast Python linter # nvim-dep
-      ruff-lsp # Ruff LSP for Python #nvim-dep
       # rustup # Rust toolchain installer
       # sdkmanager # A drop-in replacement for sdkmanager from the Android SDK written in Python
       scc # Code counter with complexity calculations and COCOMO estimates written in Go
@@ -238,6 +229,7 @@ in
       slack # Desktop client for Slack
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       speedtest-rs # Command line internet speedtest tool written in rust
+      steam-run # Run commands in the same FHS environment that is used for Steam
       stylua # Lua code formatter
       # tailwindcss-language-server # LSP functionality for Tailwind CSS
       trash-cli # Command line interface to the freedesktop.org trash can
@@ -250,13 +242,35 @@ in
       yarn # Package manager for JavaScript
       zellij # Terminal multiplexer
 
+      # Neovim/Lazyvim dependencies nvim-dep
+      gcc # GNU Compiler Collection # nvim-dep # nvim-dep
+      gnumake # A tool to control the generation of non-source files from sources # nvim-dep
+      gopls # Official language server for Go / Golang # nvim-dep
+      lazygit # Simple terminal UI for git commands # nvim-dep
+      lua-language-server # LSP language server for Lua # nvim-dep
+      luajit # JIT compiler for Lua 5.1 # nvim-dep
+      luajitPackages.jsregexp # JavaScript (ECMA19) regular expressions for lua # nvim-dep
+      luajitPackages.luacheck # A static analyzer & linter for Lua # nvim-dep
+      nixd # Nix langauge server # nvim-dep
+      rustfmt # Rust formatter # nvim-dep
+      ruff # An extremely fast Python linter # nvim-dep
+      ruff-lsp # Ruff LSP for Python #nvim-dep
+      
+      # vimPlugins
+      # vimPlugins.nvim-dap
+      # vimPlugins.nvim-dap-ui
+      # vimPlugins.nvim-dap-python
+      # vimPlugins.nvim-dap-go
+      # vimPlugins.nvim-dap-virtual-text
+      # vimPlugins.telescope-dap-nvim
+
+
+
       # Packages for building Python
       # automake # GNU standard-compliant makefile generator
       # bzip2 # High-quality data compression program
       # findutils # GNU Find Utilities, the basic directory searching utilities of the GNU operating system
-      gcc # GNU Compiler Collection # nvim-dep # nvim-dep
       # gdbm # GNU dbm key/value database library
-      gnumake # A tool to control the generation of non-source files from sources # nvim-dep
       # libffi # A foreign function call interface library
       # libnsl # Client interface library for NIS(YP) and NIS+
       # libuuid # A set of system utilities for Linux

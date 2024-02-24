@@ -31,7 +31,7 @@
       krename # A powerful batch renamer for KDE
       # libsForQt5.kdenlive # Video editor
       nextcloud-client # Nextcloud sync client
-      nodejs_18 # NodeJS
+      nodejs_20 # NodeJS
       onlyoffice-bin # Office suite
       # openssl # Cryptographic library
       pinta # Image editor
