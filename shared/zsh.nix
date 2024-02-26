@@ -52,22 +52,26 @@
       # Disable git pull
       git() { if [[ $@ == "pull" ]]; then command echo "git pull disabled.  Use git fetch + git merge."; else command git "$@"; fi; }
     '';
-    plugins = [
-      {
-        name = "zsh-autocomplete";
-        src = pkgs.fetchFromGitHub {
-          owner = "marlonrichert";
-          repo = "zsh-autocomplete";
-          rev = "23.07.13";
-          sha256 = "0NW0TI//qFpUA2Hdx6NaYdQIIUpRSd0Y4NhwBbdssCs=";
-        };
-      }
-      # {
-      #   name = "powerlevel10k";
-      #   src = pkgs.zsh-powerlevel10k;
-      #   file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      # }
-    ];
+    # plugins = [
+    #   # {
+    #   #   name = "zsh-autocomplete";
+    #   #   src = pkgs.fetchFromGitHub {
+    #   #     owner = "marlonrichert";
+    #   #     repo = "zsh-autocomplete";
+    #   #     rev = "23.07.13";
+    #   #     sha256 = "0NW0TI//qFpUA2Hdx6NaYdQIIUpRSd0Y4NhwBbdssCs=";
+    #   #   };
+    #   # }
+    #   # {
+    #   #   name = "powerlevel10k";
+    #   #   src = pkgs.zsh-powerlevel10k;
+    #   #   file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    #   # }
+    # ];
+    profileExtra = ''
+      # Add ssh key
+      ssh-add ~/.ssh/ssh_id_ed25519_j@b.key
+    '';
     shellAliases = {
       l = "ls -lAhF";
       la = "ls -AhF";
