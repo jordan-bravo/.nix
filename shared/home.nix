@@ -109,12 +109,21 @@ in
     file = {
       # This is here for syntax reference.
       example-file = {
-        target = ".config/example-file/config.yaml";
+        target = ".config/example-file/config.yml";
         enable = false;
         text = ''
           Example:
             Your text goes here
         '';
+      };
+      lazygit-config = {
+        target = ".config/lazygit/config.yml";
+        enable = true;
+        text = ''
+          keybinding:
+            universal:
+              pullFiles: null
+        ''; 
       };
       zellij-config = {
         target = ".config/zellij/config.kdl";
