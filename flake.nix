@@ -44,6 +44,7 @@
     nixpkgs-py27 = {
       url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
     };
+    nixpkgs-neovim-094.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
   };
 
   outputs =
@@ -56,11 +57,16 @@
     , nixgl
     , android-nixpkgs
     , nixneovim
+    , nixpkgs-neovim-094
     , ...
     }@inputs:
     let
       pkgs-darwin = import nixpkgs-darwin {
         system = "aarch64-darwin";
+        config.allowUnfree = true;
+      };
+      pkgs-neovim-094 = import nixpkgs-neovim-094 {
+        system = "x86_64-linux";
         config.allowUnfree = true;
       };
       pkgs = import nixpkgs {
@@ -94,7 +100,7 @@
       homeConfigurations = {
         tux = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit pkgs inputs; };
+          extraSpecialArgs = { inherit pkgs inputs pkgs-neovim-094; };
           modules = [ ./tux/home.nix ];
         };
         thinky = home-manager.lib.homeManagerConfiguration {

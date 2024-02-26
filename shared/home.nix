@@ -1,6 +1,6 @@
 # ~/.nix/shared/home.nix
 
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-neovim-094, ... }:
 
 let
   username = "jordan";
@@ -234,6 +234,7 @@ in
       # tailwindcss-language-server # LSP functionality for Tailwind CSS
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
+      vim
       vorta # Desktop Backup Client for Borg
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
       watchman # Watches files and takes action when they change
@@ -282,6 +283,8 @@ in
       # tk # A widget toolkit that provides a library of basic elements for building a GUI in many different programming languages
       # xz # A general-purpose data compression software, successor of LZMA
       # zlib # For building Python
+      
+      # pkgs-neovim-094.neovim
     ];
   };
 

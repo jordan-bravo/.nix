@@ -461,6 +461,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-neovim-094": {
+      "locked": {
+        "lastModified": 1704008649,
+        "narHash": "sha256-rGPSWjXTXTurQN9beuHdyJhB8O761w1Zc5BqSSmHvoM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7",
+        "type": "github"
+      }
+    },
     "nixpkgs-py27": {
       "locked": {
         "lastModified": 1606071860,
@@ -616,6 +632,7 @@
         "nixneovim": "nixneovim",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-darwin": "nixpkgs-darwin",
+        "nixpkgs-neovim-094": "nixpkgs-neovim-094",
         "nixpkgs-py27": "nixpkgs-py27",
         "nixpkgs-python": "nixpkgs-python"
       }
