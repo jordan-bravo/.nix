@@ -24,7 +24,7 @@
         tool = "nvimdiff";
         colorMoved = "default";
       };
-      init.defaultBranch = "main";
+      init.defaultBranch = "master";
       merge = {
         conflictstyle = "diff3";
       };
