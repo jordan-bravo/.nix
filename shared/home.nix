@@ -184,6 +184,7 @@ in
     };
     # stateVersion = "23.11";
     packages = with pkgs; [
+      act # Run your GitHub Actions locally
       aerc # An email client for your terminal
       audacity # Music player
       android-studio # The Official IDE for Android (stable channel)
