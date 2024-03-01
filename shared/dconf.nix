@@ -3,6 +3,7 @@
 
 with lib.hm.gvariant;
 {
+  
   dconf.settings = {
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;
@@ -17,6 +18,7 @@ with lib.hm.gvariant;
       cursor-theme = "Adwaita";
       gtk-theme = "Adwaita";
       icon-theme = "Adwaita";
+      show-battery-percentage = true;
     };
     "org/gnome/desktop/notifications" = {
       show-banners = false;
