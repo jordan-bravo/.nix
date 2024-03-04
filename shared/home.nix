@@ -182,7 +182,6 @@ in
     sessionVariables = {
       EDITOR = "nvim";
     };
-    # stateVersion = "23.11";
     packages = with pkgs; [
       act # Run your GitHub Actions locally
       aerc # An email client for your terminal
@@ -209,6 +208,7 @@ in
       freetube # YouTube client
       go # The Go / Golang programming language
       heroku # Heroku CLI
+      librewolf # A fork of Firefox, focused on privacy, security, and freedom
       lsof # A tool to list open files
       # mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
