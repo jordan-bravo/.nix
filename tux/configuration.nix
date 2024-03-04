@@ -11,8 +11,9 @@
 
   # Bootloader.
   boot.loader = {
-    systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
+    systemd-boot.configurationLimit = 8;
   };
 
   # Setup keyfile
