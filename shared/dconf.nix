@@ -116,7 +116,7 @@ with lib.hm.gvariant;
         "org.gnome.Calendar.desktop"
         "org.gnome.Nautilus.desktop"
         "kitty.desktop"
-        "obsidian.desktop"
+        "md.obsidian.Obsidian.desktop"
         "org.telegram.desktop.desktop"
         "signal-desktop.desktop"
         "element-desktop.desktop"
@@ -127,7 +127,6 @@ with lib.hm.gvariant;
         "org.gnome.Settings.desktop"
         "org.gnome.tweaks.desktop"
         "com.mattjakeman.ExtensionManager.desktop"
-        "discord.desktop"
       ];
       last-selected-power-profile = "performance";
     };
