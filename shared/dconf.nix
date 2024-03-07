@@ -110,9 +110,10 @@ with lib.hm.gvariant;
         # "Vitals@CoreCoding.com"
       ];
       favorite-apps = [
-        "firefox.desktop"
         "brave-browser.desktop"
+        "librewolf.desktop"
         "thunderbird.desktop"
+        "firefox.desktop"
         "org.gnome.Calendar.desktop"
         "org.gnome.Nautilus.desktop"
         "kitty.desktop"
