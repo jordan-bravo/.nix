@@ -3,6 +3,11 @@
   description = "Jordan's NixOS / Darwin / Home Manager Configuration Flake";
 
   inputs = {
+    # Android packages
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # VSCode / VSCodium extensions
     nix-vscode-extensions = {
@@ -28,11 +33,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Android packages
-    android-nixpkgs = {
-      url = "github:tadfisher/android-nixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixneovim = {
       url = "github:nixneovim/nixneovim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,10 +45,12 @@
       url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
     };
     nixpkgs-neovim-094.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
+    nixpkgs-nixd-123.url = "github:nixos/nixpkgs/9a9dae8f6319600fa9aebde37f340975cab4b8c0"; #nixd
   };
 
   outputs =
-    { home-manager
+    { 
+      home-manager
     , nixpkgs
     , nix-darwin
     , nixpkgs-darwin
@@ -58,6 +60,7 @@
     , android-nixpkgs
     , nixneovim
     , nixpkgs-neovim-094
+    , nixpkgs-nixd-123
     , ...
     }@inputs:
     let
@@ -68,6 +71,9 @@
       pkgs-neovim-094 = import nixpkgs-neovim-094 {
         system = "x86_64-linux";
         config.allowUnfree = true;
+      };
+      pkgs-nixd-123 = import nixpkgs-nixd-123 {
+        system = "x86_64-linux";
       };
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -100,7 +106,7 @@
       homeConfigurations = {
         tux = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit pkgs inputs pkgs-neovim-094; };
+          extraSpecialArgs = { inherit pkgs inputs pkgs-neovim-094 pkgs-nixd-123; };
           modules = [ ./tux/home.nix ];
         };
         thinky = home-manager.lib.homeManagerConfiguration {
