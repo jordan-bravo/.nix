@@ -30,7 +30,7 @@
       # python311 # A high-level dynamically-typed programming language
       # python311Packages.pip # Tool for installing Python packages
       qbittorrent # Featureful free software BitTorrent client
-      ricochet # Anonymous peer-to-peer instant messaging over Tor
+      # ricochet-refresh # Anonymous peer-to-peer instant messaging over Tor
       sparrow # Bitcoin wallet
     ];
     homeDirectory = "/home/${config.home.username}";
