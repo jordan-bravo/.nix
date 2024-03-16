@@ -1,6 +1,6 @@
 # ~/.nix/thinky/home.nix
 
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-2311, ... }:
 
 {
   dconf.settings = {
@@ -11,7 +11,7 @@
     "org/gnome/desktop/interface" = {
       # text-scaling-factor = 0.8; # BitLab LG
       # text-scaling-factor = 1.15; # Home Innocn
-      text-scaling-factor = 1.5; # thinky built-in
+      text-scaling-factor = 1.0; # thinky built-in
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       speed = 0.3;
@@ -36,6 +36,7 @@
       # docker # Container engine
       gnome.gnome-calendar # Gnome calendar
       infisical # Manages secrets
+      pkgs-2311.nixd # Language server for Nix language
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       neovim # Text editor / IDE
       # python311Packages.debugpy # An implementation of the Debug Adapter Protocol for Python

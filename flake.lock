@@ -445,6 +445,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-2311": {
+      "locked": {
+        "lastModified": 1701282334,
+        "narHash": "sha256-MxCVrXY6v4QmfTwIysjjaX0XUhqBbxTWWB4HXtDYsdk=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "057f9aecfb71c4437d2b27d3323df7f93c010b7e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-darwin": {
       "locked": {
         "lastModified": 1710283812,
@@ -477,7 +493,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-nixd-123": {
+    "nixpkgs-nixos-nixd-123": {
       "locked": {
         "lastModified": 1708815994,
         "narHash": "sha256-hL7N/ut2Xu0NaDxDMsw2HagAjgDskToGiyZOWriiLYM=",
@@ -647,9 +663,10 @@
         "nixgl": "nixgl",
         "nixneovim": "nixneovim",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-2311": "nixpkgs-2311",
         "nixpkgs-darwin": "nixpkgs-darwin",
         "nixpkgs-neovim-094": "nixpkgs-neovim-094",
-        "nixpkgs-nixd-123": "nixpkgs-nixd-123",
+        "nixpkgs-nixos-nixd-123": "nixpkgs-nixos-nixd-123",
         "nixpkgs-py27": "nixpkgs-py27",
         "nixpkgs-python": "nixpkgs-python"
       }

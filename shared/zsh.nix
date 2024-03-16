@@ -35,9 +35,6 @@
       # Accept next word from zsh autosuggestion with Ctrl+U
       bindkey ^U forward-word
 
-      # Fix bug with up arrow (nixos.wiki/wiki/Zsh)
-      bindkey "''${key[Up]}" up-line-or-search
-
       # Ripgrep config file
       # export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgreprc
 

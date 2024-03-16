@@ -1,6 +1,6 @@
 # ~/.nix/shared/home.nix
 
-{ config, pkgs, pkgs-neovim-094, pkgs-nixd-123, ... }:
+{ config, pkgs, pkgs-neovim-094, ... }:
 
 let
   username = "jordan";
@@ -262,7 +262,6 @@ in
       luajit # JIT compiler for Lua 5.1 # nvim-dep
       luajitPackages.jsregexp # JavaScript (ECMA19) regular expressions for lua # nvim-dep
       luajitPackages.luacheck # A static analyzer & linter for Lua # nvim-dep
-      pkgs-nixd-123.nixd # Nix langauge server # nvim-dep
       rustfmt # Rust formatter # nvim-dep
       ruff # An extremely fast Python linter # nvim-dep
       ruff-lsp # Ruff LSP for Python #nvim-dep

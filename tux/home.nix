@@ -1,6 +1,6 @@
 # ~/.nix/tux/home.nix
 
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-nixos-nixd-123, ... }:
 
 {
   dconf = {
@@ -31,6 +31,7 @@
       # python311Packages.pip # Tool for installing Python packages
       qbittorrent # Featureful free software BitTorrent client
       # ricochet-refresh # Anonymous peer-to-peer instant messaging over Tor
+      pkgs-nixos-nixd-123.nixd # Nix langauge server # nvim-dep
       sparrow # Bitcoin wallet
     ];
     homeDirectory = "/home/${config.home.username}";
@@ -46,6 +47,10 @@
     # }
   ];
   nixpkgs.config.allowUnfree = true;
+  programs.zsh.initExtra = ''
+    # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
+    bindkey "''${key[Up]}" up-line-or-search
+  '';
   xdg.configFile."kitty/kitty-session.conf" = {
     enable = true;
     text = ''

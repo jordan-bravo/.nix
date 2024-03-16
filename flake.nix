@@ -45,7 +45,8 @@
       url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
     };
     nixpkgs-neovim-094.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
-    nixpkgs-nixd-123.url = "github:nixos/nixpkgs/9a9dae8f6319600fa9aebde37f340975cab4b8c0"; #nixd
+    nixpkgs-nixos-nixd-123.url = "github:nixos/nixpkgs/9a9dae8f6319600fa9aebde37f340975cab4b8c0"; #nixd on NixOS
+    nixpkgs-2311.url = "github:nixos/nixpkgs/23.11"; #nixd on non-NixOS
   };
 
   outputs =
@@ -60,7 +61,8 @@
     , android-nixpkgs
     , nixneovim
     , nixpkgs-neovim-094
-    , nixpkgs-nixd-123
+    , nixpkgs-nixos-nixd-123
+    , nixpkgs-2311
     , ...
     }@inputs:
     let
@@ -72,7 +74,10 @@
         system = "x86_64-linux";
         config.allowUnfree = true;
       };
-      pkgs-nixd-123 = import nixpkgs-nixd-123 {
+      pkgs-nixos-nixd-123 = import nixpkgs-nixos-nixd-123 {
+        system = "x86_64-linux";
+      };
+      pkgs-2311 = import nixpkgs-2311 {
         system = "x86_64-linux";
       };
       pkgs = import nixpkgs {
@@ -106,12 +111,12 @@
       homeConfigurations = {
         tux = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit pkgs inputs pkgs-neovim-094 pkgs-nixd-123; };
+          extraSpecialArgs = { inherit pkgs inputs pkgs-neovim-094 pkgs-nixos-nixd-123; };
           modules = [ ./tux/home.nix ];
         };
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs inputs; };
+          extraSpecialArgs = { inherit nixgl pkgs inputs pkgs-2311; };
           modules = [ ./thinky/home.nix ];
         };
         lenny = home-manager.lib.homeManagerConfiguration {
