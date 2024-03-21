@@ -38,11 +38,13 @@
         autoSetupRemote = true;
       };
     };
-    includes = [
-      {
-        condition = "gitdir:~/bd/";
-        path = "~/bd/.misc/.gitconfig-bd";
-      }
-    ];
+    # This section can be activated to use a differnt GPG key for signing commits
+    # based on which directory you're in.
+    # includes = [
+    #   {
+    #     condition = "gitdir:~/bd/";
+    #     path = "~/bd/.misc/.gitconfig-bd";
+    #   }
+    # ];
   };
 }
