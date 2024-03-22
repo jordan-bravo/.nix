@@ -79,9 +79,10 @@
   users.users.jordan = {
     isNormalUser = true;
     description = "jordan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "adbusers" "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
+      home-manager
     #  thunderbird
     ];
   };
@@ -100,9 +101,12 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    zsh.enable = true;
   };
 
   # List services that you want to enable:
@@ -123,5 +127,11 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
+
+  virtualisation = {
+    docker = {
+      enable = true;
+    };
+  };
 
 }
