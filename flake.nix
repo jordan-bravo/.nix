@@ -107,6 +107,13 @@
             ./tux/configuration.nix
           ];
         };
+        carby = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./carby/configuration.nix
+          ];
+        };
       };
       homeConfigurations = {
         tux = home-manager.lib.homeManagerConfiguration {
