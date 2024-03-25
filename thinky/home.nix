@@ -10,8 +10,12 @@
     };
     "org/gnome/desktop/interface" = {
       # text-scaling-factor = 0.8; # BitLab LG
-      # text-scaling-factor = 1.15; # Home Innocn
-      text-scaling-factor = 1.5; # thinky built-in
+      text-scaling-factor = 1.15; # Home Innocn
+      # text-scaling-factor = 1.5; # thinky built-in
+    };
+    "org/gnome/desktop/peripherals/mouse" = {
+      natural-scroll = true;
+      speed = -0.6;
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       speed = 0.3;
