@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -12,18 +12,22 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 8;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "carby"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  networking.hostName = "carby";
 
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # environment = {
+  #   pathsToLink = [ "/share/zsh" ];
+  #   variables = {
+  #     "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
+  #     # Hint electron apps to use wayland:
+  #     sessionVariables.NIXOS_OZONE_WL = "1";
+  #   };
+  # };
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -43,6 +47,7 @@
   };
 
   services = {
+    flatpak.enable = true;
     printing.enable = true;
     tailscale.enable = true;
     xserver = {
@@ -81,9 +86,7 @@
     description = "jordan";
     extraGroups = [ "adbusers" "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
       home-manager
-    #  thunderbird
     ];
   };
 
@@ -93,8 +96,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    firefox
     git
     neovim
+    wl-clipboard
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -106,6 +111,7 @@
       enable = true;
       enableSSHSupport = true;
     };
+    # hyprland.enable = false;
     zsh.enable = true;
   };
 
@@ -132,6 +138,10 @@
     docker = {
       enable = true;
     };
+    libvirtd.enable = false;
   };
 
+  # There is an outstanding bug in NixOS that causes rebuilds to fail sometimes, this is the workaround.
+  # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1645442729
+  systemd.services.NetworkManager-wait-online.enable = false;
 }
