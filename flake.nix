@@ -19,31 +19,29 @@
     #   url = "github:numtide/system-manager";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    # Darwin
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    # Home Manager
+    # nix-darwin.url = "github:LnL7/nix-darwin";
+    # nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
+    # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # NixGL for graphics driver issues on non-NixOS
     nixgl.url = "github:guibou/nixGL";
     # Configure Firefox extensions via Home Manager
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixneovim = {
-      url = "github:nixneovim/nixneovim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # firefox-addons = {
+    #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # nixneovim = {
+    #   url = "github:nixneovim/nixneovim";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     nixpkgs-python = {
       url = "github:cachix/nixpkgs-python";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-py27 = {
-      url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
-    };
+    # nixpkgs-py27 = {
+    #   url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
+    # };
     nixpkgs-neovim-094.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
     nixpkgs-nixos-nixd-123.url = "github:nixos/nixpkgs/9a9dae8f6319600fa9aebde37f340975cab4b8c0"; #nixd on NixOS
     nixpkgs-2311.url = "github:nixos/nixpkgs/23.11"; #nixd on non-NixOS
@@ -53,27 +51,27 @@
     { 
       home-manager
     , nixpkgs
-    , nix-darwin
-    , nixpkgs-darwin
+    # , nix-darwin
+    # , nixpkgs-darwin
     , nixpkgs-python
-    , nixpkgs-py27
+    # , nixpkgs-py27
     , nixgl
     , android-nixpkgs
-    , nixneovim
-    , nixpkgs-neovim-094
+    # , nixneovim
+    # , nixpkgs-neovim-094
     , nixpkgs-nixos-nixd-123
     , nixpkgs-2311
     , ...
     }@inputs:
     let
-      pkgs-darwin = import nixpkgs-darwin {
-        system = "aarch64-darwin";
-        config.allowUnfree = true;
-      };
-      pkgs-neovim-094 = import nixpkgs-neovim-094 {
-        system = "x86_64-linux";
-        config.allowUnfree = true;
-      };
+      # pkgs-darwin = import nixpkgs-darwin {
+      #   system = "aarch64-darwin";
+      #   config.allowUnfree = true;
+      # };
+      # pkgs-neovim-094 = import nixpkgs-neovim-094 {
+      #   system = "x86_64-linux";
+      #   config.allowUnfree = true;
+      # };
       pkgs-nixos-nixd-123 = import nixpkgs-nixos-nixd-123 {
         system = "x86_64-linux";
       };
@@ -93,7 +91,7 @@
         ];
         overlays = [
           nixgl.overlay
-          nixneovim.overlays.default
+          # nixneovim.overlays.default
         ];
       };
       # You can now reference pkgs.nixgl.nixGLIntel
@@ -118,7 +116,7 @@
       homeConfigurations = {
         tux = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit pkgs inputs pkgs-neovim-094 pkgs-nixos-nixd-123; };
+          extraSpecialArgs = { inherit pkgs inputs pkgs-nixos-nixd-123; };
           modules = [ ./tux/home.nix ];
         };
         thinky = home-manager.lib.homeManagerConfiguration {
@@ -132,23 +130,23 @@
           modules = [ ./lenny/home.nix ];
         };
       };
-      darwinConfigurations = {
-        mbp = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = { pkgs = pkgs-darwin; };
-          modules = [
-            ./mbp/configuration.nix
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = { pkgs = pkgs-darwin; };
-              home-manager.users.jordan = {
-                imports = [ ./mbp/home.nix ];
-              };
-            }
-          ];
-        };
-      };
+      # darwinConfigurations = {
+      #   mbp = nix-darwin.lib.darwinSystem {
+      #     system = "aarch64-darwin";
+      #     specialArgs = { pkgs = pkgs-darwin; };
+      #     modules = [
+      #       ./mbp/configuration.nix
+      #       home-manager.darwinModules.home-manager
+      #       {
+      #         home-manager.useGlobalPkgs = true;
+      #         home-manager.useUserPackages = true;
+      #         home-manager.extraSpecialArgs = { pkgs = pkgs-darwin; };
+      #         home-manager.users.jordan = {
+      #           imports = [ ./mbp/home.nix ];
+      #         };
+      #       }
+      #     ];
+      #   };
+      # };
     };
 }

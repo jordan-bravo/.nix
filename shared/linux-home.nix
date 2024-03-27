@@ -52,7 +52,7 @@
       # wofi # App launcher
       xorg.xwininfo # Display info for X windows and nothing for Wayland windows
       yt-dlp # CLI tool to download YouTube videos
-      zoom-us # Video conferencing
+      # zoom-us # Video conferencing
 
       # GNOME specific
       gnome.dconf-editor # Edit GNOME options

@@ -24,10 +24,6 @@ with lib.hm.gvariant;
       show-banners = false;
       show-in-lock-screen = false;
     };
-    "org/gnome/desktop/peripherals/mouse" = {
-      natural-scroll = true;
-      speed = -0.33;
-    };
     "org/gnome/desktop/privacy" = {
       remove-old-trash-files = true;
     };

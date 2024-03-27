@@ -1,6 +1,6 @@
 # ~/.nix/shared/home.nix
 
-{ config, pkgs, pkgs-neovim-094, ... }:
+{ config, pkgs, ... }:
 
 let
   username = "jordan";
