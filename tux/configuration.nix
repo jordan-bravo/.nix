@@ -32,13 +32,8 @@
     variables = {
       "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
     };
-  # Hint electron apps to use wayland:
+    # Hint electron apps to use wayland:
     sessionVariables.NIXOS_OZONE_WL = "1";
-  };
-
-
-  hardware = {
-    ledger.enable = true; # Ledger hardware signing device.
   };
 
   # Select internationalisation properties.
@@ -102,7 +97,6 @@
 
   services = {
     flatpak.enable = true;
-    ivpn.enable = true;
     printing.enable = true;
     resolved = {
       enable = true;
@@ -128,7 +122,6 @@
       # desktopManager.plasma5.enable = true;
       # Enable touchpad support (enabled default in most desktopManager).
       # libinput.enable = true;
-      # xkbVariant = "";
       xkb = {
         layout = "us";
         options = "caps:escape_shifted_capslock";
@@ -164,8 +157,8 @@
   virtualisation.docker = {
     enable = true;
     # rootless = {
-    # 	enable = true;
-    # 	setSocketVariable = true;
+    #   enable = true;
+    #   setSocketVariable = true;
     # };
   };
 
