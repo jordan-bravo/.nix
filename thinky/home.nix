@@ -10,8 +10,8 @@
     };
     "org/gnome/desktop/interface" = {
       # text-scaling-factor = 0.8; # BitLab LG
-      text-scaling-factor = 1.15; # Home Innocn
-      # text-scaling-factor = 1.5; # thinky built-in
+      # text-scaling-factor = 1.15; # Home Innocn
+      text-scaling-factor = 1.5; # thinky built-in
     };
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = true;
@@ -26,25 +26,12 @@
     };
   };
   home = {
-    file = {
-      "daemon.json" = {
-        enable = false;
-        text = ''
-          {
-            "exampleKey": "exampleValue"
-          }
-        '';
-      };
-    };
     packages = with pkgs; [
       # docker # Container engine
       gnome.gnome-calendar # Gnome calendar
       infisical # Manages secrets
       pkgs-2311.nixd # Language server for Nix language
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
-      neovim # Text editor / IDE
-      # python311Packages.debugpy # An implementation of the Debug Adapter Protocol for Python
-      # python311 # A high-level dynamically-typed programming language
     ];
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "23.11";
