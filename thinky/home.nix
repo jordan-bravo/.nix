@@ -27,7 +27,6 @@
   };
   home = {
     packages = with pkgs; [
-      # docker # Container engine
       gnome.gnome-calendar # Gnome calendar
       infisical # Manages secrets
       pkgs-2311.nixd # Language server for Nix language
