@@ -4,6 +4,10 @@
 
 {
   dconf.settings = {
+    # This is a failed attempt to solve a Ubuntu/Gnome bug:
+    # Can't unset Unicode code point shortcut (ctrl+shift+u)
+    # https://gitlab.gnome.org/GNOME/gtk/-/issues/5865
+    # Developer won't fix. Probably need to upgrade Ubuntu to fix
     "desktop/ibus/panel/emoji" = {
       hotkey = [ ];
       unicode-hotkey = [ ];
@@ -45,7 +49,7 @@
   xdg = {
     configFile = {
       "kitty/kitty-session.conf" = {
-        enable = true;
+        enable = false;
         text = ''
           # How to set the title of the first tab to .nix?
           # Set the working directory for windows in the current tab
@@ -68,17 +72,6 @@
       };
     };
     desktopEntries = {
-      # brave-browser = {
-      #   name = "Brave";
-      #   genericName = "Web Browser";
-      #   comment = "Access the Inernet";
-      #   exec = "/nix/store/7pr6j2qjhlf0j4i1wxzzvg3lxr3hyccc-brave-1.61.109/bin/brave %U";
-      #   startupNotify = true;
-      #   terminal = false;
-      #   icon = "brave-browser";
-      #   type = "Application";
-      #   categories = [ "Network" "WebBrowser" ];
-      # };
       kitty = {
         name = "Kitty";
         genericName = "Terminal Emulator";
