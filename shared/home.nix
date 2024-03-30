@@ -206,6 +206,7 @@ in
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
       freetube # YouTube client
+      gitui # Blazing fast terminal-ui for Git written in Rust
       go # The Go / Golang programming language
       heroku # Heroku CLI
       librewolf # A fork of Firefox, focused on privacy, security, and freedom
