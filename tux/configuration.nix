@@ -28,12 +28,11 @@
   };
 
   environment = {
-    pathsToLink = [ "/share/zsh" ];
+    pathsToLink = [ "/share/zsh" ]; 
+    sessionVariables.NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
     variables = {
       "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
     };
-    # Hint electron apps to use wayland:
-    sessionVariables.NIXOS_OZONE_WL = "1";
   };
 
   # Select internationalisation properties.
@@ -93,10 +92,22 @@
     hyprland.enable = false;
     virt-manager.enable = true;
     zsh.enable = true;
+    zsh.initExtra = ''
+      # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
+      bindkey "''${key[Up]}" up-line-or-search
+    '';
   };
+
+  security.rtkit.enable = true;
 
   services = {
     flatpak.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
     printing.enable = true;
     resolved = {
       enable = true;
@@ -108,9 +119,6 @@
       '';
     };
     tailscale.enable = true;
-    # udev.packages = [
-    #   pkgs.android-udev-rules
-    # ];
     xserver = {
       # Enable the X11 windowing system.  I think this is required even with Wayland.
       enable = true;
@@ -129,37 +137,31 @@
     };
   };
 
-
-  # Enable sound with pipewire.
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    # audio.enable = true; # this was in previous tux config
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
+
   system.stateVersion = "23.11";
-  # Set your time zone.
+
   time.timeZone = "America/New_York";
+
   users.users.jordan = {
-    isNormalUser = true;
     description = "jordan";
     extraGroups = [ "adbusers" "docker" "networkmanager" "wheel" ];
-    shell = pkgs.zsh; # Set the default shell for this user
+    isNormalUser = true;
     packages = with pkgs; [
       home-manager
     ];
+    shell = pkgs.zsh # Set the default shell for this user
   };
-  virtualisation.libvirtd.enable = true;
-  virtualisation.docker = {
-    enable = true;
-    # rootless = {
-    #   enable = true;
-    #   setSocketVariable = true;
-    # };
+
+  virtualisation = {
+    libvirtd.enable = true;
+    docker = {
+      enable = true;
+      # rootless = {
+      #   enable = true;
+      #   setSocketVariable = true;
+      # };
+    };
   };
 
   # There is an outstanding bug in NixOS that causes rebuilds to fail sometimes, this is the workaround.

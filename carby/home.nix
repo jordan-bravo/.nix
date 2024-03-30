@@ -1,4 +1,4 @@
-# ~/.nix/tux/home.nix
+# ~/.nix/carby/home.nix
 
 { config, pkgs, pkgs-nixos-nixd-123, ... }:
 
@@ -68,3 +68,4 @@
     '';
   };
 }
+

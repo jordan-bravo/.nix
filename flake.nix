@@ -114,22 +114,29 @@
         };
       };
       homeConfigurations = {
-        tux = home-manager.lib.homeManagerConfiguration {
+        carby = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit pkgs inputs pkgs-nixos-nixd-123; };
-          modules = [ ./tux/home.nix ];
-        };
-        thinky = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs inputs pkgs-2311; };
-          modules = [ ./thinky/home.nix ];
+          modules = [ ./carby/home.nix ];
         };
         lenny = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs inputs; };
           modules = [ ./lenny/home.nix ];
         };
+        thinky = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs; # equivalent to: inherit pkgs;
+          extraSpecialArgs = { inherit nixgl pkgs inputs pkgs-2311; };
+          modules = [ ./thinky/home.nix ];
+        };
+        tux = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs; # equivalent to: inherit pkgs;
+          extraSpecialArgs = { inherit pkgs inputs pkgs-nixos-nixd-123; };
+          modules = [ ./tux/home.nix ];
+        };
       };
+      # Note: since I no longer have a machine with MacOS, this configuration has gone a long
+      # time without any updates.  It likely needs some tweaking before it will work properly.
       # darwinConfigurations = {
       #   mbp = nix-darwin.lib.darwinSystem {
       #     system = "aarch64-darwin";
