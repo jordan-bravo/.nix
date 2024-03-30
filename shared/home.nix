@@ -265,6 +265,7 @@ in
       rustfmt # Rust formatter # nvim-dep
       ruff # An extremely fast Python linter # nvim-dep
       ruff-lsp # Ruff LSP for Python #nvim-dep
+      unzip # An extraction utility for archives compressed in .zip format
       
       # vimPlugins
       # vimPlugins.nvim-dap

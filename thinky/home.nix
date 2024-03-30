@@ -18,12 +18,10 @@
       text-scaling-factor = 1.5; # thinky built-in
     };
     "org/gnome/desktop/peripherals/mouse" = {
-      natural-scroll = true;
       speed = -0.6;
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       speed = 0.3;
-      tap-to-click = true;
     };
     "org/gnome/desktop/sound" = {
       allow-volume-above-100-percent = false;

@@ -24,6 +24,12 @@ with lib.hm.gvariant;
       show-banners = false;
       show-in-lock-screen = false;
     };
+    "org/gnome/desktop/peripherals/mouse" = {
+      natural-scroll = true;
+    };
+    "org/gnome/desktop/peripherals/touchpad" = {
+      tap-to-click = true;
+    };
     "org/gnome/desktop/privacy" = {
       remove-old-trash-files = true;
     };
