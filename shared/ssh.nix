@@ -4,7 +4,7 @@
     enable = true;
     extraConfig = "IgnoreUnknown AddKeysToAgent,UseKeychain";
     matchBlocks = {
-# This section can be activated to use a different ssh key based on
+      # This section can be activated to use a different ssh key based on
       # the alias of the repo.  For example, you could set a repo
       # remote to git@bd:org-name/repo-name
       # "bd" = {
