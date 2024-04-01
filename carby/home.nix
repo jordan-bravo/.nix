@@ -13,7 +13,7 @@
         # text-scaling-factor = 1.45; # tux built-in
       };
       "org/gnome/desktop/peripherals/mouse" = {
-        speed = -0.6;
+        speed = -0.8;
       };
       "org/gnome/desktop/peripherals/touchpad" = {
         speed = 0.25;
