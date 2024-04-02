@@ -28,7 +28,7 @@
   };
 
   environment = {
-    pathsToLink = [ "/share/zsh" ]; 
+    pathsToLink = [ "/share/zsh" ];
     sessionVariables.NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
     variables = {
       "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
@@ -151,20 +151,20 @@
       home-manager
     ];
     shell = pkgs.zsh # Set the default shell for this user
-  };
+      };
 
-  virtualisation = {
-    libvirtd.enable = true;
-    docker = {
-      enable = true;
-      # rootless = {
-      #   enable = true;
-      #   setSocketVariable = true;
-      # };
+    virtualisation = {
+      libvirtd.enable = true;
+      docker = {
+        enable = true;
+        # rootless = {
+        #   enable = true;
+        #   setSocketVariable = true;
+        # };
+      };
     };
-  };
 
-  # There is an outstanding bug in NixOS that causes rebuilds to fail sometimes, this is the workaround.
-  # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1645442729
-  systemd.services.NetworkManager-wait-online.enable = false;
-}
+    # There is an outstanding bug in NixOS that causes rebuilds to fail sometimes, this is the workaround.
+    # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1645442729
+    systemd.services.NetworkManager-wait-online.enable = false;
+  }

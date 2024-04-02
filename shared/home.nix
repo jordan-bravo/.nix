@@ -48,7 +48,7 @@ in
     # };
     starship = {
       enable = true;
-      enableZshIntegration = true;
+      # enableZshIntegration = true; # this has a default value of true
       settings = {
         directory = {
           truncate_to_repo = false;
@@ -123,7 +123,7 @@ in
           keybinding:
             universal:
               pullFiles: null
-        ''; 
+        '';
       };
       zellij-config = {
         target = ".config/zellij/config.kdl";
@@ -267,7 +267,7 @@ in
       ruff # An extremely fast Python linter # nvim-dep
       ruff-lsp # Ruff LSP for Python #nvim-dep
       unzip # An extraction utility for archives compressed in .zip format
-      
+
       # vimPlugins
       # vimPlugins.nvim-dap
       # vimPlugins.nvim-dap-ui
@@ -294,7 +294,7 @@ in
       # tk # A widget toolkit that provides a library of basic elements for building a GUI in many different programming languages
       # xz # A general-purpose data compression software, successor of LZMA
       # zlib # For building Python
-      
+
       # pkgs-neovim-094.neovim
     ];
   };
