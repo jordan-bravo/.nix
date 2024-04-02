@@ -30,6 +30,7 @@ in
     home-manager.enable = true;
     jq.enable = true;
     lsd.enable = true;
+    mise.enable = true;
     pyenv = {
       enable = false;
       # To manually activate pyenv in zsh, use the command:
@@ -37,18 +38,8 @@ in
       enableZshIntegration = false;
       rootDirectory = "${config.xdg.dataHome}/pyenv";
     };
-    # Note: rtx was renamed to mise.  It's not yet in home manager.
-    # rtx = {
-    #   enableZshIntegration = true;
-    #   settings = {
-    #     settings = {
-    #       legacy_version_file = false;
-    #     };
-    #   };
-    # };
     starship = {
       enable = true;
-      # enableZshIntegration = true; # this has a default value of true
       settings = {
         directory = {
           truncate_to_repo = false;
@@ -223,11 +214,10 @@ in
       # nodePackages.pyright # Python static type checker
       # nodePackages.typescript # TypeScript language
       # nodePackages.typescript-language-server # LSP for JS and TS
-      # obsidian # Note-taking # Weird bug in gnome on tux, can't see window
+      obsidian # Note-taking # Weird bug in gnome on tux, can't see window
       onefetch # Git repo summary
       # pgcli # Command-line interface for PostgreSQL
       # postman # API development environment
-      prettierd # Prettier daemon for faster formatting
       procs # A modern replacement for ps written in Rust
       python311 # Python 3.11
       python311Packages.base58 # Base58 and Base58Check implementation
@@ -263,6 +253,7 @@ in
       luajit # JIT compiler for Lua 5.1 # nvim-dep
       luajitPackages.jsregexp # JavaScript (ECMA19) regular expressions for lua # nvim-dep
       luajitPackages.luacheck # A static analyzer & linter for Lua # nvim-dep
+      prettierd # Prettier daemon for faster formatting
       rustfmt # Rust formatter # nvim-dep
       ruff # An extremely fast Python linter # nvim-dep
       ruff-lsp # Ruff LSP for Python #nvim-dep
