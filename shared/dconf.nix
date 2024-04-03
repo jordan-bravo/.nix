@@ -48,10 +48,14 @@ with lib.hm.gvariant;
       move-to-workspace-2 = [ "<Shift><Alt>2" ];
       move-to-workspace-3 = [ "<Shift><Alt>3" ];
       move-to-workspace-4 = [ "<Shift><Alt>4" ];
+      move-to-workspace-5 = [ "<Shift><Alt>5" ];
+      move-to-workspace-6 = [ "<Shift><Alt>6" ];
       switch-to-workspace-1 = [ "<Alt>1" ];
       switch-to-workspace-2 = [ "<Alt>2" ];
       switch-to-workspace-3 = [ "<Alt>3" ];
       switch-to-workspace-4 = [ "<Alt>4" ];
+      switch-to-workspace-5 = [ "<Alt>5" ];
+      switch-to-workspace-6 = [ "<Alt>6" ];
     };
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "close,minimize,maximize:appmenu";
@@ -62,33 +66,16 @@ with lib.hm.gvariant;
       dynamic-workspaces = false;
       workspaces-only-on-primary = true;
     };
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [
-        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
-        # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/"
-        # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/"
-      ];
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      binding = "<Alt>5";
-      command = "dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-5 \"['<Alt>5']\"";
-      name = "Switch to workspace 5";
-    };
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
-      binding = "<Shift><Alt>5";
-      command = "dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-5 \"['<Shift><Alt>5']\"";
-      name = "Move to workspace 5";
-    };
-    # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-    #   binding = "<Alt>6";
-    #   command = "dconf write /org/gnome/desktop/wm/keybindings/switch-to-workspace-6 \"['<Alt>6']\"";
-    #   name = "Switch to workspace 6";
+    # Example syntax for GHOME custom keybindings
+    # "org/gnome/settings-daemon/plugins/media-keys" = {
+    #   custom-keybindings = [
+    #     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+    #   ];
     # };
-    # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
-    #   binding = "<Shift><Alt>6";
-    #   command = "dconf write /org/gnome/desktop/wm/keybindings/move-to-workspace-6 \"['<Shift><Alt>6']\"";
-    #   name = "Move to workspace 6";
+    # "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+    #   binding = "<Alt><Ctrl>0";
+    #   command = "gnome-sessing-quit";
+    #   name = "Log Out Of GNOME";
     # };
     "org/gnome/settings-daemon/plugins/power" = {
       idle-dim = false;
