@@ -207,6 +207,7 @@ in
       neovide # A simple graphical user interface for Neovim
       neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      nest-cli # CLI tool for NestJS applications
       nixpkgs-fmt # Formatter for Nixlang
       # nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.pnpm # Fast, disk space efficient package manager
