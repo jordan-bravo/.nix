@@ -46,5 +46,8 @@
     #     path = "~/bd/.misc/.gitconfig-bd";
     #   }
     # ];
+    # signing = {
+    #   signByDefault = true;
+    # };
   };
 }
