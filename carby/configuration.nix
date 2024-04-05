@@ -4,7 +4,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -28,6 +29,8 @@
     #   "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
     # };
   };
+
+  hardware.pulseaudio.enable = false;
 
   # Select internationalisation properties.
   i18n = {
@@ -58,7 +61,7 @@
     experimental-features = [ "nix-command" "flakes" ];
     substituters = [ "https://hyprland.cachix.org" ];
     trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  }
+  };
 
   nixpkgs.config.allowUnfree = true;
 
@@ -71,10 +74,6 @@
     # hyprland.enable = false;
     virt-manager.enable = false;
     zsh.enable = true;
-    zsh.initExtra = ''
-      # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
-      bindkey "''${key[Up]}" up-line-or-search
-    '';
   };
 
   security.rtkit.enable = true;
@@ -129,7 +128,7 @@
     packages = with pkgs; [
       home-manager
     ];
-    shell = pkgs.zsh # Set the default shell for this user
+    shell = pkgs.zsh; # Set the default shell for this user
   };
 
   virtualisation = {

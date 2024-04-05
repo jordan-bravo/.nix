@@ -48,17 +48,16 @@
   };
 
   outputs =
-    { 
-      home-manager
+    { android-nixpkgs
+    , home-manager
     , nixpkgs
-    # , nix-darwin
-    # , nixpkgs-darwin
+      # , nix-darwin
+      # , nixpkgs-darwin
     , nixpkgs-python
-    # , nixpkgs-py27
+      # , nixpkgs-py27
     , nixgl
-    , android-nixpkgs
-    # , nixneovim
-    # , nixpkgs-neovim-094
+      # , nixneovim
+      # , nixpkgs-neovim-094
     , nixpkgs-nixos-nixd-123
     , nixpkgs-2311
     , ...
@@ -110,6 +109,14 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./carby/configuration.nix
+            # This section uses home-manager as a NixOS module
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = { inherit pkgs inputs pkgs-nixos-nixd-123; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.jordan = import ./carby/home.nix;
+            }
           ];
         };
       };
