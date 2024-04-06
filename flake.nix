@@ -45,6 +45,8 @@
     nixpkgs-neovim-094.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
     nixpkgs-nixos-nixd-123.url = "github:nixos/nixpkgs/9a9dae8f6319600fa9aebde37f340975cab4b8c0"; #nixd on NixOS
     nixpkgs-2311.url = "github:nixos/nixpkgs/23.11"; #nixd on non-NixOS
+    sops-nix.url = "github:mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -60,6 +62,7 @@
       # , nixpkgs-neovim-094
     , nixpkgs-nixos-nixd-123
     , nixpkgs-2311
+    , sops-nix
     , ...
     }@inputs:
     let
@@ -97,6 +100,7 @@
     in
     {
       nixosConfigurations = {
+        # Laptops / Desktops
         tux = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
@@ -116,6 +120,25 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jordan = import ./carby/home.nix;
+            }
+          ];
+        };
+        # Servers
+        sovserv = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./sovserv/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                extraSpecialArgs = { inherit inputs; };
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.main = {
+                  imports = [ ./sovserv/home.nix ];
+                };
+              };
             }
           ];
         };

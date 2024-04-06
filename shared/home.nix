@@ -107,6 +107,14 @@ in
             Your text goes here
         '';
       };
+      iamb-config = {
+        target = ".config/iamb/config.toml";
+        enable = true;
+        text = ''
+          [profiles.user]
+          user_id = "@jordanbravo:matrix.org"
+        '';
+      };
       lazygit-config = {
         target = ".config/lazygit/config.yml";
         enable = true;
@@ -196,10 +204,12 @@ in
       eslint_d # ESLint daemon for increased performance
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
+      fractal # Matrix client
       freetube # YouTube client
       gitui # Blazing fast terminal-ui for Git written in Rust
       go # The Go / Golang programming language
       heroku # Heroku CLI
+      iamb # Matrix client for Vim addicts
       librewolf # A fork of Firefox, focused on privacy, security, and freedom
       lsof # A tool to list open files
       # mise # (formerly rtx) Runtime/environment manager
