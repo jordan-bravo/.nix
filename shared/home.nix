@@ -94,6 +94,7 @@ in
       luajit # JIT compiler for Lua 5.1 # nvim-dep
       luajitPackages.jsregexp # JavaScript (ECMA19) regular expressions for lua # nvim-dep
       luajitPackages.luacheck # A static analyzer & linter for Lua # nvim-dep
+      nixd # Nix langauge server # nvim-dep
       nodePackages.pyright # Python static type checker
       prettierd # Prettier daemon for faster formatting
       rustfmt # Rust formatter # nvim-dep
@@ -194,7 +195,7 @@ in
 
   xdg = {
     enable = true;
-    configHome = "${homeDirectory}/.config";
+    configHome = "${config.home.homeDirectory}/.config";
   };
 
 }

@@ -86,9 +86,6 @@
     sessionVariables = {
       GTK_THEME = "Adwaita:dark";
     };
-    services = {
-      copyq.enable = true;
-    };
   };
 
   # Programs with more extensive config are imported from separate modules.
@@ -135,5 +132,8 @@
     };
   };
 
+  services = {
+    copyq.enable = true;
+  };
 }
 
