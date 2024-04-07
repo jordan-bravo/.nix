@@ -3,7 +3,7 @@
 
 with lib.hm.gvariant;
 {
-
+  dconf.enable = true;
   dconf.settings = {
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;

@@ -41,7 +41,7 @@
     stateVersion = "23.11";
     username = "jordan";
   };
-  imports = [ ../shared/home.nix ../shared/linux-home.nix ];
+  imports = [ ../shared/home.nix ];
   programs.zsh.profileExtra = ''
     export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS"
   '';
