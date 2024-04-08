@@ -38,7 +38,10 @@
     stateVersion = "23.11";
     username = "jordan";
   };
-  imports = [ ../shared/home.nix ];
+  imports = [
+    ../shared/home.nix
+    ../shared/workstations.nix
+  ];
   nixpkgs.config.allowUnfree = true;
   programs.zsh.profileExtra = ''
     export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS"
