@@ -21,9 +21,6 @@
     sessionVariables.NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
     systemPackages = with pkgs; [
       firefox
-      git
-      neovim
-      wl-clipboard
     ];
     # variables = {
     #   "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
@@ -49,12 +46,13 @@
   };
 
   networking = {
+    firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
     hostName = "carby";
     networkmanager.enable = true;
-    # nameservers = [
-    #   "194.242.2.2"
-    #   "2a07:e340::2"
-    # ];
+    nameservers = [
+      "194.242.2.2"
+      "2a07:e340::2"
+    ];
   };
 
   nix.settings = {
@@ -71,7 +69,7 @@
       enable = true;
       enableSSHSupport = true;
     };
-    # hyprland.enable = false;
+    # hyprland.enable = true;
     virt-manager.enable = false;
     zsh.enable = true;
   };
@@ -88,10 +86,13 @@
     };
     printing.enable = true;
     resolved = {
-      enable = false;
+      enable = true;
+      dnsovertls = "true";
       dnssec = "false";
       domains = [ "~." ];
-      fallbackDns = [ "194.242.2.2#dns.mullvad.net" ];
+      fallbackDns = [
+        "194.242.2.2#dns.mullvad.net"
+      ];
       extraConfig = ''
         DNSOverTLS=yes
       '';
