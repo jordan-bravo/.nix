@@ -43,8 +43,8 @@
     #   url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
     # };
     nixpkgs-neovim-094.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
-    nixpkgs-nixos-nixd-123.url = "github:nixos/nixpkgs/9a9dae8f6319600fa9aebde37f340975cab4b8c0"; #nixd on NixOS
-    nixpkgs-2311.url = "github:nixos/nixpkgs/23.11"; #nixd on non-NixOS
+    # nixpkgs-nixos-nixd-123.url = "github:nixos/nixpkgs/9a9dae8f6319600fa9aebde37f340975cab4b8c0"; #nixd on NixOS
+    # nixpkgs-2311.url = "github:nixos/nixpkgs/23.11"; #nixd on non-NixOS
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -60,8 +60,8 @@
     , nixgl
       # , nixneovim
       # , nixpkgs-neovim-094
-    , nixpkgs-nixos-nixd-123
-    , nixpkgs-2311
+    # , nixpkgs-nixos-nixd-123
+    # , nixpkgs-2311
     , sops-nix
     , ...
     }@inputs:
@@ -74,12 +74,12 @@
       #   system = "x86_64-linux";
       #   config.allowUnfree = true;
       # };
-      pkgs-nixos-nixd-123 = import nixpkgs-nixos-nixd-123 {
-        system = "x86_64-linux";
-      };
-      pkgs-2311 = import nixpkgs-2311 {
-        system = "x86_64-linux";
-      };
+      # pkgs-nixos-nixd-123 = import nixpkgs-nixos-nixd-123 {
+      #   system = "x86_64-linux";
+      # };
+      # pkgs-2311 = import nixpkgs-2311 {
+      #   system = "x86_64-linux";
+      # };
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
@@ -116,7 +116,7 @@
             # This section uses home-manager as a NixOS module
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit pkgs inputs pkgs-nixos-nixd-123; };
+              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jordan = import ./carby/home.nix;
@@ -146,7 +146,7 @@
       homeConfigurations = {
         carby = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit pkgs inputs pkgs-nixos-nixd-123; };
+          extraSpecialArgs = { inherit pkgs inputs; };
           modules = [ ./carby/home.nix ];
         };
         lenny = home-manager.lib.homeManagerConfiguration {
@@ -156,12 +156,12 @@
         };
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs inputs pkgs-2311; };
+          extraSpecialArgs = { inherit nixgl pkgs inputs; };
           modules = [ ./thinky/home.nix ];
         };
         tux = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit pkgs inputs pkgs-nixos-nixd-123; };
+          extraSpecialArgs = { inherit pkgs inputs; };
           modules = [ ./tux/home.nix ];
         };
       };
