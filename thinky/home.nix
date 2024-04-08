@@ -1,6 +1,6 @@
 # ~/.nix/thinky/home.nix
 
-{ config, pkgs, pkgs-2311, ... }:
+{ config, pkgs,  ... }:
 
 {
   dconf.settings = {
@@ -31,7 +31,7 @@
     packages = with pkgs; [
       gnome.gnome-calendar # Gnome calendar
       infisical # Manages secrets
-      pkgs-2311.nixd # Language server for Nix language
+      # pkgs-2311.nixd # Language server for Nix language
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
     ];
     homeDirectory = "/home/${config.home.username}";
