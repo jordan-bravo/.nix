@@ -1,4 +1,4 @@
-# ~/.nix/sovserv/home.nix
+# sovserv/home.nix
 
 { config, pkgs, lib, ... }:
 

@@ -1,4 +1,4 @@
-# ~/.nix/shared/home.nix
+# shared/home.nix
 
 { config, pkgs, ... }:
 
@@ -37,6 +37,7 @@ in
       EDITOR = "nvim";
     };
     packages = with pkgs; [
+      age # (Actually Good Encryption) A modern encryption tool with small explicit keys
       bottom # A cross-platform graphical process/system monitor with a customizable interface
       cargo # Rust package manager
       # dbeaver # SQL database client
@@ -51,7 +52,9 @@ in
       fira-code # Font
       gitui # Blazing fast terminal-ui for Git written in Rust
       go # The Go / Golang programming language
+      hyprpaper # Hyprland wallpaper program
       killall # Tool to kill processes
+      kitty # Terminal emulator
       lsof # A tool to list open files
       # mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
@@ -65,16 +68,18 @@ in
       # nodePackages.typescript-language-server # LSP for JS and TS
       onefetch # Git repo summary
       # pgcli # Command-line interface for PostgreSQL
+      pkg-config # Required for borg mount
       procs # A modern replacement for ps written in Rust
       scc # Code counter with complexity calculations and COCOMO estimates written in Go
       sd # Intuitive find & replace CLI (sed alternative)
+      sops # Secrets OPerationS
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       speedtest-rs # Command line internet speedtest tool written in rust
       steam-run # Run commands in the same FHS environment that is used for Steam
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       tree # View directory tree structure
-      vim
+      vlock # Lock the TTY screen
       watchman # Watches files and takes action when they change
       waypipe # A network proxy for Wayland clients (applications)
       wget # File retriever
@@ -86,6 +91,7 @@ in
 
       # Neovim/Lazyvim dependencies nvim-dep
       eslint_d # ESLint daemon for increased performance
+      fzf # nvim-dep
       gcc # GNU Compiler Collection # nvim-dep # nvim-dep
       gnumake # A tool to control the generation of non-source files from sources # nvim-dep
       gopls # Official language server for Go / Golang # nvim-dep
@@ -95,7 +101,11 @@ in
       luajitPackages.jsregexp # JavaScript (ECMA19) regular expressions for lua # nvim-dep
       luajitPackages.luacheck # A static analyzer & linter for Lua # nvim-dep
       nixd # Nix langauge server # nvim-dep
+      nixpkgs-fmt # nvim-dep
+      nodePackages.prettier # nvim-dep
       nodePackages.pyright # Python static type checker
+      nodePackages.typescript # nvim-dep
+      nodePackages.typescript-language-server # nvim-dep
       prettierd # Prettier daemon for faster formatting
       rustfmt # Rust formatter # nvim-dep
       ruff # An extremely fast Python linter # nvim-dep

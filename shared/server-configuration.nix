@@ -1,11 +1,11 @@
-# sovserv/configuration.nix
+# shared/server-configuration.nix
 
 { config, inputs, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    inputs.sops-nix.nixosModules.sops
+    # inputs.sops-nix.nixosModules.sops
   ];
 
   boot.loader = {
@@ -13,8 +13,6 @@
     systemd-boot.enable = true;
     systemd-boot.configurationLimit = 8;
   };
-
-  networking.hostName = "sovserv";
 
   networking.networkmanager.enable = true;
 
@@ -48,8 +46,8 @@
   # Hint electron apps to use wayland
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  environment.systemPackages = with pkgs; [
-  ];
+  # environment.systemPackages = with pkgs; [
+  # ];
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
@@ -59,7 +57,6 @@
     gnupg.agent = {
       enable = true;
     };
-    hyprland.enable = true;
     ssh = {
       startAgent = true;
       # Add SSH public keys for Borgbase
@@ -252,3 +249,5 @@
   systemd.services.NetworkManager-wait-online.enable = false;
 
 }
+
+

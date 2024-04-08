@@ -1,77 +1,19 @@
-# sovserv/configuration.nix
+# finserv/configuration.nix
 
 { config, inputs, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    inputs.sops-nix.nixosModules.sops
+    ../shared/server-configuration.nix
+    # inputs.sops-nix.nixosModules.sops
   ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
-    systemd-boot.configurationLimit = 8;
-  };
 
-  networking.hostName = "sovserv";
+  networking.hostName = "finserv";
 
-  networking.networkmanager.enable = true;
-
-  time.timeZone = "America/New_York";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  users.users.main = {
-    description = "main";
-    extraGroups = [ "docker" "networkmanager" "wheel" ];
-    isNormalUser = true;
-    packages = with pkgs; [
-    ];
-    shell = pkgs.zsh;
-  };
-
-  nixpkgs.config.allowUnfree = true;
-
-  # Hint electron apps to use wayland
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  environment.systemPackages = with pkgs; [
-  ];
-
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    sandbox = false;
-  };
-  programs = {
-    gnupg.agent = {
-      enable = true;
-    };
-    hyprland.enable = true;
-    ssh = {
-      startAgent = true;
-      # Add SSH public keys for Borgbase
-      knownHosts = {
-        "*.repo.borgbase.com" = {
-          publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGU0mISTyHBw9tBs6SuhSq8tvNM8m9eifQxM+88TowPO";
-        };
-      };
-    };
-    zsh.enable = true;
-  };
-
+  # environment.systemPackages = with pkgs; [
+  # ];
 
   services = {
     borgbackup = {
@@ -252,3 +194,4 @@
   systemd.services.NetworkManager-wait-online.enable = false;
 
 }
+

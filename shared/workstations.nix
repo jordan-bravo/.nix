@@ -1,4 +1,4 @@
-# ~/.nix/shared/workstations.nix
+# shared/workstations.nix
 
 { config, pkgs, ... }:
 

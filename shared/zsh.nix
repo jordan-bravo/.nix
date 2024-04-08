@@ -1,4 +1,4 @@
-# ~/.nix/shared/zsh.nix
+# shared/zsh.nix
 { pkgs, config, ... }:
 
 {
