@@ -102,6 +102,7 @@
       luajitPackages.luacheck # A static analyzer & linter for Lua # nvim-dep
       nixd # Nix langauge server # nvim-dep
       nixpkgs-fmt # nvim-dep
+      nodejs_21 # Event-driven I/O framework for the V8 JavaScript engine # nvim-dep
       nodePackages.prettier # nvim-dep
       nodePackages.pyright # Python static type checker
       nodePackages.typescript # nvim-dep
