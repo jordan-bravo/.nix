@@ -60,6 +60,7 @@
       neofetch # Show system info
       neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      nix-search-cli # Search packages from the command line
       nixpkgs-fmt # Formatter for Nixlang
       # nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.pnpm # Fast, disk space efficient package manager
