@@ -106,14 +106,15 @@
       nodePackages.pyright # Python static type checker
       nodePackages.typescript # nvim-dep
       nodePackages.typescript-language-server # nvim-dep
-      prettierd # Prettier daemon for faster formatting
+      prettierd # Prettier daemon for faster formatting # nvim-dep
+      python312 # Python 3.12 # nvim-dep
       rustfmt # Rust formatter # nvim-dep
       ruff # An extremely fast Python linter # nvim-dep
-      ruff-lsp # Ruff LSP for Python #nvim-dep
-      stylua # Lua code formatter
-      tailwindcss-language-server # LSP functionality for Tailwind CSS
-      unzip # An extraction utility for archives compressed in .zip format
-      vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode
+      ruff-lsp # Ruff LSP for Python # nvim-dep
+      stylua # Lua code formatter # nvim-dep
+      tailwindcss-language-server # LSP functionality for Tailwind CSS # nvim-dep
+      unzip # An extraction utility for archives compressed in .zip format # nvim-dep
+      vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode # nvim-dep
 
       # vimPlugins
       # vimPlugins.nvim-dap
