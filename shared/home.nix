@@ -158,11 +158,9 @@ in
 
   # Programs with little to no config are enabled here. 
   programs = {
+    atuin.enable = true;
     bat.enable = true;
-    broot = {
-      enable = true;
-      enableZshIntegration = true;
-    };
+    broot.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
