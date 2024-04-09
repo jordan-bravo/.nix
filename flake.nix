@@ -132,12 +132,10 @@
             ./shared/server-configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager = {
-                extraSpecialArgs = { inherit pkgs inputs; };
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.main = import ./sovserv/home.nix;
-              };
+              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.main = import ./sovserv/home.nix;
             }
           ];
         };
