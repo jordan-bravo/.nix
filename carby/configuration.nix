@@ -1,4 +1,4 @@
-# ~/.nix/carby/configuration.nix
+# carby/configuration.nix
 
 { config, pkgs, lib, ... }:
 

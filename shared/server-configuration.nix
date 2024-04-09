@@ -99,6 +99,7 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    # Examples
     # postgresql = {
     #   ensureDatabases = [ "name-of-database" ];
     # };

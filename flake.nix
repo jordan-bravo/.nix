@@ -1,4 +1,4 @@
-# ~/.nix/flake.nix
+# flake.nix
 {
   description = "Jordan's NixOS / Darwin / Home Manager Configuration Flake";
 
@@ -136,6 +136,21 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.main = import ./sovserv/home.nix;
+            }
+          ];
+        };
+        finserv = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./finserv/configuration.nix
+            ./shared/server-configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.main = import ./finserv/home.nix;
             }
           ];
         };

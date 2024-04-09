@@ -1,4 +1,4 @@
-# ~/.nix/thinky/home.nix
+# thinky/home.nix
 
 { config, pkgs,  ... }:
 

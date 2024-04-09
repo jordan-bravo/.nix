@@ -1,4 +1,4 @@
-# ~/.nix/carby/home.nix
+# carby/home.nix
 
 { config, pkgs, ... }:
 

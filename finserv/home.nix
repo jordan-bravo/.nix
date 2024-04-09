@@ -1,4 +1,4 @@
-# sovserv/home.nix
+# finserv/home.nix
 
 { config, pkgs, lib, ... }:
 
