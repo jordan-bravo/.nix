@@ -36,8 +36,8 @@
   };
   imports = [
     ../shared/home.nix
-    ../shared/hyprland.nix
     ../shared/workstations.nix
+    # ../shared/hyprland.nix
     # android-nixpkgs.hmModule {
     #   
     # }
