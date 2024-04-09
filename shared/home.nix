@@ -119,12 +119,19 @@
       yaml-language-server # Language Server for YAML Files
 
       # vimPlugins
+      #
+      #
+      # dap related:
+      #
       # vimPlugins.nvim-dap
       # vimPlugins.nvim-dap-ui
       # vimPlugins.nvim-dap-python
       # vimPlugins.nvim-dap-go
       # vimPlugins.nvim-dap-virtual-text
       # vimPlugins.telescope-dap-nvim
+      #
+      # vimPlugins.nvim-treesitter
+      # vimPlugins.nvim-treesitter.withAllGrammars
 
       # pkgs-neovim-094.neovim
     ];
