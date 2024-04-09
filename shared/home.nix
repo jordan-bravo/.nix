@@ -115,6 +115,7 @@
       tailwindcss-language-server # LSP functionality for Tailwind CSS # nvim-dep
       unzip # An extraction utility for archives compressed in .zip format # nvim-dep
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode # nvim-dep
+      yaml-language-server # Language Server for YAML Files
 
       # vimPlugins
       # vimPlugins.nvim-dap
