@@ -129,13 +129,14 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./sovserv/configuration.nix
+            ./shared/server-configuration.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 extraSpecialArgs = { inherit pkgs inputs; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.main = imports ./sovserv/home.nix;
+                users.main = import ./sovserv/home.nix;
               };
             }
           ];
