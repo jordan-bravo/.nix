@@ -1,6 +1,6 @@
 # ~/.nix/carby/home.nix
 
-{ config, pkgs, pkgs-nixos-nixd-123, ... }:
+{ config, pkgs, ... }:
 
 {
   dconf = {
@@ -30,9 +30,9 @@
       # ricochet-refresh # Anonymous peer-to-peer instant messaging over Tor
       sparrow # Bitcoin wallet
     ];
-    homeDirectory = "/home/${config.home.username}";
+    # homeDirectory = "/home/${config.home.username}";
     stateVersion = "23.11";
-    username = "jordan";
+    # username = "jordan";
   };
   imports = [
     ../shared/home.nix
@@ -42,26 +42,9 @@
     #   
     # }
   ];
-  nixpkgs.config.allowUnfree = true;
   programs.zsh.initExtra = ''
     # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
     bindkey "''${key[Up]}" up-line-or-search
   '';
-  xdg.configFile."kitty/kitty-session.conf" = {
-    enable = false;
-    text = ''
-      # How to set the title of the first tab to .nix?
-      # Set the working directory for windows in the current tab
-      cd ~/.nix
-      launch zsh
-      # launch vim
-
-      # Create a new tab for scm
-      new_tab scm
-      cd ~/scm/
-      launch zsh
-      # launch vim
-    '';
-  };
 }
 

@@ -238,22 +238,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-neovim-094": {
-      "locked": {
-        "lastModified": 1704008649,
-        "narHash": "sha256-rGPSWjXTXTurQN9beuHdyJhB8O761w1Zc5BqSSmHvoM=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7",
-        "type": "github"
-      }
-    },
     "nixpkgs-python": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -329,7 +313,6 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-neovim-094": "nixpkgs-neovim-094",
         "nixpkgs-python": "nixpkgs-python",
         "sops-nix": "sops-nix"
       }

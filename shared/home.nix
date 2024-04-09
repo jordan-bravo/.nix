@@ -136,6 +136,7 @@
     ../shared/zsh.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
 
   # Programs with little to no config are enabled here. 
   programs = {
@@ -154,13 +155,6 @@
     jq.enable = true;
     lsd.enable = true;
     mise.enable = true;
-    # pyenv = {
-    #   enable = false;
-    #   # To manually activate pyenv in zsh, use the command:
-    #   # eval "$(pyenv init -)"
-    #   enableZshIntegration = false;
-    #   rootDirectory = "${config.xdg.dataHome}/pyenv";
-    # };
     ssh = {
       enable = true;
       extraConfig = "IgnoreUnknown AddKeysToAgent,UseKeychain";
