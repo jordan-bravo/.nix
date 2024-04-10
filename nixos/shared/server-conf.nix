@@ -7,6 +7,10 @@
     # inputs.sops-nix.nixosModules.sops
   ];
 
+  # According to home-manager docs for programs.zsh.enableCompletion, adding the following
+  # line enables completion for system packages (e.g. systemd)
+  environment.pathsToLink = [ "/share/zsh" ];
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
@@ -41,7 +45,7 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-
+ 
   # Hint electron apps to use wayland
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

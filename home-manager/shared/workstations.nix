@@ -1,4 +1,4 @@
-# shared/workstations.nix
+# home-manager/shared/workstations.nix
 
 { config, pkgs, ... }:
 
@@ -86,6 +86,7 @@
     sessionVariables = {
       GTK_THEME = "Adwaita:dark";
     };
+    stateVersion = "23.11";
   };
 
   # Programs with more extensive config are imported from separate modules.

@@ -1,14 +1,8 @@
-# carby/configuration.nix
+# nixos/shared/workstation-conf.nix
 
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
   # Bootloader.
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -17,11 +11,10 @@
   };
 
   environment = {
-    # pathsToLink = [ "/share/zsh" ]; 
+    # According to home-manager docs for programs.zsh.enableCompletion, adding the following
+    # line enables completion for system packages (e.g. systemd)
+    pathsToLink = [ "/share/zsh" ];
     sessionVariables.NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
-    systemPackages = with pkgs; [
-      firefox
-    ];
     # variables = {
     #   "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
     # };
@@ -47,7 +40,6 @@
 
   networking = {
     firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
-    hostName = "carby";
     networkmanager.enable = true;
     nameservers = [
       "194.242.2.2"
@@ -147,3 +139,4 @@
   # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1645442729
   systemd.services.NetworkManager-wait-online.enable = false;
 }
+

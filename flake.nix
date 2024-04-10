@@ -105,21 +105,22 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./tux/configuration.nix
+            ./nixos/tux/configuration.nix
           ];
         };
         carby = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./carby/configuration.nix
+            ./nixos/carby/configuration.nix
+            ./nixos/shared/workstation-conf.nix
             # This section uses home-manager as a NixOS module
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit pkgs inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jordan = import ./carby/home.nix;
+              home-manager.users.jordan = import ./home-manager/carby/home.nix;
             }
           ];
         };
@@ -128,14 +129,14 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./sovserv/configuration.nix
-            ./shared/server-configuration.nix
+            ./nixos/sovserv/configuration.nix
+            ./nixos/shared/server-conf.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit pkgs inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.main = import ./sovserv/home.nix;
+              home-manager.users.main = import ./home-manager/sovserv/home.nix;
             }
           ];
         };
@@ -143,14 +144,14 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./finserv/configuration.nix
-            ./shared/server-configuration.nix
+            ./nixos/finserv/configuration.nix
+            ./nixos/shared/server-conf.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit pkgs inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.main = import ./finserv/home.nix;
+              home-manager.users.main = import ./home-manager/finserv/home.nix;
             }
           ];
         };
@@ -159,22 +160,22 @@
         carby = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit pkgs inputs; };
-          modules = [ ./carby/home.nix ];
+          modules = [ ./home-manager/carby/home.nix ];
         };
         lenny = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs inputs; };
-          modules = [ ./lenny/home.nix ];
+          modules = [ ./home-manager/lenny/home.nix ];
         };
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs inputs; };
-          modules = [ ./thinky/home.nix ];
+          modules = [ ./home-manager/thinky/home.nix ];
         };
         tux = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit pkgs inputs; };
-          modules = [ ./tux/home.nix ];
+          modules = [ ./home-manager/tux/home.nix ];
         };
       };
       # Note: since I no longer have a machine with MacOS, this configuration has gone a long
@@ -191,7 +192,7 @@
       #         home-manager.useUserPackages = true;
       #         home-manager.extraSpecialArgs = { pkgs = pkgs-darwin; };
       #         home-manager.users.jordan = {
-      #           imports = [ ./mbp/home.nix ];
+      #           imports = [ ./home-manager/mbp/home.nix ];
       #         };
       #       }
       #     ];
