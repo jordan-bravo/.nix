@@ -101,7 +101,8 @@
       luajit # JIT compiler for Lua 5.1 # nvim-dep
       luajitPackages.jsregexp # JavaScript (ECMA19) regular expressions for lua # nvim-dep
       luajitPackages.luacheck # A static analyzer & linter for Lua # nvim-dep
-      marksman # Language Server for markdown
+      marksman # Language Server for markdown # nvim-dep
+      markdownlint-cli # Command line interface for MarkdownLint
       nixd # Nix langauge server # nvim-dep
       nixpkgs-fmt # nvim-dep
       nodejs_21 # Event-driven I/O framework for the V8 JavaScript engine # nvim-dep
