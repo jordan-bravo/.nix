@@ -89,6 +89,7 @@
       yarn # Package manager for JavaScript
       yt-dlp # CLI tool to download YouTube videos
       zellij # Terminal multiplexer
+      zola # A fast static site generator with everything built-in
 
       # Neovim/Lazyvim dependencies nvim-dep
       eslint_d # ESLint daemon for increased performance
