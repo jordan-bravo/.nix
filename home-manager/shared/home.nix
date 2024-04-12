@@ -36,6 +36,7 @@
     sessionVariables = {
       EDITOR = "nvim";
     };
+    stateVersion = "23.11";
     packages = with pkgs; [
       age # (Actually Good Encryption) A modern encryption tool with small explicit keys
       bottom # A cross-platform graphical process/system monitor with a customizable interface

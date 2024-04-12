@@ -5,7 +5,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../shared/server-configuration.nix
+    ../shared/server-conf.nix
     # inputs.sops-nix.nixosModules.sops
   ];
 
@@ -24,7 +24,7 @@
     #   enable = true;
     #   databases = [ "name-of-database" ];
     #   startAt = "*-*-* 03:15:00";
-    };
+    # };
   };
 }
 
