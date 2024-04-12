@@ -10,7 +10,7 @@
     ];
   };
 
-  imports = [ ../shared/home.nix ./zsh.nix ];
+  imports = [ ../shared/home.nix ];
 
   programs.rtx.enable = true;
   programs.zsh = {

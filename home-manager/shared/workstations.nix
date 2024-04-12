@@ -128,7 +128,7 @@
     zsh = {
       profileExtra = ''
         # Add ssh key
-        ssh-add ~/.ssh/ssh_id_ed25519_j@b.key
+        ssh-add ~/.ssh/ssh_id_ed25519_jordan@bravo
       '';
     };
   };

@@ -65,10 +65,6 @@
     #   #   file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
     #   # }
     # ];
-    profileExtra = ''
-      # Add ssh key
-      ssh-add ~/.ssh/ssh_id_ed25519_j@b.key
-    '';
     shellAliases = {
       l = "ls -lAhF";
       la = "ls -AhF";
