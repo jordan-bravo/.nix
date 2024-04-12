@@ -47,7 +47,6 @@
       dogdns # Command-line DNS client
       du-dust # du + rust = dust. Like du but more intuitive
       duf # Disk Usage/Free Utility, a df alternative
-      # emmet-ls # Emmet support based on LSP
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
       gitui # Blazing fast terminal-ui for Git written in Rust
@@ -62,13 +61,9 @@
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nix-search-cli # Search packages from the command line
       nixpkgs-fmt # Formatter for Nixlang
-      # nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.pnpm # Fast, disk space efficient package manager
-      # nodePackages.prettier # Formatter for JavaScript and other languages
-      # nodePackages.typescript # TypeScript language
-      # nodePackages.typescript-language-server # LSP for JS and TS
       onefetch # Git repo summary
-      # pgcli # Command-line interface for PostgreSQL
+      pgcli # Command-line interface for PostgreSQL
       pkg-config # Required for borg mount
       procs # A modern replacement for ps written in Rust
       scc # Code counter with complexity calculations and COCOMO estimates written in Go
@@ -92,6 +87,7 @@
       zola # A fast static site generator with everything built-in
 
       # Neovim/Lazyvim dependencies nvim-dep
+      emmet-ls # Emmet support based on LSP # nvim-dep
       eslint_d # ESLint daemon for increased performance
       fzf # nvim-dep
       gcc # GNU Compiler Collection # nvim-dep # nvim-dep
@@ -107,6 +103,7 @@
       nixd # Nix langauge server # nvim-dep
       nixpkgs-fmt # nvim-dep
       nodejs_21 # Event-driven I/O framework for the V8 JavaScript engine # nvim-dep
+      nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.prettier # nvim-dep
       nodePackages.pyright # Python static type checker
       nodePackages.typescript # nvim-dep
