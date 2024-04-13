@@ -8,6 +8,7 @@
       url = "github:tadfisher/android-nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # VSCode / VSCodium extensions
     nix-vscode-extensions = {
@@ -52,6 +53,7 @@
   outputs =
     { android-nixpkgs
     , home-manager
+    , nix-bitcoin
     , nixpkgs
       # , nix-darwin
       # , nixpkgs-darwin
@@ -153,6 +155,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.main = import ./home-manager/finserv/home.nix;
             }
+            nix-bitcoin.nixosModules.default
           ];
         };
       };
