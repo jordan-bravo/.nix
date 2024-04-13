@@ -68,6 +68,7 @@
       pkg-config # Required for borg mount
       procs # A modern replacement for ps written in Rust
       scc # Code counter with complexity calculations and COCOMO estimates written in Go
+      sad # CLI tool to search and replace
       sd # Intuitive find & replace CLI (sed alternative)
       sops # Secrets OPerationS
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
