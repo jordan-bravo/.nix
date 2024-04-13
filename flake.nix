@@ -62,8 +62,8 @@
     , nixgl
       # , nixneovim
       # , nixpkgs-neovim-094
-    # , nixpkgs-nixos-nixd-123
-    # , nixpkgs-2311
+      # , nixpkgs-nixos-nixd-123
+      # , nixpkgs-2311
     , sops-nix
     , ...
     }@inputs:

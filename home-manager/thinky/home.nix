@@ -1,6 +1,6 @@
 # thinky/home.nix
 
-{ config, pkgs,  ... }:
+{ config, pkgs, ... }:
 
 {
   dconf.settings = {
