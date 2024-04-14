@@ -1,4 +1,4 @@
-# shared/server-configuration.nix
+# shared/server-conf.nix
 
 { config, inputs, pkgs, ... }:
 
