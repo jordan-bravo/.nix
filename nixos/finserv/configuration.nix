@@ -1,6 +1,6 @@
 # finserv/configuration.nix
 
-{ config, inputs, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 {
   imports = [
@@ -19,17 +19,42 @@
 
   # Enable some services.
   # See ../configuration.nix for all available features.
-  services.bitcoind = {
-    enable = true;
-    txindex = true;
+  services = {
+    bitcoind = {
+      enable = true;
+      extraConfig = ''
+        onlynet=onion
+      '';
+      listen = true;
+      tor = {
+        proxy = lib.mkDefault true;
+        enforce = lib.mkDefault true;
+      };
+      txindex = true;
+    };
+    fulcrum = {
+      enable = true;
+      extraConfig = ''
+        fast-sync = 6000
+      '';
+    };
+    tor = {
+      enable = true;
+      client.enable = true;
+    };
   };
   # services.clightning.enable = true;
 
   # When using nix-bitcoin as part of a larger NixOS configuration, set the following to enable
   # interactive access to nix-bitcoin features (like bitcoin-cli) for your system's main user
-  nix-bitcoin.operator = {
-    enable = true;
-    name = "main";
+  nix-bitcoin = {
+    onionServices = {
+      bitcoind.enable = lib.mkDefault true;
+    };
+    operator = {
+      enable = true;
+      name = "main";
+    };
   };
 
   # If you use a custom nixpkgs version for evaluating your system
