@@ -35,8 +35,16 @@
     fulcrum = {
       enable = true;
       extraConfig = ''
-        fast-sync = 6000
+        fast-sync = 16000
       '';
+    };
+    mempool = {
+      enable = false;
+      electrumServer = "fulcrum";
+      frontend = {
+        enable = true;
+        # nginxConfig = {};
+      };
     };
     tor = {
       enable = true;
