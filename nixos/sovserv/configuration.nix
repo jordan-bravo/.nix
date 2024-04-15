@@ -138,7 +138,7 @@
   };
   sops = {
     age.keyFile = "/home/main/.config/sops/age/keys.txt";
-    defaultSopsFile = ../secrets/secrets.yaml;
+    defaultSopsFile = ../../secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
     secrets = {
       "borg/passphrase" = { };

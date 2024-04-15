@@ -6,8 +6,8 @@
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
     enable = true;
-    autosuggestion.enable = true;
-    enableCompletion = false;
+    # autosuggestion.enable = true;
+    # enableCompletion = true;
     history = {
       expireDuplicatesFirst = true;
       ignoreAllDups = true;

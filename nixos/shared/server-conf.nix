@@ -9,7 +9,7 @@
 
   # According to home-manager docs for programs.zsh.enableCompletion, adding the following
   # line enables completion for system packages (e.g. systemd)
-  environment.pathsToLink = [ "/share/zsh" ];
+  # environment.pathsToLink = [ "/share/zsh" ];
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
@@ -35,13 +35,16 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  users.defaultUserShell = pkgs.zsh;
+
   users.users.main = {
     description = "main";
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     isNormalUser = true;
     packages = with pkgs; [
     ];
-    shell = pkgs.zsh;
+    useDefaultShell = true;
+    # shell = pkgs.zsh;
   };
 
   nixpkgs.config.allowUnfree = true;

@@ -159,7 +159,6 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      enableZshIntegration = true;
     };
     fzf.enable = false;
     gh.enable = true;
@@ -185,7 +184,6 @@
     };
     zoxide = {
       enable = true;
-      enableZshIntegration = true;
     };
   };
 
