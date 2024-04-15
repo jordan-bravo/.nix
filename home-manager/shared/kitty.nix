@@ -1,4 +1,4 @@
-# ~/.nix/shared/kitty.nix
+# home-manager/shared/kitty.nix
 {
   programs.kitty = {
     enable = true;
