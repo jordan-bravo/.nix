@@ -68,8 +68,10 @@
     shellAliases = {
       l = "ls -lAhF";
       la = "ls -AhF";
-      hms = "home-manager switch --flake ~/.nix#$(hostname)";
       gexit = "gnome-session-quit --no-prompt";
+      hms = "home-manager switch --flake ~/.nix#$(hostname)";
+      jv = "NVIM_APPNAME=jvim nvim";
+      jvim = "NVIM_APPNAME=jvim nvim";
       mise-activate = "eval \"$(~/.local/bin/mise activate zsh)\"";
       nixr = "sudo nixos-rebuild switch --flake ~/.nix";
       s = "git status";
