@@ -34,9 +34,6 @@
     };
     fulcrum = {
       enable = true;
-      extraConfig = ''
-        fast-sync = 16000
-      '';
     };
     mempool = {
       enable = false;
