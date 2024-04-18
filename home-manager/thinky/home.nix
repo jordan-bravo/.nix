@@ -14,6 +14,7 @@
     };
     "org/gnome/desktop/interface" = {
       # text-scaling-factor = 0.8; # BitLab LG
+      # text-scaling-factor = 1.0;
       # text-scaling-factor = 1.15; # Home Innocn
       text-scaling-factor = 1.5; # thinky built-in
     };
@@ -45,6 +46,8 @@
   nixpkgs.config.allowUnfree = true;
   programs.zsh.profileExtra = ''
     export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS"
+    # Add ssh key
+    ssh-add ~/.ssh/ssh_id_ed25519_jordan@bravo
   '';
   targets.genericLinux.enable = true;
   xdg = {
