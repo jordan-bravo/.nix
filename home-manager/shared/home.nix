@@ -46,6 +46,7 @@
       distrobox # Run containers of any Linux distro
       docker-compose # Docker Compose plugin for Docker
       dogdns # Command-line DNS client
+      drawio # Diagram application
       du-dust # du + rust = dust. Like du but more intuitive
       duf # Disk Usage/Free Utility, a df alternative
       fd # A simple, fast and user-friendly alternative to find

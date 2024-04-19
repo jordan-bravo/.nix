@@ -1,6 +1,6 @@
 # thinky/home.nix
 
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-micro-2-0-12, ... }:
 
 {
   dconf.settings = {
@@ -15,8 +15,8 @@
     "org/gnome/desktop/interface" = {
       # text-scaling-factor = 0.8; # BitLab LG
       # text-scaling-factor = 1.0;
-      # text-scaling-factor = 1.15; # Home Innocn
-      text-scaling-factor = 1.5; # thinky built-in
+      text-scaling-factor = 1.15; # Home Innocn
+      # text-scaling-factor = 1.5; # thinky built-in
     };
     "org/gnome/desktop/peripherals/mouse" = {
       speed = -0.6;
@@ -33,6 +33,7 @@
       gnome.gnome-calendar # Gnome calendar
       infisical # Manages secrets
       # pkgs-2311.nixd # Language server for Nix language
+      pkgs-micro-2-0-12.micro
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
     ];
     homeDirectory = "/home/${config.home.username}";

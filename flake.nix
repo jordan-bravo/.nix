@@ -48,6 +48,7 @@
     # nixpkgs-2311.url = "github:nixos/nixpkgs/23.11"; #nixd on non-NixOS
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs-micro-2-0-12.url = "github:nixos/nixpkgs/3007746b3f5bfcb49e102b517bca891822a41b31";
   };
 
   outputs =
@@ -65,6 +66,7 @@
       # , nixpkgs-nixos-nixd-123
       # , nixpkgs-2311
     , sops-nix
+    , nixpkgs-micro-2-0-12
     , ...
     }@inputs:
     let
@@ -82,6 +84,9 @@
       # pkgs-2311 = import nixpkgs-2311 {
       #   system = "x86_64-linux";
       # };
+      pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
+        system = "x86_64-linux";
+      };
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
@@ -172,7 +177,7 @@
         };
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs inputs; };
+          extraSpecialArgs = { inherit nixgl pkgs inputs pkgs-micro-2-0-12; };
           modules = [ ./home-manager/thinky/home.nix ];
         };
         tux = home-manager.lib.homeManagerConfiguration {
