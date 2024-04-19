@@ -48,7 +48,7 @@
     # nixpkgs-2311.url = "github:nixos/nixpkgs/23.11"; #nixd on non-NixOS
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    nixpkgs-micro-2-0-12.url = "github:nixos/nixpkgs/3007746b3f5bfcb49e102b517bca891822a41b31";
+    nixpkgs-micro-2-0-12.url = "github:nixos/nixpkgs/a71323f68d4377d12c04a5410e214495ec598d4c";
   };
 
   outputs =

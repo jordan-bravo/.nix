@@ -306,17 +306,17 @@
     },
     "nixpkgs-micro-2-0-12": {
       "locked": {
-        "lastModified": 1684091592,
-        "narHash": "sha256-GBGqOd/owyHARCM/kz1OGnUUqEWGWEVcj9+zrl3vVlI=",
+        "lastModified": 1700230496,
+        "narHash": "sha256-pl8PLUQLigZgFZrafIXs2djne5kboimK6MYsZN8Ywtg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3007746b3f5bfcb49e102b517bca891822a41b31",
+        "rev": "a71323f68d4377d12c04a5410e214495ec598d4c",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3007746b3f5bfcb49e102b517bca891822a41b31",
+        "rev": "a71323f68d4377d12c04a5410e214495ec598d4c",
         "type": "github"
       }
     },
