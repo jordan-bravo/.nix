@@ -77,6 +77,23 @@
       };
     };
     desktopEntries = {
+      brave-browser = {
+        name = "Brave Web Browser";
+        genericName = "Web Browser";
+        comment = "Access the internet";
+        exec = "nixGLIntel brave %U";
+        icon = "brave-browser";
+        categories = [ "Network" "WebBrowser" ];
+        terminal = false;
+      };
+      firefox = {
+        name = "Firefox";
+        genericName = "Web Browser";
+        exec = "nixGLIntel firefox --name firefox %U";
+        icon = "firefox";
+        categories = [ "Network" "WebBrowser" ];
+        terminal = false;
+      };
       kitty = {
         name = "Kitty";
         genericName = "Terminal Emulator";
@@ -84,6 +101,14 @@
         exec = "nixGLIntel kitty";
         icon = "kitty";
         categories = [ "System" "TerminalEmulator" ];
+      };
+      librewolf = {
+        name = "Librewolf";
+        genericName = "Web Browser";
+        exec = "nixGLIntel librewolf --name librewolf %U";
+        icon = "librewolf";
+        categories = [ "Network" "WebBrowser" ];
+        terminal = false;
       };
     };
   };
