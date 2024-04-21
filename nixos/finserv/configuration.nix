@@ -34,6 +34,11 @@
     };
     fulcrum = {
       enable = true;
+      extraConfig = ''
+        ssl = 0.0.0.0:50002
+        cert = /var/lib/fulcrum/fulcrum-cert.pem
+        key = /var/lib/fulcrum/fulcrum-key.pem
+      '';
     };
     mempool = {
       enable = false;
