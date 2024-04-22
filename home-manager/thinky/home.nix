@@ -47,8 +47,9 @@
   nixpkgs.config.allowUnfree = true;
   programs.zsh.profileExtra = ''
     export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS"
+    # The following shouldn't be needed because it's already in home-manager/shared/workstations.nix
     # Add ssh key
-    ssh-add ~/.ssh/ssh_id_ed25519_jordan@bravo
+    # ssh-add ~/.ssh/ssh_id_ed25519_jordan@bravo
   '';
   targets.genericLinux.enable = true;
   xdg = {

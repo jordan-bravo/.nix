@@ -51,7 +51,7 @@
       onlyoffice-bin # Office suite
       pinta # Image editor
       polkit_gnome # Authentication agent
-      # postman # API development environment
+      postman # API development environment
       signal-desktop # Signal desktop
       slack # Desktop client for Slack
       # spot # Native Spotify client for the GNOME desktop
