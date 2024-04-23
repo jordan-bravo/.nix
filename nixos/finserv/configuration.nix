@@ -9,7 +9,13 @@
     # inputs.sops-nix.nixosModules.sops
   ];
 
-  networking.hostName = "finserv";
+  networking = {
+    hostName = "finserv";
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 50001 50002 ];
+    };
+  };
 
   ### nix-bitcoin section
 
