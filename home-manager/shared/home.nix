@@ -30,6 +30,9 @@
           keybinding:
             universal:
               pullFiles: null
+          git:
+            paging:
+              pager: delta
         '';
       };
     };
@@ -155,7 +158,12 @@
   # Programs with little to no config are enabled here. 
   programs = {
     atuin.enable = true;
-    bat.enable = true;
+    bat = {
+      enable = true;
+      config = {
+        theme = "Visual Studio Dark+";
+      };
+    };
     broot.enable = true;
     direnv = {
       enable = true;

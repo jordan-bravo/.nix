@@ -9,6 +9,7 @@
     delta = {
       enable = true;
       options = {
+        syntax-theme = "Visual Studio Dark+";
         navigate = true;
         light = false;
         side-by-side = true;
