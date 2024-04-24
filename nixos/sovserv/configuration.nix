@@ -49,6 +49,9 @@
     };
     caddy = {
       enable = true;
+      # logFormat = ''
+      #   level DEBUG
+      # '';
       package = pkgs.callPackage ./caddy.nix {
         plugins = [
           "github.com/caddy-dns/cloudflare"
@@ -61,7 +64,7 @@
         }
       '';
       virtualHosts."fulcrum.finserv.top".extraConfig = ''
-        reverse_proxy 192.168.1.192:50002
+        reverse_proxy 192.168.1.122:50002
         tls {
           dns cloudflare {env.CF_API_TOKEN}
         }
