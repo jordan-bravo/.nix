@@ -55,6 +55,7 @@
       fd # A simple, fast and user-friendly alternative to find
       fira-code # Font
       gitui # Blazing fast terminal-ui for Git written in Rust
+      glow # Render markdown on the CLI, with pizzazz!
       go # The Go / Golang programming language
       hyprpaper # Hyprland wallpaper program
       killall # Tool to kill processes
