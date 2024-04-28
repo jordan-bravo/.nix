@@ -56,11 +56,13 @@
       fira-code # Font
       gitui # Blazing fast terminal-ui for Git written in Rust
       glow # Render markdown on the CLI, with pizzazz!
+      gnome-multi-writer # Tool for writing an ISO file to multiple USB devices at once
       go # The Go / Golang programming language
       hyprpaper # Hyprland wallpaper program
       killall # Tool to kill processes
       kitty # Terminal emulator
       lsof # A tool to list open files
+      mediawriter # Tool to write images files to portable media 
       # mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
       neovim # Text editor / IDE
@@ -82,6 +84,7 @@
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       tree # View directory tree structure
+      ventoy-full # A New Bootable USB Solution
       vlock # Lock the TTY screen
       watchman # Watches files and takes action when they change
       waypipe # A network proxy for Wayland clients (applications)
