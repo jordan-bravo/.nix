@@ -15,8 +15,8 @@
     "org/gnome/desktop/interface" = {
       # text-scaling-factor = 0.8; # BitLab LG
       # text-scaling-factor = 1.0;
-      # text-scaling-factor = 1.15; # Home Innocn
-      text-scaling-factor = 1.5; # thinky built-in
+      text-scaling-factor = 1.15; # Home Innocn
+      # text-scaling-factor = 1.5; # thinky built-in
     };
     "org/gnome/desktop/peripherals/mouse" = {
       speed = -0.6;
@@ -79,13 +79,21 @@
     };
     desktopEntries = {
       brave-browser = {
-        name = "Brave Web Browser";
+        name = "Brave Nix";
         genericName = "Web Browser";
         comment = "Access the internet";
         exec = "nixGLIntel brave %U";
         icon = "brave-browser";
         categories = [ "Network" "WebBrowser" ];
         terminal = false;
+      };
+      element = {
+        name = "Element Nix";
+        genericName = "Matrix Client";
+        comment = "A feature-rich client for Matrix.org";
+        exec = "nixGLIntel element-desktop %u";
+        icon = "element";
+        categories = [ "Network" "InstantMessaging" "Chat" ];
       };
       firefox = {
         name = "Firefox";
@@ -109,6 +117,15 @@
         exec = "nixGLIntel librewolf --name librewolf %U";
         icon = "librewolf";
         categories = [ "Network" "WebBrowser" ];
+        terminal = false;
+      };
+      slack = {
+        name = "Slack Nix";
+        genericName = "Slack Client for Linux";
+	comment = "Slack Desktop";
+        exec = "nixGLIntel slack -s %U";
+        icon = "slack";
+        categories = [ "Network" "InstantMessaging" ];
         terminal = false;
       };
     };
