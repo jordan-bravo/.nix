@@ -48,6 +48,10 @@
     # nixpkgs-2311.url = "github:nixos/nixpkgs/23.11"; #nixd on non-NixOS
     sops-nix.url = "github:mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    system-manager = {
+      url = "github:numtide/system-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixpkgs-micro-2-0-12.url = "github:nixos/nixpkgs/a71323f68d4377d12c04a5410e214495ec598d4c";
   };
 
@@ -66,6 +70,7 @@
       # , nixpkgs-nixos-nixd-123
       # , nixpkgs-2311
     , sops-nix
+    , system-manager
     , nixpkgs-micro-2-0-12
     , ...
     }@inputs:
@@ -164,6 +169,7 @@
           ];
         };
       };
+      # Home-Manager standalone configurations
       homeConfigurations = {
         carby = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
@@ -186,6 +192,13 @@
           modules = [ ./home-manager/tux/home.nix ];
         };
       };
+      # System-Manager (for controlling services and system config on non-NixOS Linux)
+      systemConfigs.default = system-manager.lib.makeSystemConfig {
+        modules = [
+          # ./system-manager
+        ];
+      };
+
       # Note: since I no longer have a machine with MacOS, this configuration has gone a long
       # time without any updates.  It likely needs some tweaking before it will work properly.
       # darwinConfigurations = {
