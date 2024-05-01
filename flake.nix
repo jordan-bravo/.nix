@@ -118,6 +118,15 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./nixos/tux/configuration.nix
+            ./nixos/shared/workstation-conf.nix
+            # This section uses home-manager as a NixOS module
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.jordan = import ./home-manager/tux/home.nix;
+            }
           ];
         };
         carby = nixpkgs.lib.nixosSystem {
