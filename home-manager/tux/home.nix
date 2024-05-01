@@ -7,9 +7,9 @@
     settings = {
       "org/gnome/desktop/interface" = {
         # text-scaling-factor = 0.9; # BitLab LG
-        text-scaling-factor = 1.0; # Normal scaling
+        # text-scaling-factor = 1.0; # Normal scaling
         # text-scaling-factor = 1.25; # Home Innocn
-        # text-scaling-factor = 1.45; # tux built-in
+        text-scaling-factor = 1.45; # tux built-in
       };
       "org/gnome/desktop/peripherals/mouse" = {
         speed = -0.8;
