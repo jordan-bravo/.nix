@@ -63,12 +63,12 @@
           dns cloudflare {env.CF_API_TOKEN}
         }
       '';
-      virtualHosts."fulcrum.finserv.top".extraConfig = ''
-        reverse_proxy 192.168.1.122:50002
-        tls {
-          dns cloudflare {env.CF_API_TOKEN}
-        }
-      '';
+      # virtualHosts."fulcrum.finserv.top".extraConfig = ''
+      #   reverse_proxy 100.124.142.57:50002
+      #   tls {
+      #     dns cloudflare {env.CF_API_TOKEN}
+      #   }
+      # '';
     };
     nextcloud = {
       # After enabling Nextcloud for the first time, there will be a warning in the administrative
