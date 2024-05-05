@@ -6,7 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ../shared/server-conf.nix
-    # inputs.sops-nix.nixosModules.sops
+    inputs.sops-nix.nixosModules.sops
   ];
 
   networking = {
@@ -14,6 +14,7 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [ 50001 50002 ];
+      allowedUDPPorts = [ 50001 50002 ];
     };
   };
 
@@ -38,12 +39,33 @@
       };
       txindex = true;
     };
+    # caddy = {
+    #   enable = false;
+    #   # logFormat = ''
+    #   #   level DEBUG
+    #   # '';
+    #   package = pkgs.callPackage ../shared/caddy.nix {
+    #     plugins = [
+    #       "github.com/caddy-dns/cloudflare"
+    #     ];
+    #   };
+    #   virtualHosts."fulcrum.finserv.top".extraConfig = ''
+    #     reverse_proxy localhost:50002
+    #     tls {
+    #       dns cloudflare {env.CF_API_TOKEN}
+    #     }
+    #   '';
+    # };
     fulcrum = {
       enable = true;
+      # To generate a cert, run the command: sudo tailscale cert
+      # Then change the owner of the crt and key files to fulcrum: chown fulcrum:fulcrum
+      # Finally, copy or move them to the directory below for cert and key
       extraConfig = ''
         ssl = 0.0.0.0:50002
-        cert = /var/lib/fulcrum/fulcrum-cert.pem
-        key = /var/lib/fulcrum/fulcrum-key.pem
+        admin = 9999
+        cert = /var/lib/fulcrum/finserv.snowy-hops.ts.net.crt
+        key = /var/lib/fulcrum/finserv.snowy-hops.ts.net.key
       '';
     };
     mempool = {
@@ -81,5 +103,27 @@
   # closure size.
   #
   nix-bitcoin.useVersionLockedPkgs = true;
+
+  # sops = {
+  #   age.keyFile = "/home/main/.config/sops/age/keys.txt";
+  #   defaultSopsFile = ../../secrets/secrets.yaml;
+  #   defaultSopsFormat = "yaml";
+  #   secrets = {
+  #     "caddy/cloudflare/api-token" = {
+  #       owner = "caddy";
+  #     };
+  #   };
+  # };
+
+  systemd.services = {
+    # caddy = {
+    #   serviceConfig = {
+    #     AmbientCapabilities = "cap_net_bind_service";
+    #     Environment = ''
+    #       CF_API_TOKEN=${config.sops.secrets."caddy/cloudflare/api-token".path}
+    #     '';
+    #   };
+    # };
+  };
 }
 

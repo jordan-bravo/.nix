@@ -52,7 +52,7 @@
       # logFormat = ''
       #   level DEBUG
       # '';
-      package = pkgs.callPackage ./caddy.nix {
+      package = pkgs.callPackage ../shared/caddy.nix {
         plugins = [
           "github.com/caddy-dns/cloudflare"
         ];
