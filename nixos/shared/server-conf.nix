@@ -18,6 +18,10 @@
   };
 
   networking.networkmanager.enable = true;
+  networking.nameservers = [
+    "194.242.2.2"
+    "2a07:e340::2"
+  ];
 
   time.timeZone = "America/New_York";
 
