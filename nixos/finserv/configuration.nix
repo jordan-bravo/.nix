@@ -71,7 +71,7 @@
     # You can also connect via WireGuard instead of Tor.
     # See ../docs/services.md for details.
     clightning-rest = {
-      enable = false;
+      enable = true;
       lndconnect = {
         enable = true;
         onion = true;
