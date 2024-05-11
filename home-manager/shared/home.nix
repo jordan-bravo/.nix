@@ -53,6 +53,7 @@
       du-dust # du + rust = dust. Like du but more intuitive
       duf # Disk Usage/Free Utility, a df alternative
       fd # A simple, fast and user-friendly alternative to find
+      ffmpeg # A complete, cross-platform solution to record, convert and stream audio and video
       fira-code # Font
       gitui # Blazing fast terminal-ui for Git written in Rust
       glow # Render markdown on the CLI, with pizzazz!
@@ -97,6 +98,7 @@
       zola # A fast static site generator with everything built-in
 
       # Neovim/Lazyvim dependencies nvim-dep
+      delve # Debugger for the Go programming language
       emmet-ls # Emmet support based on LSP # nvim-dep
       eslint_d # ESLint daemon for increased performance
       fzf # nvim-dep
@@ -113,6 +115,7 @@
       nixd # Nix langauge server # nvim-dep
       nixpkgs-fmt # nvim-dep
       nodejs_21 # Event-driven I/O framework for the V8 JavaScript engine # nvim-dep
+      nodePackages.bash-language-server # A language server for Bash
       nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.prettier # nvim-dep
       nodePackages.pyright # Python static type checker
