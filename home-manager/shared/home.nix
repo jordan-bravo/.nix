@@ -114,7 +114,7 @@
       markdownlint-cli # Command line interface for MarkdownLint
       nixd # Nix langauge server # nvim-dep
       nixpkgs-fmt # nvim-dep
-      nodejs_21 # Event-driven I/O framework for the V8 JavaScript engine # nvim-dep
+      nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine # nvim-dep
       nodePackages.bash-language-server # A language server for Bash
       nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.prettier # nvim-dep
