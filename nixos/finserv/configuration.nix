@@ -56,6 +56,27 @@
     #     }
     #   '';
     # };
+    ### CLIGHTNING
+    clightning = {
+      enable = true; # Enable clightning, a Lightning Network implementation in C.
+      # == Plugins
+      # See ../README.md (Features → clightning) for the list of available plugins.
+      plugins.clboss.enable = false;
+    };
+    # == REST server
+    # Set this to create a clightning REST onion service.
+    # This also adds binary `lndconnect-clightning` to the system environment.
+    # This binary creates QR codes or URLs for connecting applications to clightning
+    # via the REST onion service.
+    # You can also connect via WireGuard instead of Tor.
+    # See ../docs/services.md for details.
+    clightning-rest = {
+      enable = false;
+      lndconnect = {
+        enable = true;
+        onion = true;
+      };
+    };
     fulcrum = {
       enable = true;
       # To generate a cert, run the command: sudo tailscale cert
@@ -81,14 +102,17 @@
       client.enable = true;
     };
   };
-  # services.clightning.enable = true;
 
-  # When using nix-bitcoin as part of a larger NixOS configuration, set the following to enable
-  # interactive access to nix-bitcoin features (like bitcoin-cli) for your system's main user
   nix-bitcoin = {
     onionServices = {
       bitcoind.enable = lib.mkDefault true;
+      # Set this to create an onion service by which clightning can accept incoming connections
+      # via Tor.
+      # The onion service is automatically announced to peers.
+      clightning.public = true;
     };
+    # When using nix-bitcoin as part of a larger NixOS configuration, set the following to enable
+    # interactive access to nix-bitcoin features (like bitcoin-cli) for your system's main user
     operator = {
       enable = true;
       name = "main";
