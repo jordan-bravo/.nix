@@ -93,7 +93,7 @@
       enable = false;
       electrumServer = "fulcrum";
       frontend = {
-        enable = true;
+        enable = false;
         # nginxConfig = {};
       };
     };
