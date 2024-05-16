@@ -145,7 +145,7 @@ with lib.hm.gvariant;
       time = 1800;
     };
     "org/gnome/shell/keybindings" = {
-      toggle-overview = [ "<Super>space" ];
+      toggle-overview = [ "<Super>r" ];
     };
     "org/gtk/settings/file-chooser" = {
       clock-format = "24h";

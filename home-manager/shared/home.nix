@@ -97,6 +97,9 @@
       zellij # Terminal multiplexer
       zola # A fast static site generator with everything built-in
 
+      # Used with Hyprland
+      wofi
+
       # Neovim/Lazyvim dependencies nvim-dep
       delve # Debugger for the Go programming language
       emmet-ls # Emmet support based on LSP # nvim-dep

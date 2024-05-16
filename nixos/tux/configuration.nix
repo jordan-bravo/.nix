@@ -25,4 +25,5 @@
 
   networking.hostName = "tux";
 
+  programs.hyprland.enable = true;
 }
