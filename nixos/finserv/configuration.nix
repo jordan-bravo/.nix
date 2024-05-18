@@ -9,13 +9,43 @@
     inputs.sops-nix.nixosModules.sops
   ];
 
+  environment.systemPackages = with pkgs; [
+    wireguard-tools
+    wget
+  ];
+
   networking = {
     hostName = "finserv";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 50001 50002 ];
-      allowedUDPPorts = [ 50001 50002 ];
+      allowedTCPPorts = [ 50001 50002 3030 4040 9735 3001 ];
+      allowedUDPPorts = [ 51820 ];
     };
+  };
+
+  networking.networkmanager = {
+    enable = true;
+    # dns = "systemd-resolved"; # "default" | "dnsmasq" | "systemd-resolved" | "none"
+  };
+  # networking.nameservers = [
+  #   "9.9.9.9"
+  #   "149.112.112.112"
+  #   # "194.242.2.2"
+  #   # "2a07:e340::2"
+  # ];
+
+  services.resolved = {
+    enable = true;
+    dnsovertls = "true";
+    dnssec = "true";
+    domains = [ "~." ];
+    fallbackDns = [
+      "9.9.9.9"
+      "149.112.112.112"
+    ];
+    extraConfig = ''
+      DNSOverTLS=yes
+    '';
   };
 
   ### nix-bitcoin section
@@ -27,6 +57,27 @@
   # Enable some services.
   # See ../configuration.nix for all available features.
   services = {
+    borgbackup = {
+      jobs = {
+        finserv-cln = {
+          compression = "auto,lzma";
+          encryption = {
+            mode = "repokey-blake2";
+            passCommand = "cat ${config.sops.secrets."borg/passphrase".path}";
+          };
+          environment = {
+            BORG_RSH = "ssh -i ${config.sops.secrets."borg/ssh-private-key".path}";
+          };
+          paths = "/var/backup/clightning";
+          preHook = ''
+            export BORG_REPO=$(cat ${config.sops.secrets."borg/repos/finserv-cln".path})
+          '';
+          repo = "$BORG_REPO";
+          startAt = "*-*-* 01:30:00";
+          # startAt = "*-*-* *:*:*";
+        };
+      };
+    };
     bitcoind = {
       enable = true;
       extraConfig = ''
@@ -39,29 +90,21 @@
       };
       txindex = true;
     };
-    # caddy = {
-    #   enable = false;
-    #   # logFormat = ''
-    #   #   level DEBUG
-    #   # '';
-    #   package = pkgs.callPackage ../shared/caddy.nix {
-    #     plugins = [
-    #       "github.com/caddy-dns/cloudflare"
-    #     ];
-    #   };
-    #   virtualHosts."fulcrum.finserv.top".extraConfig = ''
-    #     reverse_proxy localhost:50002
-    #     tls {
-    #       dns cloudflare {env.CF_API_TOKEN}
-    #     }
-    #   '';
-    # };
     ### CLIGHTNING
     clightning = {
       enable = true; # Enable clightning, a Lightning Network implementation in C.
+      # address = "82.180.160.3";
       # == Plugins
       # See ../README.md (Features → clightning) for the list of available plugins.
-      plugins.clboss.enable = false;
+      extraConfig = ''
+        experimental-onion-messages
+        experimental-offers
+        experimental-dual-fund
+      '';
+      replication = {
+        enable = true;
+        local.directory = "/var/backup/clightning";
+      };
     };
     # == REST server
     # Set this to create a clightning REST onion service.
@@ -74,19 +117,19 @@
       enable = true;
       lndconnect = {
         enable = true;
-        onion = true;
+        onion = false;
       };
     };
     fulcrum = {
       enable = true;
-      # To generate a cert, run the command: sudo tailscale cert
+      # To generate a Tailscale SSL cert, run the command: sudo tailscale cert
       # Then change the owner of the crt and key files to fulcrum: chown fulcrum:fulcrum
       # Finally, copy or move them to the directory below for cert and key
       extraConfig = ''
         ssl = 0.0.0.0:50002
         admin = 9999
-        cert = /var/lib/fulcrum/finserv.snowy-hops.ts.net.crt
-        key = /var/lib/fulcrum/finserv.snowy-hops.ts.net.key
+        cert = ${config.sops.secrets."ssl/xav-icu/cloudflare/cert".path}
+        key = ${config.sops.secrets."ssl/xav-icu/cloudflare/key".path}
       '';
     };
     mempool = {
@@ -97,6 +140,7 @@
         # nginxConfig = {};
       };
     };
+    tailscale.enable = true;
     tor = {
       enable = true;
       client.enable = true;
@@ -128,26 +172,25 @@
   #
   nix-bitcoin.useVersionLockedPkgs = true;
 
-  # sops = {
-  #   age.keyFile = "/home/main/.config/sops/age/keys.txt";
-  #   defaultSopsFile = ../../secrets/secrets.yaml;
-  #   defaultSopsFormat = "yaml";
-  #   secrets = {
-  #     "caddy/cloudflare/api-token" = {
-  #       owner = "caddy";
-  #     };
-  #   };
-  # };
+  # WireGuard
+  networking.wg-quick.interfaces = {
+    wg0.configFile = "${config.sops.secrets."wireguard/finserv/wg-conf".path}";
+  };
 
-  systemd.services = {
-    # caddy = {
-    #   serviceConfig = {
-    #     AmbientCapabilities = "cap_net_bind_service";
-    #     Environment = ''
-    #       CF_API_TOKEN=${config.sops.secrets."caddy/cloudflare/api-token".path}
-    #     '';
-    #   };
-    # };
+  sops = {
+    age.keyFile = "/home/main/.config/sops/age/keys.txt";
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    defaultSopsFormat = "yaml";
+    secrets = {
+      "borg/passphrase" = { };
+      "borg/repos/finserv-cln" = { };
+      "borg/ssh-private-key" = { };
+      "ssl/xav-icu/cloudflare/cert" = { };
+      "ssl/xav-icu/cloudflare/key" = { };
+      "wireguard/finserv/private-key" = { };
+      "wireguard/finserv/wg-conf" = { };
+      "wireguard/punk/ip" = { };
+    };
   };
 }
 

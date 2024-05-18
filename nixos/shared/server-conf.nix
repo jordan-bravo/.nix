@@ -17,12 +17,6 @@
     systemd-boot.configurationLimit = 8;
   };
 
-  networking.networkmanager.enable = true;
-  networking.nameservers = [
-    "194.242.2.2"
-    "2a07:e340::2"
-  ];
-
   time.timeZone = "America/New_York";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -119,7 +113,6 @@
     #   databases = [ "name-of-database" ];
     #   startAt = "*-*-* 03:15:00";
     # };
-    tailscale.enable = true;
     xserver = {
       xkb = {
         layout = "us";
