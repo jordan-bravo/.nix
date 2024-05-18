@@ -52,6 +52,7 @@
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    xremap-flake.url = "github:xremap/nix-flake";
     nixpkgs-micro-2-0-12.url = "github:nixos/nixpkgs/a71323f68d4377d12c04a5410e214495ec598d4c";
   };
 
@@ -71,6 +72,7 @@
       # , nixpkgs-2311
     , sops-nix
     , system-manager
+    # , xremap-flake
     , nixpkgs-micro-2-0-12
     , ...
     }@inputs:
