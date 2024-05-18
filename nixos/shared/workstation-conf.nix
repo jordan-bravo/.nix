@@ -40,10 +40,16 @@
 
   networking = {
     firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      dns = "none";
+    };
     nameservers = [
-      "194.242.2.2"
-      "2a07:e340::2"
+      # "194.242.2.2"
+      # "2a07:e340::2"
+      # "1.1.1.1"
+      # "1.0.0.1"
+      "9.9.9.9"
     ];
   };
 
@@ -78,16 +84,19 @@
     };
     printing.enable = true;
     resolved = {
-      enable = true;
-      dnsovertls = "true";
-      dnssec = "false";
-      domains = [ "~." ];
+      enable = false;
+      # dnsovertls = "true";
+      # dnssec = "false";
+      # domains = [ "~." ];
       fallbackDns = [
-        "194.242.2.2#dns.mullvad.net"
+        # "194.242.2.2#dns.mullvad.net"
+        # "1.1.1.1"
+        # "1.0.0.1"
+        "9.9.9.9"
       ];
-      extraConfig = ''
-        DNSOverTLS=yes
-      '';
+      # extraConfig = ''
+      #   DNSOverTLS=yes
+      # '';
     };
     tailscale.enable = true;
     xserver = {

@@ -1,12 +1,13 @@
 # ~/.nix/tux/configuration.nix
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.xremap-flake.nixosModules.default
     ];
 
   # This is commented out because it's a last resort.  First, determine
@@ -22,6 +23,30 @@
   #     ssh-add "~/.ssh/ssh_id_ed25519_jordan@bravo"
   #   '';
   # };
+
+  # Remap keys
+  services.xremap = {
+    enable = true;
+    withGnome = true;
+    serviceMode = "user";
+    userName = "jordan";
+    # yamlConfig = ''
+    #   keymap:
+    #     - name: main remaps:
+    #         remap: 
+    # '';
+    config = {
+      modmap = [
+        {
+          name = "Global";
+          remap = { "Menu" = "RightMeta"; };
+        }
+      ];
+    };
+  };
+  hardware.uinput.enable = true;
+  users.groups.uinput.members = [ "jordan" ];
+  users.groups.input.members = [ "jordan" ];
 
   networking.hostName = "tux";
 
