@@ -42,15 +42,15 @@
     firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
     networkmanager = {
       enable = true;
-      dns = "none";
+      # dns = "none";
     };
-    nameservers = [
-      # "194.242.2.2"
-      # "2a07:e340::2"
-      # "1.1.1.1"
-      # "1.0.0.1"
-      "9.9.9.9"
-    ];
+    # nameservers = [
+    #   # "194.242.2.2"
+    #   # "2a07:e340::2"
+    #   # "1.1.1.1"
+    #   # "1.0.0.1"
+    #   "9.9.9.9"
+    # ];
   };
 
   nix.settings = {
@@ -84,19 +84,18 @@
     };
     printing.enable = true;
     resolved = {
-      enable = false;
-      # dnsovertls = "true";
-      # dnssec = "false";
+      enable = true;
+      dnsovertls = "true";
+      dnssec = "true";
       # domains = [ "~." ];
+      domains = [ "snowy-hops.ts.net" ];
       fallbackDns = [
-        # "194.242.2.2#dns.mullvad.net"
-        # "1.1.1.1"
-        # "1.0.0.1"
         "9.9.9.9"
+        "149.112.112.112"
       ];
-      # extraConfig = ''
-      #   DNSOverTLS=yes
-      # '';
+      extraConfig = ''
+        DNS=9.9.9.9 149.112.112.112
+      '';
     };
     tailscale.enable = true;
     xserver = {
