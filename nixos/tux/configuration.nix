@@ -23,6 +23,8 @@
   #     ssh-add "~/.ssh/ssh_id_ed25519_jordan@bravo"
   #   '';
   # };
+  
+  services.ivpn.enable = true;
 
   # Remap keys
   services.xremap = {
@@ -39,7 +41,7 @@
       modmap = [
         {
           name = "Global";
-          remap = { "Menu" = "RightMeta"; };
+          remap = { "Context_Menu" = "RightMeta"; };
         }
       ];
     };
