@@ -43,9 +43,12 @@
     packages = with pkgs; [
       age # (Actually Good Encryption) A modern encryption tool with small explicit keys
       bottom # A cross-platform graphical process/system monitor with a customizable interface
+      # busybox # Tiny versions of common UNIX utilities in a single small executable
       cargo # Rust package manager
       # dbeaver # SQL database client
       delta # A syntax-highlighting pager for git
+      dhcping # Send DHCP request to find out if a DHCP server is running
+      dig # DNS tool
       distrobox # Run containers of any Linux distro
       docker-compose # Docker Compose plugin for Docker
       dogdns # Command-line DNS client
@@ -60,10 +63,11 @@
       gnome-multi-writer # Tool for writing an ISO file to multiple USB devices at once
       go # The Go / Golang programming language
       hyprpaper # Hyprland wallpaper program
+      ivpn # VPN GUI
+      ivpn-service # VPN background service
       killall # Tool to kill processes
       kitty # Terminal emulator
       lsof # A tool to list open files
-      mediawriter # Tool to write images files to portable media 
       # mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
       neovim # Text editor / IDE
@@ -82,10 +86,10 @@
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       speedtest-rs # Command line internet speedtest tool written in rust
       steam-run # Run commands in the same FHS environment that is used for Steam
+      transmission # Bittorrent client
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       tree # View directory tree structure
-      ventoy-full # A New Bootable USB Solution
       vlock # Lock the TTY screen
       watchman # Watches files and takes action when they change
       waypipe # A network proxy for Wayland clients (applications)

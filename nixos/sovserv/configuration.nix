@@ -9,11 +9,6 @@
   ];
 
   networking.hostName = "sovserv";
-  networking.networkmanager.enable = true;
-  # networking.nameservers = [
-  #   "194.242.2.2"
-  #   "2a07:e340::2"
-  # ];
 
   services = {
     borgbackup = {

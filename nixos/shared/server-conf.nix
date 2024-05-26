@@ -45,6 +45,8 @@
     # shell = pkgs.zsh;
   };
 
+  networking.networkmanager.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   # Hint electron apps to use wayland
@@ -113,6 +115,19 @@
     #   databases = [ "name-of-database" ];
     #   startAt = "*-*-* 03:15:00";
     # };
+    resolved = {
+      enable = true;
+      dnsovertls = "true";
+      dnssec = "true";
+      domains = [ "snowy-hops.ts.net" ];
+      fallbackDns = [
+        "9.9.9.9"
+        "149.112.112.112"
+      ];
+      extraConfig = ''
+        DNS=9.9.9.9 149.112.112.112
+      '';
+    };
     xserver = {
       xkb = {
         layout = "us";

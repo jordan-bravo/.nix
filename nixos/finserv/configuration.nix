@@ -23,31 +23,6 @@
     };
   };
 
-  networking.networkmanager = {
-    enable = true;
-    # dns = "systemd-resolved"; # "default" | "dnsmasq" | "systemd-resolved" | "none"
-  };
-  # networking.nameservers = [
-  #   "9.9.9.9"
-  #   "149.112.112.112"
-  #   # "194.242.2.2"
-  #   # "2a07:e340::2"
-  # ];
-
-  services.resolved = {
-    enable = true;
-    dnsovertls = "true";
-    dnssec = "true";
-    domains = [ "~." ];
-    fallbackDns = [
-      "9.9.9.9"
-      "149.112.112.112"
-    ];
-    extraConfig = ''
-      DNSOverTLS=yes
-    '';
-  };
-
   ### nix-bitcoin section
 
   # Automatically generate all secrets required by services.
