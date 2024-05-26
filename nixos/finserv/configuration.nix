@@ -18,7 +18,7 @@
     hostName = "finserv";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 50001 50002 3030 4040 9735 3001 ];
+      allowedTCPPorts = [ 3030 4040 9735 3001 ];
       allowedUDPPorts = [ 51820 ];
     };
   };
@@ -49,7 +49,6 @@
           '';
           repo = "$BORG_REPO";
           startAt = "*-*-* 01:30:00";
-          # startAt = "*-*-* *:*:*";
         };
       };
     };
@@ -65,6 +64,23 @@
       };
       txindex = true;
     };
+    # caddy = {
+    #   enable = true;
+    #   # logFormat = ''
+    #   #   level DEBUG
+    #   # '';
+    #   package = pkgs.callPackage ../shared/caddy.nix {
+    #     plugins = [
+    #       "github.com/caddy-dns/cloudflare"
+    #     ];
+    #   };
+    #   virtualHosts."fulcrum.xav.icu".extraConfig = ''
+    #     reverse_proxy localhost:50002
+    #     tls {
+    #       dns cloudflare {env.CF_API_TOKEN}
+    #     }
+    #   '';
+    # };
     ### CLIGHTNING
     clightning = {
       enable = true; # Enable clightning, a Lightning Network implementation in C.
@@ -95,16 +111,24 @@
         onion = false;
       };
     };
-    fulcrum = {
+    electrs = {
       enable = true;
+      address = "0.0.0.0";
+    };
+    fulcrum = {
+      enable = false;
       # To generate a Tailscale SSL cert, run the command: sudo tailscale cert
       # Then change the owner of the crt and key files to fulcrum: chown fulcrum:fulcrum
       # Finally, copy or move them to the directory below for cert and key
+      # extraConfig = ''
+      #   # ssl = 0.0.0.0:50002
+      #   tcp = 0.0.0.0:50001
+      #   admin = 9999
+      #   # cert = ${config.sops.secrets."ssl/xav-icu/cloudflare/cert".path}
+      #   # key = ${config.sops.secrets."ssl/xav-icu/cloudflare/key".path}
+      # '';
       extraConfig = ''
-        ssl = 0.0.0.0:50002
-        admin = 9999
-        cert = ${config.sops.secrets."ssl/xav-icu/cloudflare/cert".path}
-        key = ${config.sops.secrets."ssl/xav-icu/cloudflare/key".path}
+        admin = 0.0.0.0:9999
       '';
     };
     mempool = {
@@ -160,12 +184,29 @@
       "borg/passphrase" = { };
       "borg/repos/finserv-cln" = { };
       "borg/ssh-private-key" = { };
-      "ssl/xav-icu/cloudflare/cert" = { };
-      "ssl/xav-icu/cloudflare/key" = { };
+      # "caddy/cloudflare/api-token" = {
+      #   owner = "caddy";
+      # };
+      # "ssl/xav-icu/cloudflare/cert" = {
+      #   owner = "fulcrum";
+      # };
+      # "ssl/xav-icu/cloudflare/key" = {
+      #   owner = "fulcrum";
+      # };
       "wireguard/finserv/private-key" = { };
       "wireguard/finserv/wg-conf" = { };
       "wireguard/punk/ip" = { };
     };
   };
+  # systemd.services = {
+  #   caddy = {
+  #     serviceConfig = {
+  #       AmbientCapabilities = "cap_net_bind_service";
+  #       Environment = ''
+  #         CF_API_TOKEN=${config.sops.secrets."caddy/cloudflare/api-token".path}
+  #       '';
+  #     };
+  #   };
+  # };
 }
 
