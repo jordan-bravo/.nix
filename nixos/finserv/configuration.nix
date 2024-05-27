@@ -11,14 +11,13 @@
 
   environment.systemPackages = with pkgs; [
     wireguard-tools
-    wget
   ];
 
   networking = {
     hostName = "finserv";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 3030 4040 9735 3001 ];
+      allowedTCPPorts = [ 3030 4040 9735 3001 60845 ];
       allowedUDPPorts = [ 51820 ];
     };
   };
@@ -132,14 +131,17 @@
       '';
     };
     mempool = {
-      enable = false;
-      electrumServer = "fulcrum";
+      enable = true;
       frontend = {
-        enable = false;
+        enable = true;
+        address = "0.0.0.0";
         # nginxConfig = {};
       };
     };
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      useRoutingFeatures = "client";
+    };
     tor = {
       enable = true;
       client.enable = true;
@@ -172,9 +174,9 @@
   nix-bitcoin.useVersionLockedPkgs = true;
 
   # WireGuard
-  networking.wg-quick.interfaces = {
-    wg0.configFile = "${config.sops.secrets."wireguard/finserv/wg-conf".path}";
-  };
+  # networking.wg-quick.interfaces = {
+  #   wg0.configFile = "${config.sops.secrets."wireguard/finserv/wg-conf".path}";
+  # };
 
   sops = {
     age.keyFile = "/home/main/.config/sops/age/keys.txt";
@@ -198,15 +200,35 @@
       "wireguard/punk/ip" = { };
     };
   };
-  # systemd.services = {
-  #   caddy = {
-  #     serviceConfig = {
-  #       AmbientCapabilities = "cap_net_bind_service";
-  #       Environment = ''
-  #         CF_API_TOKEN=${config.sops.secrets."caddy/cloudflare/api-token".path}
-  #       '';
-  #     };
-  #   };
-  # };
+  systemd.services = {
+    # caddy = {
+    #   serviceConfig = {
+    #     AmbientCapabilities = "cap_net_bind_service";
+    #     Environment = ''
+    #       CF_API_TOKEN=${config.sops.secrets."caddy/cloudflare/api-token".path}
+    #     '';
+    #   };
+    # };
+    listmaker-node-3030 = {
+      after = [ "network.target" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.nodejs_22}/bin/node /home/main/apps/listmaker-node-3030/build/index.js";
+        Restart = "always";
+      };
+      wantedBy = ["multi-user.target" ];
+    };
+    listmaker-node-4040 = {
+      after = [ "network.target" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.nodejs_22}/bin/node /home/main/apps/listmaker-node-4040/build/index.js";
+        Restart = "always";
+      };
+      wantedBy = ["multi-user.target" ];
+    };
+    # tailscaled = {
+    #   enable = true; # not sure if this is needed
+    #   after = [ "network-pre.target" "NetworkManager.service" "systemd-resolved.service" "wg-quick-wg0.service" ];
+    # };
+  };
 }
 
