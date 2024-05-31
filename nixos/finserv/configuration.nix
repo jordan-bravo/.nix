@@ -130,6 +130,9 @@
         admin = 0.0.0.0:9999
       '';
     };
+    liquidd = {
+      enable = true;
+    };
     mempool = {
       enable = true;
       frontend = {
