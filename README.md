@@ -6,25 +6,26 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ## Hosts
 
+(Hosts have Instruction Set Architecture of `x86_64-linux` unless specified otherwise)
 ### Desktops
 
-`medserv`: Media server and desktop for viewing. ISA: `x86_64-linux`
+`medserv`: Media server and desktop for viewing. OS: NixOS.
 
 ### Laptops
 
-`tux`: My main personal laptop running NixOS and using Home Manager. ISA: `x86_64-linux`
+`tux`: My main personal laptop running NixOS and using Home Manager.
 
-`carby`: My backup personal laptop running NixOS and using Home Manager. ISA: `x86_64-linux`
+`carby`: My backup personal laptop running NixOS and using Home Manager.
 
-`thinky`: My work laptop, currently running Ubuntu 22.04 and using the Nix package manager and Home Manager. ISA: `x86_64-linux`
+`thinky`: My work laptop, currently running Ubuntu 24.04 and using the Nix package manager and Home Manager.
 
 `mbp`: My former work laptop, a MacBook with M1 (ARM) chip running MacOS, using Nix-Darwin and Home Manager. No longer in use, config might be outdated. ISA: `aarch64-darwin`
 
 ### Servers
 
-`sovserv`: Self-sovereign data and services. ISA: `x86_64-linux`
+`sovserv`: Self-sovereign data and services. OS: NixOS.
 
-`finserv`: Nix-Bitcoin and related services. ISA: `x86_64-linux`
+`finserv`: Nix-Bitcoin and related services. OS: NixOS.
 
 ### Other
 
@@ -34,12 +35,15 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ### carby/tux
 
-- Add Hyprland
+- Configure Hyprland on carby
+- Import Hyprland config to tux
 
 ### finserv
 
-- Install NixOS
-- Configure nix-bitcoin flake
+- Configure SSL for electrs
+- Configure SSL for mempool
+- Figure out how to connect electrs to liquidd
+- Figure out how to connect mempool to liquidd
 
 ### medserv
 
@@ -56,8 +60,8 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ### Task List (Low Level)
 
-- home-manager switch command leads to MediaKeys systemd service failing.
 - Configure zsh autosuggest/autocomplete (which one? both?) to avoid using arrow keys for completion.
+- SSH private key not automatically being added when logging in to workstations.
 - Remove repetition by declaring username only once in flake.nix, then passing to other modules.
 
 ### Research Needed
@@ -66,7 +70,7 @@ I have tried to put as much of the configuration as possible into Home Manager i
 I think the answer to this is [system-manager](https://github.com/numtide/system-manager)
     - Postgres/Redis <-- solution for Alta is to run these in containers
     - Docker <-- Possibly replace with Podman which doesn't require root and might be nixable
-    - Flatpak <-- No way that I know of to declaritively configure Flatpaks
+    - Flatpak <-- Research declarative flatpak
 ---
 
 ### Misc. Notes
