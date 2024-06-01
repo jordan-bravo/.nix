@@ -149,7 +149,7 @@
       "borg/repos/sovserv-nextcloud" = { };
       "borg/repos/sovserv-postgresql" = { };
       "borg/ssh-private-key" = { };
-      "caddy/cloudflare/api-token" = {
+      "caddy/cloudflare/api-token-env-var" = {
         owner = "caddy";
       };
       "nextcloud/admin-password" = {
@@ -162,9 +162,7 @@
     caddy = {
       serviceConfig = {
         AmbientCapabilities = "cap_net_bind_service";
-        Environment = ''
-          CF_API_TOKEN=${config.sops.secrets."caddy/cloudflare/api-token".path}
-        '';
+        EnvironmentFile = "${config.sops.secrets."caddy/cloudflare/api-token-env-var".path}";
       };
     };
   };
