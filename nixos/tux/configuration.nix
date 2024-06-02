@@ -10,6 +10,59 @@
       inputs.xremap-flake.nixosModules.default
     ];
 
+  # Remap keys
+  services.xremap = {
+    enable = true;
+    withGnome = true;
+    serviceMode = "system";
+    userName = "jordan";
+    config = {
+      modmap = [
+        {
+          name = "Global";
+          remap = { "Context_Menu" = "RightMeta"; };
+        }
+      ];
+    };
+    debug = true;
+    watch = true;
+  };
+  hardware.uinput.enable = true;
+  users.groups.uinput.members = [ "jordan" ];
+  users.groups.input.members = [ "jordan" ];
+
+  services.ivpn.enable = true;
+
+  services.postgresql = {
+    enable = false;
+    package = pkgs.postgresql_14;
+    ensureDatabases = [ "thefacebood-dev" ];
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       all     trust
+    '';
+  };
+
+  services.redis.servers."alta" = {
+    enable = false;
+    port = 6379;
+  };
+
+  networking.hostName = "tux";
+
+  programs.hyprland.enable = true;
+
+  # The following is to get Alta Legacy working on NixOS
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # zlib # numpy
+    stdenv.cc.cc.lib
+    libgcc  # sqlalchemy
+    # that's where the shared libs go, you can find which one you need using 
+    # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
+    # ^ this requires `nix-index` pkg
+  ];
+
   # This is commented out because it's a last resort.  First, determine
   # if auto ssh-add command wasn't working because the @ symbol needed to
   # be escaped or the string needed to be quoted.
@@ -24,33 +77,5 @@
   #   '';
   # };
   
-  services.ivpn.enable = true;
 
-  # Remap keys
-  services.xremap = {
-    enable = true;
-    withGnome = true;
-    serviceMode = "user";
-    userName = "jordan";
-    # yamlConfig = ''
-    #   keymap:
-    #     - name: main remaps:
-    #         remap: 
-    # '';
-    config = {
-      modmap = [
-        {
-          name = "Global";
-          remap = { "Context_Menu" = "RightMeta"; };
-        }
-      ];
-    };
-  };
-  hardware.uinput.enable = true;
-  users.groups.uinput.members = [ "jordan" ];
-  users.groups.input.members = [ "jordan" ];
-
-  networking.hostName = "tux";
-
-  programs.hyprland.enable = true;
 }

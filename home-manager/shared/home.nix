@@ -72,6 +72,7 @@
       neofetch # Show system info
       neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      nix-index # A files database for nixpkgs
       nix-search-cli # Search packages from the command line
       nixpkgs-fmt # Formatter for Nixlang
       nodePackages.pnpm # Fast, disk space efficient package manager
