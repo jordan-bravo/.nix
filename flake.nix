@@ -72,7 +72,7 @@
       # , nixpkgs-2311
     , sops-nix
     , system-manager
-    # , xremap-flake
+      # , xremap-flake
     , nixpkgs-micro-2-0-12
     , ...
     }@inputs:

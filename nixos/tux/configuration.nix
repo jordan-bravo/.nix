@@ -57,7 +57,7 @@
   programs.nix-ld.libraries = with pkgs; [
     # zlib # numpy
     stdenv.cc.cc.lib
-    libgcc  # sqlalchemy
+    libgcc # sqlalchemy
     # that's where the shared libs go, you can find which one you need using 
     # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
     # ^ this requires `nix-index` pkg
@@ -76,6 +76,6 @@
   #     ssh-add "~/.ssh/ssh_id_ed25519_jordan@bravo"
   #   '';
   # };
-  
+
 
 }

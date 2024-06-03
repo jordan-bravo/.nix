@@ -185,7 +185,7 @@
         ExecStart = "${pkgs.nodejs_22}/bin/node /home/main/apps/listmaker-node-3030/build/index.js";
         Restart = "always";
       };
-      wantedBy = ["multi-user.target" ];
+      wantedBy = [ "multi-user.target" ];
     };
     listmaker-node-4040 = {
       after = [ "network.target" ];
@@ -193,7 +193,7 @@
         ExecStart = "${pkgs.nodejs_22}/bin/node /home/main/apps/listmaker-node-4040/build/index.js";
         Restart = "always";
       };
-      wantedBy = ["multi-user.target" ];
+      wantedBy = [ "multi-user.target" ];
     };
   };
 }
