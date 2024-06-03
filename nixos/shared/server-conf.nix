@@ -17,8 +17,6 @@
     systemd-boot.configurationLimit = 8;
   };
 
-  networking.networkmanager.enable = true;
-
   time.timeZone = "America/New_York";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -46,6 +44,8 @@
     useDefaultShell = true;
     # shell = pkgs.zsh;
   };
+
+  networking.networkmanager.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -115,7 +115,19 @@
     #   databases = [ "name-of-database" ];
     #   startAt = "*-*-* 03:15:00";
     # };
-    tailscale.enable = true;
+    resolved = {
+      enable = true;
+      dnsovertls = "true";
+      dnssec = "true";
+      domains = [ "snowy-hops.ts.net" ];
+      fallbackDns = [
+        "9.9.9.9"
+        "149.112.112.112"
+      ];
+      extraConfig = ''
+        DNS=9.9.9.9 149.112.112.112
+      '';
+    };
     xserver = {
       xkb = {
         layout = "us";
@@ -129,7 +141,7 @@
 
   # There is an outstanding bug in NixOS that causes rebuilds to fail sometimes, this is the workaround.
   # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1645442729
-  systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.services.NetworkManager-wait-online.enable = true;
 }
 
 

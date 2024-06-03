@@ -4,19 +4,21 @@
     enable = true;
     font = {
       name = "FiraCode Nerd Font Mono";
-      size = 11;
+      size = 12;
     };
     shellIntegration.enableZshIntegration = true;
     settings = {
-      dynamic_background_opacity = "yes";
+      dynamic_background_opacity = "yes"; # Ctrl+Shift+A, l/m
       enable_audio_bell = false;
       enabled_layouts = "horizontal, stack, vertical, grid";
-      hide_window_decorations = "titlebar-only"; # options: true, "titlebar-only", "titlebar-and-corners"
+      hide_window_decorations = true; # options: true, "titlebar-only", "titlebar-and-corners"
       # startup_session = "./kitty-session.conf";
       macos_option_as_alt = "both";
+      placement_strategy = "top-left";
       scrollback_lines = 10000;
-      wayland_titlebar_color = "#3b3b3b"; # options: "background", "system", "gray", "#3b3b3b"
+      # wayland_titlebar_color = "red"; # options: "background", "system", "gray", "#3b3b3b"
       window_alert_on_bell = false;
+      # window_border_width = 0;
     };
     keybindings = {
       "kitty_mod+u" = "scroll_page_up";

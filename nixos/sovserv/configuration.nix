@@ -52,7 +52,7 @@
       # logFormat = ''
       #   level DEBUG
       # '';
-      package = pkgs.callPackage ./caddy.nix {
+      package = pkgs.callPackage ../shared/caddy.nix {
         plugins = [
           "github.com/caddy-dns/cloudflare"
         ];
@@ -63,12 +63,12 @@
           dns cloudflare {env.CF_API_TOKEN}
         }
       '';
-      virtualHosts."fulcrum.finserv.top".extraConfig = ''
-        reverse_proxy 192.168.1.122:50002
-        tls {
-          dns cloudflare {env.CF_API_TOKEN}
-        }
-      '';
+      # virtualHosts."fulcrum.finserv.top".extraConfig = ''
+      #   reverse_proxy 100.124.142.57:50002
+      #   tls {
+      #     dns cloudflare {env.CF_API_TOKEN}
+      #   }
+      # '';
     };
     nextcloud = {
       # After enabling Nextcloud for the first time, there will be a warning in the administrative
@@ -138,6 +138,7 @@
       databases = [ "nextcloud" ];
       startAt = "*-*-* 03:15:00";
     };
+    tailscale.enable = true;
   };
   sops = {
     age.keyFile = "/home/main/.config/sops/age/keys.txt";
@@ -148,7 +149,7 @@
       "borg/repos/sovserv-nextcloud" = { };
       "borg/repos/sovserv-postgresql" = { };
       "borg/ssh-private-key" = { };
-      "caddy/cloudflare/api-token" = {
+      "caddy/cloudflare/api-token-env-var" = {
         owner = "caddy";
       };
       "nextcloud/admin-password" = {
@@ -161,9 +162,7 @@
     caddy = {
       serviceConfig = {
         AmbientCapabilities = "cap_net_bind_service";
-        Environment = ''
-          CF_API_TOKEN=${config.sops.secrets."caddy/cloudflare/api-token".path}
-        '';
+        EnvironmentFile = "${config.sops.secrets."caddy/cloudflare/api-token-env-var".path}";
       };
     };
   };
