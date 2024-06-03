@@ -78,8 +78,8 @@
       sauce = "source $HOME/.config/zsh/.zshrc";
       sshk = "kitty +kitten ssh";
       tsd = "sudo tailscale down";
-      tse = "sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true --accept-dns=false";
-      tsu = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false --accept-dns=false";
+      tse = "sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true --accept-dns=false --operator=$USER";
+      tsu = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false --accept-dns=false --operator=$USER";
       tss = "tailscale status";
       vim = "nvim";
       waybarc = "vim ~/.config/waybar/config.jsonc";
