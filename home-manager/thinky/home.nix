@@ -119,10 +119,18 @@
         categories = [ "Network" "WebBrowser" ];
         terminal = false;
       };
+      obsidian = {
+        name = "Obsidian Nix";
+        comment = "Knowledge base";
+        exec = "nixGLIntel obsidian %u";
+        icon = "obsidian";
+        categories = [ "Office" ];
+        terminal = false;
+      };
       slack = {
         name = "Slack Nix";
         genericName = "Slack Client for Linux";
-	comment = "Slack Desktop";
+        comment = "Slack Desktop";
         exec = "nixGLIntel slack -s %U";
         icon = "slack";
         categories = [ "Network" "InstantMessaging" ];
