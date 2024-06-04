@@ -18,7 +18,7 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [ 3030 4040 9735 3001 60845 ];
-      allowedUDPPorts = [ 51820 ];
+      # allowedUDPPorts = [ 51820 ];
     };
   };
 
@@ -63,23 +63,6 @@
       };
       txindex = true;
     };
-    # caddy = {
-    #   enable = true;
-    #   # logFormat = ''
-    #   #   level DEBUG
-    #   # '';
-    #   package = pkgs.callPackage ../shared/caddy.nix {
-    #     plugins = [
-    #       "github.com/caddy-dns/cloudflare"
-    #     ];
-    #   };
-    #   virtualHosts."fulcrum.xav.icu".extraConfig = ''
-    #     reverse_proxy localhost:50002
-    #     tls {
-    #       dns cloudflare {env.CF_API_TOKEN}
-    #     }
-    #   '';
-    # };
     ### CLIGHTNING
     clightning = {
       enable = true; # Enable clightning, a Lightning Network implementation in C.
@@ -111,11 +94,12 @@
       };
     };
     electrs = {
-      enable = true;
+      enable = false;
       address = "0.0.0.0";
     };
     fulcrum = {
-      enable = false;
+      enable = true;
+      address = "0.0.0.0";
       # To generate a Tailscale SSL cert, run the command: sudo tailscale cert
       # Then change the owner of the crt and key files to fulcrum: chown fulcrum:fulcrum
       # Finally, copy or move them to the directory below for cert and key
@@ -135,6 +119,7 @@
     };
     mempool = {
       enable = true;
+      electrumServer = "fulcrum";
       frontend = {
         enable = true;
         address = "0.0.0.0";
@@ -189,36 +174,18 @@
       "borg/passphrase" = { };
       "borg/repos/finserv-cln" = { };
       "borg/ssh-private-key" = { };
-      # "caddy/cloudflare/api-token" = {
-      #   owner = "caddy";
-      # };
-      # "ssl/xav-icu/cloudflare/cert" = {
-      #   owner = "fulcrum";
-      # };
-      # "ssl/xav-icu/cloudflare/key" = {
-      #   owner = "fulcrum";
-      # };
-      "wireguard/finserv/private-key" = { };
       "wireguard/finserv/wg-conf" = { };
       "wireguard/punk/ip" = { };
     };
   };
   systemd.services = {
-    # caddy = {
-    #   serviceConfig = {
-    #     AmbientCapabilities = "cap_net_bind_service";
-    #     Environment = ''
-    #       CF_API_TOKEN=${config.sops.secrets."caddy/cloudflare/api-token".path}
-    #     '';
-    #   };
-    # };
     listmaker-node-3030 = {
       after = [ "network.target" ];
       serviceConfig = {
         ExecStart = "${pkgs.nodejs_22}/bin/node /home/main/apps/listmaker-node-3030/build/index.js";
         Restart = "always";
       };
-      wantedBy = ["multi-user.target" ];
+      wantedBy = [ "multi-user.target" ];
     };
     listmaker-node-4040 = {
       after = [ "network.target" ];
@@ -226,12 +193,8 @@
         ExecStart = "${pkgs.nodejs_22}/bin/node /home/main/apps/listmaker-node-4040/build/index.js";
         Restart = "always";
       };
-      wantedBy = ["multi-user.target" ];
+      wantedBy = [ "multi-user.target" ];
     };
-    # tailscaled = {
-    #   enable = true; # not sure if this is needed
-    #   after = [ "network-pre.target" "NetworkManager.service" "systemd-resolved.service" "wg-quick-wg0.service" ];
-    # };
   };
 }
 
