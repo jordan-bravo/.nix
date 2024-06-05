@@ -199,7 +199,9 @@
       enable = true;
       settings = {
         directory = {
-          truncate_to_repo = false;
+          truncation_length = 5;
+          truncation_symbol = ".../";
+          repo_root_style = "purple";
         };
         gcloud = {
           disabled = true;
