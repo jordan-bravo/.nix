@@ -140,6 +140,10 @@
       vscode-langservers-extracted # HTML/CSS/JSON/ESLint language servers extracted from vscode # nvim-dep
       yaml-language-server # Language Server for YAML Files
 
+      # Dependencies of openfortivpn
+      autoconf # Part of the GNU Build System
+      automake # GNU standard-compliant makefile generator
+      openssl # A cryptographic library that implements the SSL and TLS protocols
       # vimPlugins
       #
       #
@@ -193,7 +197,12 @@
     mise.enable = true;
     ssh = {
       enable = true;
-      extraConfig = "IgnoreUnknown AddKeysToAgent,UseKeychain";
+      # extraConfig = "IgnoreUnknown AddKeysToAgent,UseKeychain";
+      addKeysToAgent = "yes";
+      extraConfig = ''
+        IdentityFile ~/.ssh/ssh_id_ed25519_jordan_bravo
+        IdentitiesOnly yes
+      '';
     };
     starship = {
       enable = true;
