@@ -42,15 +42,7 @@
     firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
     networkmanager = {
       enable = true;
-      # dns = "none";
     };
-    # nameservers = [
-    #   # "194.242.2.2"
-    #   # "2a07:e340::2"
-    #   # "1.1.1.1"
-    #   # "1.0.0.1"
-    #   "9.9.9.9"
-    # ];
   };
 
   nix.settings = {
