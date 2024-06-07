@@ -132,9 +132,9 @@
       };
     };
     zsh = {
-      envExtra = ''
+      initExtra = ''
         # Add ssh key
-        ssh-add "~/.ssh/ssh_id_ed25519_jordan_bravo"
+        ssh-add "~/.ssh/ssh_id_ed25519_jordan_bravo" 1> /dev/null
       '';
     };
   };
