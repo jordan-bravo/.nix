@@ -62,11 +62,15 @@
       tor-browser-bundle-bin # Tor browser
       vlc # Media player
       vorta # Desktop Backup Client for Borg
-      watchman # Watches files and takes action when they change
       # waybar # Status bar
       # wofi # App launcher
       xorg.xwininfo # Display info for X windows and nothing for Wayland windows
       # zoom-us # Video conferencing
+
+      # Deps for Zeus, CLN, Android project
+      # android-studio # The Official IDE for Android (stable channel)
+      # jdk17 # The open-source Java Development Kit
+      watchman # Watches files and takes action when they change
 
       # GNOME specific
       gnome.dconf-editor # Edit GNOME options
