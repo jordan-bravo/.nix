@@ -133,8 +133,8 @@
     };
     zsh = {
       initExtra = ''
-        # Add ssh key
-        ssh-add "~/.ssh/ssh_id_ed25519_jordan_bravo" 1> /dev/null
+        # Add ssh key, suppress output
+        ssh-add ~/.ssh/ssh_id_ed25519_jordan_bravo 1> /dev/null 2>&1
       '';
     };
   };
