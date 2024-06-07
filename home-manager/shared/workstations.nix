@@ -62,6 +62,7 @@
       tor-browser-bundle-bin # Tor browser
       vlc # Media player
       vorta # Desktop Backup Client for Borg
+      watchman # Watches files and takes action when they change
       # waybar # Status bar
       # wofi # App launcher
       xorg.xwininfo # Display info for X windows and nothing for Wayland windows
