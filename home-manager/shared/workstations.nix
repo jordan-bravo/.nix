@@ -28,7 +28,7 @@
       # borgbackup # Deduplicating archiver with compression and encryption
       brave # Web browser
       # cantarell-fonts # Fonts for waybar
-      # dbeaver # SQL database client
+      dbeaver # SQL database client
       dino # XMPP client
       discord # All-in-one cross-platform voice and text chat for gamers
       # dpkg # The Debian package manager
