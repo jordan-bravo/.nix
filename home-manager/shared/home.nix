@@ -199,10 +199,10 @@
       enable = true;
       # extraConfig = "IgnoreUnknown AddKeysToAgent,UseKeychain";
       addKeysToAgent = "yes";
-      extraConfig = ''
-        IdentityFile ~/.ssh/ssh_id_ed25519_jordan_bravo
-        IdentitiesOnly yes
-      '';
+      # extraConfig = ''
+      #   IdentityFile ~/.ssh/ssh_id_ed25519_jordan_bravo
+      #   IdentitiesOnly yes
+      # '';
     };
     starship = {
       enable = true;
