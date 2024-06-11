@@ -17,7 +17,7 @@
     hostName = "finserv";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 3030 4040 9735 3001 60845 ];
+      allowedTCPPorts = [ 3030 4040 9735 9736 3001 60845 ];
       # allowedUDPPorts = [ 51820 ];
     };
   };
@@ -73,11 +73,13 @@
         experimental-onion-messages
         experimental-offers
         experimental-dual-fund
+        disable-mpp
       '';
       replication = {
         enable = true;
         local.directory = "/var/backup/clightning";
       };
+      port = 9736;
     };
     # == REST server
     # Set this to create a clightning REST onion service.
@@ -116,6 +118,10 @@
     };
     liquidd = {
       enable = true;
+    };
+    lnd = {
+      enable = true;
+      lndconnect.enable = true;
     };
     mempool = {
       enable = true;
