@@ -80,7 +80,7 @@
       pgcli # Command-line interface for PostgreSQL
       pkg-config # Required for borg mount
       procs # A modern replacement for ps written in Rust
-      pyenv # Simple Python version management
+      # pyenv # Simple Python version management
       scc # Code counter with complexity calculations and COCOMO estimates written in Go
       sad # CLI tool to search and replace
       sd # Intuitive find & replace CLI (sed alternative)
@@ -111,8 +111,8 @@
       emmet-ls # Emmet support based on LSP # nvim-dep
       eslint_d # ESLint daemon for increased performance
       fzf # nvim-dep
-      gcc # GNU Compiler Collection # nvim-dep # nvim-dep
-      gnumake # A tool to control the generation of non-source files from sources # nvim-dep
+      # gcc # GNU Compiler Collection # nvim-dep # nvim-dep
+      # gnumake # A tool to control the generation of non-source files from sources # nvim-dep
       gopls # Official language server for Go / Golang # nvim-dep
       lazygit # Simple terminal UI for git commands # nvim-dep
       lua-language-server # LSP language server for Lua # nvim-dep
@@ -142,9 +142,9 @@
       yaml-language-server # Language Server for YAML Files
 
       # Dependencies of openfortivpn
-      autoconf # Part of the GNU Build System
-      automake # GNU standard-compliant makefile generator
-      openssl # A cryptographic library that implements the SSL and TLS protocols
+      # autoconf # Part of the GNU Build System
+      # automake # GNU standard-compliant makefile generator
+      # openssl # A cryptographic library that implements the SSL and TLS protocols
 
       # Dependencies of python 2.7 for customer-api-legacy
       # libffi # Foreign function call interface library
@@ -208,7 +208,7 @@
     home-manager.enable = true;
     jq.enable = true;
     lsd.enable = true;
-    mise.enable = true;
+    mise.enable = false;
     ssh = {
       enable = true;
       # extraConfig = "IgnoreUnknown AddKeysToAgent,UseKeychain";
