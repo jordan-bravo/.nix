@@ -80,6 +80,7 @@
       pgcli # Command-line interface for PostgreSQL
       pkg-config # Required for borg mount
       procs # A modern replacement for ps written in Rust
+      pyenv # Simple Python version management
       scc # Code counter with complexity calculations and COCOMO estimates written in Go
       sad # CLI tool to search and replace
       sd # Intuitive find & replace CLI (sed alternative)

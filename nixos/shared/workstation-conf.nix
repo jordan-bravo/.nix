@@ -60,7 +60,7 @@
       enableSSHSupport = true;
     };
     # hyprland.enable = true;
-    virt-manager.enable = false;
+    virt-manager.enable = true;
     zsh.enable = true;
   };
 
@@ -118,7 +118,7 @@
 
   users.users.jordan = {
     description = "jordan";
-    extraGroups = [ "adbusers" "docker" "networkmanager" "wheel" ];
+    extraGroups = [ "adbusers" "docker" "libvirtd" "networkmanager" "wheel" ];
     isNormalUser = true;
     packages = with pkgs; [
       home-manager
@@ -127,7 +127,7 @@
   };
 
   virtualisation = {
-    libvirtd.enable = false;
+    libvirtd.enable = true;
     docker = {
       enable = true;
       # rootless = {
