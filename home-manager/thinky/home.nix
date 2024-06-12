@@ -13,10 +13,10 @@
       unicode-hotkey = [ ];
     };
     "org/gnome/desktop/interface" = {
-      # text-scaling-factor = 0.8; # BitLab LG
+      text-scaling-factor = 0.8; # BitLab LG
       # text-scaling-factor = 1.0;
       # text-scaling-factor = 1.15; # Home Innocn
-      text-scaling-factor = 1.5; # thinky built-in
+      # text-scaling-factor = 1.5; # thinky built-in
     };
     "org/gnome/desktop/peripherals/mouse" = {
       speed = -0.6;
@@ -46,7 +46,10 @@
   ];
   nixpkgs.config.allowUnfree = true;
   programs.zsh.profileExtra = ''
-    export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS"
+    export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS
+  '';
+  programs.zsh.initExtra = ''
+    export PATH=$HOME/.local/bin:$PATH
   '';
   targets.genericLinux.enable = true;
   xdg = {
@@ -79,7 +82,8 @@
         name = "Brave Nix";
         genericName = "Web Browser";
         comment = "Access the internet";
-        exec = "nixGLIntel brave %U";
+        # exec = "nixGLIntel brave %U";
+        exec = "brave %U";
         icon = "brave-browser";
         categories = [ "Network" "WebBrowser" ];
         terminal = false;
@@ -88,14 +92,16 @@
         name = "Element Nix";
         genericName = "Matrix Client";
         comment = "A feature-rich client for Matrix.org";
-        exec = "nixGLIntel element-desktop %u";
+        # exec = "nixGLIntel element-desktop %u";
+        exec = "element-desktop %u";
         icon = "element";
         categories = [ "Network" "InstantMessaging" "Chat" ];
       };
       firefox = {
         name = "Firefox";
         genericName = "Web Browser";
-        exec = "nixGLIntel firefox --name firefox %U";
+        # exec = "nixGLIntel firefox --name firefox %U";
+        exec = "firefox --name firefox %U";
         icon = "firefox";
         categories = [ "Network" "WebBrowser" ];
         terminal = false;
@@ -104,14 +110,16 @@
         name = "Kitty";
         genericName = "Terminal Emulator";
         comment = "Fast, feature-rich, GPU based terminal";
-        exec = "nixGLIntel kitty";
+        # exec = "nixGLIntel kitty";
+        exec = "kitty";
         icon = "kitty";
         categories = [ "System" "TerminalEmulator" ];
       };
       librewolf = {
         name = "Librewolf";
         genericName = "Web Browser";
-        exec = "nixGLIntel librewolf --name librewolf %U";
+        # exec = "nixGLIntel librewolf --name librewolf %U";
+        exec = "librewolf --name librewolf %U";
         icon = "librewolf";
         categories = [ "Network" "WebBrowser" ];
         terminal = false;
@@ -119,7 +127,8 @@
       obsidian = {
         name = "Obsidian Nix";
         comment = "Knowledge base";
-        exec = "nixGLIntel obsidian %u";
+        # exec = "nixGLIntel obsidian %u";
+        exec = "obsidian %u";
         icon = "obsidian";
         categories = [ "Office" ];
         terminal = false;
@@ -128,7 +137,8 @@
         name = "Slack Nix";
         genericName = "Slack Client for Linux";
         comment = "Slack Desktop";
-        exec = "nixGLIntel slack -s %U";
+        # exec = "nixGLIntel slack -s %U";
+        exec = "slack -s %U";
         icon = "slack";
         categories = [ "Network" "InstantMessaging" ];
         terminal = false;

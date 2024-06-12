@@ -1,6 +1,9 @@
 # shared/servers.nix
 { config, osConfig, ... }:
 {
+  imports = [
+    ../shared/kitty.nix
+  ];
   programs.zsh = {
     initExtra = ''
       # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)

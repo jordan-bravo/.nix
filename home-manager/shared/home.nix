@@ -66,7 +66,7 @@
       ivpn # VPN GUI
       ivpn-service # VPN background service
       killall # Tool to kill processes
-      kitty # Terminal emulator
+      # kitty # Terminal emulator
       lsof # A tool to list open files
       # mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
@@ -130,7 +130,7 @@
       nodePackages.typescript # nvim-dep
       nodePackages.typescript-language-server # nvim-dep
       prettierd # Prettier daemon for faster formatting # nvim-dep
-      python312 # Python 3.12 # nvim-dep
+      # python312 # Python 3.12 # nvim-dep
       rustfmt # Rust formatter # nvim-dep
       ruff # An extremely fast Python linter # nvim-dep
       ruff-lsp # Ruff LSP for Python # nvim-dep
@@ -144,6 +144,19 @@
       autoconf # Part of the GNU Build System
       automake # GNU standard-compliant makefile generator
       openssl # A cryptographic library that implements the SSL and TLS protocols
+
+      # Dependencies of python 2.7 for customer-api-legacy
+      # libffi # Foreign function call interface library
+      # lzlib # Data compression library providing in-memory LZMA compression and decompression functions, including integrity checking of the decompressed data
+      # ncurses # Free software emulation of curses in SVR4 and more
+      # readline # Library for interactive line editing
+      # sqlite # Self-contained, serverless, zero-configuration, transactional SQL database engine
+      # tk # Widget toolkit that provides a library of basic elements for building a GUI in many different programming languages
+      # xml2 # Tools for command line processing of XML, HTML, and CSV
+      # xmlsec # XML Security Library in C based on libxml2
+      # xz # General-purpose data compression software, successor of LZMA
+      # zlib # Lossless data-compression library
+
       # vimPlugins
       #
       #

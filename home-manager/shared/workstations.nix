@@ -98,7 +98,7 @@
   # Programs with more extensive config are imported from separate modules.
   imports = [
     ../shared/dconf.nix
-    ../shared/kitty.nix
+    # ../shared/kitty.nix
   ];
 
   # Programs with little to no config are enabled here. 

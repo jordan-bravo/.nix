@@ -3,6 +3,9 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../shared/kitty.nix
+  ];
   dconf = {
     settings = {
       "org/gnome/desktop/interface" = {
