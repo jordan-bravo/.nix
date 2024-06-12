@@ -3,9 +3,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ../shared/kitty.nix
-  ];
   dconf = {
     settings = {
       "org/gnome/desktop/interface" = {
@@ -42,6 +39,7 @@
   };
   imports = [
     ../shared/home.nix
+    ../shared/kitty.nix
     ../shared/workstations.nix
     # ../shared/hyprland.nix
     # android-nixpkgs.hmModule {
