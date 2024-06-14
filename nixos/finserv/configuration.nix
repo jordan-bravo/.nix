@@ -122,6 +122,9 @@
     lnd = {
       enable = true;
       lndconnect.enable = true;
+      extraConfig = ''
+        protocol.simple-taproot-chans=true
+      '';
     };
     mempool = {
       enable = true;
