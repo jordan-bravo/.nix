@@ -66,7 +66,7 @@
       ivpn # VPN GUI
       ivpn-service # VPN background service
       killall # Tool to kill processes
-      kitty # Terminal emulator
+      # kitty # Terminal emulator
       lsof # A tool to list open files
       # mise # (formerly rtx) Runtime/environment manager
       neofetch # Show system info
@@ -80,6 +80,7 @@
       pgcli # Command-line interface for PostgreSQL
       pkg-config # Required for borg mount
       procs # A modern replacement for ps written in Rust
+      # pyenv # Simple Python version management
       scc # Code counter with complexity calculations and COCOMO estimates written in Go
       sad # CLI tool to search and replace
       sd # Intuitive find & replace CLI (sed alternative)
@@ -107,12 +108,14 @@
 
       # Neovim/Lazyvim dependencies nvim-dep
       delve # Debugger for the Go programming language
+      dockerfile-language-server-nodejs # A language server for Dockerfiles # nvim-dep
       emmet-ls # Emmet support based on LSP # nvim-dep
-      eslint_d # ESLint daemon for increased performance
+      eslint_d # ESLint daemon for increased performance # nvim-dep
       fzf # nvim-dep
-      gcc # GNU Compiler Collection # nvim-dep # nvim-dep
-      gnumake # A tool to control the generation of non-source files from sources # nvim-dep
+      # gcc # GNU Compiler Collection # nvim-dep # nvim-dep
+      # gnumake # A tool to control the generation of non-source files from sources # nvim-dep
       gopls # Official language server for Go / Golang # nvim-dep
+      hadolint # Dockerfile Linter JavaScript API # nvim-dep
       lazygit # Simple terminal UI for git commands # nvim-dep
       lua-language-server # LSP language server for Lua # nvim-dep
       luajit # JIT compiler for Lua 5.1 # nvim-dep
@@ -130,7 +133,7 @@
       nodePackages.typescript # nvim-dep
       nodePackages.typescript-language-server # nvim-dep
       prettierd # Prettier daemon for faster formatting # nvim-dep
-      python312 # Python 3.12 # nvim-dep
+      # python312 # Python 3.12 # nvim-dep
       rustfmt # Rust formatter # nvim-dep
       ruff # An extremely fast Python linter # nvim-dep
       ruff-lsp # Ruff LSP for Python # nvim-dep
@@ -141,9 +144,22 @@
       yaml-language-server # Language Server for YAML Files
 
       # Dependencies of openfortivpn
-      autoconf # Part of the GNU Build System
-      automake # GNU standard-compliant makefile generator
-      openssl # A cryptographic library that implements the SSL and TLS protocols
+      # autoconf # Part of the GNU Build System
+      # automake # GNU standard-compliant makefile generator
+      # openssl # A cryptographic library that implements the SSL and TLS protocols
+
+      # Dependencies of python 2.7 for customer-api-legacy
+      # libffi # Foreign function call interface library
+      # lzlib # Data compression library providing in-memory LZMA compression and decompression functions, including integrity checking of the decompressed data
+      # ncurses # Free software emulation of curses in SVR4 and more
+      # readline # Library for interactive line editing
+      # sqlite # Self-contained, serverless, zero-configuration, transactional SQL database engine
+      # tk # Widget toolkit that provides a library of basic elements for building a GUI in many different programming languages
+      # xml2 # Tools for command line processing of XML, HTML, and CSV
+      # xmlsec # XML Security Library in C based on libxml2
+      # xz # General-purpose data compression software, successor of LZMA
+      # zlib # Lossless data-compression library
+
       # vimPlugins
       #
       #
@@ -194,7 +210,7 @@
     home-manager.enable = true;
     jq.enable = true;
     lsd.enable = true;
-    mise.enable = true;
+    mise.enable = false;
     ssh = {
       enable = true;
       # extraConfig = "IgnoreUnknown AddKeysToAgent,UseKeychain";

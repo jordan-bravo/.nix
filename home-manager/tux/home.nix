@@ -17,6 +17,10 @@
       "org/gnome/desktop/peripherals/touchpad" = {
         speed = 0.25;
       };
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
+      };
       # "org/gnome/desktop/sound" = {
       #   allow-volume-above-100-percent = true;
       # };
@@ -35,6 +39,7 @@
   };
   imports = [
     ../shared/home.nix
+    ../shared/kitty.nix
     ../shared/workstations.nix
     # ../shared/hyprland.nix
     # android-nixpkgs.hmModule {
