@@ -108,12 +108,14 @@
 
       # Neovim/Lazyvim dependencies nvim-dep
       delve # Debugger for the Go programming language
+      dockerfile-language-server-nodejs # A language server for Dockerfiles # nvim-dep
       emmet-ls # Emmet support based on LSP # nvim-dep
-      eslint_d # ESLint daemon for increased performance
+      eslint_d # ESLint daemon for increased performance # nvim-dep
       fzf # nvim-dep
       # gcc # GNU Compiler Collection # nvim-dep # nvim-dep
       # gnumake # A tool to control the generation of non-source files from sources # nvim-dep
       gopls # Official language server for Go / Golang # nvim-dep
+      hadolint # Dockerfile Linter JavaScript API # nvim-dep
       lazygit # Simple terminal UI for git commands # nvim-dep
       lua-language-server # LSP language server for Lua # nvim-dep
       luajit # JIT compiler for Lua 5.1 # nvim-dep
