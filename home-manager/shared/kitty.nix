@@ -1,7 +1,7 @@
 # home-manager/shared/kitty.nix
 {
   programs.kitty = {
-    enable = false;
+    enable = true;
     font = {
       name = "FiraCode Nerd Font Mono";
       size = 12;
