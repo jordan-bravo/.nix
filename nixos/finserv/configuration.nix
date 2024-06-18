@@ -125,6 +125,7 @@
       lndconnect.enable = true;
       extraConfig = ''
         protocol.simple-taproot-chans=true
+        alias=Antares
       '';
       rpcAddress = "0.0.0.0";
     };
