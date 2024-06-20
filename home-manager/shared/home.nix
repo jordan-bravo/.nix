@@ -45,7 +45,6 @@
       bottom # A cross-platform graphical process/system monitor with a customizable interface
       # busybox # Tiny versions of common UNIX utilities in a single small executable
       cargo # Rust package manager
-      # dbeaver # SQL database client
       delta # A syntax-highlighting pager for git
       dhcping # Send DHCP request to find out if a DHCP server is running
       dig # DNS tool
@@ -107,6 +106,7 @@
       wofi
 
       # Neovim/Lazyvim dependencies nvim-dep
+      basedpyright # Type checker for the Python language
       delve # Debugger for the Go programming language
       dockerfile-language-server-nodejs # A language server for Dockerfiles # nvim-dep
       emmet-ls # Emmet support based on LSP # nvim-dep
@@ -129,7 +129,7 @@
       nodePackages.bash-language-server # A language server for Bash
       nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.prettier # nvim-dep
-      nodePackages.pyright # Python static type checker
+      pyright # Python static type checker
       nodePackages.typescript # nvim-dep
       nodePackages.typescript-language-server # nvim-dep
       prettierd # Prettier daemon for faster formatting # nvim-dep
