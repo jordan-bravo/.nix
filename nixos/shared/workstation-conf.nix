@@ -139,6 +139,11 @@
 
   # There is an outstanding bug in NixOS that causes rebuilds to fail sometimes, this is the workaround.
   # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1645442729
-  systemd.services.NetworkManager-wait-online.enable = false;
+  # systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.services.NetworkManager-wait-online = {
+    serviceConfig = {
+      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+    };
+  };
 }
 

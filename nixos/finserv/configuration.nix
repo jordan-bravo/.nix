@@ -208,19 +208,22 @@
       wantedBy = [ "multi-user.target" ];
     };
     # lnd-connect-to-peers = {
-    #   script = ''
-    #     # ACINQ
-    #     ${pkgs.lnd}/bin/lncli connect --perm 03864ef025fde8fb587d989186ce6a4a186895ee44a926bfc370e2c366597a3f8f@3.33.236.230:9735
-    #     # WalletOfSatoshi
-    #     ${pkgs.lnd}/bin/lncli connect --perm 035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226@170.75.163.209:9735
-    #     # Boltz
-    #     ${pkgs.lnd}/bin/lncli connect --perm 026165850492521f4ac8abd9bd8088123446d126f648ca35e60f88177dc149ceb2@45.86.229.190:9735
-    #     # Kraken
-    #     ${pkgs.lnd}/bin/lncli connect --perm 02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69@52.13.118.208:9735
-    #   '';
     #   serviceConfig = {
     #     Type = "oneshot";
     #     User = "lnd";
+    #     ExecStart = [
+    #       # ACINQ
+    #       "${pkgs.coreutils}/bin/echo \"$(date) before\" >> /var/lib/lnd/lnd-service.log"
+    #       "${pkgs.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 03864ef025fde8fb587d989186ce6a4a186895ee44a926bfc370e2c366597a3f8f@3.33.236.230:9735 2> /dev/null"
+    #       # WalletOfSatoshi
+    #       "${pkgs.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226@170.75.163.209:9735 2> /dev/null"
+    #       # Boltz
+    #       "${pkgs.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 026165850492521f4ac8abd9bd8088123446d126f648ca35e60f88177dc149ceb2@45.86.229.190:9735 2> /dev/null"
+    #       # Kraken
+    #       "${pkgs.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69@52.13.118.208:9735 2> /dev/null"
+    #       # put timestamp in lnd-service.log
+    #       "${pkgs.coreutils}/bin/echo \"$(date) after\" >> /var/lib/lnd/lnd-service.log"
+    #     ];
     #   };
     # };
     my-test-service = {
