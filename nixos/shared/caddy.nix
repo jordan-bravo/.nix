@@ -8,6 +8,7 @@ stdenv.mkDerivation rec {
   # https://github.com/NixOS/nixpkgs/issues/113520
   version = "latest";
   dontUnpack = true;
+  meta.mainProgram = "caddy";
 
   nativeBuildInputs = [ git go xcaddy ];
 
