@@ -93,7 +93,12 @@
       hostName = "nextcloud.sovserv.top";
       https = true;
       maxUploadSize = "32G";
-      package = pkgs.nextcloud28;
+      # After upgrading to Nextcloud 29, there is a error in Admin settings:
+      # Failed to get an iterator for log entries: Logreader application only supports "file" log_type
+      # The Nextcloud forums list a solution:  remove this line from config.php:
+      # 'log_type' => 'errorlog',
+      # The question is, how to do this on NixOS?
+      package = pkgs.nextcloud29;
       phpOptions = {
         "opcache.interned_strings_buffer" = "48";
       };
