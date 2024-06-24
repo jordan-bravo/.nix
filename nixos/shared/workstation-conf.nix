@@ -68,6 +68,7 @@
 
   services = {
     flatpak.enable = true;
+    mullvad-vpn.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -79,8 +80,8 @@
       enable = true;
       dnsovertls = "true";
       dnssec = "true";
-      # domains = [ "~." ];
-      domains = [ "snowy-hops.ts.net" ];
+      domains = [ "~." ];
+      # domains = [ "snowy-hops.ts.net" ];
       fallbackDns = [
         "1.1.1.1"
         "1.0.0.1"
