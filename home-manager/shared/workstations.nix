@@ -42,6 +42,7 @@
       # gtklock-userinfo-module # Screen lock user info
       heroku # Heroku CLI
       hoppscotch # Open source API development ecosystem, Postman alternative
+      httpie-desktop # Cross-platform API testing client for humans. Painlessly test REST, GraphQL, and HTTP APIs
       iamb # Matrix client for Vim addicts
       jitsi-meet # Video calling (not sure if both packages are needed)
       jitsi # Video calling (not sure if both packages are needed)

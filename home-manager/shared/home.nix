@@ -61,6 +61,7 @@
       glow # Render markdown on the CLI, with pizzazz!
       gnome-multi-writer # Tool for writing an ISO file to multiple USB devices at once
       go # The Go / Golang programming language
+      httpie # Command line HTTP client whose goal is to make CLI human-friendly
       hyprpaper # Hyprland wallpaper program
       ivpn # VPN GUI
       ivpn-service # VPN background service
