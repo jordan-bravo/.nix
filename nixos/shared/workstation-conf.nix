@@ -18,6 +18,9 @@
     # variables = {
     #   "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
     # };
+    systemPackages = with pkgs; [
+      gcc # GNU Compiler Collection, version 13.2.0 (wrapper script)
+    ];
   };
 
   hardware.pulseaudio.enable = false;

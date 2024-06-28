@@ -15,12 +15,10 @@
       };
     };
     packages = with pkgs; [
-      act # Run your GitHub Actions locally
       adwaita-qt # Adwaita style for Qt apps
-      aerc # An email client for your terminal
       audacity # Music player
-      android-studio # The Official IDE for Android (stable channel)
-      android-tools # Android SDK platform tools
+      # android-studio # The Official IDE for Android (stable channel)
+      # android-tools # Android SDK platform tools
       avidemux # Free video editor designed for simple video editing tasks
       # beekeeper-studio # SQL database client
       bitcoind # Peer-to-peer electronic cash system
