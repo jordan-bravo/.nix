@@ -129,7 +129,7 @@ with lib.hm.gvariant;
         # "signal-desktop.desktop:3"
         "slack.desktop:3"
         "thunderbird.desktop:3"
-        "obsidian.desktop:4"
+        # "obsidian.desktop:4"
         # "sparrow-desktop.desktop:5"
       ];
       extend-height = true;
