@@ -41,6 +41,8 @@
     };
     stateVersion = "23.11";
     packages = with pkgs; [
+      act # Run your GitHub Actions locally
+      aerc # An email client for your terminal
       age # (Actually Good Encryption) A modern encryption tool with small explicit keys
       bottom # A cross-platform graphical process/system monitor with a customizable interface
       # busybox # Tiny versions of common UNIX utilities in a single small executable
@@ -113,7 +115,7 @@
       emmet-ls # Emmet support based on LSP # nvim-dep
       eslint_d # ESLint daemon for increased performance # nvim-dep
       fzf # nvim-dep
-      gcc # GNU Compiler Collection # nvim-dep # nvim-dep
+      # gcc # GNU Compiler Collection # nvim-dep # nvim-dep
       # gnumake # A tool to control the generation of non-source files from sources # nvim-dep
       gopls # Official language server for Go / Golang # nvim-dep
       hadolint # Dockerfile Linter JavaScript API # nvim-dep

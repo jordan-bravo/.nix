@@ -52,8 +52,9 @@
   # Hint electron apps to use wayland
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  # environment.systemPackages = with pkgs; [
-  # ];
+  environment.systemPackages = with pkgs; [
+    gcc # GNU Compiler Collection, version 13.2.0 (wrapper script)
+  ];
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
