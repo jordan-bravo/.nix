@@ -31,6 +31,8 @@
       appimage-run # Run AppImages on NixOS
       bisq-desktop # Decentralized Bitcoin exchange
       qbittorrent # Featureful free software BitTorrent client
+      quickemu # Quickly create and run optimised Windows, macOS and Linux virtual machines
+      quickgui # Flutter frontend for quickemu
       # ricochet-refresh # Anonymous peer-to-peer instant messaging over Tor
       sparrow # Bitcoin wallet
     ];
@@ -50,5 +52,6 @@
     # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
     bindkey "''${key[Up]}" up-line-or-search
   '';
+  programs.pyenv.enable = true;
 }
 

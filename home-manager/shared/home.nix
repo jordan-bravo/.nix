@@ -90,7 +90,7 @@
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       speedtest-rs # Command line internet speedtest tool written in rust
       steam-run # Run commands in the same FHS environment that is used for Steam
-      transmission # Bittorrent client
+      # transmission # Bittorrent client
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       tree # View directory tree structure
