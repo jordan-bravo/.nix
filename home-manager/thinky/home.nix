@@ -50,6 +50,7 @@
   '';
   programs.zsh.initExtra = ''
     export PATH=$HOME/.local/bin:$PATH
+    eval "$(mise activate zsh)"
   '';
   targets.genericLinux.enable = true;
   xdg = {
