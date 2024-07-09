@@ -57,7 +57,7 @@
   nixpkgs.config.allowUnfree = true;
 
   programs = {
-    adb.enable = false;
+    adb.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
