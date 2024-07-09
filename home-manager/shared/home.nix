@@ -44,6 +44,7 @@
       act # Run your GitHub Actions locally
       aerc # An email client for your terminal
       age # (Actually Good Encryption) A modern encryption tool with small explicit keys
+      bitwarden-cli # Secure and free password manager for all of your devices
       bottom # A cross-platform graphical process/system monitor with a customizable interface
       # busybox # Tiny versions of common UNIX utilities in a single small executable
       cargo # Rust package manager
@@ -58,7 +59,9 @@
       duf # Disk Usage/Free Utility, a df alternative
       fd # A simple, fast and user-friendly alternative to find
       ffmpeg # A complete, cross-platform solution to record, convert and stream audio and video
+      fastfetch # Like neofetch, but much faster because written in C
       fira-code # Font
+      freshfetch # Fresh take on neofetch
       gitui # Blazing fast terminal-ui for Git written in Rust
       glow # Render markdown on the CLI, with pizzazz!
       gnome-multi-writer # Tool for writing an ISO file to multiple USB devices at once
@@ -70,8 +73,6 @@
       killall # Tool to kill processes
       # kitty # Terminal emulator
       lsof # A tool to list open files
-      # mise # (formerly rtx) Runtime/environment manager
-      neofetch # Show system info
       neovim # Text editor / IDE
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nix-index # A files database for nixpkgs
@@ -90,7 +91,6 @@
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       speedtest-rs # Command line internet speedtest tool written in rust
       steam-run # Run commands in the same FHS environment that is used for Steam
-      # transmission # Bittorrent client
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       tree # View directory tree structure

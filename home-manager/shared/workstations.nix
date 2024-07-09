@@ -22,7 +22,7 @@
       avidemux # Free video editor designed for simple video editing tasks
       # beekeeper-studio # SQL database client
       bitcoind # Peer-to-peer electronic cash system
-      bitwarden # Password manager
+      # bitwarden-desktop # Password manager
       # borgbackup # Deduplicating archiver with compression and encryption
       brave # Web browser
       # cantarell-fonts # Fonts for waybar
@@ -72,9 +72,9 @@
       watchman # Watches files and takes action when they change
 
       # GNOME specific
-      gnome.dconf-editor # Edit GNOME options
+      dconf-editor # Edit GNOME options
       gnome.gnome-session # GNOME session manager, e.g. `gnome-session-quit`
-      gnome.gnome-tweaks # Extra options for GNOME
+      gnome-tweaks # Extra options for GNOME
       gnome-extension-manager # Manage GNOME extensions
       gnomeExtensions.appindicator # Tray icons
       gnomeExtensions.auto-move-windows # Move applications to specific workspaces when they create windows

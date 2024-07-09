@@ -53,7 +53,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     xremap-flake.url = "github:xremap/nix-flake";
-    nixpkgs-micro-2-0-12.url = "github:nixos/nixpkgs/a71323f68d4377d12c04a5410e214495ec598d4c";
+    # nixpkgs-micro-2-0-12.url = "github:nixos/nixpkgs/a71323f68d4377d12c04a5410e214495ec598d4c";
   };
 
   outputs =
@@ -73,7 +73,7 @@
     , sops-nix
     , system-manager
       # , xremap-flake
-    , nixpkgs-micro-2-0-12
+    # , nixpkgs-micro-2-0-12
     , ...
     }@inputs:
     let
@@ -91,9 +91,9 @@
       # pkgs-2311 = import nixpkgs-2311 {
       #   system = "x86_64-linux";
       # };
-      pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
-        system = "x86_64-linux";
-      };
+      # pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
+      #   system = "x86_64-linux";
+      # };
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
@@ -194,7 +194,7 @@
         };
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs inputs pkgs-micro-2-0-12; };
+          extraSpecialArgs = { inherit nixgl pkgs inputs /* pkgs-micro-2-0-12*/ ; };
           modules = [ ./home-manager/thinky/home.nix ];
         };
         tux = home-manager.lib.homeManagerConfiguration {
