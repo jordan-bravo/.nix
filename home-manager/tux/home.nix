@@ -32,8 +32,8 @@
       bisq-desktop # Decentralized Bitcoin exchange
       nix-index # Files database for nixpkgs
       qbittorrent # Featureful free software BitTorrent client
-      quickemu # Quickly create and run optimised Windows, macOS and Linux virtual machines
-      quickgui # Flutter frontend for quickemu
+      # quickemu # Quickly create and run optimised Windows, macOS and Linux virtual machines
+      # quickgui # Flutter frontend for quickemu
       # ricochet-refresh # Anonymous peer-to-peer instant messaging over Tor
       sparrow # Bitcoin wallet
 
