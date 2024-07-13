@@ -126,6 +126,9 @@
       extraConfig = ''
         protocol.simple-taproot-chans=true
         alias=Antares
+        # This next line is a workaround for a bug where the health check keeps failing and then LND
+        # shuts down. See https://github.com/lightningnetwork/lnd/issues/4669
+        healthcheck.chainbackend.attempts=0
       '';
       rpcAddress = "0.0.0.0";
     };
