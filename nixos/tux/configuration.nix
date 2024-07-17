@@ -48,14 +48,14 @@
     port = 6379;
   };
 
-  services.ollama = {
-    enable = true;
-  };
-
-  services.nextjs-ollama-llm-ui = {
-    enable = true;
-    ollamaUrl = "http://127.0.0.1:11434";
-  };
+  # services.ollama = {
+  #   enable = true;
+  # };
+  #
+  # services.nextjs-ollama-llm-ui = {
+  #   enable = true;
+  #   ollamaUrl = "http://127.0.0.1:11434";
+  # };
 
   networking.hostName = "tux";
   # networking.enableIPv6 = false;
