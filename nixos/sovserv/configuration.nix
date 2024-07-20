@@ -118,6 +118,7 @@
           "OC\\Preview\\XBitmap"
           "OC\\Preview\\HEIC"
         ];
+        # maintenance = true; # set this to true to manually enable maintenance mode
         maintenance_window_start = "1";
         trusted_proxies = [ "127.0.0.1" ];
       };
@@ -131,6 +132,7 @@
     };
     postgresql = {
       ensureDatabases = [ "nextcloud" ];
+      package = pkgs.postgresql_15;
     };
     postgresqlBackup = {
       enable = true;
