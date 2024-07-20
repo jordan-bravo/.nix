@@ -30,12 +30,14 @@
     packages = with pkgs; [
       appimage-run # Run AppImages on NixOS
       bisq-desktop # Decentralized Bitcoin exchange
+      # ceph # Distrubuted storage system
       nix-index # Files database for nixpkgs
       qbittorrent # Featureful free software BitTorrent client
       # quickemu # Quickly create and run optimised Windows, macOS and Linux virtual machines
       # quickgui # Flutter frontend for quickemu
       # ricochet-refresh # Anonymous peer-to-peer instant messaging over Tor
       sparrow # Bitcoin wallet
+      # zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
 
       # Deps attempting to install python 2 with pyenv
       # bzip2 # High-quality data compression program
