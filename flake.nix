@@ -25,6 +25,11 @@
     # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    # Lanzaboote enables Secure Boot on NixOS
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # NixGL for graphics driver issues on non-NixOS
     nixgl.url = "github:guibou/nixGL";
     # Configure Firefox extensions via Home Manager
@@ -59,6 +64,7 @@
   outputs =
     { android-nixpkgs
     , home-manager
+    , lanzaboote
     , nix-bitcoin
     , nixpkgs
       # , nix-darwin
@@ -121,6 +127,7 @@
           modules = [
             ./nixos/tux/configuration.nix
             ./nixos/shared/workstation-conf.nix
+            lanzaboote.nixosModules.lanzaboote
             # This section uses home-manager as a NixOS module
             home-manager.nixosModules.home-manager
             {
