@@ -34,10 +34,12 @@
       cinnamon.bulky # Bulk rename app
       gprename # Complete batch renamer for files and directories
       nix-index # Files database for nixpkgs
+      niv # Easy dependency management for Nix projects
       qbittorrent # Featureful free software BitTorrent client
       # quickemu # Quickly create and run optimised Windows, macOS and Linux virtual machines
       # quickgui # Flutter frontend for quickemu
       # ricochet-refresh # Anonymous peer-to-peer instant messaging over Tor
+      sbctl # Secure Boot key manager
       sparrow # Bitcoin wallet
       trayscale # Unofficial GUI wrapper around the Tailscale CLI client
       # zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
