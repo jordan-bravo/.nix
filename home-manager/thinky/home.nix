@@ -82,8 +82,8 @@
         name = "Brave Nix";
         genericName = "Web Browser";
         comment = "Access the internet";
-        # exec = "nixGLIntel brave %U";
-        exec = "brave %U";
+        exec = "nixGLIntel brave %U";
+        # exec = "brave %U";
         icon = "brave-browser";
         categories = [ "Network" "WebBrowser" ];
         terminal = false;
@@ -92,16 +92,16 @@
         name = "Element Nix";
         genericName = "Matrix Client";
         comment = "A feature-rich client for Matrix.org";
-        # exec = "nixGLIntel element-desktop %u";
-        exec = "element-desktop %u";
+        exec = "nixGLIntel element-desktop %u";
+        # exec = "element-desktop %u";
         icon = "element";
         categories = [ "Network" "InstantMessaging" "Chat" ];
       };
       firefox = {
-        name = "Firefox";
+        name = "Firefox Nix";
         genericName = "Web Browser";
-        # exec = "nixGLIntel firefox --name firefox %U";
-        exec = "firefox --name firefox %U";
+        exec = "nixGLIntel firefox --name firefox %U";
+        # exec = "firefox --name firefox %U";
         icon = "firefox";
         categories = [ "Network" "WebBrowser" ];
         terminal = false;
@@ -118,8 +118,8 @@
       librewolf = {
         name = "Librewolf";
         genericName = "Web Browser";
-        # exec = "nixGLIntel librewolf --name librewolf %U";
-        exec = "librewolf --name librewolf %U";
+        exec = "nixGLIntel librewolf --name librewolf %U";
+        # exec = "librewolf --name librewolf %U";
         icon = "librewolf";
         categories = [ "Network" "WebBrowser" ];
         terminal = false;
@@ -127,8 +127,8 @@
       obsidian = {
         name = "Obsidian Nix";
         comment = "Knowledge base";
-        # exec = "nixGLIntel obsidian %u";
-        exec = "obsidian %u";
+        exec = "nixGLIntel obsidian %u";
+        # exec = "obsidian %u";
         icon = "obsidian";
         categories = [ "Office" ];
         terminal = false;
@@ -137,8 +137,8 @@
         name = "Slack Nix";
         genericName = "Slack Client for Linux";
         comment = "Slack Desktop";
-        # exec = "nixGLIntel slack -s %U";
-        exec = "slack -s %U";
+        exec = "nixGLIntel slack -s %U";
+        # exec = "slack -s %U";
         icon = "slack";
         categories = [ "Network" "InstantMessaging" ];
         terminal = false;
