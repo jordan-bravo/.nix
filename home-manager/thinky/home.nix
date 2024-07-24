@@ -4,14 +4,6 @@
 
 {
   dconf.settings = {
-    # This is a failed attempt to solve a Ubuntu/Gnome bug:
-    # Can't unset Unicode code point shortcut (ctrl+shift+u)
-    # https://gitlab.gnome.org/GNOME/gtk/-/issues/5865
-    # Developer won't fix. Probably need to upgrade Ubuntu to fix
-    "desktop/ibus/panel/emoji" = {
-      hotkey = [ ];
-      unicode-hotkey = [ ];
-    };
     "org/gnome/desktop/interface" = {
       # text-scaling-factor = 0.8; # BitLab LG
       # text-scaling-factor = 1.0;
