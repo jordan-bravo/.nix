@@ -120,6 +120,9 @@
     liquidd = {
       enable = true;
     };
+    lnbits = {
+      enable = false;
+    };
     lnd = {
       enable = true;
       lndconnect.enable = true;

@@ -8,6 +8,19 @@
       url = "github:tadfisher/android-nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # Lanzaboote enables Secure Boot on NixOS
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lnbits = {
+      url = "github:lnbits/lnbits";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # VSCode / VSCodium extensions
@@ -23,15 +36,11 @@
     # nix-darwin.url = "github:LnL7/nix-darwin";
     # nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
     # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # Lanzaboote enables Secure Boot on NixOS
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
+    # NixGL for graphics driver issues on non-NixOS
+    nixgl = {
+      url = "github:guibou/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # NixGL for graphics driver issues on non-NixOS
-    nixgl.url = "github:guibou/nixGL";
     # Configure Firefox extensions via Home Manager
     # firefox-addons = {
     #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
@@ -43,7 +52,7 @@
     # };
     nixpkgs-python = {
       url = "github:cachix/nixpkgs-python";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # nixpkgs-py27 = {
     #   url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
@@ -51,13 +60,18 @@
     # nixpkgs-neovim-094.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
     # nixpkgs-nixos-nixd-123.url = "github:nixos/nixpkgs/9a9dae8f6319600fa9aebde37f340975cab4b8c0"; #nixd on NixOS
     # nixpkgs-2311.url = "github:nixos/nixpkgs/23.11"; #nixd on non-NixOS
-    sops-nix.url = "github:mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    xremap-flake.url = "github:xremap/nix-flake";
+    xremap-flake = {
+      url = "github:xremap/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nixpkgs-micro-2-0-12.url = "github:nixos/nixpkgs/a71323f68d4377d12c04a5410e214495ec598d4c";
   };
 
@@ -65,6 +79,7 @@
     { android-nixpkgs
     , home-manager
     , lanzaboote
+    , lnbits
     , nix-bitcoin
     , nixpkgs
       # , nix-darwin
@@ -184,6 +199,7 @@
               home-manager.users.main = import ./home-manager/finserv/home.nix;
             }
             nix-bitcoin.nixosModules.default
+            lnbits.nixosModules.default
           ];
         };
       };
