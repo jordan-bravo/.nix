@@ -122,6 +122,7 @@
     };
     lnbits = {
       enable = true;
+      host = "0.0.0.0";
     };
     lnd = {
       enable = true;
