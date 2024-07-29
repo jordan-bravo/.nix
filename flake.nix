@@ -19,7 +19,7 @@
     };
     lnbits = {
       url = "github:lnbits/lnbits";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

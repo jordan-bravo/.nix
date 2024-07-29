@@ -121,7 +121,7 @@
       enable = true;
     };
     lnbits = {
-      enable = false;
+      enable = true;
     };
     lnd = {
       enable = true;
