@@ -78,6 +78,7 @@
       gnome-extension-manager # Manage GNOME extensions
       gnomeExtensions.appindicator # Tray icons
       gnomeExtensions.auto-move-windows # Move applications to specific workspaces when they create windows
+      gnomeExtensions.bluetooth-battery-meter
       gnomeExtensions.dash-to-dock # Customize the dash
       gnomeExtensions.gsconnect # Transfer files & clipboard across devices
       gnomeExtensions.just-perfection # Customize GNOME shell and UI

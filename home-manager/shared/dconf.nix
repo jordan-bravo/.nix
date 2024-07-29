@@ -91,6 +91,7 @@ with lib.hm.gvariant;
       enabled-extensions = [
         "auto-move-windows@gnome-shell-extensions.gcampax.github.com"
         "appindicatorsupport@rgcjonas.gmail.com"
+        "Bluetooth-Battery-Meter@maniacx.github.com"
         "dash-to-dock@micxgx.gmail.com"
         "forge@jmmaranan.com" # Window tiler for Gnome
         "gsconnect@andyholmes.github.io"
@@ -133,6 +134,11 @@ with lib.hm.gvariant;
         # "sparrow-desktop.desktop:5"
       ];
       extend-height = true;
+    };
+    "org/gnome/shell/extensions/Bluetooth-Battery-Meter" = {
+      enable-battery-indicator = false;
+      enable-battery-level-icon = false;
+      enable-battery-level-text = true;
     };
     "org/gnome/shell/extensions/dash-to-dock" = {
       dock-position = "LEFT";
