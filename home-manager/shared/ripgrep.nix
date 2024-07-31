@@ -5,7 +5,7 @@
     enable = true;
     arguments = [
       # Don't let ripgrep vomit really long lines to the terminal, and show a preview.
-      "--max-columns=150"
+      # "--max-columns=150"
       "--max-columns-preview"
 
       # Search hidden files / directories (e.g. dotfiles) by default
