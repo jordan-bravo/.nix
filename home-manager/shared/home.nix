@@ -80,6 +80,7 @@
       nixpkgs-fmt # Formatter for Nixlang
       nodePackages.pnpm # Fast, disk space efficient package manager
       onefetch # Git repo summary
+      pipx # Install and run Python applications in isolated environments
       pgcli # Command-line interface for PostgreSQL
       pkg-config # Required for borg mount
       procs # A modern replacement for ps written in Rust
