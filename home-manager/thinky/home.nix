@@ -21,11 +21,21 @@
     };
   };
   home = {
+    file = {
+      gpg-agent = {
+        target = ".gnupg/gpg-agent.conf";
+        enable = true;
+        text = ''
+          pinentry-program ${pkgs.pinentry-gnome3}
+        '';
+      };
+    };
     packages = with pkgs; [
       infisical # Manages secrets
       # pkgs-2311.nixd # Language server for Nix language
       # pkgs-micro-2-0-12.micro
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
+      pinentry-gnome3
     ];
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "23.11";
