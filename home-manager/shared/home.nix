@@ -80,6 +80,7 @@
       nixpkgs-fmt # Formatter for Nixlang
       nodePackages.pnpm # Fast, disk space efficient package manager
       onefetch # Git repo summary
+      pipx # Install and run Python applications in isolated environments
       pgcli # Command-line interface for PostgreSQL
       pkg-config # Required for borg mount
       procs # A modern replacement for ps written in Rust
@@ -126,6 +127,7 @@
       luajitPackages.luacheck # A static analyzer & linter for Lua # nvim-dep
       marksman # Language Server for markdown # nvim-dep
       markdownlint-cli # Command line interface for MarkdownLint
+      nil # Nix langauge server # nvim-dep
       nixd # Nix langauge server # nvim-dep
       nixpkgs-fmt # nvim-dep
       nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine # nvim-dep
@@ -227,7 +229,7 @@
       enable = true;
       settings = {
         directory = {
-          truncation_length = 5;
+          truncation_length = 8;
           truncation_symbol = ".../";
           repo_root_style = "purple";
         };

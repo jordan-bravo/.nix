@@ -21,11 +21,21 @@
     };
   };
   home = {
+    file = {
+      gpg-agent = {
+        target = ".gnupg/gpg-agent.conf";
+        enable = true;
+        text = ''
+          pinentry-program ${pkgs.pinentry-gnome3}
+        '';
+      };
+    };
     packages = with pkgs; [
       infisical # Manages secrets
       # pkgs-2311.nixd # Language server for Nix language
       # pkgs-micro-2-0-12.micro
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
+      pinentry-gnome3
     ];
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "23.11";
@@ -46,26 +56,114 @@
   targets.genericLinux.enable = true;
   xdg = {
     configFile = {
-      "kitty/kitty-session.conf" = {
-        enable = false;
+      "kitty/kitty.conf" = {
+        enable = true;
         text = ''
-          # How to set the title of the first tab to .nix?
-          # Set the working directory for windows in the current tab
-          cd ~/.nix
-          launch zsh
-          # launch vim
+          font_family FiraCode Nerd Font Mono
+          font_size 14
 
-          # Create a new tab for legacy
-          new_tab legacy
-          cd ~/bd/legacy
-          launch zsh
-          # launch vim
+          include VSCode_Dark.conf
 
-          # Create a new tab for alta
-          new_tab alta
-          cd ~/bd/alta
-          launch zsh
-          # launch vim
+          # Shell integration is sourced and configured manually
+          shell_integration no-rc
+
+          dynamic_background_opacity yes
+          enable_audio_bell no
+          enabled_layouts horizontal, stack, vertical, grid
+          hide_window_decorations yes
+          macos_option_as_alt both
+          placement_strategy top-left
+          scrollback_lines 10000
+          window_alert_on_bell no
+
+          map ctrl+shift+tab 
+          map ctrl+tab 
+          map kitty_mod+1 goto_tab 1
+          map kitty_mod+2 goto_tab 2
+          map kitty_mod+3 goto_tab 3
+          map kitty_mod+4 goto_tab 4
+          map kitty_mod+5 goto_tab 5
+          map kitty_mod+6 goto_tab 6
+          map kitty_mod+7 goto_tab 7
+          map kitty_mod+; goto_layout stack
+          map kitty_mod+[ previous_window
+          map kitty_mod+\ goto_layout vertical
+          map kitty_mod+] next_window
+          map kitty_mod+c copy_to_clipboard
+          map kitty_mod+d scroll_page_down
+          map kitty_mod+enter launch --cwd=current
+          map kitty_mod+i goto_layout horizontal
+          map kitty_mod+m next_tab
+          map kitty_mod+n previous_tab
+          map kitty_mod+o scroll_page_down
+          map kitty_mod+space toggle_layout stack
+          map kitty_mod+t launch --type=tab --cwd=current
+          map kitty_mod+u scroll_page_up
+          map kitty_mod+v paste_from_clipboard
+          map kitty_mod+w close_window
+          map kitty_mod+y goto_layout grid
+        '';
+      };
+      "kitty/VSCode_Dark.conf" = {
+        enable = true;
+        text = ''
+          # vim:ft=kitty
+          ## name: VSCode_Dark
+          ## author: ported from Microsoft VSCode by huabeiyou
+          ## license: MIT
+          ## blurb: the integrated terminal's default dark theme
+
+          # The basic colors
+          foreground              #cccccc
+          background              #1e1e1e
+          selection_foreground    #cccccc
+          selection_background    #264f78
+
+          # Cursor colors
+          cursor                  #ffffff
+          cursor_text_color       #1e1e1e
+
+          # kitty window border colors
+          active_border_color     #e7e7e7
+          inactive_border_color   #414140
+
+          # Tab bar colors
+          active_tab_foreground   #ffffff
+          active_tab_background   #3a3d41
+          inactive_tab_foreground #858485
+          inactive_tab_background #1e1e1e
+
+          # black
+          color0 #000000
+          color8 #666666
+
+          # red
+          color1 #f14c4c
+          color9 #cd3131
+
+          # green
+          color2  #23d18b
+          color10 #0dbc79
+
+          # yellow
+          color3  #f5f543
+          color11 #e5e510
+
+          # blue
+          color4  #3b8eea
+          color12 #2472c8
+
+          # magenta
+          color5  #d670d6
+          color13 #bc3fbc
+
+          # cyan
+          color6  #29b8db
+          color14 #11a8cd
+
+          # white
+          color7  #e5e5e5
+          color15 #e5e5e5
         '';
       };
     };

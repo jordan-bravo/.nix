@@ -18,8 +18,8 @@
         speed = 0.25;
       };
       "org/virt-manager/virt-manager/connections" = {
-        autoconnect = ["qemu:///system"];
-        uris = ["qemu:///system"];
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
       };
       # "org/gnome/desktop/sound" = {
       #   allow-volume-above-100-percent = true;
@@ -31,7 +31,7 @@
       appimage-run # Run AppImages on NixOS
       bisq-desktop # Decentralized Bitcoin exchange
       # ceph # Distrubuted storage system
-      cinnamon.bulky # Bulk rename app
+      bulky # Bulk rename app
       gprename # Complete batch renamer for files and directories
       nix-index # Files database for nixpkgs
       niv # Easy dependency management for Nix projects

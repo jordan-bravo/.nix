@@ -46,6 +46,7 @@
   };
 
   networking.networkmanager.enable = true;
+  networking.enableIPv6 = false;
 
   nixpkgs.config.allowUnfree = true;
 

@@ -35,6 +35,8 @@
       # Accept next word from zsh autosuggestion with Ctrl+U
       bindkey ^U forward-word
 
+      export PATH=$PATH:$HOME/.local/bin
+
       # Ripgrep config file
       # export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgreprc
 

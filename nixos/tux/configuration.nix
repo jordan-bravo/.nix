@@ -58,7 +58,7 @@
   # };
 
   networking.hostName = "tux";
-  # networking.enableIPv6 = false;
+  networking.enableIPv6 = false;
 
   programs.hyprland.enable = true;
 
@@ -86,6 +86,6 @@
     enable = true;
     pkiBundle = "/etc/secureboot";
   };
-  
-  
+
+
 }
