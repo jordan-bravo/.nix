@@ -94,7 +94,7 @@
     , sops-nix
     , system-manager
       # , xremap-flake
-    # , nixpkgs-micro-2-0-12
+      # , nixpkgs-micro-2-0-12
     , ...
     }@inputs:
     let
@@ -217,7 +217,7 @@
         };
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs inputs /* pkgs-micro-2-0-12*/ ; };
+          extraSpecialArgs = { inherit nixgl pkgs inputs/* pkgs-micro-2-0-12*/; };
           modules = [ ./home-manager/thinky/home.nix ];
         };
         tux = home-manager.lib.homeManagerConfiguration {

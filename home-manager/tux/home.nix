@@ -18,8 +18,8 @@
         speed = 0.25;
       };
       "org/virt-manager/virt-manager/connections" = {
-        autoconnect = ["qemu:///system"];
-        uris = ["qemu:///system"];
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
       };
       # "org/gnome/desktop/sound" = {
       #   allow-volume-above-100-percent = true;
