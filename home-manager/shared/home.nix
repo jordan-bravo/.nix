@@ -197,7 +197,12 @@
 
   # Programs with little to no config are enabled here. 
   programs = {
-    atuin.enable = true;
+    atuin = {
+      enable = true;
+      settings = {
+        enter_accept = false;
+      };
+    };
     bat = {
       enable = true;
       config = {
