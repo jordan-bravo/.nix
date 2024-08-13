@@ -44,6 +44,7 @@
       act # Run your GitHub Actions locally
       aerc # An email client for your terminal
       age # (Actually Good Encryption) A modern encryption tool with small explicit keys
+      asciiquarium # Enjoy the mysteries of the sea from the safety of your own terminal!
       bitwarden-cli # Secure and free password manager for all of your devices
       bottom # A cross-platform graphical process/system monitor with a customizable interface
       # busybox # Tiny versions of common UNIX utilities in a single small executable
