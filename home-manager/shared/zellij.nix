@@ -41,6 +41,8 @@
                 }
             }
             shared_except "locked" {
+                bind "Ctrl a" { SwitchToMode "Locked"; }
+                unbind "Ctrl g"
                 bind "Alt [" { PreviousSwapLayout; }
                 bind "Alt ]" { NextSwapLayout; }
             }
@@ -50,6 +52,10 @@
             shared_except "session" "locked" {
                 bind "Alt s" { SwitchToMode "Session"; }
                 unbind "Ctrl o"
+            }
+            locked {
+                bind "Ctrl a" { SwitchToMode "Normal"; }
+                unbind "Ctrl g"
             }
         }
         ui {
