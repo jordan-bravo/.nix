@@ -216,7 +216,7 @@
       enable = true;
       nix-direnv.enable = true;
     };
-    fzf.enable = false;
+    fzf.enable = true;
     gh.enable = true;
     gpg.enable = true;
     home-manager.enable = true;

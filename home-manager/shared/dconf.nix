@@ -12,6 +12,7 @@ with lib.hm.gvariant;
       xkb-options = [ "caps:escape_shifted_capslock" ];
     };
     "org/gnome/desktop/interface" = {
+      clock-format = "24h";
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
