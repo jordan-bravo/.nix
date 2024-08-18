@@ -56,13 +56,14 @@
       docker-compose # Docker Compose plugin for Docker
       dogdns # Command-line DNS client
       drawio # Diagram application
-      du-dust # du + rust = dust. Like du but more intuitive
+      du-dust # aka dust. du + rust = dust. Like du but more intuitive
       duf # Disk Usage/Free Utility, a df alternative
       fd # A simple, fast and user-friendly alternative to find
       ffmpeg # A complete, cross-platform solution to record, convert and stream audio and video
       fastfetch # Like neofetch, but much faster because written in C
       fira-code # Font
       freshfetch # Fresh take on neofetch
+      git-agecrypt # Transparent file encryption in git using age instead of GPG
       gitui # Blazing fast terminal-ui for Git written in Rust
       glow # Render markdown on the CLI, with pizzazz!
       gnome-multi-writer # Tool for writing an ISO file to multiple USB devices at once
