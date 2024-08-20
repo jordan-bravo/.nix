@@ -63,7 +63,7 @@
       fastfetch # Like neofetch, but much faster because written in C
       fira-code # Font
       freshfetch # Fresh take on neofetch
-      git-agecrypt # Transparent file encryption in git using age instead of GPG
+      git-crypt # Transparent file encryption in git
       gitui # Blazing fast terminal-ui for Git written in Rust
       glow # Render markdown on the CLI, with pizzazz!
       gnome-multi-writer # Tool for writing an ISO file to multiple USB devices at once

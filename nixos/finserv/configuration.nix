@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ../shared/server-conf.nix
     inputs.sops-nix.nixosModules.sops
-    ../../secrets/git-agecrypt-secrets.nix
+    ../../secrets/git-crypt-secrets.nix
   ];
 
   environment.systemPackages = with pkgs; [
