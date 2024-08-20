@@ -43,6 +43,11 @@
         autoSetupRemote = true;
       };
     };
+    # userName = <workstations-secrets>;
+    # userEmail = <workstations-secrets>;
+    # signing.key = <workstations-secrets>;
+    # signing.signByDefault = <workstations-secrets>;
+
     # This section can be activated to use a differnt GPG key for signing commits
     # based on which directory you're in.
     # includes = [
