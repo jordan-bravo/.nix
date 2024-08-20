@@ -98,6 +98,7 @@
   # Programs with more extensive config are imported from separate modules.
   imports = [
     ../shared/dconf.nix
+    ../../secrets/workstations-secrets.nix
     # ../shared/kitty.nix
   ];
 
