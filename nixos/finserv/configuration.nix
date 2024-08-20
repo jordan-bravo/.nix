@@ -142,6 +142,7 @@
     lnd = {
       enable = true;
       lndconnect.enable = true;
+      # certificate.extraIPs = [ "<this-is-secret>" ];
       extraConfig = ''
         protocol.simple-taproot-chans=true
         alias=Antares
