@@ -7,7 +7,6 @@
     ./hardware-configuration.nix
     ../shared/server-conf.nix
     inputs.sops-nix.nixosModules.sops
-    ../../secrets/git-crypt-secrets.nix
     ../../secrets/finserv-secrets.nix
   ];
 
