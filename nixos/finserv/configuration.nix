@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ../shared/server-conf.nix
     inputs.sops-nix.nixosModules.sops
+    ../../secrets/git-agecrypt-secrets.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -125,6 +126,17 @@
       host = "0.0.0.0";
       env = {
         LNBITS_ADMIN_UI = "true";
+        LNBITS_BACKEND_WALLET_CLASS = "LndRestWallet";
+        LND_REST_ENDPOINT = "https://127.0.0.1:8080";
+        LND_REST_CERT = "/var/lib/lnbits/lnd-cert";
+        LND_REST_MACAROON = "/var/lib/lnbits/admin.macaroon";
+        # LND_REST_CERT = "/etc/nix-bitcoin-secrets/lnd-cert";
+        # LND_REST_MACAROON = "/var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon";
+        # LNBITS_BACKEND_WALLET_CLASS = "LndWallet";
+        # LND_GRPC_ENDPOINT = "127.0.0.1";
+        # LND_GRPC_PORT = "10009";
+        # LND_GRPC_CERT = "/etc/nix-bitcoin-secrets/lnd-cert";
+        # LND_GRPC_MACAROON = "/var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon";
       };
     };
     lnd = {
@@ -133,8 +145,8 @@
       extraConfig = ''
         protocol.simple-taproot-chans=true
         alias=Antares
-        # This next line is a workaround for a bug where the health check keeps failing and then LND
-        # shuts down. See https://github.com/lightningnetwork/lnd/issues/4669
+        # This next line is a workaround for a bug where the health check keeps failing and
+        # then LND shuts down. See https://github.com/lightningnetwork/lnd/issues/4669
         healthcheck.chainbackend.attempts=0
       '';
       rpcAddress = "0.0.0.0";
@@ -190,7 +202,7 @@
 
   sops = {
     age.keyFile = "/home/main/.config/sops/age/keys.txt";
-    defaultSopsFile = ../../secrets/secrets.yaml;
+    defaultSopsFile = ../../secrets/sops-secrets.yaml;
     defaultSopsFormat = "yaml";
     secrets = {
       "borg/passphrase" = { };
@@ -199,6 +211,11 @@
       "wireguard/finserv/wg-conf" = { };
       "wireguard/punk/ip" = { };
     };
+    # templates = {
+    #   "your-config-with-secret-file.toml".content = ''
+    #     password = "${config.sops.placeholder."wireguard/punk/ip"}"
+    #   '';
+    # };
   };
   systemd.services = {
     listmaker-node-3030 = {
@@ -233,16 +250,16 @@
         ];
       };
     };
-    my-test-service = {
-      script = ''
-        set -eu
-        ${pkgs.coreutils}/bin/echo $(date +%s) >> /home/main/my-log.txt
-      '';
-      serviceConfig = {
-        Type = "oneshot";
-        User = "root";
-      };
-    };
+    # my-test-service = {
+    #   script = ''
+    #     set -eu
+    #     ${pkgs.coreutils}/bin/echo $(date +%s) >> /home/main/my-log.txt
+    #   '';
+    #   serviceConfig = {
+    #     Type = "oneshot";
+    #     User = "root";
+    #   };
+    # };
   };
   systemd.timers = {
     lnd-connect-to-peers = {
