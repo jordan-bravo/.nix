@@ -47,6 +47,7 @@
       asciiquarium # Enjoy the mysteries of the sea from the safety of your own terminal!
       bitwarden-cli # Secure and free password manager for all of your devices
       bottom # A cross-platform graphical process/system monitor with a customizable interface
+      browsh # Fully-modern text-based browser, rendering to TTY and browsers
       # busybox # Tiny versions of common UNIX utilities in a single small executable
       cargo # Rust package manager
       delta # A syntax-highlighting pager for git
@@ -79,12 +80,10 @@
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       nix-index # A files database for nixpkgs
       nix-search-cli # Search packages from the command line
-      nixpkgs-fmt # Formatter for Nixlang
       nodePackages.pnpm # Fast, disk space efficient package manager
       onefetch # Git repo summary
       pipx # Install and run Python applications in isolated environments
       pgcli # Command-line interface for PostgreSQL
-      pkg-config # Required for borg mount
       procs # A modern replacement for ps written in Rust
       # pyenv # Simple Python version management
       scc # Code counter with complexity calculations and COCOMO estimates written in Go
@@ -131,12 +130,13 @@
       markdownlint-cli # Command line interface for MarkdownLint
       nil # Nix langauge server # nvim-dep
       nixd # Nix langauge server # nvim-dep
-      nixpkgs-fmt # nvim-dep
+      nixpkgs-fmt # Formatter for Nixlang # nvim-dep
       nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine # nvim-dep
       nodePackages.bash-language-server # A language server for Bash
       nodePackages.eslint # An AST-based pattern checker for JavaScript
       nodePackages.prettier # nvim-dep
-      pyright # Python static type checker
+      python312Packages.debugpy # Implementation of the Debug Adapter Protocol for Python
+      pyright # Python static type checker # nvim-dep
       nodePackages.typescript # nvim-dep
       nodePackages.typescript-language-server # nvim-dep
       prettierd # Prettier daemon for faster formatting # nvim-dep

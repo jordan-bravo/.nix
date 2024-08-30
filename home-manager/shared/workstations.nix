@@ -19,12 +19,14 @@
       audacity # Music player
       # android-studio # The Official IDE for Android (stable channel)
       # android-tools # Android SDK platform tools
+      atac # Simple API client (postman like) in your terminal
       avidemux # Free video editor designed for simple video editing tasks
       # beekeeper-studio # SQL database client
       bitcoind # Peer-to-peer electronic cash system
       # bitwarden-desktop # Password manager
       # borgbackup # Deduplicating archiver with compression and encryption
       brave # Web browser
+      bruno # Open-source IDE For exploring and testing APIs
       # cantarell-fonts # Fonts for waybar
       dbeaver-bin # SQL database client
       dino # XMPP client
