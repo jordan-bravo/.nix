@@ -47,7 +47,7 @@
   ];
   nixpkgs.config.allowUnfree = true;
   programs.zsh.profileExtra = ''
-    export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS
+    export XDG_DATA_DIRS="$HOME/.local/share:$XDG_DATA_DIRS"
   '';
   programs.zsh.initExtra = ''
     export PATH=$HOME/.local/bin:$PATH
@@ -196,15 +196,15 @@
         categories = [ "Network" "WebBrowser" ];
         terminal = false;
       };
-      kitty = {
-        name = "Kitty";
-        genericName = "Terminal Emulator";
-        comment = "Fast, feature-rich, GPU based terminal";
-        # exec = "nixGLIntel kitty";
-        exec = "kitty";
-        icon = "kitty";
-        categories = [ "System" "TerminalEmulator" ];
-      };
+      # kitty = {
+      #   name = "Kitty";
+      #   genericName = "Terminal Emulator";
+      #   comment = "Fast, feature-rich, GPU based terminal";
+      #   # exec = "nixGLIntel kitty";
+      #   exec = "kitty";
+      #   icon = "kitty";
+      #   categories = [ "System" "TerminalEmulator" ];
+      # };
       librewolf = {
         name = "Librewolf";
         genericName = "Web Browser";
