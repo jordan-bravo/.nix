@@ -44,7 +44,7 @@
       hoppscotch # Open source API development ecosystem, Postman alternative
       httpie-desktop # Cross-platform API testing client for humans. Painlessly test REST, GraphQL, and HTTP APIs
       iamb # Matrix client for Vim addicts
-      jitsi-meet # Video calling (not sure if both packages are needed)
+      # jitsi-meet # Video calling (not sure if both packages are needed)
       jitsi # Video calling (not sure if both packages are needed)
       krename # A powerful batch renamer for KDE
       librewolf # A fork of Firefox, focused on privacy, security, and freedom
@@ -75,7 +75,7 @@
 
       # GNOME specific
       dconf-editor # Edit GNOME options
-      gnome.gnome-session # GNOME session manager, e.g. `gnome-session-quit`
+      gnome-session # GNOME session manager, e.g. `gnome-session-quit`
       gnome-tweaks # Extra options for GNOME
       gnome-extension-manager # Manage GNOME extensions
       gnomeExtensions.appindicator # Tray icons
