@@ -82,6 +82,7 @@
       nix-search-cli # Search packages from the command line
       nodePackages.pnpm # Fast, disk space efficient package manager
       onefetch # Git repo summary
+      pass # Stores, retrieves, generates, and synchronizes passwords securely
       pipx # Install and run Python applications in isolated environments
       pgcli # Command-line interface for PostgreSQL
       procs # A modern replacement for ps written in Rust
