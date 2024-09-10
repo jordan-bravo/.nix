@@ -182,6 +182,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.main = import ./home-manager/sovserv/home.nix;
+              home-manager.backupFileExtension = "bak";
             }
           ];
         };

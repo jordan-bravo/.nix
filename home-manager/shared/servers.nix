@@ -1,10 +1,10 @@
 # shared/servers.nix
-{ config, osConfig, pkgs, ... }:
+{ osConfig, pkgs, ... }:
 {
   imports = [
     ../shared/kitty.nix
   ];
-  packages = with pkgs; [
+  home.packages = with pkgs; [
     pkg-config # Required for borg mount
   ];
   programs.zsh = {
