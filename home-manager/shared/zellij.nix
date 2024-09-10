@@ -1,5 +1,3 @@
-# ~/.nix/shared/zellij.nix
-
 {
   home.file = {
     zellij-config = {
@@ -8,6 +6,7 @@
       text = ''
         pane_frames false
         keybinds {
+            unbind "Ctrl q"
             // these are the defaults for entersearch
             // might want to change or add to them later
             entersearch {
