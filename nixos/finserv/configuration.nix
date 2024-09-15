@@ -19,7 +19,6 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [ 3030 4040 9735 9736 3001 60845 ];
-      # allowedUDPPorts = [ 51820 ];
     };
   };
 
@@ -126,12 +125,14 @@
       host = "0.0.0.0";
       env = {
         LNBITS_ADMIN_UI = "true";
-        LNBITS_BACKEND_WALLET_CLASS = "LndRestWallet";
-        LND_REST_ENDPOINT = "https://127.0.0.1:8080";
-        LND_REST_CERT = "/var/lib/lnbits/lnd-cert";
-        LND_REST_MACAROON = "/var/lib/lnbits/admin.macaroon";
-        # LND_REST_CERT = "/etc/nix-bitcoin-secrets/lnd-cert";
-        # LND_REST_MACAROON = "/var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon";
+        # These values work in UI
+        # LNBITS_BACKEND_WALLET_CLASS = "LndRestWallet";
+        # LND_REST_ENDPOINT = "https://127.0.0.1:8080";
+        # LND_REST_CERT = "/var/lib/lnbits/lnd-cert";
+        # LND_REST_MACAROON = "/var/lib/lnbits/admin.macaroon";
+
+        # These are untested. GRPC is theoretically faster than REST, it 
+        # might be worth trying.
         # LNBITS_BACKEND_WALLET_CLASS = "LndWallet";
         # LND_GRPC_ENDPOINT = "127.0.0.1";
         # LND_GRPC_PORT = "10009";
