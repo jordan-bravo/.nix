@@ -97,6 +97,7 @@
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       tree # View directory tree structure
+      uv # Extremely fast Python package installer and resolver, written in Rust
       vlock # Lock the TTY screen
       watchman # Watches files and takes action when they change
       waypipe # A network proxy for Wayland clients (applications)

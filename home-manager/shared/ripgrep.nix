@@ -20,6 +20,7 @@
       # Using glob patterns to include/exclude files or folders
       "--glob=!.git/*"
       "--glob=!.venv/*"
+      "--glob=!.venv3/*"
       "--glob=!.cache/*"
       "--glob=!.mozilla/*"
       "--glob=!.infisical/*"
