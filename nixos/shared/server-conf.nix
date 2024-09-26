@@ -39,8 +39,8 @@
     description = "main";
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     isNormalUser = true;
-    packages = with pkgs; [
-    ];
+    # packages = with pkgs; [
+    # ];
     useDefaultShell = true;
     # shell = pkgs.zsh;
   };
@@ -147,6 +147,17 @@
   systemd.services.NetworkManager-wait-online = {
     serviceConfig = {
       ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+    };
+  };
+
+  virtualisation = {
+    # libvirtd.enable = true;
+    docker = {
+      enable = true;
+      # rootless = {
+      #   enable = true;
+      #   setSocketVariable = true;
+      # };
     };
   };
 }
