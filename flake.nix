@@ -150,6 +150,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jordan = import ./home-manager/tux/home.nix;
+              home-manager.backupFileExtension = "bak";
             }
           ];
         };
