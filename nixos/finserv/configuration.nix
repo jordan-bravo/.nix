@@ -150,7 +150,19 @@
         # This next line is a workaround for a bug where the health check keeps failing and
         # then LND shuts down. See https://github.com/lightningnetwork/lnd/issues/4669
         healthcheck.chainbackend.attempts=0
+        # these next three options are required for LNDK (for bolt12 offers)
+        protocol.custom-message=513
+        protocol.custom-nodeann=39
+        protocol.custom-init=39
       '';
+      # LNDK is a program that runs alongside LND and provides BOLT12 functionality, although
+      # as of 2024-09-26 it cannot receive BOLT12 payments, it can only send them. Also,
+      # there currently is a bug in the nixpkgs version of LND that is missing the 
+      # build flag for peersrpc, which LNDK requires. Commit 00f961d fixes it, but until
+      # that commit makes it into unstable, the following override is a workaround:
+      package = config.nix-bitcoin.pkgs.lnd.overrideAttrs (old: {
+        tags = old.tags ++ [ "peersrpc" ];
+      });
       rpcAddress = "0.0.0.0";
     };
     mempool = {

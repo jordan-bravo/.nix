@@ -86,6 +86,7 @@
       pipx # Install and run Python applications in isolated environments
       pgcli # Command-line interface for PostgreSQL
       procs # A modern replacement for ps written in Rust
+      protobuf # Google's data interchange format. lndk build dependency.
       # pyenv # Simple Python version management
       scc # Code counter with complexity calculations and COCOMO estimates written in Go
       sad # CLI tool to search and replace
