@@ -708,11 +708,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1727258940,
-        "narHash": "sha256-FnBcy5lM6PSiGSnn3xX73b6ZzEfRbOG0ph2zCBl1sQk=",
+        "lastModified": 1727792262,
+        "narHash": "sha256-5NXHLE38nwjjtvzoWENZ+RB9E+R2f+tA0fKZezrRQyE=",
         "owner": "lnbits",
         "repo": "lnbits",
-        "rev": "3ac6bc3c3b08a4257e41fd64abdcf816caeda57f",
+        "rev": "a58deff70c141dcf6ac4fcec0c90b9ada749caa9",
         "type": "github"
       },
       "original": {
