@@ -49,6 +49,6 @@
       "ctrl+tab" = "";
       "ctrl+shift+tab" = "";
     };
-    theme = "VSCode_Dark";
+    themeFile = "VSCode_Dark";
   };
 }
