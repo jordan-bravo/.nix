@@ -1,6 +1,6 @@
 # shared/server-conf.nix
 
-{ config, inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
