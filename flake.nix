@@ -18,7 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lnbits = {
-      url = "github:lnbits/lnbits";
+      url = "github:lnbits/lnbits/d8d898b20b2979865a699b085de727756ee48ae6";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";

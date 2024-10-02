@@ -708,16 +708,17 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1727792262,
-        "narHash": "sha256-5NXHLE38nwjjtvzoWENZ+RB9E+R2f+tA0fKZezrRQyE=",
+        "lastModified": 1726121047,
+        "narHash": "sha256-JYaJ8sNHOKQUOL5Ess7+jaEf69G7m6E8GoBlqnpbiUc=",
         "owner": "lnbits",
         "repo": "lnbits",
-        "rev": "a58deff70c141dcf6ac4fcec0c90b9ada749caa9",
+        "rev": "d8d898b20b2979865a699b085de727756ee48ae6",
         "type": "github"
       },
       "original": {
         "owner": "lnbits",
         "repo": "lnbits",
+        "rev": "d8d898b20b2979865a699b085de727756ee48ae6",
         "type": "github"
       }
     },
