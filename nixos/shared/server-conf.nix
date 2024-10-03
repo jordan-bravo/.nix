@@ -37,7 +37,7 @@
 
   users.users.main = {
     description = "main";
-    extraGroups = [ "docker" "networkmanager" "wheel" ];
+    extraGroups = [ /*"docker"*/ "networkmanager" "wheel" ];
     isNormalUser = true;
     # packages = with pkgs; [
     # ];
