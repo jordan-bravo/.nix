@@ -50,6 +50,7 @@
       browsh # Fully-modern text-based browser, rendering to TTY and browsers
       # busybox # Tiny versions of common UNIX utilities in a single small executable
       cargo # Rust package manager
+      dante # Circuit-level SOCKS client/server that can be used to provide convenient and secure network connectivity # aerc-dep
       delta # A syntax-highlighting pager for git
       dhcping # Send DHCP request to find out if a DHCP server is running
       dig # DNS tool
@@ -104,6 +105,7 @@
       waypipe # A network proxy for Wayland clients (applications)
       wget # File retriever
       xh # Friendly and fast tool for sending HTTP requests
+      w3m # Text-mode web browser # aerc-dep
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       yarn # Package manager for JavaScript
       yt-dlp # CLI tool to download YouTube videos
