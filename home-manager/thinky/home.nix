@@ -28,7 +28,7 @@
         target = ".gnupg/gpg-agent.conf";
         enable = true;
         text = ''
-          pinentry-program $HOME/.nix-profile/bin/pinentry-gnome3
+          pinentry-program ${config.home.homeDirectory}/.nix-profile/bin/pinentry-gnome3
         '';
       };
     };
