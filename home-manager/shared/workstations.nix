@@ -21,7 +21,7 @@
       # android-tools # Android SDK platform tools
       atac # Simple API client (postman like) in your terminal
       avidemux # Free video editor designed for simple video editing tasks
-      # beekeeper-studio # SQL database client
+      beekeeper-studio # SQL database client
       bitcoind # Peer-to-peer electronic cash system
       # bitwarden-desktop # Password manager
       # borgbackup # Deduplicating archiver with compression and encryption
