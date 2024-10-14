@@ -42,7 +42,6 @@
       sbctl # Secure Boot key manager
       sparrow # Bitcoin wallet
       trayscale # Unofficial GUI wrapper around the Tailscale CLI client
-      # zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
 
       # Deps attempting to install python 2 with pyenv
       # bzip2 # High-quality data compression program
