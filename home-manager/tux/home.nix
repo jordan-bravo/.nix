@@ -30,6 +30,7 @@
     packages = with pkgs; [
       appimage-run # Run AppImages on NixOS
       bisq-desktop # Decentralized Bitcoin exchange
+      cachix # Command-line client for Nix binary cache hosting https://cachix.org
       # ceph # Distrubuted storage system
       bulky # Bulk rename app
       gprename # Complete batch renamer for files and directories
@@ -49,7 +50,7 @@
       # gdbm # GNU dbm key/value database library
       # gnumake # Tool to control the generation of non-source files from sources
       # gnupatch # GNU Patch, a program to apply differences to files
-      # # libedit # Port of the NetBSD Editline library (libedit)
+      # libedit # Port of the NetBSD Editline library (libedit)
       # libffi # Foreign function call interface library
       # libnsl # Client interface library for NIS(YP) and NIS+
       # libuuid # Set of system utilities for Linux
@@ -76,6 +77,6 @@
     # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
     bindkey "''${key[Up]}" up-line-or-search
   '';
-  programs.pyenv.enable = true;
+  programs.pyenv.enable = false;
 }
 
