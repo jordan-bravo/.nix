@@ -29,7 +29,7 @@
   home = {
     packages = with pkgs; [
       appimage-run # Run AppImages on NixOS
-      bisq-desktop # Decentralized Bitcoin exchange
+      # bisq-desktop # Decentralized Bitcoin exchange
       cachix # Command-line client for Nix binary cache hosting https://cachix.org
       # ceph # Distrubuted storage system
       bulky # Bulk rename app

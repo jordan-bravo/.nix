@@ -207,16 +207,16 @@
       };
       # Home-Manager standalone configurations
       homeConfigurations = {
-        carby = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit pkgs inputs; };
-          modules = [ ./home-manager/carby/home.nix ];
-        };
-        lenny = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs inputs; };
-          modules = [ ./home-manager/lenny/home.nix ];
-        };
+        # carby = home-manager.lib.homeManagerConfiguration {
+        #   pkgs = pkgs; # equivalent to: inherit pkgs;
+        #   extraSpecialArgs = { inherit pkgs inputs; };
+        #   modules = [ ./home-manager/carby/home.nix ];
+        # };
+        # lenny = home-manager.lib.homeManagerConfiguration {
+        #   pkgs = pkgs; # equivalent to: inherit pkgs;
+        #   extraSpecialArgs = { inherit nixgl pkgs inputs; };
+        #   modules = [ ./home-manager/lenny/home.nix ];
+        # };
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs inputs/* pkgs-micro-2-0-12*/; };

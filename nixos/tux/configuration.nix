@@ -33,7 +33,7 @@
   users.groups.uinput.members = [ "jordan" ];
   users.groups.input.members = [ "jordan" ];
 
-  services.ivpn.enable = true;
+  services.ivpn.enable = false;
 
   services.postgresql = {
     enable = false;

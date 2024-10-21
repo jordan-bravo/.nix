@@ -25,7 +25,7 @@
   home = {
     packages = with pkgs; [
       appimage-run # Run AppImages on NixOS
-      bisq-desktop # Decentralized Bitcoin exchange
+      # bisq-desktop # Decentralized Bitcoin exchange
       qbittorrent # Featureful free software BitTorrent client
       # ricochet-refresh # Anonymous peer-to-peer instant messaging over Tor
       sparrow # Bitcoin wallet

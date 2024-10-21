@@ -73,8 +73,8 @@
       go # The Go / Golang programming language
       httpie # Command line HTTP client whose goal is to make CLI human-friendly
       hyprpaper # Hyprland wallpaper program
-      ivpn # VPN GUI
-      ivpn-service # VPN background service
+      # ivpn # VPN GUI
+      # ivpn-service # VPN background service
       killall # Tool to kill processes
       # kitty # Terminal emulator
       lsof # A tool to list open files
