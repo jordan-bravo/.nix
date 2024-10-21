@@ -10,6 +10,8 @@
       inputs.xremap-flake.nixosModules.default
     ];
 
+  nix.settings.trusted-users = [ "root" "jordan" ];
+
   # Remap keys
   services.xremap = {
     enable = true;
@@ -66,8 +68,8 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     # zlib # numpy
-    # stdenv.cc.cc.lib
-    libgcc # sqlalchemy
+    stdenv.cc.cc.lib
+    # libgcc # sqlalchemy
     # zlib
     # that's where the shared libs go, you can find which one you need using 
     # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
