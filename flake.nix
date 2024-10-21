@@ -50,10 +50,10 @@
     #   url = "github:nixneovim/nixneovim";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    nixpkgs-python = {
-      url = "github:cachix/nixpkgs-python";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixpkgs-python = {
+    #   url = "github:cachix/nixpkgs-python";
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # nixpkgs-py27 = {
     #   url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
     # };
@@ -84,7 +84,7 @@
     , nixpkgs
       # , nix-darwin
       # , nixpkgs-darwin
-    , nixpkgs-python
+      # , nixpkgs-python
       # , nixpkgs-py27
     , nixgl
       # , nixneovim
