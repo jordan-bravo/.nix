@@ -1,5 +1,5 @@
 # shared/zsh.nix
-{ pkgs, config, ... }:
+{ pkgs, config }:
 
 {
   programs.zsh = {
@@ -35,7 +35,8 @@
       # Accept next word from zsh autosuggestion with Ctrl+U
       bindkey ^U forward-word
 
-      export PATH=$PATH:$HOME/.local/bin
+      # Add cargo binary directory to PATH
+      export PATH=$PATH:$HOME/.cargo/bin
 
       # Ripgrep config file
       # export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgreprc
