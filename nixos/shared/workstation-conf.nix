@@ -19,7 +19,9 @@
     #   "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
     # };
     systemPackages = with pkgs; [
-      gcc # GNU Compiler Collection, version 13.2.0 (wrapper script)
+      # gcc # GNU Compiler Collection, version 13.2.0 (wrapper script)
+      # openssl
+      # pkg-config
     ];
   };
 
@@ -79,22 +81,22 @@
       pulse.enable = true;
     };
     printing.enable = true;
-    resolved = {
-      enable = true;
-      dnsovertls = "true";
-      dnssec = "true";
-      domains = [ "~." ];
-      # domains = [ "snowy-hops.ts.net" ];
-      fallbackDns = [
-        "1.1.1.1"
-        "1.0.0.1"
-        "2606:4700:4700::1111"
-        "2606:4700:4700::1001"
-      ];
-      extraConfig = ''
-        DNS=1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
-      '';
-    };
+    # resolved = {
+    #   enable = true;
+    #   dnsovertls = "true";
+    #   dnssec = "true";
+    #   domains = [ "~." ];
+    #   # domains = [ "snowy-hops.ts.net" ];
+    #   fallbackDns = [
+    #     "1.1.1.1"
+    #     "1.0.0.1"
+    #     "2606:4700:4700::1111"
+    #     "2606:4700:4700::1001"
+    #   ];
+    #   extraConfig = ''
+    #     DNS=1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
+    #   '';
+    # };
     tailscale.enable = true;
     xserver = {
       # Enable the X11 windowing system.  I think this is required even with Wayland.

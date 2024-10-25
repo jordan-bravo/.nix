@@ -46,7 +46,7 @@
 
       # Deps attempting to install python 2 with pyenv
       # bzip2 # High-quality data compression program
-      # gcc # GNU Compiler Collection
+      gcc # GNU Compiler Collection
       # gdbm # GNU dbm key/value database library
       # gnumake # Tool to control the generation of non-source files from sources
       # gnupatch # GNU Patch, a program to apply differences to files

@@ -65,16 +65,17 @@
   programs.hyprland.enable = true;
 
   # The following is to get Alta Legacy working on NixOS
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # zlib # numpy
-    stdenv.cc.cc.lib
-    # libgcc # sqlalchemy
-    # zlib
-    # that's where the shared libs go, you can find which one you need using 
-    # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
-    # ^ this requires `nix-index` pkg
-  ];
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      # zlib # numpy
+      # libgcc # sqlalchemy
+      # zlib
+      # that's where the shared libs go, you can find which one you need using 
+      # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
+    ];
+  };
 
   # Secure Boot using lanzaboote
 
