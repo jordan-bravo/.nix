@@ -1,5 +1,5 @@
 # shared/zsh.nix
-{ pkgs, config }:
+{ config, ... }:
 
 {
   programs.zsh = {
