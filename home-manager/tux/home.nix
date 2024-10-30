@@ -36,6 +36,7 @@
       gprename # Complete batch renamer for files and directories
       nix-index # Files database for nixpkgs
       niv # Easy dependency management for Nix projects
+      openfortivpn # Client for PPP+SSL VPN tunnel services
       qbittorrent # Featureful free software BitTorrent client
       # quickemu # Quickly create and run optimised Windows, macOS and Linux virtual machines
       # quickgui # Flutter frontend for quickemu
