@@ -88,6 +88,11 @@
       waybarc = "vim ~/.config/waybar/config.jsonc";
       waybars = "vim ~/.config/waybar/style.css";
       yubi-add = "ssh-add -s /usr/local/lib/libykcs11.dylib";
+
+      # Connect to machines on tailnet
+      medserv = "waypipe ssh main@$(tailscale status | grep medserv | awk '{print $1}')";
+      finserv = "waypipe ssh main@$(tailscale status | grep finserv | awk '{print $1}')";
+      sovserv = "waypipe ssh main@$(tailscale status | grep sovserv | awk '{print $1}')";
     };
     syntaxHighlighting = {
       enable = true;
