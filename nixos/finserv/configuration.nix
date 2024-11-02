@@ -125,21 +125,15 @@
       host = "0.0.0.0";
       env = {
         LNBITS_ADMIN_UI = "true";
-        # These values work in GUI
-        # LNBITS_BACKEND_WALLET_CLASS = "LndRestWallet";
-        # LND_REST_ENDPOINT = "https://127.0.0.1:8080";
-        # LND_REST_CERT = "/var/lib/lnbits/lnd-cert";
-        # For the macaroon value, try pasting the hex-encoded string into the GUI
-        # LND_REST_MACAROON = "/var/lib/lnbits/admin.macaroon";
-
-        # These are untested. GRPC is theoretically faster than REST, it 
-        # might be worth trying.
-        # LNBITS_BACKEND_WALLET_CLASS = "LndWallet";
-        # LND_GRPC_ENDPOINT = "127.0.0.1";
-        # LND_GRPC_PORT = "10009";
-        # LND_GRPC_CERT = "/etc/nix-bitcoin-secrets/lnd-cert";
-        # For the macaroon value, try pasting the hex-encoded string into the GUI
-        # LND_GRPC_MACAROON = "/var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon";
+        # If setting these values declaritively doesn't work, set
+        # them manually in the GUI under Server > Funding Sources
+        LNBITS_BACKEND_WALLET_CLASS = "LndWallet";
+        LND_GRPC_ENDPOINT = "127.0.0.1";
+        LND_GRPC_PORT = "10009";
+        LND_GRPC_CERT = "/etc/nix-bitcoin-secrets/lnd-cert";
+        # For the macaroon value, paste the hex-encoded string into the GUI in the field 
+        # "Admin Macaroon" if declaring the path below doesn't work due to permissions error.
+        LND_GRPC_MACAROON = "/var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon";
       };
     };
     lnd = {
@@ -157,6 +151,9 @@
         protocol.custom-nodeann=39
         protocol.custom-init=39
       '';
+      # macaroons = {
+      #   lnbits.user = "lnbits";
+      # };
       # LNDK is a program that runs alongside LND and provides BOLT12 functionality, although
       # as of 2024-09-26 it cannot receive BOLT12 payments, it can only send them. Also,
       # there currently is a bug in the nixpkgs version of LND that is missing the 
@@ -266,16 +263,6 @@
         ];
       };
     };
-    # my-test-service = {
-    #   script = ''
-    #     set -eu
-    #     ${pkgs.coreutils}/bin/echo $(date +%s) >> /home/main/my-log.txt
-    #   '';
-    #   serviceConfig = {
-    #     Type = "oneshot";
-    #     User = "root";
-    #   };
-    # };
   };
   systemd.timers = {
     lnd-connect-to-peers = {
@@ -286,5 +273,8 @@
       };
     };
   };
+  # users.users.lnbits = {
+  #   extraGroups = [ "lnd" ];
+  # };
 }
 
