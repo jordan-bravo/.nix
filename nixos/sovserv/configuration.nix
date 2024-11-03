@@ -47,22 +47,25 @@
         };
       };
     };
-    caddy = {
-      enable = true;
-      # logFormat = ''
-      #   level DEBUG
-      # '';
-      package = pkgs.callPackage ../shared/caddy.nix {
-        plugins = [
-          "github.com/caddy-dns/cloudflare"
-        ];
-      };
-      virtualHosts."nextcloud.sovserv.top".extraConfig = ''
-        reverse_proxy localhost:8080
-        tls {
-          dns cloudflare {env.CF_API_TOKEN}
-        }
-      '';
+    # caddy = {
+    #   enable = false;
+    #   # logFormat = ''
+    #   #   level DEBUG
+    #   # '';
+    #   package = pkgs.callPackage ../shared/caddy.nix {
+    #     plugins = [
+    #       "github.com/caddy-dns/cloudflare"
+    #     ];
+    #   };
+    #   virtualHosts."nextcloud.sovserv.top".extraConfig = ''
+    #     reverse_proxy localhost:8080
+    #     tls {
+    #       dns cloudflare {env.CF_API_TOKEN}
+    #     }
+    #   '';
+    # };
+    couchdb = {
+      enable = false;
     };
     nextcloud = {
       # After enabling Nextcloud for the first time, there will be a warning in the administrative
@@ -123,8 +126,11 @@
         trusted_proxies = [ "127.0.0.1" ];
       };
     };
-    nginx.virtualHosts = {
-      "nextcloud.sovserv.top".listen = [{ addr = "127.0.0.1"; port = 8080; }];
+    nginx = {
+      # enable = true;
+      virtualHosts = {
+        "nextcloud.sovserv.top".listen = [{ addr = "0.0.0.0"; port = 8080; }];
+      };
     };
     onlyoffice = {
       enable = false;
@@ -150,21 +156,21 @@
       "borg/repos/sovserv-nextcloud" = { };
       "borg/repos/sovserv-postgresql" = { };
       "borg/ssh-private-key" = { };
-      "caddy/cloudflare/api-token-env-var" = {
-        owner = "caddy";
-      };
+      # "caddy/cloudflare/api-token-env-var" = {
+      #   owner = "caddy";
+      # };
       "nextcloud/admin-password" = {
         owner = "nextcloud";
       };
     };
   };
 
-  systemd.services = {
-    caddy = {
-      serviceConfig = {
-        AmbientCapabilities = "cap_net_bind_service";
-        EnvironmentFile = "${config.sops.secrets."caddy/cloudflare/api-token-env-var".path}";
-      };
-    };
-  };
+  # systemd.services = {
+  #   caddy = {
+  #     serviceConfig = {
+  #       AmbientCapabilities = "cap_net_bind_service";
+  #       EnvironmentFile = "${config.sops.secrets."caddy/cloudflare/api-token-env-var".path}";
+  #     };
+  #   };
+  # };
 }

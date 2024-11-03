@@ -1,2 +1,3 @@
 secrets/finserv-secrets.nix filter=git-crypt diff=git-crypt
 secrets/workstations-secrets.nix filter=git-crypt diff=git-crypt
+secrets/sovserv-secrets.nix filter=git-crypt diff=git-crypt
