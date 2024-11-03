@@ -8,9 +8,9 @@
       # text-scaling-factor = 0.8; # BitLab LG
       # text-scaling-factor = 1.0;
       # text-scaling-factor = 1.15; # Home Innocn
-      text-scaling-factor = 1.5; # thinky built-in
+      # text-scaling-factor = 1.5; # thinky built-in
       # text-scaling-factor = 1.75; # extra large
-      # text-scaling-factor = 2.0; # XXL
+      text-scaling-factor = 2.0; # XXL
     };
     "org/gnome/desktop/peripherals/mouse" = {
       speed = -0.6;
@@ -34,6 +34,7 @@
     };
     packages = with pkgs; [
       infisical # Manages secrets
+      kanata # Tool to improve keyboard comfort and usability with advanced customization
       # pkgs-micro-2-0-12.micro
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       pinentry-gnome3
@@ -45,6 +46,7 @@
   imports = [
     ../shared/home.nix
     ../shared/workstations.nix
+    ../shared/kanata.nix
   ];
   nixpkgs.config.allowUnfree = true;
   programs.zsh.profileExtra = ''

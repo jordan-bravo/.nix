@@ -8,9 +8,9 @@ with lib.hm.gvariant;
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;
     };
-    "org/gnome/desktop/input-sources" = {
-      xkb-options = [ "caps:escape_shifted_capslock" ];
-    };
+    # "org/gnome/desktop/input-sources" = {
+    #   xkb-options = [ "caps:escape_shifted_capslock" ];
+    # };
     "org/gnome/desktop/interface" = {
       clock-format = "24h";
       clock-show-weekday = true;
