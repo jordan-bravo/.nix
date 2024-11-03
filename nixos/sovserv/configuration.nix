@@ -101,7 +101,7 @@
       # The Nextcloud forums list a solution:  remove this line from config.php:
       # 'log_type' => 'errorlog',
       # The question is, how to do this on NixOS?
-      package = pkgs.nextcloud29;
+      package = pkgs.nextcloud30;
       phpOptions = {
         "opcache.interned_strings_buffer" = "48";
       };
