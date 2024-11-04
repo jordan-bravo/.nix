@@ -111,7 +111,7 @@
       # libinput.enable = true;
       xkb = {
         layout = "us";
-        options = "caps:escape_shifted_capslock";
+        # options = "caps:escape_shifted_capslock";
       };
     };
   };
