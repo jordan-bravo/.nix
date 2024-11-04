@@ -255,7 +255,7 @@
       };
     };
     yazi = {
-      enable = true;
+      enable = false; # disabled because broken bylatest update to nixpkgs on Nov 3rd
       enableZshIntegration = true;
     };
     zoxide = {
