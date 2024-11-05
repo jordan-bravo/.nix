@@ -63,7 +63,7 @@
       tor-browser-bundle-bin # Tor browser
       vlc # Media player
       vorta # Desktop Backup Client for Borg
-      vscodium # VS Code without MS branding/telemetry/licensing
+      # vscodium # VS Code without MS branding/telemetry/licensing
       # waybar # Status bar
       # wofi # App launcher
       xorg.xwininfo # Display info for X windows and nothing for Wayland windows
@@ -107,35 +107,6 @@
 
   # Programs with little to no config are enabled here. 
   programs = {
-    vscode = {
-      enable = false;
-      package = pkgs.vscodium;
-      extensions = with pkgs.vscode-extensions; [
-        asvetliakov.vscode-neovim
-        yzane.markdown-pdf
-        # charliermarsh.ruff
-        # ms-python.python
-        # ];
-        # ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        #   {
-        #     name = "roc-lang-unofficial";
-        #     publisher = "ivandemchenko";
-        #     version = "1.2.0";
-        #     sha256 = "sha256-lMN6GlUM20ptg1c6fNp8jwSzlCzE1U0ugRyhRLYGPGE=";
-        #   }
-      ];
-      userSettings = {
-        "editor.fontFamily" = "FiraCode Nerd Font Mono";
-        "editor.lineNumbers" = "relative";
-        "extensions.experimental.affinity" = {
-          "asvetliakov.vscode-neovim" = 1;
-        };
-        "keyboard.dispatch" = "keyCode";
-        "vscode-neovim.neovimClean" = true;
-        "window.menuBarVisibility" = "toggle";
-        "workbench.startupEditor" = "none";
-      };
-    };
     zsh = {
       initExtra = ''
         # Add ssh key, suppress output

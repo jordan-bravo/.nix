@@ -44,6 +44,7 @@
       sbctl # Secure Boot key manager
       sparrow # Bitcoin wallet
       trayscale # Unofficial GUI wrapper around the Tailscale CLI client
+      zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
 
       # Deps attempting to install python 2 with pyenv
       # bzip2 # High-quality data compression program
@@ -74,6 +75,35 @@
     #   
     # }
   ];
+  programs.vscode = {
+    enable = false;
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      asvetliakov.vscode-neovim
+      yzane.markdown-pdf
+      # charliermarsh.ruff
+      # ms-python.python
+      # ];
+      # ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      #   {
+      #     name = "roc-lang-unofficial";
+      #     publisher = "ivandemchenko";
+      #     version = "1.2.0";
+      #     sha256 = "sha256-lMN6GlUM20ptg1c6fNp8jwSzlCzE1U0ugRyhRLYGPGE=";
+      #   }
+    ];
+    userSettings = {
+      "editor.fontFamily" = "FiraCode Nerd Font Mono";
+      "editor.lineNumbers" = "relative";
+      "extensions.experimental.affinity" = {
+        "asvetliakov.vscode-neovim" = 1;
+      };
+      "keyboard.dispatch" = "keyCode";
+      "vscode-neovim.neovimClean" = true;
+      "window.menuBarVisibility" = "toggle";
+      "workbench.startupEditor" = "none";
+    };
+  };
   programs.zsh.initExtra = ''
     # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
     bindkey "''${key[Up]}" up-line-or-search

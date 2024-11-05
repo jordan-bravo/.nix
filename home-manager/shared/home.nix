@@ -50,7 +50,6 @@
       browsh # Fully-modern text-based browser, rendering to TTY and browsers
       # busybox # Tiny versions of common UNIX utilities in a single small executable
       cargo # Rust package manager
-      code-cursor # AI-powered code editor built on vscode
       dante # Circuit-level SOCKS client/server that can be used to provide convenient and secure network connectivity # aerc-dep
       delta # A syntax-highlighting pager for git
       dhcping # Send DHCP request to find out if a DHCP server is running
@@ -111,7 +110,6 @@
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       yarn # Package manager for JavaScript
       yt-dlp # CLI tool to download YouTube videos
-      zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
       zellij # Terminal multiplexer
       zola # A fast static site generator with everything built-in
 
