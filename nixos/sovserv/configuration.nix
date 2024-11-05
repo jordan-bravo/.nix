@@ -83,8 +83,8 @@
       database.createLocally = true;
       extraAppsEnable = true;
       extraApps = with config.services.nextcloud.package.packages.apps; {
-        # List of apps we want to install and are already packaged in nixpkgs at
-        # github.com/NixOS/nixpkgs/blob/master/pkgs/servers/nextcloud-apps.json
+        # List of apps we can install that are already packaged in nixpkgs at:
+        # github.com/NixOS/nixpkgs/blob/master/pkgs/servers/nextcloud/packages/nextcloud-apps.json
         inherit calendar contacts cookbook forms notes notify_push tasks whiteboard; # onlyoffice
 
         # Custom app installation example
