@@ -44,8 +44,9 @@
   };
 
   networking = {
+    enableIPv6 = false;
     firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
-    nameservers = [ "1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
+    nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager = {
       enable = true;
     };
