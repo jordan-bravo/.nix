@@ -6,32 +6,33 @@
     # Android packages
     android-nixpkgs = {
       url = "github:tadfisher/android-nixpkgs";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
     # Lanzaboote enables Secure Boot on NixOS
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
     lnbits = {
       url = "github:lnbits/lnbits/d8d898b20b2979865a699b085de727756ee48ae6";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
     nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-2405.url = "github:nixos/nixpkgs/24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # VSCode / VSCodium extensions
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
     # Manage the system on non-NixOS Linux distros
     # system-manager = {
     #   url = "github:numtide/system-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.nixpkgs-unstable.follows = "nixpkgs";
     # };
     # nix-darwin.url = "github:LnL7/nix-darwin";
     # nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
@@ -39,34 +40,33 @@
     # NixGL for graphics driver issues on non-NixOS
     nixgl = {
       url = "github:guibou/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
     # Configure Firefox extensions via Home Manager
     # firefox-addons = {
     #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.nixpkgs-unstable.follows = "nixpkgs";
     # };
     # nixneovim = {
     #   url = "github:nixneovim/nixneovim";
-    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.nixpkgs-unstable.follows = "nixpkgs";
     # };
     # nixpkgs-python = {
     #   url = "github:cachix/nixpkgs-python";
-    #   # inputs.nixpkgs.follows = "nixpkgs";
+    #   # inputs.nixpkgs-unstable.follows = "nixpkgs";
     # };
     # nixpkgs-py27 = {
     #   url = "github:nixos/nixpkgs/272744825d28f9cea96fe77fe685c8ba2af8eb12"; #python27Packages.virtualenv
     # };
     # nixpkgs-neovim-094.url = "github:nixos/nixpkgs/d44d59d2b5bd694cd9d996fd8c51d03e3e9ba7f7";
     # nixpkgs-nixos-nixd-123.url = "github:nixos/nixpkgs/9a9dae8f6319600fa9aebde37f340975cab4b8c0"; #nixd on NixOS
-    # nixpkgs-2311.url = "github:nixos/nixpkgs/23.11"; #nixd on non-NixOS
     sops-nix = {
       url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
     system-manager = {
       url = "github:numtide/system-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
     };
     # xremap-flake = {
     #   url = "github:xremap/nix-flake";
@@ -81,7 +81,8 @@
     , lanzaboote
     , lnbits
     , nix-bitcoin
-    , nixpkgs
+    , nixpkgs-2405
+    , nixpkgs-unstable
       # , nix-darwin
       # , nixpkgs-darwin
       # , nixpkgs-python
@@ -109,13 +110,13 @@
       # pkgs-nixos-nixd-123 = import nixpkgs-nixos-nixd-123 {
       #   system = "x86_64-linux";
       # };
-      # pkgs-2311 = import nixpkgs-2311 {
-      #   system = "x86_64-linux";
-      # };
       # pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
       #   system = "x86_64-linux";
       # };
-      pkgs = import nixpkgs {
+      pkgs-2405 = import nixpkgs-2405 {
+        system = "x86_64-linux";
+      };
+      pkgs = import nixpkgs-unstable {
         system = "x86_64-linux";
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
@@ -136,7 +137,7 @@
     {
       nixosConfigurations = {
         # Laptops / Desktops
-        tux = nixpkgs.lib.nixosSystem {
+        tux = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -146,7 +147,7 @@
             # This section uses home-manager as a NixOS module
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
+              home-manager.extraSpecialArgs = { inherit pkgs pkgs-2405 inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jordan = import ./home-manager/tux/home.nix;
@@ -154,7 +155,7 @@
             }
           ];
         };
-        carby = nixpkgs.lib.nixosSystem {
+        carby = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -163,7 +164,7 @@
             # This section uses home-manager as a NixOS module
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
+              home-manager.extraSpecialArgs = { inherit pkgs pkgs-2405 inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jordan = import ./home-manager/carby/home.nix;
@@ -171,7 +172,7 @@
           ];
         };
         # Servers
-        sovserv = nixpkgs.lib.nixosSystem {
+        sovserv = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -179,7 +180,7 @@
             ./nixos/shared/server-conf.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
+              home-manager.extraSpecialArgs = { inherit pkgs pkgs-2405 inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.main = import ./home-manager/sovserv/home.nix;
@@ -187,7 +188,7 @@
             }
           ];
         };
-        finserv = nixpkgs.lib.nixosSystem {
+        finserv = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
@@ -195,7 +196,7 @@
             ./nixos/shared/server-conf.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
+              home-manager.extraSpecialArgs = { inherit pkgs pkgs-2405 inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.main = import ./home-manager/finserv/home.nix;
@@ -219,14 +220,14 @@
         # };
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs inputs/* pkgs-micro-2-0-12*/; };
+          extraSpecialArgs = { inherit nixgl pkgs pkgs-2405 inputs/* pkgs-micro-2-0-12*/; };
           modules = [ ./home-manager/thinky/home.nix ];
         };
-        tux = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit pkgs inputs; };
-          modules = [ ./home-manager/tux/home.nix ];
-        };
+        # tux = home-manager.lib.homeManagerConfiguration {
+        #   pkgs = pkgs; # equivalent to: inherit pkgs;
+        #   extraSpecialArgs = { inherit pkgs pkgs-2405 inputs; };
+        #   modules = [ ./home-manager/tux/home.nix ];
+        # };
       };
       # System-Manager (for controlling services and system config on non-NixOS Linux)
       systemConfigs.default = system-manager.lib.makeSystemConfig {
