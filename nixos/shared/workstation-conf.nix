@@ -1,6 +1,6 @@
 # nixos/shared/workstation-conf.nix
 
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   # Bootloader.
@@ -18,11 +18,11 @@
     # variables = {
     #   "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
     # };
-    systemPackages = with pkgs; [
-      # gcc # GNU Compiler Collection, version 13.2.0 (wrapper script)
-      # openssl
-      # pkg-config
-    ];
+    # systemPackages = with pkgs; [
+    #   # gcc # GNU Compiler Collection, version 13.2.0 (wrapper script)
+    #   # openssl
+    #   # pkg-config
+    # ];
   };
 
   hardware.pulseaudio.enable = false;
@@ -45,6 +45,7 @@
 
   networking = {
     firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
+    nameservers = [ "1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
     networkmanager = {
       enable = true;
     };

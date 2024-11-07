@@ -1,6 +1,6 @@
 # ~/.nix/tux/configuration.nix
 
-{ config, pkgs, lib, inputs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports =
