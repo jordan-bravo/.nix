@@ -131,8 +131,6 @@
         LND_GRPC_ENDPOINT = "127.0.0.1";
         LND_GRPC_PORT = "10009";
         LND_GRPC_CERT = "/etc/nix-bitcoin-secrets/lnd-cert";
-        # For the macaroon value, paste the hex-encoded string into the GUI in the field 
-        # "Admin Macaroon" if declaring the path below doesn't work due to permissions error.
         LND_GRPC_MACAROON = "/var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon";
       };
     };
@@ -263,6 +261,9 @@
         ];
       };
     };
+    lnd = {
+      postStart = "chmod g+rx ${config.services.lnd.dataDir}/chain{,/bitcoin{,/${config.services.bitcoind.network}}}";
+    };
   };
   systemd.timers = {
     lnd-connect-to-peers = {
@@ -273,8 +274,8 @@
       };
     };
   };
-  # users.users.lnbits = {
-  #   extraGroups = [ "lnd" ];
-  # };
+  users.users.lnbits = {
+    extraGroups = [ "lnd" ];
+  };
 }
 
