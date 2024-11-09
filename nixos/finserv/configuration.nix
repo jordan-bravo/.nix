@@ -114,7 +114,6 @@
       enable = true;
       host = "0.0.0.0";
       env = {
-        LNBITS_ADMIN_UI = "true";
         # If setting these values declaritively doesn't work, set
         # them manually in the GUI under Server > Funding Sources
         LNBITS_BACKEND_WALLET_CLASS = "LndWallet";
