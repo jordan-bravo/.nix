@@ -138,9 +138,6 @@
         protocol.custom-nodeann=39
         protocol.custom-init=39
       '';
-      # macaroons = {
-      #   lnbits.user = "lnbits";
-      # };
       # LNDK is a program that runs alongside LND and provides BOLT12 functionality, although
       # as of 2024-09-26 it cannot receive BOLT12 payments, it can only send them. Also,
       # there currently is a bug in the nixpkgs version of LND that is missing the 
