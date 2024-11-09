@@ -103,16 +103,6 @@
     fulcrum = {
       enable = true;
       address = "0.0.0.0";
-      # To generate a Tailscale SSL cert, run the command: sudo tailscale cert
-      # Then change the owner of the crt and key files to fulcrum: chown fulcrum:fulcrum
-      # Finally, copy or move them to the directory below for cert and key
-      # extraConfig = ''
-      #   # ssl = 0.0.0.0:50002
-      #   tcp = 0.0.0.0:50001
-      #   admin = 9999
-      #   # cert = ${config.sops.secrets."ssl/xav-icu/cloudflare/cert".path}
-      #   # key = ${config.sops.secrets."ssl/xav-icu/cloudflare/key".path}
-      # '';
       extraConfig = ''
         admin = 0.0.0.0:9999
       '';
