@@ -45,8 +45,16 @@
     # shell = pkgs.zsh;
   };
 
-  networking.networkmanager.enable = true;
-  networking.enableIPv6 = false;
+  networking = {
+    enableIPv6 = false;
+    firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
+    nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    networkmanager = {
+      enable = true;
+      dns = "none";
+    };
+  };
+  boot.kernelParams = [ "ipv6.disable=1" ];
 
   nixpkgs.config.allowUnfree = true;
 

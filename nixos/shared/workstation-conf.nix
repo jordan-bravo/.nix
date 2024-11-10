@@ -49,8 +49,10 @@
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     networkmanager = {
       enable = true;
+      dns = "none";
     };
   };
+  boot.kernelParams = [ "ipv6.disable=1" ];
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
