@@ -48,7 +48,7 @@
   networking = {
     enableIPv6 = false;
     firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
-    nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    nameservers = [ "9.9.9.9" "149.112.112.112" ]; # Quad9
     networkmanager = {
       enable = true;
       dns = "none";

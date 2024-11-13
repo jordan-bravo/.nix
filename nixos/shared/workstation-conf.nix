@@ -46,7 +46,7 @@
   networking = {
     enableIPv6 = false;
     firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
-    nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    nameservers = [ "9.9.9.9" "149.112.112.112" ]; # Quad9
     networkmanager = {
       enable = true;
       dns = "none";
@@ -85,22 +85,6 @@
       pulse.enable = true;
     };
     printing.enable = true;
-    # resolved = {
-    #   enable = true;
-    #   dnsovertls = "true";
-    #   dnssec = "true";
-    #   domains = [ "~." ];
-    #   # domains = [ "snowy-hops.ts.net" ];
-    #   fallbackDns = [
-    #     "1.1.1.1"
-    #     "1.0.0.1"
-    #     "2606:4700:4700::1111"
-    #     "2606:4700:4700::1001"
-    #   ];
-    #   extraConfig = ''
-    #     DNS=1.1.1.1 1.0.0.1 2606:4700:4700::1111 2606:4700:4700::1001
-    #   '';
-    # };
     tailscale.enable = true;
     xserver = {
       # Enable the X11 windowing system.  I think this is required even with Wayland.
