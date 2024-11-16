@@ -73,19 +73,19 @@
           |#
 
           (defsrc
-            caps       h    j    k    l    ret
+            spc          h    j    k    l
           )
 
           (deflayer default
-            @cap-alias _    _    _    _    _
+            @space-alias _    _    _    _
           )
 
           (deflayer arrows
-            _          left down up   rght caps
+            _          left down up   rght
           )
 
           (defalias
-            cap-alias (tap-hold-press 200 200 esc (layer-toggle arrows)) ;; tap: esc  hold: arrow layer
+            space-alias (tap-hold-press 200 200 spc (layer-toggle arrows)) ;; tap: space  hold: arrow layer
           )
         '';
       };
