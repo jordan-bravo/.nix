@@ -32,15 +32,12 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ## TODO (High Level)
 
-### carby/tux
+### tux
 
-- Configure Hyprland on carby
-- Import Hyprland config to tux
+- Configure Hyprland on tux
 
 ### finserv
 
-- Configure SSL for electrs
-- Configure SSL for mempool
 - Figure out how to connect electrs to liquidd
 - Figure out how to connect mempool to liquidd
 
