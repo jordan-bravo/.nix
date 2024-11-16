@@ -7,10 +7,10 @@
     "org/gnome/desktop/interface" = {
       # text-scaling-factor = 0.8; # BitLab LG
       # text-scaling-factor = 1.0;
-      text-scaling-factor = 1.15; # Home Innocn
+      # text-scaling-factor = 1.15; # Home Innocn
       # text-scaling-factor = 1.5; # thinky built-in
       # text-scaling-factor = 1.75; # extra large
-      # text-scaling-factor = 2.0; # XXL
+      text-scaling-factor = 2.0; # XXL
     };
     "org/gnome/desktop/peripherals/mouse" = {
       speed = -0.6;
