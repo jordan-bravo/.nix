@@ -144,22 +144,6 @@
             }
           ];
         };
-        carby = nixpkgs-unstable.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./nixos/carby/configuration.nix
-            ./nixos/shared/workstation-conf.nix
-            # This section uses home-manager as a NixOS module
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit pkgs pkgs-2405 inputs; };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.jordan = import ./home-manager/carby/home.nix;
-            }
-          ];
-        };
         # Servers
         sovserv = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
@@ -197,28 +181,15 @@
       };
       # Home-Manager standalone configurations
       homeConfigurations = {
-        # carby = home-manager.lib.homeManagerConfiguration {
-        #   pkgs = pkgs; # equivalent to: inherit pkgs;
-        #   extraSpecialArgs = { inherit pkgs inputs; };
-        #   modules = [ ./home-manager/carby/home.nix ];
-        # };
-        # lenny = home-manager.lib.homeManagerConfiguration {
-        #   pkgs = pkgs; # equivalent to: inherit pkgs;
-        #   extraSpecialArgs = { inherit nixgl pkgs inputs; };
-        #   modules = [ ./home-manager/lenny/home.nix ];
-        # };
+        # Thinky is running Fedora
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs pkgs-2405 inputs/* pkgs-micro-2-0-12*/; };
           modules = [ ./home-manager/thinky/home.nix ];
         };
-        # tux = home-manager.lib.homeManagerConfiguration {
-        #   pkgs = pkgs; # equivalent to: inherit pkgs;
-        #   extraSpecialArgs = { inherit pkgs pkgs-2405 inputs; };
-        #   modules = [ ./home-manager/tux/home.nix ];
-        # };
       };
       # System-Manager (for controlling services and system config on non-NixOS Linux)
+      # Currently not used, need to configure
       systemConfigs.default = system-manager.lib.makeSystemConfig {
         modules = [
           # ./system-manager
@@ -226,7 +197,7 @@
       };
 
       # Note: since I no longer have a machine with MacOS, this configuration has gone a long
-      # time without any updates.  It likely needs some tweaking before it will work properly.
+      # time without any updates.  It is likely needs out of date.
       # darwinConfigurations = {
       #   mbp = nix-darwin.lib.darwinSystem {
       #     system = "aarch64-darwin";
