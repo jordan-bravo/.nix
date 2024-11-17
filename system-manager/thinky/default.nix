@@ -12,25 +12,37 @@
       };
       systemPackages = [
         pkgs.hello
-        pkgs.tailscale
+        # pkgs.tailscale
       ];
     };
 
     systemd.services = {
-      tailscaled = {
+      # tailscaled = {
+      #   enable = true;
+      #   description = "Tailscale node agent";
+      #   documentation = "https://tailscale.com/kb/";
+      #   wants = [ "network-pre.target" ];
+      #   after = [
+      #     "network-pre.target"
+      #     "NetworkManager.service"
+      #     "systemd-resolved.service"
+      #   ];
+      #   serviceConfig = {
+      #     Type = "notify";
+      #   };
+      #   wantedBy = [ "multi-user.target" ];
+      # };
+      foo = {
         enable = true;
-        description = "Tailscale node agent";
-        documentation = "https://tailscale.com/kb/";
-        wants = [ "network-pre.target" ];
-        after = [
-          "network-pre.target"
-          "NetworkManager.service"
-          "systemd-resolved.service"
-        ];
         serviceConfig = {
-          Type = "notify";
+          Type = "oneshot";
+          RemainAfterExit = true;
         };
-        wantedBy = [ "multi-user.target" ];
+        wantedBy = [ "system-manager.target" ];
+        script = ''
+          ${lib.getBin pkgs.hello}/bin/hello
+          echo "We launched the rockets!"
+        '';
       };
     };
   };
@@ -173,3 +185,4 @@
   [Install]
   WantedBy=sockets.target
 */
+

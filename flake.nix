@@ -190,10 +190,10 @@
       };
       # System-Manager (for controlling services and system config on non-NixOS Linux)
       # Currently not used, need to configure
-      systemConfigs.default = system-manager.lib.makeSystemConfig {
-        modules = [
-          # ./system-manager
-        ];
+      systemConfigs = {
+        thinky = system-manager.lib.makeSystemConfig {
+          modules = [ ./system-manager/thinky/default.nix ];
+        };
       };
 
       # Note: since I no longer have a machine with MacOS, this configuration has gone a long

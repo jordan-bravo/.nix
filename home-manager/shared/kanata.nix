@@ -55,16 +55,16 @@
         [Unit]
         Description=Kanata keyboard remapper
         Documentation=https://github.com/jtroo/kanata
+        After=default.target
 
         [Service]
         Environment=DISPLAY=:0
         Type=simple
         ExecStart=%h/.nix-profile/bin/kanata --cfg %h/.config/kanata/config.kbd
-        Restart=no
+        Restart=on-failure
 
         [Install]
         WantedBy=default.target
-
       '';
     };
 
