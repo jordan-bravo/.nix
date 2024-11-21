@@ -121,6 +121,16 @@
   networking.hostName = "tux";
 
   programs.hyprland.enable = true;
+  programs.hyprland.withUWSM = true;
+  # probably the above line accomplished the same thing as the below
+  # programs.uwsm = {
+  #   enable = true;
+  #   waylandCompositors.hyprland = {
+  #     binPath = "/run/current-system/sw/bin/hyprland";
+  #     comment = "Hyprland session managed by uwsm";
+  #     prettyName = "Hyprland";
+  #   };
+  # };
 
   # The following is to get Alta Legacy working on NixOS
   programs.nix-ld = {

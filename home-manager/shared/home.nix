@@ -71,7 +71,6 @@
       gnome-multi-writer # Tool for writing an ISO file to multiple USB devices at once
       go # The Go / Golang programming language
       httpie # Command line HTTP client whose goal is to make CLI human-friendly
-      hyprpaper # Hyprland wallpaper program
       # ivpn # VPN GUI
       # ivpn-service # VPN background service
       killall # Tool to kill processes
@@ -111,12 +110,16 @@
       yarn # Package manager for JavaScript
       yt-dlp # CLI tool to download YouTube videos
       zellij # Terminal multiplexer
-      zola # A fast static site generator with everything built-in
+      # zola # A fast static site generator with everything built-in
 
       # Used with Hyprland
-      wofi
+      hyprpaper # Hyprland wallpaper program
+      hyprpolkitagent # Polkit authentication agent written in QT/QML
+      networkmanagerapplet # NetworkManager control applet
+      wofi # A launcher/menu program for wlroots based wayland compositors
+      waybar # Highly customizable Wayland bar for Wlroots based compositors
 
-      # Neovim/Lazyvim dependencies nvim-dep
+      # Neovim dependencies nvim-dep
       basedpyright # Type checker for the Python language
       delve # Debugger for the Go programming language
       dockerfile-language-server-nodejs # A language server for Dockerfiles # nvim-dep

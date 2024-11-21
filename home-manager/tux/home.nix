@@ -10,7 +10,8 @@
         # text-scaling-factor = 1.0; # Normal scaling
         # text-scaling-factor = 1.25; # Home Innocn
         # text-scaling-factor = 1.45; # tux built-in
-        text-scaling-factor = 1.75; # Larger
+        # text-scaling-factor = 1.75; # Larger
+        text-scaling-factor = 2.0; # Double
       };
       "org/gnome/desktop/peripherals/mouse" = {
         speed = -0.8;
@@ -71,6 +72,7 @@
     ../shared/home.nix
     ../shared/kitty.nix
     ../shared/workstations.nix
+    ../shared/waybar.nix
     # ../shared/hyprland.nix
     # android-nixpkgs.hmModule {
     #   
@@ -110,5 +112,21 @@
     bindkey "''${key[Up]}" up-line-or-search
   '';
   programs.pyenv.enable = false;
+
+  # systemd.user = {
+  #   enable = false;
+  #   services = {
+  #     hyprland = {
+  #       Unit = {
+  #         Description = "Hyprland";
+  #         After = [ "graphical-session-pre.target" ];
+  #         BindsTo = [ "graphical-session.target" ];
+  #         Documentation = [ "man:systemd.special" ];
+  #         Requires = [ "basic.target" ];
+  #         Wants = [ "graphical-session-pre.target" ];
+  #       };
+  #     };
+  #   };
+  # };
 }
 

@@ -85,8 +85,8 @@
       tu = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false --accept-dns=false --operator=$USER";
       ts = "tailscale status";
       v = "nvim";
-      waybarc = "vim ~/.config/waybar/config.jsonc";
-      waybars = "vim ~/.config/waybar/style.css";
+      waybarc = "nvim ~/.config/waybar/config.jsonc";
+      waybars = "nvim ~/.config/waybar/style.css";
       yubi-add = "ssh-add -s /usr/local/lib/libykcs11.dylib";
 
       # Connect to machines on tailnet
