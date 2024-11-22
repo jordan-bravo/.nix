@@ -120,8 +120,6 @@
 
   networking.hostName = "tux";
 
-  programs.hyprland.enable = true;
-  programs.hyprland.withUWSM = true;
   # probably the above line accomplished the same thing as the below
   # programs.uwsm = {
   #   enable = true;

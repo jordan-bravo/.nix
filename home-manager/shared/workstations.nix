@@ -35,7 +35,6 @@
       # dunst # Notification daemon
       element-desktop # Matrix client
       firefox # Web browser
-      # font-awesome # Fonts for waybar
       fractal # Matrix client
       freetube # YouTube client
       pkgs-2405.gossip # Desktop client for nostr, an open social media protocol
@@ -75,6 +74,20 @@
       # jdk17 # The open-source Java Development Kit
       watchman # Watches files and takes action when they change
 
+      # Used with Hyprland
+      font-awesome # Used by Waybar
+      # grim # Grab images from a Wayland compositor (hyprshot dep)
+      hyprpaper # Hyprland wallpaper program
+      # hyprpicker # Wlroots-compatible Wayland color picker that does not suck (hyprshot dep)
+      hyprpolkitagent # Polkit authentication agent written in QT/QML
+      hyprshot # Hyprshot is an utility to easily take screenshots in Hyprland using your mouse
+      # libnotify # Library that sends desktop notifications to a notification daemon (hyprshot dep)
+      networkmanagerapplet # NetworkManager control applet
+      # slurp # Select a region in a Wayland compositor (hyprshot dep)
+      swaynotificationcenter # Simple notification daemon with a GUI built for Sway
+      wofi # A launcher/menu program for wlroots based wayland compositors
+      waybar # Highly customizable Wayland bar for Wlroots based compositors
+
       # GNOME specific
       dconf-editor # Edit GNOME options
       gnome-session # GNOME session manager, e.g. `gnome-session-quit`
@@ -102,6 +115,7 @@
   # Programs with more extensive config are imported from separate modules.
   imports = [
     ../shared/dconf.nix
+    ../shared/kanshi.nix
     ../../secrets/workstations-secrets.nix
     # ../shared/kitty.nix
   ];

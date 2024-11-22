@@ -112,13 +112,6 @@
       zellij # Terminal multiplexer
       # zola # A fast static site generator with everything built-in
 
-      # Used with Hyprland
-      hyprpaper # Hyprland wallpaper program
-      hyprpolkitagent # Polkit authentication agent written in QT/QML
-      networkmanagerapplet # NetworkManager control applet
-      wofi # A launcher/menu program for wlroots based wayland compositors
-      waybar # Highly customizable Wayland bar for Wlroots based compositors
-
       # Neovim dependencies nvim-dep
       basedpyright # Type checker for the Python language
       delve # Debugger for the Go programming language

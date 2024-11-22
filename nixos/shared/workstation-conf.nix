@@ -68,7 +68,11 @@
       enable = true;
       enableSSHSupport = true;
     };
-    # hyprland.enable = true;
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+    };
+    hyprlock.enable = true;
     virt-manager.enable = true;
     zsh.enable = true;
   };
