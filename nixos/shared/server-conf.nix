@@ -4,8 +4,6 @@
 
 {
   imports = [
-    ../shared/server-conf.nix
-    ../shared/shared-conf.nix
     inputs.sops-nix.nixosModules.sops
   ];
   users.users.main = {

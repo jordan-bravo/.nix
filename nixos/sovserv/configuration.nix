@@ -5,6 +5,8 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../shared/server-conf.nix
+    ../shared/shared-conf.nix
   ];
 
   networking.hostName = "sovserv";

@@ -147,7 +147,7 @@
         # Servers
         sovserv = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit pkgs pkgs-2405 inputs; };
           modules = [
             ./nixos/sovserv/configuration.nix
             ./nixos/shared/server-conf.nix

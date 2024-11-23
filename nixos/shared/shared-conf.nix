@@ -52,7 +52,7 @@
   programs = {
     gnupg.agent = {
       enable = true;
-      enableSSHSupport = true; # is this necessary?
+      # enableSSHSupport = true; # is this necessary?
     };
     zsh.enable = true;
   };
