@@ -1,11 +1,10 @@
 # sovserv/configuration.nix
 
-{ config, inputs, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
-    inputs.sops-nix.nixosModules.sops
   ];
 
   networking.hostName = "sovserv";
@@ -47,28 +46,11 @@
         };
       };
     };
-    # caddy = {
-    #   enable = false;
-    #   # logFormat = ''
-    #   #   level DEBUG
-    #   # '';
-    #   package = pkgs.callPackage ../shared/caddy.nix {
-    #     plugins = [
-    #       "github.com/caddy-dns/cloudflare"
-    #     ];
-    #   };
-    #   virtualHosts."nextcloud.sovserv.top".extraConfig = ''
-    #     reverse_proxy localhost:8080
-    #     tls {
-    #       dns cloudflare {env.CF_API_TOKEN}
-    #     }
-    #   '';
-    # };
     couchdb = {
       enable = false;
     };
     nextcloud = {
-      # After enabling Nextcloud for the first time, there will be a warning in the administrative
+      # After enabling Nextcloud for the first time, there might be a warning in the administrative
       # settings about the database missing indexes.  To resolve, run this command once:
       # sudo nextcloud-occ db:add-missing-indices
       enable = true;

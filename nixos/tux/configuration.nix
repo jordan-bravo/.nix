@@ -3,12 +3,12 @@
 { pkgs, lib, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # inputs.xremap-flake.nixosModules.default
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../shared/shared-conf.nix
+    ../shared/workstation-conf.nix
+    # inputs.xremap-flake.nixosModules.default
+  ];
 
   nix.settings.trusted-users = [ "root" "jordan" ];
 

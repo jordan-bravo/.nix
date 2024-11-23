@@ -1,12 +1,12 @@
 # finserv/configuration.nix
 
-{ config, inputs, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
     ../shared/server-conf.nix
-    inputs.sops-nix.nixosModules.sops
+    ../shared/shared-conf.nix
     ../../secrets/finserv-secrets.nix
   ];
 

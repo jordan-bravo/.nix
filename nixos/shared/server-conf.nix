@@ -1,78 +1,24 @@
 # shared/server-conf.nix
 
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
-    # inputs.sops-nix.nixosModules.sops
+    ../shared/server-conf.nix
+    ../shared/shared-conf.nix
+    inputs.sops-nix.nixosModules.sops
   ];
-
-  # According to home-manager docs for programs.zsh.enableCompletion, adding the following
-  # line enables completion for system packages (e.g. systemd)
-  # environment.pathsToLink = [ "/share/zsh" ];
-
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
-    systemd-boot.configurationLimit = 8;
-  };
-
-  time.timeZone = "America/New_York";
-
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  users.defaultUserShell = pkgs.zsh;
-
   users.users.main = {
     description = "main";
     extraGroups = [ /*"docker"*/ "networkmanager" "wheel" ];
     isNormalUser = true;
-    # packages = with pkgs; [
-    # ];
     useDefaultShell = true;
-    # shell = pkgs.zsh;
   };
-
-  networking = {
-    enableIPv6 = false;
-    firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
-    nameservers = [ "9.9.9.9" "149.112.112.112" ]; # Quad9
-    networkmanager = {
-      enable = true;
-      dns = "none";
-    };
-  };
-  boot.kernelParams = [ "ipv6.disable=1" ];
-
-  nixpkgs.config.allowUnfree = true;
-
-  # Hint electron apps to use wayland
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
   environment.systemPackages = with pkgs; [
     gcc # GNU Compiler Collection, version 13.2.0 (wrapper script)
   ];
 
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    sandbox = false;
-  };
   programs = {
-    gnupg.agent = {
-      enable = true;
-    };
     ssh = {
       startAgent = true;
       # Add SSH public keys for Borgbase
@@ -82,91 +28,10 @@
         };
       };
     };
-    zsh.enable = true;
   };
-
 
   services = {
-    # borgbackup = {
-    #   jobs = {
-    #     example-job = {
-    #       compression = "auto,lzma";
-    #       encryption = {
-    #         mode = "repokey-blake2";
-    #         passCommand = "cat ${config.sops.secrets."borg/passphrase".path}";
-    #       };
-    #       environment = {
-    #         BORG_RSH = "ssh -i ${config.sops.secrets."borg/ssh-private-key".path}";
-    #       };
-    #       paths = "/path/to/dir/to/backup";
-    #       preHook = ''
-    #         export BORG_REPO=$(cat ${config.sops.secrets."borg/repos/example-job".path})
-    #       '';
-    #       repo = "$BORG_REPO";
-    #       startAt = "*-*-* 01:30:00";
-    #     };
-    #   };
-    # };
-    openssh = {
-      enable = true;
-    };
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-    # Examples
-    # postgresql = {
-    #   ensureDatabases = [ "name-of-database" ];
-    # };
-    # postgresqlBackup = {
-    #   enable = true;
-    #   databases = [ "name-of-database" ];
-    #   startAt = "*-*-* 03:15:00";
-    # };
-    # resolved = {
-    #   enable = false;
-    #   dnsovertls = "true";
-    #   dnssec = "true";
-    #   domains = [ "snowy-hops.ts.net" ];
-    #   fallbackDns = [
-    #     "9.9.9.9"
-    #     "149.112.112.112"
-    #   ];
-    #   extraConfig = ''
-    #     DNS=9.9.9.9 149.112.112.112
-    #   '';
-    # };
-    xserver = {
-      xkb = {
-        layout = "us";
-        # options = "caps:escape_shifted_capslock";
-      };
-    };
-  };
-  security.rtkit.enable = true;
-
-  system.stateVersion = "23.11";
-
-  # There is an outstanding bug in NixOS that causes rebuilds to fail sometimes, this is the workaround.
-  # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1645442729
-  # systemd.services.NetworkManager-wait-online.enable = true;
-  systemd.services.NetworkManager-wait-online = {
-    serviceConfig = {
-      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
-    };
-  };
-
-  virtualisation = {
-    # libvirtd.enable = true;
-    docker = {
-      enable = true;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
-    };
+    openssh.enable = true;
   };
 }
 
