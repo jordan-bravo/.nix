@@ -75,6 +75,7 @@
       watchman # Watches files and takes action when they change
 
       # Used with Hyprland
+      brightnessctl # Read and control device brightness
       font-awesome # Used by Waybar
       # grim # Grab images from a Wayland compositor (hyprshot dep)
       hyprpaper # Hyprland wallpaper program
