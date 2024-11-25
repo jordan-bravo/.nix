@@ -75,6 +75,7 @@
       watchman # Watches files and takes action when they change
 
       # Used with Hyprland
+      blueman # GTK-based Bluetooth Manager
       brightnessctl # Read and control device brightness
       font-awesome # Used by Waybar
       # grim # Grab images from a Wayland compositor (hyprshot dep)
@@ -86,6 +87,7 @@
       networkmanagerapplet # NetworkManager control applet
       # slurp # Select a region in a Wayland compositor (hyprshot dep)
       swaynotificationcenter # Simple notification daemon with a GUI built for Sway
+      swww # Efficient animated wallpaper daemon for wayland, controlled at runtime
       wofi # A launcher/menu program for wlroots based wayland compositors
       waybar # Highly customizable Wayland bar for Wlroots based compositors
 
