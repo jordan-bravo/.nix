@@ -78,14 +78,14 @@
       blueman # GTK-based Bluetooth Manager
       brightnessctl # Read and control device brightness
       font-awesome # Used by Waybar
-      # grim # Grab images from a Wayland compositor (hyprshot dep)
+      grim # Grab images from a Wayland compositor (neede for screensharing)
       hyprpaper # Hyprland wallpaper program
       # hyprpicker # Wlroots-compatible Wayland color picker that does not suck (hyprshot dep)
       hyprpolkitagent # Polkit authentication agent written in QT/QML
       hyprshot # Hyprshot is an utility to easily take screenshots in Hyprland using your mouse
       # libnotify # Library that sends desktop notifications to a notification daemon (hyprshot dep)
       networkmanagerapplet # NetworkManager control applet
-      # slurp # Select a region in a Wayland compositor (hyprshot dep)
+      slurp # Select a region in a Wayland compositor (neede for screensharing)
       swaynotificationcenter # Simple notification daemon with a GUI built for Sway
       swww # Efficient animated wallpaper daemon for wayland, controlled at runtime
       wofi # A launcher/menu program for wlroots based wayland compositors

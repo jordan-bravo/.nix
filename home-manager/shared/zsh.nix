@@ -28,9 +28,9 @@
       printf '\n%.0s' {1..$LINES}
 
       # If BD NPM token exists, source it
-      if [ -f $HOME/bd/.misc/.npm-bd ]; then
-        source $HOME/bd/.misc/.npm-bd
-      fi
+      # if [ -f $HOME/bd/.misc/.npm-bd ]; then
+      #   source $HOME/bd/.misc/.npm-bd
+      # fi
 
       # Accept next word from zsh autosuggestion with Ctrl+U
       bindkey ^U forward-word

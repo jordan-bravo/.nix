@@ -54,11 +54,13 @@
       enable = true;
       # enableSSHSupport = true; # is this necessary?
     };
+    ssh.startAgent = true;
     zsh.enable = true;
   };
   security.rtkit.enable = true;
   hardware.pulseaudio.enable = false;
   services = {
+    openssh.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
