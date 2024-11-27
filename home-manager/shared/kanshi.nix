@@ -11,7 +11,7 @@
       }
       profile hdmi {
           output eDP-1 disable
-          output HDMI-A-1 enable
+          output HDMI-A-1 enable scale 0.8
       }
     '';
     systemdTarget = "graphical-session.target";
