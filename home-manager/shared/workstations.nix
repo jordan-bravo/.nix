@@ -64,6 +64,7 @@
       vlc # Media player
       vorta # Desktop Backup Client for Borg
       # vscodium # VS Code without MS branding/telemetry/licensing
+      # vscodium-fhs # Launches VSCodium in a FHS compatible environment. Should allow for easy usage of extensions without nix-specific modifications. 
       # waybar # Status bar
       # wofi # App launcher
       xorg.xwininfo # Display info for X windows and nothing for Wayland windows
