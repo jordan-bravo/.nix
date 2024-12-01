@@ -73,11 +73,11 @@
           |#
 
           (defsrc
-            spc          h    j    k    l
+            caps          h    j    k    l
           )
 
           (deflayer default
-            @space-alias _    _    _    _
+            @caps-alias _    _    _    _
           )
 
           (deflayer arrows
@@ -85,7 +85,7 @@
           )
 
           (defalias
-            space-alias (tap-hold-press 200 200 spc (layer-toggle arrows)) ;; tap: space  hold: arrow layer
+            caps-alias (tap-hold-press 200 200 esc (layer-toggle arrows)) ;; tap: space  hold: arrow layer
           )
         '';
       };
@@ -137,6 +137,7 @@
       stdenv.cc.cc.lib
       xorg.libX11
       xorg.libxcb
+      # xorg.libXcomposite # For VSCodium extension Markdown PDF
       # zlib # numpy
       # libgcc # sqlalchemy
       # zlib
