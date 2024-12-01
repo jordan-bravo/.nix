@@ -18,7 +18,7 @@
 
   programs = {
     ssh = {
-      startAgent = true;
+      # startAgent = true;
       # Add SSH public keys for Borgbase
       knownHosts = {
         "*.repo.borgbase.com" = {
