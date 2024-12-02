@@ -52,9 +52,9 @@
   programs = {
     gnupg.agent = {
       enable = true;
-      enableSSHSupport = true; # is this necessary?
+      # enableSSHSupport = true; # is this necessary?
     };
-    # ssh.startAgent = true;
+    ssh.startAgent = true;
     zsh.enable = true;
   };
   security.rtkit.enable = true;
