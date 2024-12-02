@@ -1,9 +1,9 @@
 # sovserv/caddy.nix
-{ pkgs, config, plugins, ... }:
+{ pkgs, plugins, ... }:
 
 with pkgs;
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "caddy";
   # https://github.com/NixOS/nixpkgs/issues/113520
   version = "latest";

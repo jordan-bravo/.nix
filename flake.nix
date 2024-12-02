@@ -104,17 +104,18 @@
       # };
       pkgs-2411 = import nixpkgs-2411 {
         system = "x86_64-linux";
+        config.allowUnfree = true;
       };
       pkgs-unstable = import nixpkgs-unstable {
         system = "x86_64-linux";
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
-          "electron-19.1.9"
-          "electron-25.9.0"
+          # "electron-19.1.9"
+          # "electron-25.9.0"
           "nodejs_14"
-          "nodejs_16"
-          "python-2.7.18.7"
-          "python-2.7.18.7-env"
+          # "nodejs_16"
+          # "python-2.7.18.7"
+          # "python-2.7.18.7-env"
         ];
         overlays = [
           nixgl.overlay
@@ -128,15 +129,14 @@
         # Workstations (Laptops / Desktops)
         tux = nixpkgs-2411.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit pkgs-unstable pkgs-2411 inputs; };
+          specialArgs = { inherit inputs pkgs-unstable pkgs-2411; };
           modules = [
             ./nixos/tux/configuration.nix
-            ./nixos/shared/workstation-conf.nix
             lanzaboote.nixosModules.lanzaboote
             # This section uses home-manager as a NixOS module
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit pkgs-unstable pkgs-2411 inputs; };
+              # home-manager.extraSpecialArgs = { inherit inputs pkgs-unstable/* pkgs-2411 */; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.jordan = import ./home-manager/tux/home.nix;
@@ -150,7 +150,6 @@
           specialArgs = { inherit pkgs-unstable pkgs-2411 inputs; };
           modules = [
             ./nixos/sovserv/configuration.nix
-            ./nixos/shared/server-conf.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit pkgs-unstable pkgs-2411 inputs; };
@@ -166,7 +165,6 @@
           specialArgs = { inherit pkgs-unstable pkgs-2411 inputs; };
           modules = [
             ./nixos/finserv/configuration.nix
-            ./nixos/shared/server-conf.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit pkgs-unstable pkgs-2411 inputs; };

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs-2411, ... }:
 
 {
   boot.loader = {
@@ -9,7 +9,7 @@
   # According to home-manager docs for programs.zsh.enableCompletion, adding the following
   # line enables completion for system packages (e.g. systemd)
   environment.pathsToLink = [ "/share/zsh" ];
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs-2411.zsh;
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -78,7 +78,7 @@
   # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
   systemd.services.NetworkManager-wait-online = {
     serviceConfig = {
-      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+      ExecStart = [ "" "${pkgs-2411.networkmanager}/bin/nm-online -q" ];
     };
   };
   system.stateVersion = "23.11";

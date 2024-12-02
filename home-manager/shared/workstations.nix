@@ -1,6 +1,6 @@
 # home-manager/shared/workstations.nix
 
-{ pkgs, pkgs-2405, ... }:
+{ pkgs, ... }:
 
 {
   home = {
@@ -37,7 +37,6 @@
       firefox # Web browser
       fractal # Matrix client
       freetube # YouTube client
-      pkgs-2405.gossip # Desktop client for nostr, an open social media protocol
       # gtklock # Screen lock
       # gtklock-userinfo-module # Screen lock user info
       heroku # Heroku CLI

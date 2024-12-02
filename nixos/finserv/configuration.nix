@@ -1,6 +1,6 @@
 # finserv/configuration.nix
 
-{ config, lib, pkgs-2411, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -10,7 +10,7 @@
     ../../secrets/finserv-secrets.nix
   ];
 
-  environment.systemPackages = with pkgs-2411; [
+  environment.systemPackages = with pkgs; [
     wireguard-tools
   ];
 
@@ -218,7 +218,7 @@
     listmaker-node-3030 = {
       after = [ "network.target" ];
       serviceConfig = {
-        ExecStart = "${pkgs-2411.nodejs_22}/bin/node /home/main/apps/listmaker-node-3030/build/index.js";
+        ExecStart = "${pkgs.nodejs_22}/bin/node /home/main/apps/listmaker-node-3030/build/index.js";
         Restart = "always";
       };
       wantedBy = [ "multi-user.target" ];
@@ -226,7 +226,7 @@
     listmaker-node-4040 = {
       after = [ "network.target" ];
       serviceConfig = {
-        ExecStart = "${pkgs-2411.nodejs_22}/bin/node /home/main/apps/listmaker-node-4040/build/index.js";
+        ExecStart = "${pkgs.nodejs_22}/bin/node /home/main/apps/listmaker-node-4040/build/index.js";
         Restart = "always";
       };
       wantedBy = [ "multi-user.target" ];
@@ -237,13 +237,13 @@
         User = "lnd";
         ExecStart = [
           # ACINQ
-          "-${pkgs-2411.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 03864ef025fde8fb587d989186ce6a4a186895ee44a926bfc370e2c366597a3f8f@3.33.236.230:9735 2> /dev/null"
+          "-${pkgs.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 03864ef025fde8fb587d989186ce6a4a186895ee44a926bfc370e2c366597a3f8f@3.33.236.230:9735 2> /dev/null"
           # WalletOfSatoshi
-          "-${pkgs-2411.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226@170.75.163.209:9735 2> /dev/null"
+          "-${pkgs.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 035e4ff418fc8b5554c5d9eea66396c227bd429a3251c8cbc711002ba215bfc226@170.75.163.209:9735 2> /dev/null"
           # Boltz
-          "-${pkgs-2411.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 026165850492521f4ac8abd9bd8088123446d126f648ca35e60f88177dc149ceb2@45.86.229.190:9735 2> /dev/null"
+          "-${pkgs.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 026165850492521f4ac8abd9bd8088123446d126f648ca35e60f88177dc149ceb2@45.86.229.190:9735 2> /dev/null"
           # Kraken
-          "-${pkgs-2411.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69@52.13.118.208:9735 2> /dev/null"
+          "-${pkgs.lnd}/bin/lncli --tlscertpath=/etc/nix-bitcoin-secrets/lnd-cert --macaroonpath /var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon connect --perm 02f1a8c87607f415c8f22c00593002775941dea48869ce23096af27b0cfdcc0b69@52.13.118.208:9735 2> /dev/null"
         ];
       };
     };
