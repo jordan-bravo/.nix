@@ -181,7 +181,7 @@
       homeConfigurations = {
         # Thinky is running Fedora
         thinky = home-manager.lib.homeManagerConfiguration {
-          # pkgs = pkgs-unstable; # equivalent to: inherit pkgs;
+          pkgs = pkgs-2411; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs-unstable pkgs-2411 inputs/* pkgs-micro-2-0-12*/; };
           modules = [ ./home-manager/thinky/home.nix ];
         };
