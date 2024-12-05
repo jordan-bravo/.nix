@@ -105,21 +105,19 @@
       pkgs-2411 = import nixpkgs-2411 {
         system = "x86_64-linux";
         config.allowUnfree = true;
+        overlays = [
+          nixgl.overlay
+          # nixneovim.overlays.default
+        ];
       };
       pkgs-unstable = import nixpkgs-unstable {
         system = "x86_64-linux";
         config.allowUnfree = true;
         config.permittedInsecurePackages = [
-          # "electron-19.1.9"
-          # "electron-25.9.0"
-          "nodejs_14"
+          # "nodejs_14"
           # "nodejs_16"
           # "python-2.7.18.7"
           # "python-2.7.18.7-env"
-        ];
-        overlays = [
-          nixgl.overlay
-          # nixneovim.overlays.default
         ];
       };
       # You can now reference pkgs-2411.nixgl.nixGLIntel
