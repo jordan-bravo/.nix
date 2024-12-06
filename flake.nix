@@ -180,7 +180,13 @@
         # Thinky is running Fedora
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs-2411; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs-unstable pkgs-2411 inputs/* pkgs-micro-2-0-12*/; };
+          extraSpecialArgs = { inherit nixgl pkgs-unstable pkgs-2411 inputs; };
+          modules = [ ./home-manager/thinky/home.nix ];
+        };
+        # Lenny is running Ubuntu with Sway
+        lenny = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs-2411; # equivalent to: inherit pkgs;
+          extraSpecialArgs = { inherit nixgl pkgs-unstable pkgs-2411 inputs; };
           modules = [ ./home-manager/thinky/home.nix ];
         };
       };
