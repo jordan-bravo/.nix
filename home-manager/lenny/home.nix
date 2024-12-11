@@ -1,97 +1,155 @@
-# ~/.nix/lenny/home.nix
+# lenny/home.nix
 
 { config, pkgs, ... }:
 
 {
-  dconf.settings = {
-    # "desktop/ibus/panel/emoji" = {
-    #   hotkey = [ ];
-    #   unicode-hotkey = [ ];
-    # };
-    "org/gnome/desktop/interface" = {
-      # text-scaling-factor = 0.8; # BitLab LG
-      # text-scaling-factor = 1.15; # Home Innocn
-      text-scaling-factor = 1.0; # lenny built-in
-    };
-    "org/gnome/desktop/peripherals/touchpad" = {
-      speed = 0.3;
-      tap-to-click = true;
-    };
-    "org/gnome/desktop/sound" = {
-      allow-volume-above-100-percent = false;
-    };
-  };
+  fonts.fontconfig.enable = true;
   home = {
-    file = {
-      "daemon.json" = {
-        enable = false;
-        text = ''
-          {
-            "exampleKey": "exampleValue"
-          }
-        '';
-      };
-    };
+    # file = {
+    #   gpg-agent = {
+    #     target = ".gnupg/gpg-agent.conf";
+    #     enable = true;
+    #     text = ''
+    #       pinentry-program ${config.home.homeDirectory}/.nix-profile/bin/pinentry-gnome3
+    #     '';
+    #   };
+    # };
     packages = with pkgs; [
-      # docker # Container engine
+      kanata # Tool to improve keyboard comfort and usability with advanced customization
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
-      # neovim # Text editor / IDE
+      hello
+      # pinentry-gnome3
     ];
     homeDirectory = "/home/${config.home.username}";
-    stateVersion = "23.11";
+    sessionVariables = {
+      GTK_THEME = "Adwaita:dark";
+    };
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
+    stateVersion = "24.11";
     username = "jordan";
   };
-  imports = [ ../shared/home.nix ];
-  programs.zsh.profileExtra = ''
-    export XDG_DATA_DIRS=$HOME/.nix-profile/share:$XDG_DATA_DIRS"
-  '';
+  imports = [
+    ../shared/fuzzel.nix
+    # ../shared/git.nix
+    # ../shared/home.nix
+    # ../shared/kanata.nix
+    ../shared/kanshi.nix
+    ../shared/ripgrep.nix
+    # ../shared/workstations.nix
+    # ../shared/zellij.nix
+    # ../shared/zsh.nix
+  ];
+  # nixpkgs.config.allowUnfree = true;
+  # programs.zsh.profileExtra = ''
+  #   export XDG_DATA_DIRS="$HOME/.local/share:$XDG_DATA_DIRS"
+  # '';
+  programs = {
+    atuin = {
+      enable = true;
+      settings = {
+        enter_accept = false;
+      };
+    };
+    bash = {
+      enable = true;
+      enableCompletion = true;
+      # bashrcExtra = ''
+      # '';
+      historyControl = [ "erasedups" ];
+      shellAliases = {
+        gexit = "gnome-session-quit --no-prompt";
+        hms = "home-manager switch --flake ~/.nix#$(hostname)";
+        jv = "NVIM_APPNAME=jvim nvim";
+        jvim = "NVIM_APPNAME=jvim nvim";
+        l = "ls -hAlF";
+        ll = "ls -hlF";
+        la = "ls -hAF";
+        mise-activate = "eval \"$(~/.local/bin/mise activate zsh)\"";
+        nr = "sudo nixos-rebuild switch --flake ~/.nix";
+        s = "git status";
+        sc = "v ~/.config/sway/config";
+        sshk = "kitty +kitten ssh";
+        td = "sudo tailscale down";
+        te = "sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true --accept-dns=false --operator=$USER";
+        tu = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false --accept-dns=false --operator=$USER";
+        ts = "tailscale status";
+        v = "nvim";
+        waybarc = "nvim ~/.config/waybar/config.jsonc";
+        waybars = "nvim ~/.config/waybar/style.css";
+        yubi-add = "ssh-add -s /usr/local/lib/libykcs11.dylib";
+
+        # Connect to machines on tailnet
+        medserv = "waypipe ssh main@$(tailscale status | grep medserv | awk '{print $1}')";
+        finserv = "waypipe ssh main@$(tailscale status | grep finserv | awk '{print $1}')";
+        sovserv = "waypipe ssh main@$(tailscale status | grep sovserv | awk '{print $1}')";
+      };
+    };
+    bat = {
+      enable = true;
+      config = {
+        theme = "Visual Studio Dark+";
+      };
+    };
+    broot.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    fzf.enable = true;
+    gh.enable = true;
+    # gpg.enable = true;
+    home-manager.enable = true;
+    jq.enable = true;
+    lsd.enable = true;
+    mise.enable = false;
+    # ssh = {
+    #   enable = true;
+    #   # extraConfig = "IgnoreUnknown AddKeysToAgent,UseKeychain";
+    #   addKeysToAgent = "yes";
+    #   # extraConfig = ''
+    #   #   IdentityFile ~/.ssh/ssh_id_ed25519_jordan_bravo
+    #   #   IdentitiesOnly yes
+    #   # '';
+    # };
+    starship = {
+      enable = true;
+      enableBashIntegration = true;
+      settings = {
+        directory = {
+          truncation_length = 8;
+          truncation_symbol = ".../";
+          repo_root_style = "purple";
+        };
+        gcloud = {
+          disabled = true;
+        };
+      };
+    };
+    # yazi = {
+    #   enable = true; # disabled because broken by latest update to nixpkgs on Nov 3rd
+    #   enableZshIntegration = true;
+    # };
+    # zoxide = {
+    #   enable = true;
+    # };
+  };
+  # programs.zsh.initExtra = ''
+  #   # Add ssh key, suppress output
+  #   ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan@bravo"
+  #   # Mise
+  #   # export PATH=$HOME/.local/bin:$PATH
+  #   # eval "$(mise activate zsh)"
+  # '';
+
+  # services = {
+  #   copyq.enable = true;
+  # };
   targets.genericLinux.enable = true;
   xdg = {
-    configFile = {
-      "kitty/kitty-session.conf" = {
-        enable = false;
-        text = ''
-          # How to set the title of the first tab to .nix?
-          # Set the working directory for windows in the current tab
-          cd ~/.nix
-          launch zsh
-          # launch vim
-
-          # Create a new tab for legacy
-          new_tab legacy
-          cd ~/bd/legacy
-          launch zsh
-          # launch vim
-
-          # Create a new tab for alta
-          new_tab alta
-          cd ~/bd/alta
-          launch zsh
-          # launch vim
-        '';
-      };
-    };
-    desktopEntries = {
-      # brave-browser = {
-      #   name = "Brave";
-      #   genericName = "Web Browser";
-      #   comment = "Access the Inernet";
-      #   exec = "/nix/store/7pr6j2qjhlf0j4i1wxzzvg3lxr3hyccc-brave-1.61.109/bin/brave %U";
-      #   startupNotify = true;
-      #   terminal = false;
-      #   icon = "brave-browser";
-      #   type = "Application";
-      #   categories = [ "Network" "WebBrowser" ];
-      # };
-      kitty = {
-        name = "Kitty";
-        genericName = "Terminal Emulator";
-        comment = "Fast, feature-rich, GPU based terminal";
-        exec = "nixGLIntel kitty";
-        icon = "kitty";
-        categories = [ "System" "TerminalEmulator" ];
-      };
-    };
+    enable = true;
+    configHome = "${config.home.homeDirectory}/.config";
   };
 }
 

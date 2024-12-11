@@ -2,14 +2,6 @@
 
 { config, pkgs, ... }:
 
-# let
-#   username = "jordan";
-#   homeDirectory =
-#     if pkgs.stdenv.isDarwin then
-#       "/Users/${username}"
-#     else
-#       "/home/${username}";
-# in
 {
   fonts.fontconfig.enable = true;
   home = {
@@ -192,13 +184,13 @@
   # Programs with more extensive config are imported from separate modules.
   imports = [
     ../shared/git.nix
-    ../shared/neovim.nix
+    # ../shared/neovim.nix
     ../shared/ripgrep.nix
     ../shared/zellij.nix
     ../shared/zsh.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  # nixpkgs.config.allowUnfree = true;
 
   # Programs with little to no config are enabled here. 
   programs = {

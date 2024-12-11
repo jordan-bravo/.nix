@@ -106,8 +106,6 @@
       gnomeExtensions.unblank # Keep display on when GNOME locks
       gnomeExtensions.vitals # System info in status bar
       gnomeExtensions.space-bar # Adds workspaces to status bar
-
-      # pkgs-neovim-094.neovim
     ];
     sessionVariables = {
       GTK_THEME = "Adwaita:dark";
@@ -124,14 +122,14 @@
   ];
 
   # Programs with little to no config are enabled here. 
-  programs = {
-    zsh = {
-      initExtra = ''
-        # Add ssh key, suppress output
-        ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan@bravo" 1> /dev/null 2>&1
-      '';
-    };
-  };
+  # programs = {
+  #   zsh = {
+  #     initExtra = ''
+  #       # Add ssh key, suppress output
+  #       ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan@bravo" 1> /dev/null 2>&1
+  #     '';
+  #   };
+  # };
 
   services = {
     copyq.enable = true;
