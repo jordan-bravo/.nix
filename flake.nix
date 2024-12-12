@@ -187,7 +187,7 @@
         lenny = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs-2411; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs-unstable pkgs-2411 inputs; };
-          modules = [ ./home-manager/thinky/home.nix ];
+          modules = [ ./home-manager/lenny/home.nix ];
         };
       };
       # System-Manager (for controlling services and system config on non-NixOS Linux)
