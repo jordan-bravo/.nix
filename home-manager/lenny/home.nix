@@ -8,7 +8,7 @@
     packages = with pkgs; [
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
-      hello
+      udiskie # Removable disk automounter for udisks
     ];
     homeDirectory = "/home/${config.home.username}";
     sessionVariables = {
