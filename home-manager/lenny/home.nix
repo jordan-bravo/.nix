@@ -5,20 +5,10 @@
 {
   fonts.fontconfig.enable = true;
   home = {
-    # file = {
-    #   gpg-agent = {
-    #     target = ".gnupg/gpg-agent.conf";
-    #     enable = true;
-    #     text = ''
-    #       pinentry-program ${config.home.homeDirectory}/.nix-profile/bin/pinentry-gnome3
-    #     '';
-    #   };
-    # };
     packages = with pkgs; [
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       hello
-      # pinentry-gnome3
     ];
     homeDirectory = "/home/${config.home.username}";
     sessionVariables = {
@@ -56,6 +46,8 @@
       enable = true;
       enableCompletion = true;
       # bashrcExtra = ''
+      #   # Add ssh key, suppress output
+      #   ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan@bravo" 1> /dev/null 2>&1
       # '';
       historyControl = [ "erasedups" ];
       shellAliases = {
