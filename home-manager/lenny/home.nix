@@ -6,6 +6,8 @@
   fonts.fontconfig.enable = true;
   home = {
     packages = with pkgs; [
+      git # Distributed version control system
+      git-crypt # Transparent file encryption in git
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       udiskie # Removable disk automounter for udisks
