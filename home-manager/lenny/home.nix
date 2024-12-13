@@ -64,7 +64,7 @@
   };
   imports = [
     ../shared/fuzzel.nix
-    # ../shared/git.nix
+    ../shared/git.nix
     # ../shared/home.nix
     # ../shared/kanata.nix
     ../shared/kanshi.nix
