@@ -9,6 +9,7 @@
       git # Distributed version control system
       git-crypt # Transparent file encryption in git
       kanata # Tool to improve keyboard comfort and usability with advanced customization
+      neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       udiskie # Removable disk automounter for udisks
 
