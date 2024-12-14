@@ -5,12 +5,22 @@
 {
   fonts.fontconfig.enable = true;
   home = {
+    file = {
+      gpg-agent = {
+        target = ".gnupg/gpg-agent.conf";
+        enable = true;
+        text = ''
+          pinentry-program ${config.home.homeDirectory}/.nix-profile/bin/pinentry-curses
+        '';
+      };
+    };
     packages = with pkgs; [
       git # Distributed version control system
       git-crypt # Transparent file encryption in git
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
+      pinentry-curses # GnuPG’s interface to passphrase input
       udiskie # Removable disk automounter for udisks
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
     ];
@@ -100,6 +110,46 @@
     gh.enable = true;
     # gpg.enable = true;
     home-manager.enable = true;
+    i3status-rust = {
+      enable = true;
+      bars.default = {
+        blocks = [
+          {
+            block = "battery";
+          }
+          {
+            alert = 10.0;
+            block = "disk_space";
+            info_type = "available";
+            interval = 60;
+            path = "/";
+            warning = 20.0;
+          }
+          {
+            block = "memory";
+            format = " $icon mem_used_percents ";
+            format_alt = " $icon $swap_used_percents ";
+          }
+          {
+            block = "cpu";
+            interval = 1;
+          }
+          {
+            block = "load";
+            format = " $icon $1m ";
+            interval = 1;
+          }
+          {
+            block = "sound";
+          }
+          {
+            block = "time";
+            format = " $timestamp.datetime(f:'%a %d/%m %R') ";
+            interval = 60;
+          }
+        ];
+      };
+    };
     jq.enable = true;
     lsd.enable = true;
     mise.enable = false;
