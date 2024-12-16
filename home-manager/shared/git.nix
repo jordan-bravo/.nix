@@ -19,7 +19,6 @@
         minus-emph-style = "syntax bold \"#80002a\"";
       };
     };
-    enable = true;
     extraConfig = {
       core = {
         editor = "nvim";
