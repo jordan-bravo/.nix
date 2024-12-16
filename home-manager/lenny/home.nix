@@ -21,6 +21,7 @@
       neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       pinentry-curses # GnuPG’s interface to passphrase input
+      pamixer # Pulseaudio command line mixer
       udiskie # Removable disk automounter for udisks
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
     ];
