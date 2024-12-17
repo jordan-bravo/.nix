@@ -65,10 +65,9 @@
       # xz # General-purpose data compression software, successor of LZMA
       # zlib # Compression library
     ];
-    # homeDirectory = "/home/${config.home.username}";
-    # username = "jordan";
   };
   imports = [
+    ../shared/git.nix
     ../shared/home.nix
     ../shared/kitty.nix
     ../shared/workstations.nix

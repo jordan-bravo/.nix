@@ -34,6 +34,10 @@
   users.groups.uinput.members = [ "jordan" ];
   users.groups.input.members = [ "jordan" ];
 
+  environment.systemPackages = with pkgs; [
+    greetd.gtkgreet
+  ];
+
   services.kanata = {
     enable = true;
     keyboards = {
@@ -94,6 +98,10 @@
 
   services.ivpn.enable = false;
 
+  services.greetd = {
+    enable = true;
+  };
+
   services.postgresql = {
     enable = false;
     package = pkgs.postgresql_14;
@@ -129,6 +137,8 @@
   #     prettyName = "Hyprland";
   #   };
   # };
+
+  programs.git.enable = true;
 
   # The following is to get Alta Legacy working on NixOS
   programs.nix-ld = {
