@@ -33,7 +33,7 @@
     };
     stateVersion = "23.11";
     packages = with pkgs; [
-      act # Run your GitHub Actions locally
+      # act # Run your GitHub Actions locally
       aerc # An email client for your terminal
       age # (Actually Good Encryption) A modern encryption tool with small explicit keys
       asciiquarium # Enjoy the mysteries of the sea from the safety of your own terminal!

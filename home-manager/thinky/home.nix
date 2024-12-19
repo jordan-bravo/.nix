@@ -1,6 +1,6 @@
 # thinky/home.nix
 
-{ config, pkgs, /* pkgs-micro-2-0-12, */ ... }:
+{ config, pkgs, ... }:
 
 {
   dconf.settings = {
@@ -9,8 +9,8 @@
       # text-scaling-factor = 1.0;
       # text-scaling-factor = 1.15; # Home Innocn
       # text-scaling-factor = 1.5; # thinky built-in
-      text-scaling-factor = 1.75; # extra large
-      # text-scaling-factor = 2.0; # XXL
+      # text-scaling-factor = 1.75; # extra large
+      text-scaling-factor = 2.0; # XXL
     };
     "org/gnome/desktop/peripherals/mouse" = {
       speed = -0.6;
@@ -33,7 +33,7 @@
       };
     };
     packages = with pkgs; [
-      infisical # Manages secrets
+      # infisical # Manages secrets
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       pinentry-gnome3
@@ -43,11 +43,14 @@
     username = "jordan";
   };
   imports = [
+    ../shared/dconf.nix
+    ../shared/git.nix
     ../shared/home.nix
-    ../shared/workstations.nix
     ../shared/kanata.nix
+    ../shared/workstations.nix
   ];
   nixpkgs.config.allowUnfree = true;
+  programs.git.enable = true;
   programs.zsh.profileExtra = ''
     export XDG_DATA_DIRS="$HOME/.local/share:$XDG_DATA_DIRS"
   '';
