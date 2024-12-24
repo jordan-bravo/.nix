@@ -16,12 +16,14 @@
     };
     packages = with pkgs; [
       git-crypt # Transparent file encryption in git
+      grim # Grab images from a Wayland compositor
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       openssh # Implementation of the SSH protocol
       pinentry-curses # GnuPG’s interface to passphrase input
       pamixer # Pulseaudio command line mixer
+      slurp # Select a region in a Wayland compositor
       udiskie # Removable disk automounter for udisks
       waypipe # Network proxy for Wayland clients (applications)
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
