@@ -6,6 +6,10 @@
     #   ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan@bravo" 1> /dev/null 2>&1
     # '';
     historyControl = [ "erasedups" ];
+    profileExtra = ''
+      eval "$(ssh-agent -s)" > /dev/null
+      ssh-add ~/.ssh/ssh_id_ed25519_jordan@bravo
+    '';
     shellAliases = {
       gexit = "gnome-session-quit --no-prompt";
       hms = "home-manager switch --flake ~/.nix#$(hostname)";

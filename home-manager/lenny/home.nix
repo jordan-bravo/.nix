@@ -8,7 +8,7 @@
     file = {
       gpg-agent = {
         target = ".gnupg/gpg-agent.conf";
-        enable = true;
+        enable = false;
         text = ''
           pinentry-program ${config.home.homeDirectory}/.nix-profile/bin/pinentry-curses
         '';
@@ -19,6 +19,7 @@
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
+      openssh # Implementation of the SSH protocol
       pinentry-curses # GnuPG’s interface to passphrase input
       pamixer # Pulseaudio command line mixer
       udiskie # Removable disk automounter for udisks
@@ -76,7 +77,7 @@
     fuzzel.enable = true;
     gh.enable = true;
     git.enable = true;
-    # gpg.enable = true;
+    gpg.enable = true;
     home-manager.enable = true;
     i3status-rust.enable = true;
     jq.enable = true;
