@@ -5,16 +5,17 @@
 {
   fonts.fontconfig.enable = true;
   home = {
-    file = {
-      gpg-agent = {
-        target = ".gnupg/gpg-agent.conf";
-        enable = false;
-        text = ''
-          pinentry-program ${config.home.homeDirectory}/.nix-profile/bin/pinentry-curses
-        '';
-      };
-    };
+    # file = {
+    #   gpg-agent = {
+    #     target = ".gnupg/gpg-agent.conf";
+    #     enable = false;
+    #     text = ''
+    #       pinentry-program ${config.home.homeDirectory}/.nix-profile/bin/pinentry-curses
+    #     '';
+    #   };
+    # };
     packages = with pkgs; [
+      curl # Command line tool for transferring files with URL syntax
       git-crypt # Transparent file encryption in git
       grim # Grab images from a Wayland compositor
       kanata # Tool to improve keyboard comfort and usability with advanced customization
@@ -24,6 +25,7 @@
       pinentry-curses # GnuPG’s interface to passphrase input
       pamixer # Pulseaudio command line mixer
       slurp # Select a region in a Wayland compositor
+      trash-cli # Command line interface to the freedesktop.org trashcan
       udiskie # Removable disk automounter for udisks
       waypipe # Network proxy for Wayland clients (applications)
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
@@ -101,13 +103,14 @@
       };
     };
     wofi.enable = true;
-    # yazi = {
-    #   enable = true; # disabled because broken by latest update to nixpkgs on Nov 3rd
-    #   enableZshIntegration = true;
-    # };
-    # zoxide = {
-    #   enable = true;
-    # };
+    yazi = {
+      enable = true;
+      enableBashIntegration = true;
+    };
+    zoxide = {
+      enable = true;
+      enableBashIntegration = true;
+    };
   };
   # programs.zsh.initExtra = ''
   #   # Add ssh key, suppress output
