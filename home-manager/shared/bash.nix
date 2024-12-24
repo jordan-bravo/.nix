@@ -8,7 +8,7 @@
     historyControl = [ "erasedups" ];
     profileExtra = ''
       eval "$(ssh-agent -s)" > /dev/null
-      ssh-add ~/.ssh/ssh_id_ed25519_jordan@bravo
+      ssh-add ~/.ssh/ssh_id_ed25519_jordan@bravo > /dev/null
     '';
     shellAliases = {
       gexit = "gnome-session-quit --no-prompt";
