@@ -40,7 +40,6 @@
   };
   imports = [
     ../shared/bash.nix
-    # ../shared/fuzzel.nix
     ../shared/git.nix
     # ../shared/home.nix
     ../shared/i3status.nix
