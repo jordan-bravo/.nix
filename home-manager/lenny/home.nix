@@ -41,7 +41,6 @@
   imports = [
     ../shared/bash.nix
     ../shared/git.nix
-    # ../shared/home.nix
     ../shared/i3status.nix
     # ../shared/kanata.nix
     ../shared/kanshi.nix
@@ -56,12 +55,8 @@
   #   export XDG_DATA_DIRS="$HOME/.local/share:$XDG_DATA_DIRS"
   # '';
   programs = {
-    atuin = {
-      enable = true;
-      settings = {
-        enter_accept = false;
-      };
-    };
+    atuin.enable = true;
+    # atuin.settings.enter_accept = false;
     bash.enable = true;
     bat = {
       enable = true;
@@ -86,7 +81,6 @@
     mise.enable = false;
     ssh = {
       enable = true;
-      # extraConfig = "IgnoreUnknown AddKeysToAgent,UseKeychain";
       addKeysToAgent = "yes";
       extraConfig = ''
         StrictHostKeyChecking=no
@@ -106,9 +100,7 @@
         };
       };
     };
-    wofi = {
-      enable = true;
-    };
+    wofi.enable = true;
     # yazi = {
     #   enable = true; # disabled because broken by latest update to nixpkgs on Nov 3rd
     #   enableZshIntegration = true;
@@ -125,9 +117,14 @@
   #   # eval "$(mise activate zsh)"
   # '';
 
-  # services = {
-  #   copyq.enable = true;
-  # };
+  services = {
+    # copyq.enable = true;
+    gpg-agent = {
+      enable = true;
+      enableBashIntegration = true;
+      pinentryPackage = pkgs.pinentry-curses;
+    };
+  };
   targets.genericLinux.enable = true;
   xdg = {
     enable = true;
