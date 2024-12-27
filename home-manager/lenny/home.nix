@@ -19,6 +19,7 @@
       git-crypt # Transparent file encryption in git
       grim # Grab images from a Wayland compositor
       kanata # Tool to improve keyboard comfort and usability with advanced customization
+      nautilus # File manager for GNOME
       neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       openssh # Implementation of the SSH protocol
@@ -102,7 +103,7 @@
         };
       };
     };
-    wofi.enable = true;
+    waybar.enable = true;
     yazi = {
       enable = true;
       enableBashIntegration = true;
