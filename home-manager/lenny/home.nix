@@ -27,7 +27,6 @@
       pamixer # Pulseaudio command line mixer
       slurp # Select a region in a Wayland compositor
       trash-cli # Command line interface to the freedesktop.org trashcan
-      udiskie # Removable disk automounter for udisks
       waypipe # Network proxy for Wayland clients (applications)
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
     ];
@@ -127,6 +126,10 @@
       enable = true;
       enableBashIntegration = true;
       pinentryPackage = pkgs.pinentry-curses;
+    };
+    udiskie = {
+      enable = true;
+      tray = "never";
     };
   };
   targets.genericLinux.enable = true;
