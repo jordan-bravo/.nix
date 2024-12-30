@@ -2,6 +2,16 @@
   programs.bash = {
     enableCompletion = true;
     historyControl = [ "erasedups" ];
+    bashrcExtra = ''
+      # If bat exists, use instead of cat
+      type bat > /dev/null 2>&1 && alias cat=bat
+
+      # If lsd exists, use instead of ls
+      type lsd > /dev/null 2>&1 && alias ls=lsd
+
+      # If zoxide exists, use instead of cd
+      type zoxide > /dev/null 2>&1 && alias cd=z
+    '';
     profileExtra = ''
       eval "$(ssh-agent -s)" > /dev/null
       ssh-add ~/.ssh/ssh_id_ed25519_jordan_bravo 1> /dev/null
