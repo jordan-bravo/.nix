@@ -17,6 +17,7 @@
     packages = with pkgs; [
       brightnessctl # Read and control device brightness
       curl # Command line tool for transferring files with URL syntax
+      gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
       git-crypt # Transparent file encryption in git
       grim # Grab images from a Wayland compositor
       kanata # Tool to improve keyboard comfort and usability with advanced customization
@@ -24,7 +25,7 @@
       neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       openssh # Implementation of the SSH protocol
-      pinentry-curses # GnuPG’s interface to passphrase input
+      pinentry-gnome3 # GnuPG’s interface to passphrase input
       pamixer # Pulseaudio command line mixer
       slurp # Select a region in a Wayland compositor
       trash-cli # Command line interface to the freedesktop.org trashcan
@@ -76,7 +77,10 @@
     fuzzel.enable = true;
     gh.enable = true;
     git.enable = true;
-    gpg.enable = true;
+    gpg = {
+      enable = true;
+      homedir = "${config.xdg.dataHome}/gnupg";
+    };
     home-manager.enable = true;
     i3status-rust.enable = true;
     jq.enable = true;
@@ -126,7 +130,7 @@
     gpg-agent = {
       enable = true;
       enableBashIntegration = true;
-      pinentryPackage = pkgs.pinentry-curses;
+      pinentryPackage = pkgs.pinentry-gnome3;
     };
     udiskie = {
       enable = true;
