@@ -15,6 +15,7 @@
     #   };
     # };
     packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
       brightnessctl # Read and control device brightness
       curl # Command line tool for transferring files with URL syntax
       gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
