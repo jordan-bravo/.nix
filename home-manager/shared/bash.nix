@@ -1,14 +1,10 @@
 {
   programs.bash = {
     enableCompletion = true;
-    # bashrcExtra = ''
-    #   # Add ssh key, suppress output
-    #   ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan@bravo" 1> /dev/null 2>&1
-    # '';
     historyControl = [ "erasedups" ];
     profileExtra = ''
       eval "$(ssh-agent -s)" > /dev/null
-      ssh-add ~/.ssh/ssh_id_ed25519_jordan@bravo > /dev/null
+      ssh-add ~/.ssh/ssh_id_ed25519_jordan_bravo 1> /dev/null
     '';
     shellAliases = {
       gexit = "gnome-session-quit --no-prompt";

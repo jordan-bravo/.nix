@@ -117,16 +117,10 @@
       enableBashIntegration = true;
     };
   };
-  # programs.zsh.initExtra = ''
-  #   # Add ssh key, suppress output
-  #   ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan@bravo"
-  #   # Mise
-  #   # export PATH=$HOME/.local/bin:$PATH
-  #   # eval "$(mise activate zsh)"
-  # '';
 
   services = {
     # copyq.enable = true;
+    gnome-keyring.enable = true;
     gpg-agent = {
       enable = true;
       enableBashIntegration = true;
