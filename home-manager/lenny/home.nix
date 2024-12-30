@@ -15,6 +15,7 @@
     #   };
     # };
     packages = with pkgs; [
+      brightnessctl # Read and control device brightness
       curl # Command line tool for transferring files with URL syntax
       git-crypt # Transparent file encryption in git
       grim # Grab images from a Wayland compositor
