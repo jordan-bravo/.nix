@@ -19,6 +19,7 @@
       brightnessctl # Read and control device brightness
       curl # Command line tool for transferring files with URL syntax
       gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
+      gh # GitHub CLI
       git-crypt # Transparent file encryption in git
       grim # Grab images from a Wayland compositor
       kanata # Tool to improve keyboard comfort and usability with advanced customization
@@ -76,7 +77,7 @@
     };
     fzf.enable = true;
     fuzzel.enable = true;
-    gh.enable = true;
+    # gh.enable = true;
     git.enable = true;
     gpg = {
       enable = true;

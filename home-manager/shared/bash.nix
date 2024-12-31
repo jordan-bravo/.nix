@@ -11,6 +11,11 @@
 
       # If zoxide exists, use instead of cd
       type zoxide > /dev/null 2>&1 && alias cd=z
+
+      # If BD NPM token exists, source it
+      if [ -f $HOME/bd/.misc/.npm-bd ]; then
+        source $HOME/bd/.misc/.npm-bd
+      fi
     '';
     profileExtra = ''
       eval "$(ssh-agent -s)" > /dev/null
