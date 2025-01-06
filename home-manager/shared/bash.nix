@@ -16,6 +16,14 @@
       if [ -f $HOME/bd/.misc/.npm-bd ]; then
         source $HOME/bd/.misc/.npm-bd
       fi
+
+      # autocomplete
+      bind 'TAB:menu-complete'
+      bind '"\e[Z":menu-complete-backward'
+      bind 'set show-all-if-ambiguous on'
+
+      # add ~/.local/bin to PATH
+      export PATH=$HOME/.local/bin:$PATH
     '';
     profileExtra = ''
       eval "$(ssh-agent -s)" > /dev/null
