@@ -24,11 +24,16 @@
 
       # add ~/.local/bin to PATH
       export PATH=$HOME/.local/bin:$PATH
-    '';
-    profileExtra = ''
+
+      # enable gnome keyring to work with ssh password (if exists)
+      export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+
+      # start ssh agent and add key to agent
       eval "$(ssh-agent -s)" > /dev/null
-      ssh-add ~/.ssh/ssh_id_ed25519_jordan_bravo 1> /dev/null
+      ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
     '';
+    # profileExtra = ''
+    # '';
     shellAliases = {
       gexit = "gnome-session-quit --no-prompt";
       hms = "home-manager switch --flake ~/.nix#$(hostname)";

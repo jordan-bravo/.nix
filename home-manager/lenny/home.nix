@@ -29,6 +29,7 @@
       openssh # Implementation of the SSH protocol
       pinentry-gnome3 # GnuPG’s interface to passphrase input
       pamixer # Pulseaudio command line mixer
+      seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
       slurp # Select a region in a Wayland compositor
       trash-cli # Command line interface to the freedesktop.org trashcan
       waypipe # Network proxy for Wayland clients (applications)
@@ -122,7 +123,10 @@
 
   services = {
     # copyq.enable = true;
-    gnome-keyring.enable = true;
+    gnome-keyring = {
+      enable = true;
+      components = [ "pkcs11" "secrets" "ssh" ];
+    };
     gpg-agent = {
       enable = true;
       enableBashIntegration = true;
