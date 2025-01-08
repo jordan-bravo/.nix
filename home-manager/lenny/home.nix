@@ -18,6 +18,7 @@
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       brightnessctl # Read and control device brightness
       curl # Command line tool for transferring files with URL syntax
+      fd # Simple, fast and user-friendly alternative to find
       gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
       gh # GitHub CLI
       git-crypt # Transparent file encryption in git
@@ -29,8 +30,10 @@
       openssh # Implementation of the SSH protocol
       pinentry-gnome3 # GnuPG’s interface to passphrase input
       pamixer # Pulseaudio command line mixer
+      sd # Intuitive find & replace CLI (sed alternative)
       seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
       slurp # Select a region in a Wayland compositor
+      speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       trash-cli # Command line interface to the freedesktop.org trashcan
       waypipe # Network proxy for Wayland clients (applications)
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
@@ -130,7 +133,9 @@
     gpg-agent = {
       enable = true;
       enableBashIntegration = true;
+      maxCacheTtl = 4;
       pinentryPackage = pkgs.pinentry-gnome3;
+      verbose = true;
     };
     udiskie = {
       enable = true;
