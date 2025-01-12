@@ -142,7 +142,7 @@
       tray = "never";
     };
   };
-  systemd.user.services = {
+  systemd.user.targets = {
     sway-session = {
       Unit = {
         Description = "sway compositor session";
