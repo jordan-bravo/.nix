@@ -39,6 +39,9 @@
         ];
       }
     ];
+    # Post about kanshi systemd user service not starting with sway:
+    # https://discourse.nixos.org/t/starting-kanshi-via-systemd-user-swaywm/27960/2
+    # The posted solution is to set systemdTarget to an empty string.
     systemdTarget = "graphical-session.target";
   };
 }
