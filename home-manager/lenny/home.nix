@@ -63,6 +63,7 @@
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       brightnessctl # Read and control device brightness
       ccls # C/c++ language server powered by clang
+      clang # C language family frontend for LLVM
       curl # Command line tool for transferring files with URL syntax
       fd # Simple, fast and user-friendly alternative to find
       gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3

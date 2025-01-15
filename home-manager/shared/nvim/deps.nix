@@ -7,7 +7,7 @@
     emmet-ls # Emmet support based on LSP # nvim-dep
     eslint_d # ESLint daemon for increased performance # nvim-dep
     fzf # nvim-dep
-    gcc # GNU Compiler Collection # nvim-dep # nvim-dep
+    # gcc # GNU Compiler Collection # nvim-dep # nvim-dep
     gnumake # A tool to control the generation of non-source files from sources # nvim-dep
     gopls # Official language server for Go / Golang # nvim-dep
     hadolint # Dockerfile Linter JavaScript API # nvim-dep
