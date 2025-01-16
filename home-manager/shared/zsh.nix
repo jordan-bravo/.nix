@@ -13,10 +13,10 @@
       ignoreAllDups = true;
       path = "${config.xdg.dataHome}/zsh/zsh_history";
     };
-    envExtra = ''
-      export LESSUTFCHARDEF=e000-f8ff:p,f0000-10ffff:p
-      export QT_STYLE_OVERRIDE="adwaita-dark"
-    '';
+    # envExtra = ''
+    #   export LESSUTFCHARDEF=e000-f8ff:p,f0000-10ffff:p
+    #   export QT_STYLE_OVERRIDE="adwaita-dark"
+    # '';
     initExtra = ''
       # If bat exists, use instead of cat
       type bat > /dev/null 2>&1 && alias cat=bat
@@ -36,15 +36,15 @@
       bindkey ^U forward-word
 
       # Add cargo binary directory to PATH
-      export PATH=$PATH:$HOME/.cargo/bin
+      # export PATH=$PATH:$HOME/.cargo/bin
 
       # Ripgrep config file
       # export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgreprc
 
       # For Android Development
-      export ANDROID_HOME=$HOME/Android/Sdk
-      export PATH=$PATH:$ANDROID_HOME/emulator
-      export PATH=$PATH:$ANDROID_HOME/platform-tools
+      # export ANDROID_HOME=$HOME/Android/Sdk
+      # export PATH=$PATH:$ANDROID_HOME/emulator
+      # export PATH=$PATH:$ANDROID_HOME/platform-tools
       # export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
       # export PATH=$PATH:$ANDROID_HOME/build-tools/33.0.0
       # export PATH=$PATH:$ANDROID_HOME/emulator/bin64

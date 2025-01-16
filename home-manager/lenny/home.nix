@@ -86,11 +86,19 @@
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
     ];
     homeDirectory = "/home/${config.home.username}";
+    preferXdgDirectories = true;
+    sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
-      GTK_THEME = "Adwaita:dark";
-    };
-    sessionVariables = {
+      _JAVA_AWT_WM_NONREPARENTING = 1;
       EDITOR = "nvim";
+      GTK_THEME = "Adwaita:dark";
+      QT_QPA_PLATFORM = "wayland";
+      QT_QPA_PLATFORM_THEME = "adwaita-dark";
+      QT_STYLE_OVERRIDE = "adwaita-dark";
+      SDL_VIDEODRIVER = "wayland";
+      XDG_CURRENT_DESKTOP = "sway";
+      XDG_SESSION_DESKTOP = "sway";
+      XDG_SESSION_TYPE = "wayland";
     };
     stateVersion = "24.11";
     username = "jordan";

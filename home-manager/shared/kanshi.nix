@@ -25,6 +25,19 @@
         ];
       }
       {
+        profile.name = "right-display-port";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+          {
+            criteria = "DP-1";
+            status = "enable";
+          }
+        ];
+      }
+      {
         profile.name = "hdmi";
         profile.outputs = [
           {

@@ -51,11 +51,10 @@
   ];
   nixpkgs.config.allowUnfree = true;
   programs.git.enable = true;
-  programs.zsh.profileExtra = ''
-    export XDG_DATA_DIRS="$HOME/.local/share:$XDG_DATA_DIRS"
-  '';
+  # programs.zsh.profileExtra = ''
+  #   export XDG_DATA_DIRS="$HOME/.local/share:$XDG_DATA_DIRS"
+  # '';
   programs.zsh.initExtra = ''
-    export PATH=$HOME/.local/bin:$PATH
     # eval "$(mise activate zsh)"
   '';
   targets.genericLinux.enable = true;

@@ -12,6 +12,12 @@
       # If zoxide exists, use instead of cd
       type zoxide > /dev/null 2>&1 && alias cd=z
 
+      # If ripgrep exists, use instead of grep
+      type rg > /dev/null 2>&1 && alias grep=rg
+
+      # If fd exists, use instead of find
+      type fd > /dev/null 2>&1 && alias find=fd
+
       # If BD NPM token exists, source it
       if [ -f $HOME/bd/.misc/.npm-bd ]; then
         source $HOME/bd/.misc/.npm-bd
@@ -22,9 +28,6 @@
       bind '"\e[Z":menu-complete-backward'
       bind 'set show-all-if-ambiguous on'
 
-      # add ~/.local/bin to PATH
-      export PATH=$HOME/.local/bin:$PATH
-
       # enable gnome keyring to work with ssh password (if exists)
       export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 
@@ -32,8 +35,12 @@
       eval "$(ssh-agent -s)" > /dev/null
       ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
     '';
-    # profileExtra = ''
-    # '';
+    profileExtra = ''
+      # automatically start sway
+      if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
+          exec sway
+      fi
+    '';
     shellAliases = {
       gexit = "gnome-session-quit --no-prompt";
       hms = "home-manager switch --flake ~/.nix#$(hostname)";
