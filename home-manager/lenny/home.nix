@@ -61,6 +61,7 @@
     };
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      adwaita-qt # Adwaita style for Qt apps
       brightnessctl # Read and control device brightness
       ccls # C/c++ language server powered by clang
       clang # C language family frontend for LLVM
