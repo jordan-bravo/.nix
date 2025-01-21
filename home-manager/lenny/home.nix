@@ -55,7 +55,6 @@
           Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=nextcloud com.nextcloud.desktopclient.nextcloud --quit
           Name=Quit Nextcloud
           Icon=nextcloud
-
         '';
       };
     };
@@ -96,6 +95,7 @@
       QT_QPA_PLATFORM_THEME = "adwaita-dark";
       QT_STYLE_OVERRIDE = "adwaita-dark";
       SDL_VIDEODRIVER = "wayland";
+      TZ = "America/New_York";
       XDG_CURRENT_DESKTOP = "sway";
       XDG_SESSION_DESKTOP = "sway";
       XDG_SESSION_TYPE = "wayland";

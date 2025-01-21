@@ -177,11 +177,11 @@
       };
       # Home-Manager standalone configurations
       homeConfigurations = {
-        # Thinky is running Fedora
+        # Thinky is running Ubuntu with Sway
         thinky = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs-2411; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs-unstable pkgs-2411 inputs; };
-          modules = [ ./home-manager/thinky/home.nix ];
+          modules = [ ./home-manager/lenny/home.nix ];
         };
         # Lenny is running Ubuntu with Sway
         lenny = home-manager.lib.homeManagerConfiguration {
