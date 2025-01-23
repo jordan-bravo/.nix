@@ -78,9 +78,10 @@
       pinentry-gnome3 # GnuPG’s interface to passphrase input
       pamixer # Pulseaudio command line mixer
       sd # Intuitive find & replace CLI (sed alternative)
-      seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
+      # seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
       slurp # Select a region in a Wayland compositor
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
+      tldr # Simplified and community-driven man pages
       trash-cli # Command line interface to the freedesktop.org trashcan
       waypipe # Network proxy for Wayland clients (applications)
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
@@ -91,6 +92,7 @@
     sessionVariables = {
       _JAVA_AWT_WM_NONREPARENTING = 1;
       EDITOR = "nvim";
+      ELECTRON_OZONE_PLATFORM_HINT = "x11";
       GTK_THEME = "Adwaita:dark";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORM_THEME = "adwaita-dark";
@@ -183,7 +185,7 @@
   services = {
     # copyq.enable = true;
     gnome-keyring = {
-      enable = true;
+      enable = false;
       components = [ "pkcs11" "secrets" "ssh" ];
     };
     gpg-agent = {
