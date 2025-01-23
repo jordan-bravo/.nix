@@ -92,7 +92,6 @@
     sessionVariables = {
       _JAVA_AWT_WM_NONREPARENTING = 1;
       EDITOR = "nvim";
-      ELECTRON_OZONE_PLATFORM_HINT = "x11";
       GTK_THEME = "Adwaita:dark";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORM_THEME = "adwaita-dark";
