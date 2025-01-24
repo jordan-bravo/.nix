@@ -61,6 +61,7 @@
     packages = with pkgs; [
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       adwaita-qt # Adwaita style for Qt apps
+      adwaita-qt6 # Adwaita style for Qt6 apps
       brightnessctl # Read and control device brightness
       ccls # C/c++ language server powered by clang
       clang # C language family frontend for LLVM
@@ -95,7 +96,7 @@
       GTK_THEME = "Adwaita:dark";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORM_THEME = "adwaita-dark";
-      QT_STYLE_OVERRIDE = "adwaita-dark";
+      QT_STYLE_OVERRIDE = "Adwaita-Dark";
       SDL_VIDEODRIVER = "wayland";
       TZ = "America/New_York";
       XDG_CURRENT_DESKTOP = "sway";
