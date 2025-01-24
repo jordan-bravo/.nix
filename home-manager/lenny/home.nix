@@ -72,6 +72,8 @@
       git-crypt # Transparent file encryption in git
       grim # Grab images from a Wayland compositor
       kanata # Tool to improve keyboard comfort and usability with advanced customization
+      kdePackages.qt6ct # Qt6 Configuration Tool
+      libsForQt5.qt5ct # Qt5 Configuration Tool
       nautilus # File manager for GNOME
       neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
