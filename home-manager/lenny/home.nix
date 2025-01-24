@@ -86,6 +86,7 @@
       trash-cli # Command line interface to the freedesktop.org trashcan
       waypipe # Network proxy for Wayland clients (applications)
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
+      xdg-utils # Tools that assist applications with a variety of desktop integration tasks
     ];
     homeDirectory = "/home/${config.home.username}";
     preferXdgDirectories = true;
