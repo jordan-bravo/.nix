@@ -6,6 +6,16 @@
   fonts.fontconfig.enable = true;
   home = {
     file = {
+      ghostty-config = {
+        target = ".config/ghostty/config";
+        enable = true;
+        text = ''
+          background = 222222
+          font-family = FiraCode Nerd Font Mono
+          font-size = 14
+          window-decoration = false
+        '';
+      };
       trayscale-desktop-entry = {
         target = ".local/share/applications/dev.deedles.Trayscale.desktop";
         enable = true;
@@ -69,6 +79,7 @@
       fd # Simple, fast and user-friendly alternative to find
       gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
       gh # GitHub CLI
+      ghostty # Fast, native, feature-rich terminal emulator pushing modern features
       git-crypt # Transparent file encryption in git
       grim # Grab images from a Wayland compositor
       kanata # Tool to improve keyboard comfort and usability with advanced customization
@@ -218,6 +229,16 @@
   xdg = {
     enable = true;
     configHome = "${config.home.homeDirectory}/.config";
+    desktopEntries = {
+      # ghostty = {
+      #   name = "Ghostty";
+      #   genericName = "Terminal Emulator";
+      #   comment = "Fast, feature-rich, GPU based terminal";
+      #   exec = "nixGLIntel ghostty";
+      #   icon = "ghostty";
+      #   categories = [ "System" "TerminalEmulator" ];
+      # };
+    };
   };
 }
 
