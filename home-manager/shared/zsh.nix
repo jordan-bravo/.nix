@@ -39,6 +39,10 @@
         source $HOME/bd/.misc/.npm-bd
       fi
 
+      # start ssh agent and add key to agent
+      eval "$(ssh-agent -s)" > /dev/null
+      ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
+
       # Keep prompt at bottom of terminal window
       # printf '\n%.0s' {1..$LINES}
 
@@ -47,6 +51,12 @@
 
       # Disable git pull
       git() { if [[ $@ == "pull" ]]; then command echo "git pull disabled.  Use git fetch + git merge."; else command git "$@"; fi; }
+    '';
+    profileExtra = ''
+      # automatically start sway
+      if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
+          exec sway
+      fi
     '';
     shellAliases = {
       l = "ls -lAhF";
