@@ -22,6 +22,8 @@
       grim # Grab images from a Wayland compositor
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       kdePackages.qt6ct # Qt6 Configuration Tool
+      lazydocker # Simple terminal UI for both docker and docker-compose
+      lazygit # Simple terminal UI for git commands
       libsForQt5.qt5ct # Qt5 Configuration Tool
       nautilus # File manager for GNOME
       neovim # Text editor / IDE
