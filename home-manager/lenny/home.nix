@@ -39,72 +39,9 @@
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       xdg-utils # Tools that assist applications with a variety of desktop integration tasks
     ];
-    file = {
-      ghostty-config = {
-        target = ".config/ghostty/config";
-        enable = true;
-        text = ''
-          background = 222222
-          font-family = FiraCode Nerd Font Mono
-          font-size = 14
-          window-decoration = false
-        '';
-      };
-      trayscale-desktop-entry = {
-        target = ".local/share/applications/dev.deedles.Trayscale.desktop";
-        enable = true;
-        text = ''
-          [Desktop Entry]
-          Version=1.0
-          Type=Application
-          Name=Trayscale
-          GenericName=Tailscale Client
-          Comment=An unofficial GUI interface for the Tailscale daemon.
-          Categories=System;GNOME;GTK;
-          Keywords=tailscale;vpn;
-          Icon=dev.deedles.Trayscale
-          Exec=flatpak run dev.deedles.Trayscale --hide-window
-          Terminal=false
-          SingleMainWindow=true
-          X-GNOME-UsesNotifications=true
-          X-Flatpak=dev.deedles.Trayscale
-        '';
-      };
-      nextcloud-desktop-entry = {
-        target = ".local/share/applications/com.nextcloud.desktopclient.nextcloud.desktop";
-        enable = true;
-        text = ''
-          [Desktop Entry]
-          Categories=Utility;X-SuSE-SyncUtility;
-          Type=Application
-          Exec=flatpak run com.nextcloud.desktopclient.nextcloud
-          Name=Nextcloud Desktop
-          Comment=Nextcloud desktop synchronization client
-          GenericName=Folder Sync
-          Icon=com.nextcloud.desktopclient.nextcloud
-          Keywords=Nextcloud;syncing;file;sharing;
-          X-GNOME-Autostart-Delay=3
-          MimeType=application/vnd.nextcloud;x-scheme-handler/nc;
-          SingleMainWindow=true
-          Actions=Quit;
-          Implements=org.freedesktop.CloudProviders
-          X-Flatpak=com.nextcloud.desktopclient.nextcloud
-
-          [org.freedesktop.CloudProviders]
-          BusName=com.nextcloudgmbh.Nextcloud
-          ObjectPath=/com/nextcloudgmbh/Nextcloud
-          Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 com.nextcloud.desktopclient.nextcloud
-
-          [Desktop Action Quit]
-          Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=nextcloud com.nextcloud.desktopclient.nextcloud --quit
-          Name=Quit Nextcloud
-          Icon=nextcloud
-        '';
-      };
-    };
     homeDirectory = "/home/${config.home.username}";
     preferXdgDirectories = true;
-    sessionPath = [ "$HOME/.local/bin" ];
+    sessionPath = [ "$HOME/.local/bin" "/run/system-manager/sw/bin" ];
     sessionVariables = {
       _JAVA_AWT_WM_NONREPARENTING = 1;
       EDITOR = "nvim";
@@ -134,12 +71,8 @@
     # ../shared/zellij.nix
     # ../shared/zsh.nix
   ];
-  # programs.zsh.profileExtra = ''
-  #   export XDG_DATA_DIRS="$HOME/.local/share:$XDG_DATA_DIRS"
-  # '';
   programs = {
     atuin.enable = true;
-    # atuin.settings.enter_accept = false;
     bash.enable = true;
     bat = {
       enable = true;
@@ -239,6 +172,70 @@
       #   icon = "ghostty";
       #   categories = [ "System" "TerminalEmulator" ];
       # };
+    };
+  };
+
+  home.file = {
+    ghostty-config = {
+      target = ".config/ghostty/config";
+      enable = true;
+      text = ''
+        background = 222222
+        font-family = FiraCode Nerd Font Mono
+        font-size = 14
+        window-decoration = false
+      '';
+    };
+    trayscale-desktop-entry = {
+      target = ".local/share/applications/dev.deedles.Trayscale.desktop";
+      enable = true;
+      text = ''
+        [Desktop Entry]
+        Version=1.0
+        Type=Application
+        Name=Trayscale
+        GenericName=Tailscale Client
+        Comment=An unofficial GUI interface for the Tailscale daemon.
+        Categories=System;GNOME;GTK;
+        Keywords=tailscale;vpn;
+        Icon=dev.deedles.Trayscale
+        Exec=flatpak run dev.deedles.Trayscale --hide-window
+        Terminal=false
+        SingleMainWindow=true
+        X-GNOME-UsesNotifications=true
+        X-Flatpak=dev.deedles.Trayscale
+      '';
+    };
+    nextcloud-desktop-entry = {
+      target = ".local/share/applications/com.nextcloud.desktopclient.nextcloud.desktop";
+      enable = true;
+      text = ''
+        [Desktop Entry]
+        Categories=Utility;X-SuSE-SyncUtility;
+        Type=Application
+        Exec=flatpak run com.nextcloud.desktopclient.nextcloud
+        Name=Nextcloud Desktop
+        Comment=Nextcloud desktop synchronization client
+        GenericName=Folder Sync
+        Icon=com.nextcloud.desktopclient.nextcloud
+        Keywords=Nextcloud;syncing;file;sharing;
+        X-GNOME-Autostart-Delay=3
+        MimeType=application/vnd.nextcloud;x-scheme-handler/nc;
+        SingleMainWindow=true
+        Actions=Quit;
+        Implements=org.freedesktop.CloudProviders
+        X-Flatpak=com.nextcloud.desktopclient.nextcloud
+
+        [org.freedesktop.CloudProviders]
+        BusName=com.nextcloudgmbh.Nextcloud
+        ObjectPath=/com/nextcloudgmbh/Nextcloud
+        Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 com.nextcloud.desktopclient.nextcloud
+
+        [Desktop Action Quit]
+        Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=nextcloud com.nextcloud.desktopclient.nextcloud --quit
+        Name=Quit Nextcloud
+        Icon=nextcloud
+      '';
     };
   };
 }

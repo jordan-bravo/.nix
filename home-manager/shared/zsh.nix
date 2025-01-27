@@ -3,9 +3,9 @@
 
 {
   programs.zsh = {
+    enable = true;
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
-    enable = true;
     # autosuggestion.enable = true;
     # enableCompletion = true;
     history = {
