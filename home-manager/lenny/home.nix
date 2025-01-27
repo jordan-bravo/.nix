@@ -71,7 +71,7 @@
     # ../shared/workstations.nix
     ../../secrets/workstations-secrets.nix
     # ../shared/zellij.nix
-    # ../shared/zsh.nix
+    ../shared/zsh.nix
   ];
   programs = {
     atuin.enable = true;
