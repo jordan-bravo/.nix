@@ -5,6 +5,40 @@
 {
   fonts.fontconfig.enable = true;
   home = {
+    packages = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      adwaita-qt # Adwaita style for Qt apps
+      adwaita-qt6 # Adwaita style for Qt6 apps
+      brightnessctl # Read and control device brightness
+      ccls # C/c++ language server powered by clang
+      # clang # C language family frontend for LLVM
+      curl # Command line tool for transferring files with URL syntax
+      fd # Simple, fast and user-friendly alternative to find
+      gcc # GNU compiler collection
+      gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
+      gh # GitHub CLI
+      ghostty # Fast, native, feature-rich terminal emulator pushing modern features
+      git-crypt # Transparent file encryption in git
+      grim # Grab images from a Wayland compositor
+      kanata # Tool to improve keyboard comfort and usability with advanced customization
+      kdePackages.qt6ct # Qt6 Configuration Tool
+      libsForQt5.qt5ct # Qt5 Configuration Tool
+      nautilus # File manager for GNOME
+      neovim # Text editor / IDE
+      nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
+      openssh # Implementation of the SSH protocol
+      pinentry-gnome3 # GnuPG’s interface to passphrase input
+      pamixer # Pulseaudio command line mixer
+      sd # Intuitive find & replace CLI (sed alternative)
+      # seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
+      slurp # Select a region in a Wayland compositor
+      speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
+      tldr # Simplified and community-driven man pages
+      trash-cli # Command line interface to the freedesktop.org trashcan
+      waypipe # Network proxy for Wayland clients (applications)
+      wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
+      xdg-utils # Tools that assist applications with a variety of desktop integration tasks
+    ];
     file = {
       ghostty-config = {
         target = ".config/ghostty/config";
@@ -68,39 +102,6 @@
         '';
       };
     };
-    packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
-      adwaita-qt # Adwaita style for Qt apps
-      adwaita-qt6 # Adwaita style for Qt6 apps
-      brightnessctl # Read and control device brightness
-      ccls # C/c++ language server powered by clang
-      clang # C language family frontend for LLVM
-      curl # Command line tool for transferring files with URL syntax
-      fd # Simple, fast and user-friendly alternative to find
-      gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
-      gh # GitHub CLI
-      ghostty # Fast, native, feature-rich terminal emulator pushing modern features
-      git-crypt # Transparent file encryption in git
-      grim # Grab images from a Wayland compositor
-      kanata # Tool to improve keyboard comfort and usability with advanced customization
-      kdePackages.qt6ct # Qt6 Configuration Tool
-      libsForQt5.qt5ct # Qt5 Configuration Tool
-      nautilus # File manager for GNOME
-      neovim # Text editor / IDE
-      nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
-      openssh # Implementation of the SSH protocol
-      pinentry-gnome3 # GnuPG’s interface to passphrase input
-      pamixer # Pulseaudio command line mixer
-      sd # Intuitive find & replace CLI (sed alternative)
-      # seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
-      slurp # Select a region in a Wayland compositor
-      speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
-      tldr # Simplified and community-driven man pages
-      trash-cli # Command line interface to the freedesktop.org trashcan
-      waypipe # Network proxy for Wayland clients (applications)
-      wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
-      xdg-utils # Tools that assist applications with a variety of desktop integration tasks
-    ];
     homeDirectory = "/home/${config.home.username}";
     preferXdgDirectories = true;
     sessionPath = [ "$HOME/.local/bin" ];

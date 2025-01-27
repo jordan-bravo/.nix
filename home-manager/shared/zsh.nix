@@ -6,7 +6,7 @@
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
     enable = true;
-    autosuggestion.enable = true;
+    # autosuggestion.enable = true;
     # enableCompletion = true;
     history = {
       expireDuplicatesFirst = true;
@@ -24,13 +24,22 @@
       # If lsd exists, use instead of ls
       type lsd > /dev/null 2>&1 && alias ls=lsd
 
-      # Keep prompt at bottom of terminal window
-      printf '\n%.0s' {1..$LINES}
+      # If zoxide exists, use instead of cd
+      type zoxide > /dev/null 2>&1 && alias cd=z
+
+      # If ripgrep exists, use instead of grep
+      type rg > /dev/null 2>&1 && alias grep=rg
+
+      # If fd exists, use instead of find
+      type fd > /dev/null 2>&1 && alias find=fd
 
       # If BD NPM token exists, source it
       if [ -f $HOME/bd/.misc/.npm-bd ]; then
         source $HOME/bd/.misc/.npm-bd
       fi
+
+      # Keep prompt at bottom of terminal window
+      printf '\n%.0s' {1..$LINES}
 
       # Accept next word from zsh autosuggestion with Ctrl+U
       bindkey ^U forward-word

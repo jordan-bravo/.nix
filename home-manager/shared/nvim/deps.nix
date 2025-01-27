@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     # Neovim dependencies nvim-dep
+    cargo # Rust package manager and build tool
     delve # Debugger for the Go programming language
     dockerfile-language-server-nodejs # A language server for Dockerfiles # nvim-dep
     emmet-ls # Emmet support based on LSP # nvim-dep
@@ -31,6 +32,7 @@
     nodePackages.typescript-language-server # nvim-dep
     prettierd # Prettier daemon for faster formatting # nvim-dep
     # python312 # Python 3.12 # nvim-dep
+    rustc # Rust compiler
     rustfmt # Rust formatter # nvim-dep
     ruff # An extremely fast Python linter # nvim-dep
     ruff-lsp # Ruff LSP for Python # nvim-dep
