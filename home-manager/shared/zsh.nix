@@ -7,6 +7,7 @@
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
     syntaxHighlighting.enable = true;
+    syntaxHighlighting.highlighters = [ "brackets" ];
     # autosuggestion.enable = true;
     # enableCompletion = true;
     history = {

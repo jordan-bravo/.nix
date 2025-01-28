@@ -46,8 +46,10 @@
     sessionPath = [ "$HOME/.local/bin" "/run/system-manager/sw/bin" ];
     sessionVariables = {
       _JAVA_AWT_WM_NONREPARENTING = 1;
+      DOCKER_CONFIG = "$HOME/.config/docker";
       EDITOR = "nvim";
       GTK_THEME = "Adwaita:dark";
+      LESSHISTFILE = "$XDG_STATE_HOME/less/history";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORM_THEME = "adwaita-dark";
       QT_STYLE_OVERRIDE = "Adwaita-Dark";
@@ -61,7 +63,7 @@
     username = "jordan";
   };
   imports = [
-    ../shared/bash.nix
+    # ../shared/bash.nix
     ../shared/git.nix
     ../shared/i3status.nix
     # ../shared/kanata.nix
@@ -75,7 +77,7 @@
   ];
   programs = {
     atuin.enable = true;
-    bash.enable = true;
+    # bash.enable = true;
     bat = {
       enable = true;
       config = {
