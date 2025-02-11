@@ -192,26 +192,6 @@
         window-decoration = false
       '';
     };
-    trayscale-desktop-entry = {
-      target = ".local/share/applications/dev.deedles.Trayscale.desktop";
-      enable = true;
-      text = ''
-        [Desktop Entry]
-        Version=1.0
-        Type=Application
-        Name=Trayscale
-        GenericName=Tailscale Client
-        Comment=An unofficial GUI interface for the Tailscale daemon.
-        Categories=System;GNOME;GTK;
-        Keywords=tailscale;vpn;
-        Icon=dev.deedles.Trayscale
-        Exec=flatpak run dev.deedles.Trayscale --hide-window
-        Terminal=false
-        SingleMainWindow=true
-        X-GNOME-UsesNotifications=true
-        X-Flatpak=dev.deedles.Trayscale
-      '';
-    };
     nextcloud-desktop-entry = {
       target = ".local/share/applications/com.nextcloud.desktopclient.nextcloud.desktop";
       enable = true;
@@ -241,6 +221,45 @@
         Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=nextcloud com.nextcloud.desktopclient.nextcloud --quit
         Name=Quit Nextcloud
         Icon=nextcloud
+      '';
+    };
+    signal-desktop-entry = {
+      target = ".local/share/applications/org.signal.Signal.desktop";
+      enable = true;
+      text = ''
+        [Desktop Entry]
+        Name=Signal
+        Exec=flatpak run org.signal.Signal --use-tray-icon --no-sandbox %U --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
+        Terminal=false
+        Type=Application
+        Icon=org.signal.Signal
+        StartupWMClass=Signal
+        Comment=Private messaging from your desktop
+        MimeType=x-scheme-handler/sgnl;x-scheme-handler/signalcaptcha;
+        Categories=Network;InstantMessaging;Chat;
+        X-Desktop-File-Install-Version=0.28
+        X-Flatpak-RenamedFrom=signal-desktop.desktop;
+        X-Flatpak=org.signal.Signal
+      '';
+    };
+    trayscale-desktop-entry = {
+      target = ".local/share/applications/dev.deedles.Trayscale.desktop";
+      enable = true;
+      text = ''
+        [Desktop Entry]
+        Version=1.0
+        Type=Application
+        Name=Trayscale
+        GenericName=Tailscale Client
+        Comment=An unofficial GUI interface for the Tailscale daemon.
+        Categories=System;GNOME;GTK;
+        Keywords=tailscale;vpn;
+        Icon=dev.deedles.Trayscale
+        Exec=flatpak run dev.deedles.Trayscale --hide-window
+        Terminal=false
+        SingleMainWindow=true
+        X-GNOME-UsesNotifications=true
+        X-Flatpak=dev.deedles.Trayscale
       '';
     };
   };
