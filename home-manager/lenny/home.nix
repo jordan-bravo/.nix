@@ -187,7 +187,7 @@
       enable = true;
       text = ''
         background = 222222
-        font-family = DejaVu Sans Mono
+        font-family = FiraCode Nerd Font Mono
         font-size = 14
         window-decoration = false
       '';
