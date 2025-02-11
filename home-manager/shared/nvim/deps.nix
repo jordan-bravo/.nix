@@ -21,6 +21,7 @@
     markdownlint-cli # Command line interface for MarkdownLint
     nil # Nix langauge server # nvim-dep
     nixd # Nix langauge server # nvim-dep
+    nixfmt-rfc-style # Official formatter for Nix code
     nixpkgs-fmt # Formatter for Nixlang # nvim-dep
     nodejs_22 # Event-driven I/O framework for the V8 JavaScript engine # nvim-dep
     nodePackages.bash-language-server # A language server for Bash

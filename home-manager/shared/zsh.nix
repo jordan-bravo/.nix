@@ -17,7 +17,6 @@
     };
     # envExtra = ''
     #   export LESSUTFCHARDEF=e000-f8ff:p,f0000-10ffff:p
-    #   export QT_STYLE_OVERRIDE="adwaita-dark"
     # '';
     initExtra = ''
       # If bat exists, use instead of cat

@@ -22,6 +22,7 @@
       grim # Grab images from a Wayland compositor
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       kdePackages.qt6ct # Qt6 Configuration Tool
+      kitty # Terminal emulator
       lazydocker # Simple terminal UI for both docker and docker-compose
       lazygit # Simple terminal UI for git commands
       libsForQt5.qt5ct # Qt5 Configuration Tool
@@ -40,6 +41,7 @@
       waypipe # Network proxy for Wayland clients (applications)
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       xdg-utils # Tools that assist applications with a variety of desktop integration tasks
+      xorg.xlsclients # Lists any applications running under Xwayland
     ];
     homeDirectory = "/home/${config.home.username}";
     preferXdgDirectories = true;
@@ -52,7 +54,7 @@
       LESSHISTFILE = "$XDG_STATE_HOME/less/history";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORM_THEME = "adwaita-dark";
-      QT_STYLE_OVERRIDE = "Adwaita-Dark";
+      QT_STYLE_OVERRIDE = "adwaita-dark";
       SDL_VIDEODRIVER = "wayland";
       TZ = "America/New_York";
       XDG_CURRENT_DESKTOP = "sway";
@@ -77,7 +79,6 @@
   ];
   programs = {
     atuin.enable = true;
-    # bash.enable = true;
     bat = {
       enable = true;
       config = {
@@ -111,7 +112,7 @@
     };
     starship = {
       enable = true;
-      enableBashIntegration = true;
+      enableZshIntegration = true;
       settings = {
         directory = {
           truncation_length = 8;
@@ -126,11 +127,11 @@
     waybar.enable = true;
     yazi = {
       enable = true;
-      enableBashIntegration = true;
+      enableZshIntegration = true;
     };
     zoxide = {
       enable = true;
-      enableBashIntegration = true;
+      enableZshIntegration = true;
     };
   };
 
@@ -142,7 +143,7 @@
     };
     gpg-agent = {
       enable = true;
-      enableBashIntegration = true;
+      enableZshIntegration = true;
       maxCacheTtl = 4;
       pinentryPackage = pkgs.pinentry-gnome3;
       verbose = true;
@@ -177,6 +178,7 @@
       #   categories = [ "System" "TerminalEmulator" ];
       # };
     };
+    systemDirs.data = [ "$HOME/.local/share/flatpak/exports/share" ];
   };
 
   home.file = {
@@ -185,7 +187,7 @@
       enable = true;
       text = ''
         background = 222222
-        font-family = FiraCode Nerd Font Mono
+        font-family = DejaVu Sans Mono
         font-size = 14
         window-decoration = false
       '';
