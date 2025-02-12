@@ -178,7 +178,8 @@
       #   categories = [ "System" "TerminalEmulator" ];
       # };
     };
-    systemDirs.data = [ "$HOME/.local/share/flatpak/exports/share" ];
+    # Add diretories to XDG_DATA_DIRS
+    systemDirs.data = [ "${config.home.homeDirectory}/.local/share/flatpak/exports/share" ];
   };
 
   home.file = {
