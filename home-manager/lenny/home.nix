@@ -9,6 +9,7 @@
       (nerdfonts.override { fonts = [ "FiraCode" ]; })
       adwaita-qt # Adwaita style for Qt apps
       adwaita-qt6 # Adwaita style for Qt6 apps
+      # beekeeper-studio # SQL client
       brightnessctl # Read and control device brightness
       ccls # C/c++ language server powered by clang
       # clang # C language family frontend for LLVM
