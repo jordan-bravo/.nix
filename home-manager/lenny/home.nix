@@ -135,6 +135,11 @@
       enable = true;
       enableZshIntegration = true;
     };
+    zsh.initExtra = ''
+      # start ssh agent and add key to agent
+      eval "$(ssh-agent -s)" > /dev/null
+      ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
+    '';
   };
 
   services = {

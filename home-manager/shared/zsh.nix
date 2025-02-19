@@ -39,10 +39,6 @@
         source $HOME/bd/.misc/.npm-bd
       fi
 
-      # start ssh agent and add key to agent
-      eval "$(ssh-agent -s)" > /dev/null
-      ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
-
       # Keep prompt at bottom of terminal window
       # printf '\n%.0s' {1..$LINES}
 
