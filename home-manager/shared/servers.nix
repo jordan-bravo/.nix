@@ -3,6 +3,7 @@
 {
   imports = [
     ../shared/kitty.nix
+    ../shared/nvim/deps.nix
   ];
   home.packages = with pkgs; [
     pkg-config # Required for borg mount
