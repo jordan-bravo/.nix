@@ -26,6 +26,7 @@
       kitty # Terminal emulator
       lazydocker # Simple terminal UI for both docker and docker-compose
       lazygit # Simple terminal UI for git commands
+      libsForQt5.qt5.qtwayland # Cross-platform app framework for C++
       libsForQt5.qt5ct # Qt5 Configuration Tool
       nautilus # File manager for GNOME
       neovim # Text editor / IDE

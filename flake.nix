@@ -107,8 +107,8 @@
         config.allowUnfree = true;
         overlays = [
           nixgl.overlay
-          # nixneovim.overlays.default
         ];
+        # You can now reference pkgs-2411.nixgl.nixGLIntel
       };
       pkgs-unstable = import nixpkgs-unstable {
         system = "x86_64-linux";
@@ -120,7 +120,6 @@
           # "python-2.7.18.7-env"
         ];
       };
-      # You can now reference pkgs-2411.nixgl.nixGLIntel
     in
     {
       nixosConfigurations = {

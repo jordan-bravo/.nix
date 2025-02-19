@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     pkg-config # Required for borg mount
   ];
+  programs.git.enable = true;
   programs.zsh = {
     initExtra = ''
       # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
