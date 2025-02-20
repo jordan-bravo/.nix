@@ -103,9 +103,9 @@
     fulcrum = {
       enable = true;
       address = "0.0.0.0";
-      extraConfig = ''
-        admin = 0.0.0.0:9999
-      '';
+      # extraConfig = ''
+      #   admin = 0.0.0.0:9999
+      # '';
     };
     liquidd = {
       enable = true;
@@ -126,7 +126,7 @@
     lnd = {
       enable = true;
       lndconnect.enable = true;
-      # certificate.extraIPs = [ "<this-is-secret>" ];
+      # certificate.extraIPs = [ "<this-is-secret>" ]; # look in finserv-secrets.nix
       extraConfig = ''
         protocol.simple-taproot-chans=true
         alias=Antares
