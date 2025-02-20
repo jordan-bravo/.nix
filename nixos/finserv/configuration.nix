@@ -66,7 +66,7 @@
     };
     ### CLIGHTNING
     clightning = {
-      enable = true; # Enable clightning, a Lightning Network implementation in C.
+      enable = false; # Enable clightning, a Lightning Network implementation in C.
       # address = "82.180.160.3";
       # == Plugins
       # See ../README.md (Features → clightning) for the list of available plugins.
