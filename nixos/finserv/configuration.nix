@@ -65,23 +65,23 @@
       txindex = true;
     };
     ### CLIGHTNING
-    clightning = {
-      enable = false; # Enable clightning, a Lightning Network implementation in C.
-      # address = "82.180.160.3";
-      # == Plugins
-      # See ../README.md (Features → clightning) for the list of available plugins.
-      extraConfig = ''
-        experimental-onion-messages
-        experimental-offers
-        experimental-dual-fund
-        disable-mpp
-      '';
-      replication = {
-        enable = true;
-        local.directory = "/var/backup/clightning";
-      };
-      port = 9736;
-    };
+    # clightning = {
+    #   enable = false; # Enable clightning, a Lightning Network implementation in C.
+    #   # address = "82.180.160.3";
+    #   # == Plugins
+    #   # See ../README.md (Features → clightning) for the list of available plugins.
+    #   extraConfig = ''
+    #     experimental-onion-messages
+    #     experimental-offers
+    #     experimental-dual-fund
+    #     disable-mpp
+    #   '';
+    #   replication = {
+    #     enable = true;
+    #     local.directory = "/var/backup/clightning";
+    #   };
+    #   port = 9736;
+    # };
     # == REST server
     # Set this to create a clightning REST onion service.
     # This also adds binary `lndconnect-clightning` to the system environment.
@@ -89,13 +89,13 @@
     # via the REST onion service.
     # You can also connect via WireGuard instead of Tor.
     # See ../docs/services.md for details.
-    clightning-rest = {
-      enable = false;
-      lndconnect = {
-        enable = true;
-        onion = false;
-      };
-    };
+    # clightning-rest = {
+    #   enable = false;
+    #   lndconnect = {
+    #     enable = true;
+    #     onion = false;
+    #   };
+    # };
     electrs = {
       enable = false;
       address = "0.0.0.0";
@@ -173,7 +173,7 @@
       # Set this to create an onion service by which clightning can accept incoming connections
       # via Tor.
       # The onion service is automatically announced to peers.
-      clightning.public = true;
+      # clightning.public = true;
     };
     # When using nix-bitcoin as part of a larger NixOS configuration, set the following to enable
     # interactive access to nix-bitcoin features (like bitcoin-cli) for your system's main user
