@@ -21,7 +21,7 @@
       url = "github:lnbits/lnbits/main";
       # inputs.nixpkgs.follows = "nixpkgs-2411";
     };
-    nix-bitcoin.url = "github:fort-nix/nix-bitcoin/";
+    nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
     nixpkgs-2411.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     # VSCode / VSCodium extensions
