@@ -1,4 +1,4 @@
-# thinky/home.nix
+# utux/home.nix
 
 { config, pkgs, ... }:
 
@@ -272,5 +272,6 @@
     };
   };
 }
+
 
 

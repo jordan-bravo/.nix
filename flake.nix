@@ -182,11 +182,11 @@
           extraSpecialArgs = { inherit nixgl pkgs-unstable pkgs-2411 inputs; };
           modules = [ ./home-manager/lenny/home.nix ];
         };
-        # Lenny is running Ubuntu with Sway
-        lenny = home-manager.lib.homeManagerConfiguration {
+        # uTux is running Ubuntu with Sway
+        utux = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgs-2411; # equivalent to: inherit pkgs;
           extraSpecialArgs = { inherit nixgl pkgs-unstable pkgs-2411 inputs; };
-          modules = [ ./home-manager/lenny/home.nix ];
+          modules = [ ./home-manager/utux/home.nix ];
         };
       };
       # System-Manager (for controlling services and system config on non-NixOS Linux)
