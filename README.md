@@ -16,7 +16,7 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 `tux`: My main personal laptop running NixOS and using Home Manager.
 
-`thinky`: My work laptop, currently running Fedora and using the Nix package manager and Home Manager.
+`thinky`: My work laptop, currently running Ubuntu and using the Nix package manager and Home Manager.
 
 `mbp`: My former work laptop, a MacBook with M1 (ARM) chip running MacOS, using Nix-Darwin and Home Manager. No longer in use, config is likely outdated. ISA: `aarch64-darwin`
 
