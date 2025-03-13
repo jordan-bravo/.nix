@@ -4,6 +4,10 @@
   config = {
     nixpkgs.hostPlatform = "x86_64-linux";
 
+    # System Manager is currently only supported on NixOS and Ubuntu. However, it can be used on other distributions by enabling the following:
+
+    # system-manager.allowAnyDistro = true;
+
     environment = {
       etc = {
         "foo.conf".text = ''
@@ -47,6 +51,12 @@
     };
   };
 }
+
+# Use the following command in ~/.nix
+# sudo $(which system-manager) switch --flake '.'
+# If you get the message: sudo: system-manager: command not found
+# then run this command once and try again:
+# nix profile install 'github:numtide/system-manager'
 
 /*
   ❯ cat -p /etc/systemd/system/multi-user.target.wants/tailscaled.service
