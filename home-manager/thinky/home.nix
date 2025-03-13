@@ -15,12 +15,13 @@
       # clang # C language family frontend for LLVM
       curl # Command line tool for transferring files with URL syntax
       fd # Simple, fast and user-friendly alternative to find
-      gcc # GNU compiler collection
+      # gcc # GNU compiler collection
       gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
       gh # GitHub CLI
       ghostty # Fast, native, feature-rich terminal emulator pushing modern features
       git-crypt # Transparent file encryption in git
       grim # Grab images from a Wayland compositor
+      hello # CLI hello world
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       kdePackages.qt6ct # Qt6 Configuration Tool
       kitty # Terminal emulator
@@ -28,12 +29,14 @@
       lazygit # Simple terminal UI for git commands
       libsForQt5.qt5.qtwayland # Cross-platform app framework for C++
       libsForQt5.qt5ct # Qt5 Configuration Tool
+      meson # Open source, fast and friendly build system made in Python
       nautilus # File manager for GNOME
       neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       openssh # Implementation of the SSH protocol
-      pinentry-gnome3 # GnuPG’s interface to passphrase input
       pamixer # Pulseaudio command line mixer
+      pinentry-gnome3 # GnuPG’s interface to passphrase input
+      # postman # API client
       sd # Intuitive find & replace CLI (sed alternative)
       # seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
       slurp # Select a region in a Wayland compositor
@@ -47,7 +50,7 @@
     ];
     homeDirectory = "/home/${config.home.username}";
     preferXdgDirectories = true;
-    sessionPath = [ "$HOME/.local/bin" "/run/system-manager/sw/bin" ];
+    sessionPath = [ "$HOME/.local/bin" "$HOME/.cargo/bin" "/run/system-manager/sw/bin" ];
     sessionVariables = {
       _JAVA_AWT_WM_NONREPARENTING = 1;
       DOCKER_CONFIG = "$HOME/.config/docker";
