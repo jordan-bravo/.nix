@@ -38,7 +38,7 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ### finserv
 
-- Figure out how to connect electrs to liquidd
+- Figure out how to connect electrs to liquidd. Note: use [esplora](https://github.com/Blockstream/esplora?tab=readme-ov-file#how-to-run-the-explorer-for-liquid-mainnet)
 - Figure out how to connect mempool to liquidd
 
 ### medserv
