@@ -40,8 +40,9 @@
       # postman # API client
       sd # Intuitive find & replace CLI (sed alternative)
       # seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
-      slurp # Select a region in a Wayland compositor
+      slurp # Select a region of the screen in a Wayland compositor
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
+      swayosd # on screen display for keyboard shortcuts such as volume and brightness
       tldr # Simplified and community-driven man pages
       trash-cli # Command line interface to the freedesktop.org trashcan
       waypipe # Network proxy for Wayland clients (applications)
