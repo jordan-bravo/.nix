@@ -37,15 +37,30 @@
           }
         ];
       }
+      # {
+      #   profile.name = "hdmi_bitlab";
+      #   profile.outputs = [
+      #     {
+      #       criteria = "eDP-1";
+      #       status = "disable";
+      #     }
+      #     {
+      #       criteria = "HDMI-A-1";
+      #       status = "enable";
+      #       scale = 0.8;
+      #     }
+      #   ];
+      # }
       {
-        profile.name = "hdmi";
+        profile.name = "hdmi_home";
         profile.outputs = [
           {
             criteria = "eDP-1";
-            status = "disable";
+            status = "enable";
+            scale = 1.0;
           }
           {
-            criteria = "HDMI-A-1";
+            criteria = "Philips Consumer Electronics Company PHL 273V7 UHB1915002425";
             status = "enable";
             scale = 0.8;
           }
