@@ -195,6 +195,20 @@
   };
 
   home.file = {
+    dino-font-size-config = {
+      target = ".var/app/im.dino.Dino/config/gtk-4.0/gtk.css";
+      enable = true;
+      text = ''
+        @import "colors.css";
+        window.dino-main {
+          font-size: 26px;
+        }
+
+        window.dino-main .dino-conversation {
+          font-size: 26px;
+        }
+      '';
+    };
     ghostty-config = {
       target = ".config/ghostty/config";
       enable = true;
