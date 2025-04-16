@@ -37,22 +37,22 @@
           }
         ];
       }
-      # {
-      #   profile.name = "hdmi_bitlab";
-      #   profile.outputs = [
-      #     {
-      #       criteria = "eDP-1";
-      #       status = "disable";
-      #     }
-      #     {
-      #       criteria = "HDMI-A-1";
-      #       status = "enable";
-      #       scale = 0.8;
-      #     }
-      #   ];
-      # }
       {
-        profile.name = "hdmi_home";
+        profile.name = "hdmi-bitlab";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+          {
+            criteria = "LG Electronics LG ULTRAGEAR 0x0004C6F2";
+            status = "enable";
+            scale = 0.8;
+          }
+        ];
+      }
+      {
+        profile.name = "hdmi-home";
         profile.outputs = [
           {
             criteria = "eDP-1";
