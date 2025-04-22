@@ -55,7 +55,7 @@
       GTK_THEME = "Adwaita:dark";
       LESSHISTFILE = "$XDG_STATE_HOME/less/history";
       QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORM_THEME = "adwaita-dark";
+      QT_QPA_PLATFORMTHEME = "adwaita-dark";
       QT_STYLE_OVERRIDE = "adwaita-dark";
       SDL_VIDEODRIVER = "wayland";
       TZ = "America/New_York";
