@@ -1,4 +1,4 @@
-{ pkgs-2411, ... }:
+{ pkgs, ... }:
 
 {
   boot.loader = {
@@ -9,7 +9,7 @@
   # According to home-manager docs for programs.zsh.enableCompletion, adding the following
   # line enables completion for system packages (e.g. systemd)
   environment.pathsToLink = [ "/share/zsh" ];
-  users.defaultUserShell = pkgs-2411.zsh;
+  users.defaultUserShell = pkgs.zsh;
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
@@ -58,7 +58,7 @@
     zsh.enable = true;
   };
   security.rtkit.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   services = {
     openssh.enable = true;
     pipewire = {
@@ -74,13 +74,13 @@
       };
     };
   };
-  # There is an outstanding bug with NetworkManager that causes NixOS rebuilds to fail sometimes, this is the workaround.
-  # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
-  systemd.services.NetworkManager-wait-online = {
-    serviceConfig = {
-      ExecStart = [ "" "${pkgs-2411.networkmanager}/bin/nm-online -q" ];
-    };
-  };
+  # # There is an outstanding bug with NetworkManager that causes NixOS rebuilds to fail sometimes, this is the workaround.
+  # # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
+  # systemd.services.NetworkManager-wait-online = {
+  #   serviceConfig = {
+  #     ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+  #   };
+  # };
   system.stateVersion = "23.11";
   virtualisation = {
     # libvirtd.enable = true;

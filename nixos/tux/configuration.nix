@@ -12,6 +12,8 @@
 
   nix.settings.trusted-users = [ "root" "jordan" ];
 
+  boot.initrd.luks.devices."luks-b833f707-549f-4dc1-a252-b169903c5677".device = "/dev/disk/by-uuid/b833f707-549f-4dc1-a252-b169903c5677";
+
   # Remap keys
 
   # services.xremap = {
@@ -30,13 +32,27 @@
   #   debug = true;
   #   watch = true;
   # };
-  hardware.uinput.enable = true;
-  users.groups.uinput.members = [ "jordan" ];
-  users.groups.input.members = [ "jordan" ];
+  # hardware.uinput.enable = true;
+  # users.groups.uinput.members = [ "jordan" ];
+  # users.groups.input.members = [ "jordan" ];
 
   environment.systemPackages = with pkgs; [
-    greetd.gtkgreet
+    gnome-tweaks
+    # greetd.gtkgreet
+    neovim
+    nil
+    nixd
+    nixpkgs-fmt
+    zed-editor
   ];
+
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
+
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  networking.hostName = "tux";
 
   services.kanata = {
     enable = true;
@@ -54,7 +70,7 @@
           This minimal config changes Caps Lock to act as Escape on quick tap, but
           if held, it will change hjkl to arrow keys and Enter becomes Caps Lock
 
-          TODO: 
+          TODO:
           - Find out how to achieve:
               Holding shift and tapping the Caps Lock key should toggle the Caps Lock functionality.
 
@@ -96,26 +112,11 @@
     };
   };
 
-  services.ivpn.enable = false;
+  # services.ivpn.enable = true;
 
-  services.greetd = {
-    enable = true;
-  };
-
-  services.postgresql = {
-    enable = false;
-    package = pkgs.postgresql_14;
-    ensureDatabases = [ "thefacebood-dev" ];
-    authentication = pkgs.lib.mkOverride 10 ''
-      #type database  DBuser  auth-method
-      local all       all     trust
-    '';
-  };
-
-  services.redis.servers."alta" = {
-    enable = false;
-    port = 6379;
-  };
+  # services.greetd = {
+  #   enable = true;
+  # };
 
   # services.ollama = {
   #   enable = true;
@@ -125,8 +126,6 @@
   #   enable = true;
   #   ollamaUrl = "http://127.0.0.1:11434";
   # };
-
-  networking.hostName = "tux";
 
   # probably the above line accomplished the same thing as the below
   # programs.uwsm = {
@@ -140,21 +139,21 @@
 
   programs.git.enable = true;
 
-  # The following is to get Alta Legacy working on NixOS
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      stdenv.cc.cc.lib
-      xorg.libX11
-      xorg.libxcb
-      # xorg.libXcomposite # For VSCodium extension Markdown PDF
-      # zlib # numpy
-      # libgcc # sqlalchemy
-      # zlib
-      # that's where the shared libs go, you can find which one you need using 
-      # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
-    ];
-  };
+  # The following is to get customer engine working on NixOS
+  # programs.nix-ld = {
+  #   enable = true;
+  #   libraries = with pkgs; [
+  #     stdenv.cc.cc.lib
+  #     xorg.libX11
+  #     xorg.libxcb
+  #     # xorg.libXcomposite # For VSCodium extension Markdown PDF
+  #     # zlib # numpy
+  #     # libgcc # sqlalchemy
+  #     # zlib
+  #     # that's where the shared libs go, you can find which one you need using
+  #     # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
+  #   ];
+  # };
 
   # Secure Boot using lanzaboote
 
@@ -162,12 +161,11 @@
   # This setting is usually set to true in configuration.nix
   # generated at installation time. So we force it to false
   # for now.
-  boot.loader.systemd-boot.enable = lib.mkForce false;
-
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/etc/secureboot";
-  };
+  # boot.loader.systemd-boot.enable = lib.mkForce false;
+  # boot.lanzaboote = {
+  #   enable = true;
+  #   pkiBundle = "/etc/secureboot";
+  # };
 
 
 }

@@ -35,17 +35,11 @@
     xserver = {
       # Enable the X11 windowing system.  I think this is required even with Wayland.
       enable = true;
-      # Enable the GNOME Desktop Environment.
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
-      # Enable the KDE Plasma Desktop Environment.
-      # displayManager.sddm.enable = true;
-      # desktopManager.plasma5.enable = true;
     };
   };
 
   users.users.jordan = {
-    description = "jordan";
+    description = "Jordan";
     extraGroups = [ "adbusers" "docker" "libvirtd" "networkmanager" "wheel" ];
     isNormalUser = true;
     packages = with pkgs; [
@@ -54,4 +48,3 @@
     shell = pkgs.zsh; # Set the default shell for this user
   };
 }
-
