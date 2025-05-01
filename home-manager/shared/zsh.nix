@@ -56,7 +56,7 @@
     '';
     shellAliases = {
       l = "ls -lAhF";
-      la = "ls -AhF";
+      lal = "ls -AhF";
       gexit = "gnome-session-quit --no-prompt";
       hms = "home-manager switch --flake ~/.nix#$(hostname)";
       jv = "NVIM_APPNAME=jvim nvim";
@@ -81,4 +81,3 @@
     };
   };
 }
-

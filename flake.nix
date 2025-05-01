@@ -1,6 +1,5 @@
-# flake.nix
 {
-  description = "Jordan's NixOS / Darwin / Home Manager Configuration Flake";
+  description = "Jordan's NixOS & Home Manager Configuration Flake";
 
   inputs = {
     # Android packages
@@ -9,7 +8,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # Lanzaboote enables Secure Boot on NixOS
@@ -19,7 +18,7 @@
     };
     lnbits = {
       url = "github:lnbits/lnbits/main";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
     nixpkgs-2411.url = "github:nixos/nixpkgs/nixos-24.11";
@@ -84,6 +83,9 @@
     , ...
     }@inputs:
     let
+      /*
+       * Example of pinning a package version
+       */
       # pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
       #   system = "x86_64-linux";
       # };
@@ -105,15 +107,17 @@
           modules = [
             ./nixos/tux/configuration.nix
             # lanzaboote.nixosModules.lanzaboote
-            ### This section uses home-manager as a NixOS module
-            # home-manager.nixosModules.home-manager
-            # {
-            #   # home-manager.extraSpecialArgs = { inherit inputs pkgs-unstable/* pkgs-2411 */; };
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            #   home-manager.users.jordan = import ./home-manager/tux/home.nix;
-            #   home-manager.backupFileExtension = "bak";
-            # }
+            /*
+              This section uses home-manager as a NixOS module
+            */
+            home-manager.nixosModules.home-manager
+            {
+              # home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.jordan = import ./home-manager/tux/home.nix;
+              home-manager.backupFileExtension = "backup";
+            }
           ];
         };
         # Servers

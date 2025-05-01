@@ -81,7 +81,7 @@
   #     ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
   #   };
   # };
-  system.stateVersion = "23.11";
+  system.stateVersion = "25.05";
   virtualisation = {
     # libvirtd.enable = true;
     docker = {
