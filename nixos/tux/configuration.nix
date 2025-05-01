@@ -1,6 +1,6 @@
 # ~/.nix/tux/configuration.nix
 
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -10,7 +10,8 @@
     # inputs.xremap-flake.nixosModules.default
   ];
 
-  nix.settings.trusted-users = [ "root" "jordan" ];
+  # This might be needed to specify additional binary caches
+  # nix.settings.trusted-users = [ "root" "jordan" ];
 
   boot.initrd.luks.devices."luks-b833f707-549f-4dc1-a252-b169903c5677".device = "/dev/disk/by-uuid/b833f707-549f-4dc1-a252-b169903c5677";
 
@@ -37,12 +38,18 @@
   # users.groups.input.members = [ "jordan" ];
 
   environment.systemPackages = with pkgs; [
+    fontconfig
     gnome-tweaks
     # greetd.gtkgreet
     neovim
+    steam-run
+
+    # Programming language tools
+    nerd-fonts.fira-code
     nil
     nixd
     nixpkgs-fmt
+    prettier
     zed-editor
   ];
 
