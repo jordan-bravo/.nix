@@ -49,6 +49,9 @@
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       xdg-utils # Tools that assist applications with a variety of desktop integration tasks
       xorg.xlsclients # Lists any applications running under Xwayland
+
+      # Programming language tools
+      python312Packages.python-lsp-server
     ];
     homeDirectory = "/home/${config.home.username}";
     preferXdgDirectories = true;
