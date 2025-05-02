@@ -123,17 +123,17 @@
         # Servers
         sovserv = nixpkgs-2411.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit pkgs-2411 inputs; };
+          specialArgs = { inherit inputs; };
           modules = [
             ./nixos/sovserv/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit pkgs-2411 inputs; };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.main = import ./home-manager/sovserv/home.nix;
-              home-manager.backupFileExtension = "bak";
-            }
+            # home-manager.nixosModules.home-manager
+            # {
+            #   home-manager.extraSpecialArgs = { inherit inputs; };
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.users.main = import ./home-manager/sovserv/home.nix;
+            #   home-manager.backupFileExtension = "backup";
+            # }
           ];
         };
         finserv = nixpkgs-2411.lib.nixosSystem {

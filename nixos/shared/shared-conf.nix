@@ -58,7 +58,6 @@
     zsh.enable = true;
   };
   security.rtkit.enable = true;
-  services.pulseaudio.enable = false;
   services = {
     openssh.enable = true;
     pipewire = {
@@ -76,11 +75,11 @@
   };
   # # There is an outstanding bug with NetworkManager that causes NixOS rebuilds to fail sometimes, this is the workaround.
   # # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
-  # systemd.services.NetworkManager-wait-online = {
-  #   serviceConfig = {
-  #     ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
-  #   };
-  # };
+  systemd.services.NetworkManager-wait-online = {
+    serviceConfig = {
+      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+    };
+  };
   system.stateVersion = "25.05";
   virtualisation = {
     # libvirtd.enable = true;
