@@ -31,75 +31,71 @@
     sessionVariables = {
       EDITOR = "nvim";
     };
-    stateVersion = "23.11";
+    stateVersion = "25.05";
     packages = with pkgs; [
       # act # Run your GitHub Actions locally
-      aerc # An email client for your terminal
-      age # (Actually Good Encryption) A modern encryption tool with small explicit keys
-      asciiquarium # Enjoy the mysteries of the sea from the safety of your own terminal!
-      bitwarden-cli # Secure and free password manager for all of your devices
-      bottom # A cross-platform graphical process/system monitor with a customizable interface
-      browsh # Fully-modern text-based browser, rendering to TTY and browsers
+      # aerc # An email client for your terminal
+      # age # (Actually Good Encryption) A modern encryption tool with small explicit keys
+      # asciiquarium # Enjoy the mysteries of the sea from the safety of your own terminal!
+      # bitwarden-cli # Secure and free password manager for all of your devices
+      # bottom # A cross-platform graphical process/system monitor with a customizable interface
+      # browsh # Fully-modern text-based browser, rendering to TTY and browsers
       # busybox # Tiny versions of common UNIX utilities in a single small executable
       # cargo # Rust package manager
-      dante # Circuit-level SOCKS client/server that can be used to provide convenient and secure network connectivity # aerc-dep
+      # dante # Circuit-level SOCKS client/server that can be used to provide convenient and secure network connectivity # aerc-dep
       delta # A syntax-highlighting pager for git
-      dhcping # Send DHCP request to find out if a DHCP server is running
+      # dhcping # Send DHCP request to find out if a DHCP server is running
       dig # DNS tool
       distrobox # Run containers of any Linux distro
       docker-compose # Docker Compose plugin for Docker
       dogdns # Command-line DNS client
-      drawio # Diagram application
+      # drawio # Diagram application
       du-dust # aka dust. du + rust = dust. Like du but more intuitive
       duf # Disk Usage/Free Utility, a df alternative
       fd # A simple, fast and user-friendly alternative to find
       ffmpeg # A complete, cross-platform solution to record, convert and stream audio and video
       fastfetch # Like neofetch, but much faster because written in C
-      fira-code # Font
-      freshfetch # Fresh take on neofetch
       git-crypt # Transparent file encryption in git
       gitui # Blazing fast terminal-ui for Git written in Rust
-      glow # Render markdown on the CLI, with pizzazz!
+      # glow # Render markdown on the CLI, with pizzazz!
       gnome-multi-writer # Tool for writing an ISO file to multiple USB devices at once
-      go # The Go / Golang programming language
-      httpie # Command line HTTP client whose goal is to make CLI human-friendly
+      # go # The Go / Golang programming language
+      # httpie # Command line HTTP client whose goal is to make CLI human-friendly
       # ivpn # VPN GUI
-      # ivpn-service # VPN background service
-      killall # Tool to kill processes
+      # killall # Tool to kill processes
       # kitty # Terminal emulator
       lsof # A tool to list open files
       neovim # Text editor / IDE
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
-      nix-index # A files database for nixpkgs
-      nix-search-cli # Search packages from the command line
+      # nix-index # A files database for nixpkgs
+      # nix-search-cli # Search packages from the command line
       nodePackages.pnpm # Fast, disk space efficient package manager
       onefetch # Git repo summary
-      pass # Stores, retrieves, generates, and synchronizes passwords securely
-      pipx # Install and run Python applications in isolated environments
-      pgcli # Command-line interface for PostgreSQL
+      # pass # Stores, retrieves, generates, and synchronizes passwords securely
+      # pipx # Install and run Python applications in isolated environments
+      # pgcli # Command-line interface for PostgreSQL
       procs # A modern replacement for ps written in Rust
       protobuf # Google's data interchange format. lndk build dependency.
       # pyenv # Simple Python version management
-      quarto # Open-source scientific and technical publishing system built on Pandoc
-      scc # Code counter with complexity calculations and COCOMO estimates written in Go
-      sad # CLI tool to search and replace
+      # quarto # Open-source scientific and technical publishing system built on Pandoc
+      # scc # Code counter with complexity calculations and COCOMO estimates written in Go
+      # sad # CLI tool to search and replace
       sd # Intuitive find & replace CLI (sed alternative)
       sops # Secrets OPerationS
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
-      speedtest-rs # Command line internet speedtest tool written in rust
-      steam-run # Run commands in the same FHS environment that is used for Steam
+      # speedtest-rs # Command line internet speedtest tool written in rust
+      # steam-run # Run commands in the same FHS environment that is used for Steam
       trash-cli # Command line interface to the freedesktop.org trash can
       # trashy # CLI trash tool written in Rust # Note: currently has a bug that breaks tab completion
       tree # View directory tree structure
-      uv # Extremely fast Python package installer and resolver, written in Rust
+      # uv # Extremely fast Python package installer and resolver, written in Rust
       vlock # Lock the TTY screen
-      watchman # Watches files and takes action when they change
+      # watchman # Watches files and takes action when they change
       waypipe # A network proxy for Wayland clients (applications)
-      wget # File retriever
-      xh # Friendly and fast tool for sending HTTP requests
+      # wget # File retriever
+      # xh # Friendly and fast tool for sending HTTP requests
       w3m # Text-mode web browser # aerc-dep
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
-      yarn # Package manager for JavaScript
+      # yarn # Package manager for JavaScript
       yt-dlp # CLI tool to download YouTube videos
       zellij # Terminal multiplexer
       # zola # A fast static site generator with everything built-in
@@ -192,7 +188,7 @@
 
   # nixpkgs.config.allowUnfree = true;
 
-  # Programs with little to no config are enabled here. 
+  # Programs with little to no config are enabled here.
   programs = {
     atuin = {
       enable = true;

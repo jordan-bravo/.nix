@@ -21,7 +21,7 @@
       # android-tools # Android SDK platform tools
       atac # Simple API client (postman like) in your terminal
       avidemux # Free video editor designed for simple video editing tasks
-      beekeeper-studio # SQL database client
+      # beekeeper-studio # SQL database client
       bitcoind # Peer-to-peer electronic cash system
       # bitwarden-desktop # Password manager
       # borgbackup # Deduplicating archiver with compression and encryption
@@ -63,7 +63,7 @@
       vlc # Media player
       vorta # Desktop Backup Client for Borg
       # vscodium # VS Code without MS branding/telemetry/licensing
-      # vscodium-fhs # Launches VSCodium in a FHS compatible environment. Should allow for easy usage of extensions without nix-specific modifications. 
+      # vscodium-fhs # Launches VSCodium in a FHS compatible environment. Should allow for easy usage of extensions without nix-specific modifications.
       # waybar # Status bar
       # wofi # App launcher
       xorg.xwininfo # Display info for X windows and nothing for Wayland windows
@@ -110,7 +110,7 @@
     sessionVariables = {
       GTK_THEME = "Adwaita:dark";
     };
-    stateVersion = "23.11";
+    stateVersion = "25.05";
   };
 
   # Programs with more extensive config are imported from separate modules.
@@ -120,7 +120,7 @@
     # ../shared/kitty.nix
   ];
 
-  # Programs with little to no config are enabled here. 
+  # Programs with little to no config are enabled here.
   programs = {
     zsh = {
       initExtra = ''
@@ -134,4 +134,3 @@
     copyq.enable = true;
   };
 }
-

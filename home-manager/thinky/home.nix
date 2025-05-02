@@ -71,7 +71,7 @@
       XDG_SESSION_DESKTOP = "sway";
       XDG_SESSION_TYPE = "wayland";
     };
-    stateVersion = "24.11";
+    stateVersion = "25.05";
     username = "jordan";
   };
   imports = [
@@ -294,5 +294,3 @@
     };
   };
 }
-
-
