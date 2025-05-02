@@ -68,10 +68,10 @@
       extraAppsEnable = true;
       extraApps = with config.services.nextcloud.package.packages.apps; {
         # List of apps we can install that are already packaged in nixpkgs at:
-        # github.com/NixOS/nixpkgs/blob/master/pkgs/servers/nextcloud/packages/nextcloud-apps.json
-        inherit calendar contacts cookbook forms notes notify_push onlyoffice tasks whiteboard;
+        # github.com/nixos/nixpkgs/blob/nixos-unstable/pkgs/servers/nextcloud/packages/nextcloud-apps.json
+        inherit calendar contacts cookbook forms notes notify_push onlyoffice tasks uppush whiteboard;
 
-        # Custom app installation example
+        # Custom app installation example, if cookbook weren't packaged
         # cookbook = pkgs.fetchNextcloudApp {
         #   url = "github.com/nextcloud/cookbook/releases/download/v0.10.2/Cookbook-0.10.2.tar.gz";
         #   sha256 = "sha256-H7KVeISBnu0/4Q31ihhiXvRtkXz4yLGOAsAj5ERgeCM=";
