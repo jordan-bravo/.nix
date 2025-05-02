@@ -51,6 +51,20 @@
     couchdb = {
       enable = false;
     };
+    matrix-conduit = {
+      enable = false;
+      settings.global = {
+        allow_federation = true;
+        allow_registration = true;
+        # You will need this token when creating your first account.
+        registration_token = "rigel";
+        server_name = "matrix.sovserv.top";
+        port = 6167;
+        address = "0.0.0.0";
+        database_backend = "rocksdb";
+        trusted_servers = [ "matrix.org" ];
+      };
+    };
     nextcloud = {
       # After enabling Nextcloud for the first time, there might be a warning in the administrative
       # settings about the database missing indexes.  To resolve, run this command once:
