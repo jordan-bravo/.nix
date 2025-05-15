@@ -82,21 +82,21 @@
       # , nixpkgs-micro-2-0-12
     , ...
     }@inputs:
-    # let
-    #   /*
-    #    * Example of pinning a package version
-    #    */
-    #   # pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
-    #   #   system = "x86_64-linux";
-    #   # };
-    #   # uncomment this next line if servers need pkgs arg for home-manager
-    #   # pkgs = nixpkgs.legacyPackages."x86_64-linux";
-    #   pkgs = import nixpkgs {
-    #     system = "x86_64-linux";
-    #     overlays = [ nixgl.overlay ];
-    #     # You can now reference pkgs.nixgl.nixGLIntel
-    #   };
-    # in
+    let
+      /*
+       * Example of pinning a package version
+       */
+      # pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
+      #   system = "x86_64-linux";
+      # };
+      # uncomment this next line if servers need pkgs arg for home-manager
+      # pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [ nixgl.overlay ];
+        # You can now reference pkgs.nixgl.nixGLIntel
+      };
+    in
     {
       nixosConfigurations = {
         # Workstations (Laptops / Desktops)
@@ -156,7 +156,8 @@
       homeConfigurations = {
         # Thinky is running Ubuntu with Sway
         thinky = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          # pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          inherit pkgs; # equivalent to pkgs = pkgs;
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./home-manager/thinky/home.nix ];
         };

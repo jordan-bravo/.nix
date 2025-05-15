@@ -33,7 +33,7 @@
       meson # Open source, fast and friendly build system made in Python
       nautilus # File manager for GNOME
       neovim # Text editor / IDE
-      # nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
+      nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       openssh # Implementation of the SSH protocol
       pamixer # Pulseaudio command line mixer
       pinentry-gnome3 # GnuPG’s interface to passphrase input
