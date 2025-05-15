@@ -6,7 +6,7 @@
   fonts.fontconfig.enable = true;
   home = {
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      nerd-fonts.fira-code
       adwaita-qt # Adwaita style for Qt apps
       adwaita-qt6 # Adwaita style for Qt6 apps
       # beekeeper-studio # SQL client
@@ -143,7 +143,7 @@
       enable = true;
       enableZshIntegration = true;
     };
-    zsh.initExtra = ''
+    zsh.initContent = ''
       # start ssh agent and add key to agent
       eval "$(ssh-agent -s)" > /dev/null
       ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
@@ -160,7 +160,7 @@
       enable = true;
       enableZshIntegration = true;
       maxCacheTtl = 4;
-      pinentryPackage = pkgs.pinentry-gnome3;
+      pinentry.package = pkgs.pinentry-gnome3;
       verbose = true;
     };
     udiskie = {

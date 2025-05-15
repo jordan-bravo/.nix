@@ -36,7 +36,7 @@
     # rustc # Rust compiler
     rustfmt # Rust formatter # nvim-dep
     ruff # An extremely fast Python linter # nvim-dep
-    ruff-lsp # Ruff LSP for Python # nvim-dep
+    # ruff-lsp # Ruff LSP for Python # nvim-dep
     rust-analyzer # Modular compiler frontend for the Rust language
     stylua # Lua code formatter # nvim-dep
     tailwindcss-language-server # LSP functionality for Tailwind CSS # nvim-dep

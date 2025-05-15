@@ -89,7 +89,7 @@
       "workbench.startupEditor" = "none";
     };
   };
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
     bindkey "''${key[Up]}" up-line-or-search
   '';

@@ -123,7 +123,7 @@
   # Programs with little to no config are enabled here.
   programs = {
     zsh = {
-      initExtra = ''
+      initContent = ''
         # Add ssh key, suppress output
         ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan@bravo" 1> /dev/null 2>&1
       '';

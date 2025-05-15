@@ -10,7 +10,7 @@
   ];
   programs.git.enable = true;
   programs.zsh = {
-    initExtra = ''
+    initContent = ''
       # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
       bindkey "''${key[Up]}" up-line-or-search
       # Add ssh key

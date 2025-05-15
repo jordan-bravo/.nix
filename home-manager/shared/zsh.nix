@@ -18,7 +18,7 @@
     # envExtra = ''
     #   export LESSUTFCHARDEF=e000-f8ff:p,f0000-10ffff:p
     # '';
-    initExtra = ''
+    initContent = ''
       # If bat exists, use instead of cat
       type bat > /dev/null 2>&1 && alias cat=bat
 

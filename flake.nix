@@ -89,13 +89,11 @@
       # pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
       #   system = "x86_64-linux";
       # };
-      pkgs-2411 = import nixpkgs-2411 {
+      # pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      pkgs = import nixpkgs {
         system = "x86_64-linux";
-        config.allowUnfree = true;
-        overlays = [
-          nixgl.overlay
-        ];
-        # You can now reference pkgs-2411.nixgl.nixGLIntel
+        overlays = [ nixgl.overlay ];
+        # You can now reference pkgs.nixgl.nixGLIntel
       };
     in
     {
@@ -121,9 +119,9 @@
           ];
         };
         # Servers
-        sovserv = nixpkgs-2411.lib.nixosSystem {
+        sovserv = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit pkgs inputs; };
           modules = [
             ./nixos/sovserv/configuration.nix
             # home-manager.nixosModules.home-manager
@@ -136,14 +134,14 @@
             # }
           ];
         };
-        finserv = nixpkgs-2411.lib.nixosSystem {
+        finserv = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit pkgs-2411 inputs; };
+          specialArgs = { inherit pkgs inputs; };
           modules = [
             ./nixos/finserv/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit pkgs-2411 inputs; };
+              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.main = import ./home-manager/finserv/home.nix;
@@ -157,8 +155,9 @@
       homeConfigurations = {
         # Thinky is running Ubuntu with Sway
         thinky = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgs-2411; # equivalent to: inherit pkgs;
-          extraSpecialArgs = { inherit nixgl pkgs-2411 inputs; };
+          # pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          pkgs = pkgs;
+          extraSpecialArgs = { inherit pkgs inputs; };
           modules = [ ./home-manager/thinky/home.nix ];
         };
       };
