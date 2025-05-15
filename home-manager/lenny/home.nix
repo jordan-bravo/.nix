@@ -30,7 +30,7 @@
       libsForQt5.qt5ct # Qt5 Configuration Tool
       nautilus # File manager for GNOME
       neovim # Text editor / IDE
-      nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
+      # nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       openssh # Implementation of the SSH protocol
       pinentry-gnome3 # GnuPG’s interface to passphrase input
       pamixer # Pulseaudio command line mixer

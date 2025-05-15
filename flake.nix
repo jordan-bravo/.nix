@@ -82,20 +82,21 @@
       # , nixpkgs-micro-2-0-12
     , ...
     }@inputs:
-    let
-      /*
-       * Example of pinning a package version
-       */
-      # pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
-      #   system = "x86_64-linux";
-      # };
-      # pkgs = nixpkgs.legacyPackages."x86_64-linux";
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [ nixgl.overlay ];
-        # You can now reference pkgs.nixgl.nixGLIntel
-      };
-    in
+    # let
+    #   /*
+    #    * Example of pinning a package version
+    #    */
+    #   # pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
+    #   #   system = "x86_64-linux";
+    #   # };
+    #   # uncomment this next line if servers need pkgs arg for home-manager
+    #   # pkgs = nixpkgs.legacyPackages."x86_64-linux";
+    #   pkgs = import nixpkgs {
+    #     system = "x86_64-linux";
+    #     overlays = [ nixgl.overlay ];
+    #     # You can now reference pkgs.nixgl.nixGLIntel
+    #   };
+    # in
     {
       nixosConfigurations = {
         # Workstations (Laptops / Desktops)
@@ -121,7 +122,7 @@
         # Servers
         sovserv = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit pkgs inputs; };
+          specialArgs = { inherit inputs; };
           modules = [
             ./nixos/sovserv/configuration.nix
             # home-manager.nixosModules.home-manager
@@ -136,12 +137,12 @@
         };
         finserv = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit pkgs inputs; };
+          specialArgs = { inherit inputs; };
           modules = [
             ./nixos/finserv/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit pkgs inputs; };
+              home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.main = import ./home-manager/finserv/home.nix;
@@ -155,9 +156,8 @@
       homeConfigurations = {
         # Thinky is running Ubuntu with Sway
         thinky = home-manager.lib.homeManagerConfiguration {
-          # pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          pkgs = pkgs;
-          extraSpecialArgs = { inherit pkgs inputs; };
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs; };
           modules = [ ./home-manager/thinky/home.nix ];
         };
       };
