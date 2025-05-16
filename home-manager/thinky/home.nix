@@ -6,7 +6,10 @@
   fonts.fontconfig.enable = true;
   home = {
     packages = with pkgs; [
-      nerd-fonts.fira-code
+      ### fonts
+      fira-code # Monospace font with programming ligatures
+      hasklig # Monospace font with programming ligatures
+      # nerd-fonts.fira-code
       adwaita-qt # Adwaita style for Qt apps
       adwaita-qt6 # Adwaita style for Qt6 apps
       # beekeeper-studio # SQL client
@@ -15,6 +18,7 @@
       ccls # C/c++ language server powered by clang
       # clang # C language family frontend for LLVM
       curl # Command line tool for transferring files with URL syntax
+      fontconfig
       fd # Simple, fast and user-friendly alternative to find
       # gcc # GNU compiler collection
       gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
@@ -214,7 +218,7 @@
     };
     ghostty-config = {
       target = ".config/ghostty/config";
-      enable = true;
+      enable = false;
       text = ''
         background = 222222
         font-family = FiraCode Nerd Font Mono
