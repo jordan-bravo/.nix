@@ -1,11 +1,8 @@
-# finserv/home.nix
-
-{ config, pkgs, lib, ... }:
-
 {
   imports = [
-    ../shared/home.nix
-    ../shared/servers.nix
+    # ../shared/home.nix
+    # ../shared/servers.nix
   ];
-}
 
+  home.stateVersion = "25.05";
+}
