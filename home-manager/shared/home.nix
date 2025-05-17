@@ -93,8 +93,8 @@
       waypipe # A network proxy for Wayland clients (applications)
       # wget # File retriever
       # xh # Friendly and fast tool for sending HTTP requests
-      w3m # Text-mode web browser # aerc-dep
-      wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
+      # w3m # Text-mode web browser # aerc-dep
+      # wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       # yarn # Package manager for JavaScript
       yt-dlp # CLI tool to download YouTube videos
       zellij # Terminal multiplexer

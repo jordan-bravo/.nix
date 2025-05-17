@@ -5,9 +5,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../shared/server-conf.nix
-    ../shared/shared-conf.nix
-    ../../secrets/finserv-secrets.nix
+    ../../modules/nixos/nixos-all.nix
+    ../../modules/nixos/nixos-server.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -140,7 +139,7 @@
       '';
       # LNDK is a program that runs alongside LND and provides BOLT12 functionality, although
       # as of 2024-09-26 it cannot receive BOLT12 payments, it can only send them. Also,
-      # there currently is a bug in the nixpkgs version of LND that is missing the 
+      # there currently is a bug in the nixpkgs version of LND that is missing the
       # build flag for peersrpc, which LNDK requires. Commit 00f961d fixes it, but until
       # that commit makes it into unstable, the following override is a workaround:
       # package = config.nix-bitcoin.pkgs.lnd.overrideAttrs (old: {
@@ -264,4 +263,3 @@
     extraGroups = [ "lnd" ];
   };
 }
-

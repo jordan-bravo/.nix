@@ -5,8 +5,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../shared/server-conf.nix
-    ../shared/shared-conf.nix
+    ../../modules/nixos/nixos-all.nix
+    ../../modules/nixos/nixos-server.nix
   ];
 
   networking.hostName = "sovserv";

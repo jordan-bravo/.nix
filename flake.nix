@@ -140,13 +140,13 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./nixos/finserv/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.extraSpecialArgs = { inherit inputs; };
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.main = import ./home-manager/finserv/home.nix;
-            }
+            # home-manager.nixosModules.home-manager
+            # {
+            #   home-manager.extraSpecialArgs = { inherit inputs; };
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.users.main = import ./home-manager/finserv/home.nix;
+            # }
             nix-bitcoin.nixosModules.default
             lnbits.nixosModules.default
           ];

@@ -4,10 +4,13 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
     # "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
+    GTK_THEME = "Adwaita:dark";
   };
 
   environment.systemPackages = with pkgs; [
+    # adwaita-qt # Adwaita style for Qt apps
     gnome-tweaks
+    nextcloud-client
     mullvad-vpn
     zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
   ];
@@ -41,9 +44,10 @@
     description = "Jordan";
     extraGroups = [ "adbusers" "docker" "libvirtd" "networkmanager" "wheel" ];
     isNormalUser = true;
-    packages = with pkgs; [
-      home-manager
-    ];
     shell = pkgs.zsh; # Set the default shell for this user
   };
+  programs.zsh.interactiveShellInit = ''
+    # Add ssh key, suppress output
+    ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan@bravo" 1> /dev/null 2>&1
+  '';
 }
