@@ -124,13 +124,13 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./nixos/sovserv/configuration.nix
+            ./hosts/sovserv/configuration.nix
             # home-manager.nixosModules.home-manager
             # {
             #   home-manager.extraSpecialArgs = { inherit inputs; };
             #   home-manager.useGlobalPkgs = true;
             #   home-manager.useUserPackages = true;
-            #   home-manager.users.main = import ./home-manager/sovserv/home.nix;
+            #   home-manager.users.main = import ./hosts/sovserv/home.nix;
             #   home-manager.backupFileExtension = "backup";
             # }
           ];
@@ -139,13 +139,13 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./nixos/finserv/configuration.nix
+            ./hosts/finserv/configuration.nix
             # home-manager.nixosModules.home-manager
             # {
             #   home-manager.extraSpecialArgs = { inherit inputs; };
             #   home-manager.useGlobalPkgs = true;
             #   home-manager.useUserPackages = true;
-            #   home-manager.users.main = import ./home-manager/finserv/home.nix;
+            #   home-manager.users.main = import ./hosts/finserv/home.nix;
             # }
             nix-bitcoin.nixosModules.default
             lnbits.nixosModules.default

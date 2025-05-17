@@ -69,6 +69,7 @@
   programs.git.enable = true;
   programs.gnupg.agent.enable = true;
   programs.ssh.startAgent = true;
+  programs.zoxide = { enable = true; enableZshIntegration = true; };
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
