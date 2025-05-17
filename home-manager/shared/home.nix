@@ -192,15 +192,10 @@
   programs = {
     atuin = {
       enable = true;
-      settings = {
-        enter_accept = false;
-      };
     };
     bat = {
       enable = true;
-      config = {
-        theme = "Visual Studio Dark+";
-      };
+      config.theme = "Visual Studio Dark+";
     };
     broot.enable = true;
     direnv = {

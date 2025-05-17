@@ -9,7 +9,6 @@
       ### fonts
       fira-code # Monospace font with programming ligatures
       hasklig # Monospace font with programming ligatures
-      # nerd-fonts.fira-code
       adwaita-qt # Adwaita style for Qt apps
       adwaita-qt6 # Adwaita style for Qt6 apps
       # beekeeper-studio # SQL client
@@ -221,7 +220,7 @@
       enable = false;
       text = ''
         background = 222222
-        font-family = FiraCode Nerd Font Mono
+        font-family = Fira Code
         font-size = 14
         window-decoration = false
       '';

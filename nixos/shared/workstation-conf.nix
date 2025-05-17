@@ -8,35 +8,36 @@
     # "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
   };
 
-  programs = {
-    adb.enable = true;
-    hyprland = {
-      enable = true;
-      withUWSM = true;
-    };
-    hyprlock.enable = true;
-    virt-manager.enable = true;
-    zsh.enable = true;
-  };
+  environment.systemPackages = with pkgs; [
+    gnome-tweaks
+    mullvad-vpn
+    zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
+  ];
+
+  services.mullvad-vpn.enable = true;
+  programs.adb.enable = true;
+  programs.virt-manager.enable = true;
 
   security.rtkit.enable = true;
 
-  services = {
-    flatpak.enable = true;
-    # mullvad-vpn.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-    printing.enable = true;
-    tailscale.enable = true;
-    xserver = {
-      # Enable the X11 windowing system.  I think this is required even with Wayland.
-      enable = true;
-    };
+  services.pulseaudio.enable = false;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
   };
+  services.flatpak.enable = true;
+  services.printing.enable = true;
+  services.tailscale.enable = true;
+  services.xserver = {
+    # Enable the X11 windowing system.  I think this is required even with Wayland.
+    enable = true;
+    xkb.layout = "us";
+    xkb.options = "caps:escape_shifted_capslock";
+  };
+
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
 
   users.users.jordan = {
     description = "Jordan";

@@ -13,44 +13,23 @@
   # This might be needed to specify additional binary caches
   # nix.settings.trusted-users = [ "root" "jordan" ];
 
+  # Should this go in hardware-configuratin.nix?
   boot.initrd.luks.devices."luks-b833f707-549f-4dc1-a252-b169903c5677".device = "/dev/disk/by-uuid/b833f707-549f-4dc1-a252-b169903c5677";
 
   environment.systemPackages = with pkgs; [
-    appimage-run # Run AppImages on NixOS
-    fontconfig
-    gnome-tweaks
-    neovim
-    nerd-fonts.fira-code
     steam-run # Simulate a FHS environment to run binaries meant for non-NixOS linux
     sparrow # Bitcoin wallet
-    zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
-
-    # Programming language tools
-    nil
-    nixd
-    nixpkgs-fmt
-    nodePackages.prettier
-    zed-editor
   ];
 
   # fonts.packages = with pkgs; [
   #   nerd-fonts.fira-code
   # ];
-  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
   networking.hostName = "tux";
-
-  programs.git.enable = true;
-
-  services.ivpn.enable = true;
-
-  # services.greetd = {
-  #   enable = true;
-  # };
 
   # services.ollama = {
   #   enable = true;
@@ -61,17 +40,9 @@
   #   ollamaUrl = "http://127.0.0.1:11434";
   # };
 
-  # programs.uwsm = {
-  #   enable = true;
-  #   waylandCompositors.hyprland = {
-  #     binPath = "/run/current-system/sw/bin/hyprland";
-  #     comment = "Hyprland session managed by uwsm";
-  #     prettyName = "Hyprland";
-  #   };
-  # };
-
   # Remap keys
 
+  ### Remap keys using xremap
   # services.xremap = {
   #   enable = false;
   #   withGnome = true;
@@ -92,7 +63,7 @@
   # users.groups.uinput.members = [ "jordan" ];
   # users.groups.input.members = [ "jordan" ];
 
-  # Secure Boot using lanzaboote
+  ### Secure Boot using lanzaboote
 
   # Lanzaboote currently replaces the systemd-boot module.
   # This setting is usually set to true in configuration.nix

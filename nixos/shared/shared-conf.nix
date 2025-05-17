@@ -26,15 +26,15 @@
   };
   time.timeZone = "America/New_York";
   networking = {
-    enableIPv6 = false;
+    # enableIPv6 = false;
     firewall.checkReversePath = "loose"; # This is required for Tailscale exit node to work
-    nameservers = [ "9.9.9.9" "149.112.112.112" ]; # Quad9
+    # nameservers = [ "9.9.9.9" "149.112.112.112" ]; # Quad9
     networkmanager = {
       enable = true;
-      dns = "none";
+      # dns = "none";
     };
   };
-  boot.kernelParams = [ "ipv6.disable=1" ];
+  # boot.kernelParams = [ "ipv6.disable=1" ];
 
   nixpkgs.config.allowUnfree = true;
   nix.gc = {
@@ -45,34 +45,58 @@
 
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    # substituters = [ "https://hyprland.cachix.org" ];
+    # trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     # sandbox = false; # This is true by default. Only set to false if necessary.
   };
-  programs = {
-    gnupg.agent = {
-      enable = true;
-      # enableSSHSupport = true; # is this necessary?
-    };
-    ssh.startAgent = true;
-    zsh.enable = true;
+  environment.systemPackages = with pkgs; [
+    fira-code
+    fontconfig
+    neovim
+    trashy
+
+    # Programming language tools (lang servers, formatters, etc.)
+    nil
+    nixd
+    nixpkgs-fmt
+    nodePackages.prettier
+  ];
+  programs.git.enable = true;
+  programs.gnupg.agent.enable = true;
+  programs.ssh.startAgent = true;
+  programs.zsh = {
+    enable = true;
+    syntaxHighlighting.enable = true;
+    # interactiveShellInit = ''
+    #   # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
+    #   bindkey "''${key[Up]}" up-line-or-search
+    # '';
   };
-  security.rtkit.enable = true;
-  services = {
-    openssh.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
-    xserver = {
-      xkb = {
-        layout = "us";
-        options = "caps:escape_shifted_capslock";
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      directory = {
+        truncation_length = 8;
+        truncation_symbol = ".../";
+        repo_root_style = "purple";
+      };
+      gcloud = {
+        disabled = true;
       };
     };
   };
+
+  programs.bat = {
+    enable = true;
+    settings.theme = "Visual Studio Dark+";
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+  services.openssh.enable = true;
   # # There is an outstanding bug with NetworkManager that causes NixOS rebuilds to fail sometimes, this is the workaround.
   # # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
   systemd.services.NetworkManager-wait-online = {
@@ -81,14 +105,10 @@
     };
   };
   system.stateVersion = "25.05";
-  virtualisation = {
-    # libvirtd.enable = true;
-    docker = {
-      enable = true;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
-    };
+  # virtualisa.libvirtd.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    rootless.enable = true;
+    rootless.setSocketVariable = true;
   };
 }

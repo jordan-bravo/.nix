@@ -28,72 +28,54 @@
   #     # };
   #   };
   # };
-  home = {
-    packages = with pkgs; [
-
-      # Deps attempting to install python 2 with pyenv
-      # bzip2 # High-quality data compression program
-      # gcc # GNU Compiler Collection
-      # gdbm # GNU dbm key/value database library
-      # gnumake # Tool to control the generation of non-source files from sources
-      # gnupatch # GNU Patch, a program to apply differences to files
-      # libedit # Port of the NetBSD Editline library (libedit)
-      # libffi # Foreign function call interface library
-      # libnsl # Client interface library for NIS(YP) and NIS+
-      # libuuid # Set of system utilities for Linux
-      # openssl # Cryptographic library that implements the SSL and TLS protocols
-      # readline # Library for interactive line editing
-      # sqlite # Self-contained, serverless, zero-configuration, transactional SQL database engine
-      # tk # Widget toolkit that provides a library of basic elements for building a GUI in many different programming languages
-      # xz # General-purpose data compression software, successor of LZMA
-      # zlib # Compression library
-    ];
-  };
+  # home = {
+  #   packages = with pkgs; [
+  #     atuin
+  #   ];
+  # };
   imports = [
-    ../shared/git.nix
-    ../shared/home.nix
-    ../shared/kitty.nix
-    ../shared/workstations.nix
-    ../shared/waybar.nix
+    # ../shared/git.nix
+    # ../shared/home.nix
+    # ../shared/kitty.nix
+    # ../shared/workstations.nix
+    # ../shared/waybar.nix
     # ../shared/hyprland.nix
     # android-nixpkgs.hmModule {
-    #
     # }
   ];
-  programs.vscode = {
-    enable = false;
-    package = pkgs.vscodium;
-    extensions = with pkgs.vscode-extensions; [
-      asvetliakov.vscode-neovim
-      yzane.markdown-pdf
-      # charliermarsh.ruff
-      # ms-python.python
-      # ];
-      # ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      #   {
-      #     name = "roc-lang-unofficial";
-      #     publisher = "ivandemchenko";
-      #     version = "1.2.0";
-      #     sha256 = "sha256-lMN6GlUM20ptg1c6fNp8jwSzlCzE1U0ugRyhRLYGPGE=";
-      #   }
-    ];
-    userSettings = {
-      "editor.fontFamily" = "FiraCode Nerd Font Mono";
-      "editor.lineNumbers" = "relative";
-      "extensions.experimental.affinity" = {
-        "asvetliakov.vscode-neovim" = 1;
-      };
-      "keyboard.dispatch" = "keyCode";
-      "vscode-neovim.neovimClean" = true;
-      "window.menuBarVisibility" = "toggle";
-      "workbench.startupEditor" = "none";
-    };
-  };
-  programs.zsh.initContent = ''
-    # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
-    bindkey "''${key[Up]}" up-line-or-search
-  '';
-  programs.pyenv.enable = false;
+  # programs.vscode = {
+  #   enable = false;
+  #   package = pkgs.vscodium;
+  #   extensions = with pkgs.vscode-extensions; [
+  #     asvetliakov.vscode-neovim
+  #     yzane.markdown-pdf
+  #     # charliermarsh.ruff
+  #     # ms-python.python
+  #     # ];
+  #     # ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+  #     #   {
+  #     #     name = "roc-lang-unofficial";
+  #     #     publisher = "ivandemchenko";
+  #     #     version = "1.2.0";
+  #     #     sha256 = "sha256-lMN6GlUM20ptg1c6fNp8jwSzlCzE1U0ugRyhRLYGPGE=";
+  #     #   }
+  #   ];
+  #   userSettings = {
+  #     "editor.fontFamily" = "Fira Code";
+  #     "editor.lineNumbers" = "relative";
+  #     "extensions.experimental.affinity" = {
+  #       "asvetliakov.vscode-neovim" = 1;
+  #     };
+  #     "keyboard.dispatch" = "keyCode";
+  #     "vscode-neovim.neovimClean" = true;
+  #     "window.menuBarVisibility" = "toggle";
+  #     "workbench.startupEditor" = "none";
+  #   };
+  # };
+  # programs.zsh.initExtra = ''
+  #   # Fix bug on NixOS with up arrow (nixos.wiki/wiki/Zsh)
+  #   bindkey "''${key[Up]}" up-line-or-search
+  # '';
 
   # systemd.user = {
   #   enable = false;
@@ -110,4 +92,5 @@
   #     };
   #   };
   # };
+  home.stateVersion = "25.05";
 }
