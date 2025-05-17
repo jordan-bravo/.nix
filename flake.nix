@@ -102,9 +102,9 @@
         # Workstations (Laptops / Desktops)
         tux = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          # specialArgs = { inherit inputs pkgs-2411; };
+          specialArgs = { inherit inputs; };
           modules = [
-            ./nixos/tux/configuration.nix
+            ./hosts/tux/configuration.nix
             # lanzaboote.nixosModules.lanzaboote
             /*
               This section uses home-manager as a NixOS module
@@ -114,7 +114,7 @@
               # home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.jordan = import ./home-manager/tux/home.nix;
+              home-manager.users.jordan = import ./hosts/tux/home.nix;
               home-manager.backupFileExtension = "backup";
             }
           ];

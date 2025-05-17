@@ -36,7 +36,7 @@
       "--glob=!.var/*"
       "--glob=!.venv/*"
 
-      # Ignore case when patter is all lowercase
+      # Ignore case when pattern is all lowercase
       "--smart-case"
 
       # Don't respect ignore files (.gitignore, .ignore, etc.)

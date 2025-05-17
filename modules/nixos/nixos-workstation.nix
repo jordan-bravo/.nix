@@ -1,5 +1,3 @@
-# nixos/shared/workstation-conf.nix
-
 { pkgs, ... }:
 
 {

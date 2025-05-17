@@ -6,6 +6,11 @@
   imports = [
     inputs.sops-nix.nixosModules.sops
   ];
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
+    systemd-boot.configurationLimit = 8;
+  };
   users.users.main = {
     description = "main";
     extraGroups = [ /*"docker"*/ "networkmanager" "wheel" ];

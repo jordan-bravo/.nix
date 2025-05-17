@@ -5,8 +5,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../shared/shared-conf.nix
-    ../shared/workstation-conf.nix
+    ../../modules/nixos/nixos-all.nix
+    ../../modules/nixos/nixos-workstation.nix
     # inputs.xremap-flake.nixosModules.default
   ];
 
@@ -30,6 +30,8 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   networking.hostName = "tux";
+
+  system.stateVersion = "25.05";
 
   # services.ollama = {
   #   enable = true;

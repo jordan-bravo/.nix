@@ -1,5 +1,3 @@
-# ~/.nix/tux/home.nix
-
 { pkgs, ... }:
 
 {
@@ -36,7 +34,7 @@
   imports = [
     # ../shared/git.nix
     # ../shared/home.nix
-    # ../shared/kitty.nix
+    ../../modules/home-manager/kitty.nix
     # ../shared/workstations.nix
     # ../shared/waybar.nix
     # ../shared/hyprland.nix
