@@ -57,7 +57,7 @@
     home-manager
     neovim
     ripgrep
-    trashy
+    trash-cli
     wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
 
     # Programming language tools (lang servers, formatters, etc.)
@@ -138,7 +138,7 @@
 
   programs.bat = {
     enable = true;
-    settings.theme = "Visual Studio Dark+";
+    settings.theme = "\"Visual Studio Dark+\"";
   };
 
   programs.direnv = {

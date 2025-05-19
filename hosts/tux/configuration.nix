@@ -1,5 +1,3 @@
-# ~/.nix/tux/configuration.nix
-
 { pkgs, ... }:
 
 {
@@ -17,7 +15,7 @@
   boot.initrd.luks.devices."luks-b833f707-549f-4dc1-a252-b169903c5677".device = "/dev/disk/by-uuid/b833f707-549f-4dc1-a252-b169903c5677";
 
   environment.systemPackages = with pkgs; [
-    steam-run # Simulate a FHS environment to run binaries meant for non-NixOS linux
+    # element-desktop # Matrix client
     sparrow # Bitcoin wallet
   ];
 
