@@ -1,5 +1,3 @@
-# finserv/configuration.nix
-
 { config, lib, pkgs, ... }:
 
 {
@@ -7,6 +5,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-server.nix
+    ../../secrets/finserv-secrets.nix
   ];
 
   environment.systemPackages = with pkgs; [
