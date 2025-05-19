@@ -1,4 +1,4 @@
-{ inputs, /* osConfig, */ pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports = [
@@ -25,10 +25,10 @@
 
   services.openssh.enable = true;
 
-  # programs.zsh.interactiveShellInit = ''
-  #   # Add ssh key
-  #   ssh-add ~/.ssh/ssh_id_ed25519_main@${osConfig.networking.hostName} 1> /dev/null 2>&1
-  # '';
+  programs.zsh.interactiveShellInit = ''
+    # Add ssh key
+    ssh-add ~/.ssh/ssh_id_ed25519_main@${config.networking.hostName} 1> /dev/null 2>&1
+  '';
 }
 
 /*
