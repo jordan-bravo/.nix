@@ -21,7 +21,7 @@
       # inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
-    nixpkgs-2411.url = "github:nixos/nixpkgs/nixos-24.11";
+    # nixpkgs-2411.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # VSCode / VSCodium extensions
     # nix-vscode-extensions = {
@@ -68,7 +68,7 @@
     , lanzaboote
     , lnbits
     , nix-bitcoin
-    , nixpkgs-2411
+      # , nixpkgs-2411
     , nixpkgs
       # , nixpkgs-python
       # , nixpkgs-py27
