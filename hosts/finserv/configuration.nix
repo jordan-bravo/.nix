@@ -109,7 +109,7 @@
       enable = true;
     };
     lnbits = {
-      enable = true;
+      enable = false;
       host = "0.0.0.0";
       env = {
         # If setting these values declaritively doesn't work, set
@@ -119,6 +119,9 @@
         LND_GRPC_PORT = "10009";
         LND_GRPC_CERT = "/etc/nix-bitcoin-secrets/lnd-cert";
         LND_GRPC_MACAROON = "/var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon";
+        # LNBITS_ADMIN_UI = "true";
+        # Enable/Disable account creation for new users
+        # LNBITS_ALLOW_NEW_ACCOUNTS = "true";
       };
     };
     lnd = {
@@ -261,7 +264,7 @@
       };
     };
   };
-  users.users.lnbits = {
-    extraGroups = [ "lnd" ];
-  };
+  # users.users.lnbits = {
+  #   extraGroups = [ "lnd" ];
+  # };
 }
