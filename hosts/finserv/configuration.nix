@@ -109,7 +109,7 @@
       enable = true;
     };
     lnbits = {
-      enable = false;
+      enable = true;
       host = "0.0.0.0";
       env = {
         # If setting these values declaritively doesn't work, set
@@ -261,7 +261,7 @@
       };
     };
   };
-  # users.users.lnbits = {
-  #   extraGroups = [ "lnd" ];
-  # };
+  users.users.lnbits = {
+    extraGroups = [ "lnd" ];
+  };
 }
