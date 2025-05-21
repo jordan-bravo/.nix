@@ -76,17 +76,15 @@
     username = "jordan";
   };
   imports = [
-    # ../shared/bash.nix
-    ../shared/git.nix
-    ../shared/i3status.nix
-    # ../shared/kanata.nix
-    ../shared/kanshi.nix
-    ../shared/nvim/deps.nix
-    ../shared/ripgrep.nix
-    # ../shared/workstations.nix
+    ../../modules/home-manager/git.nix
+    ../../modules/home-manager/i3status.nix
+    # ../../modules/home-manager/kanata.nix
+    ../../modules/home-manager/kanshi.nix
+    ../../modules/home-manager/nvim-deps.nix
+    ../../modules/home-manager/ripgrep.nix
     ../../secrets/workstations-secrets.nix
-    # ../shared/zellij.nix
-    ../shared/zsh.nix
+    # ../../modules/home-manager/zellij.nix
+    ../../modules/home-manager/zsh.nix
   ];
   programs = {
     atuin.enable = true;

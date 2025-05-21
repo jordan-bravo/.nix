@@ -159,7 +159,7 @@
           # pkgs = nixpkgs.legacyPackages."x86_64-linux";
           inherit pkgs; # equivalent to pkgs = pkgs;
           extraSpecialArgs = { inherit inputs; };
-          modules = [ ./home-manager/thinky/home.nix ];
+          modules = [ ./hosts/thinky/home.nix ];
         };
       };
       # System-Manager (for controlling services and system config on non-NixOS Linux)
