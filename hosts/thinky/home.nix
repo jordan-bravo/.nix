@@ -6,7 +6,6 @@
     packages = with pkgs; [
       ### fonts
       fira-code # Monospace font with programming ligatures
-      hasklig # Monospace font with programming ligatures
       adwaita-qt # Adwaita style for Qt apps
       adwaita-qt6 # Adwaita style for Qt6 apps
       # beekeeper-studio # SQL client
@@ -15,6 +14,7 @@
       ccls # C/c++ language server powered by clang
       # clang # C language family frontend for LLVM
       curl # Command line tool for transferring files with URL syntax
+      evil-helix # Helix editor with vim keybindings
       fontconfig
       fd # Simple, fast and user-friendly alternative to find
       # gcc # GNU compiler collection
@@ -39,6 +39,7 @@
       pamixer # Pulseaudio command line mixer
       pinentry-gnome3 # GnuPG’s interface to passphrase input
       # postman # API client
+      procs # Modern ps
       sd # Intuitive find & replace CLI (sed alternative)
       # seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
       slurp # Select a region of the screen in a Wayland compositor
@@ -94,6 +95,7 @@
         theme = "Visual Studio Dark+";
       };
     };
+    bottom.enable = true;
     broot.enable = true;
     direnv = {
       enable = true;
