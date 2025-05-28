@@ -9,6 +9,7 @@
 
   environment.systemPackages = with pkgs; [
     # adwaita-qt # Adwaita style for Qt apps
+    gnome-software
     gnome-tweaks
     nextcloud-client
     mullvad-vpn
