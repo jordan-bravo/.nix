@@ -51,4 +51,30 @@
     # Add ssh key, suppress output
     ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan" 1> /dev/null 2>&1
   '';
+
+  ### Update flatpaks daily
+  # Create the systemd service and timer
+  systemd.services.flatpak-update = {
+    description = "Update Flatpak packages";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.flatpak}/bin/flatpak update -y";
+      User = "root"; # Run as root to update system-wide flatpaks
+    };
+    # Ensure flatpak is available
+    path = [ pkgs.flatpak ];
+  };
+
+  systemd.timers.flatpak-update = {
+    description = "Run Flatpak update daily at noon";
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      # Set specific time to noon (12:00)
+      OnCalendar = "*-*-* 12:00:00";
+      # Run missed timers when system comes back online
+      Persistent = true;
+      # Add some randomization to avoid load spikes
+      RandomizedDelaySec = "30m";
+    };
+  };
 }
