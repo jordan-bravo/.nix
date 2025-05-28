@@ -16,7 +16,7 @@
     hostName = "finserv";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 3030 4040 9735 9736 3001 60845 ];
+      allowedTCPPorts = [ 3030 4040 9090 9735 9736 3001 60845 ];
     };
   };
 
