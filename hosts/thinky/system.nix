@@ -1,3 +1,4 @@
+# this is a system-manager module
 { lib, pkgs, ... }:
 
 {
@@ -195,4 +196,3 @@
   [Install]
   WantedBy=sockets.target
 */
-
