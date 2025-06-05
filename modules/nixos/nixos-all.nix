@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   boot.loader = {
@@ -37,12 +37,6 @@
   # boot.kernelParams = [ "ipv6.disable=1" ];
 
   nixpkgs.config.allowUnfree = true;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
-
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
     # substituters = [ "https://hyprland.cachix.org" ];
@@ -160,4 +154,32 @@
     rootless.enable = true;
     rootless.setSocketVariable = true;
   };
+
+  ### Auto-update system daily
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--print-build-logs"
+    ];
+    dates = "12:30";
+    randomizedDelaySec = "45min";
+  };
+
+  ### Auto-optimize storage
+  nix.optimise.automatic = true;
+  nix.optimise.dates = [ "03:45" ]; # Optional; allows customizing optimisation schedule
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+  ### Run garbage collection if storage is low
+  nix.extraOptions = ''
+    min-free = ${toString (100 * 1024 * 1024)}
+    max-free = ${toString (1024 * 1024 * 1024)}
+  '';
+
 }

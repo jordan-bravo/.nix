@@ -77,18 +77,4 @@
       RandomizedDelaySec = "30m";
     };
   };
-
-  ### Auto-update system daily
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--print-build-logs"
-    ];
-    dates = "12:30";
-    randomizedDelaySec = "45min";
-  };
-
 }
