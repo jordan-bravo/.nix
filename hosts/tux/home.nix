@@ -1,36 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  # dconf = {
-  #   settings = {
-  #     "org/gnome/desktop/interface" = {
-  #       # text-scaling-factor = 0.8; # BitLab LG
-  #       # text-scaling-factor = 1.0; # Normal scaling
-  #       # text-scaling-factor = 1.25; # Home Innocn
-  #       # text-scaling-factor = 1.45; # tux built-in
-  #       # text-scaling-factor = 1.75; # Larger
-  #       text-scaling-factor = 2.0; # Double
-  #     };
-  #     "org/gnome/desktop/peripherals/mouse" = {
-  #       speed = -0.8;
-  #     };
-  #     "org/gnome/desktop/peripherals/touchpad" = {
-  #       speed = 0.25;
-  #     };
-  #     "org/virt-manager/virt-manager/connections" = {
-  #       autoconnect = [ "qemu:///system" ];
-  #       uris = [ "qemu:///system" ];
-  #     };
-  #     # "org/gnome/desktop/sound" = {
-  #     #   allow-volume-above-100-percent = true;
-  #     # };
-  #   };
-  # };
-  # home = {
-  #   packages = with pkgs; [
-  #     atuin
-  #   ];
-  # };
+  home.stateVersion = "25.05";
+
   imports = [
     # ../shared/git.nix
     # ../shared/home.nix
@@ -41,6 +13,9 @@
     # android-nixpkgs.hmModule {
     # }
   ];
+
+  services.copyq.enable = true;
+
   # programs.vscode = {
   #   enable = false;
   #   package = pkgs.vscodium;
@@ -90,5 +65,4 @@
   #     };
   #   };
   # };
-  home.stateVersion = "25.05";
 }

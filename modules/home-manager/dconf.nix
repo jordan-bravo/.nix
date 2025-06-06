@@ -5,6 +5,14 @@ with lib.hm.gvariant;
 {
   dconf.enable = true;
   dconf.settings = {
+    #     "org/gnome/desktop/interface" = {
+    #       # text-scaling-factor = 0.8; # BitLab LG
+    #       # text-scaling-factor = 1.0; # Normal scaling
+    #       # text-scaling-factor = 1.25; # Home Innocn
+    #       # text-scaling-factor = 1.45; # tux built-in
+    #       # text-scaling-factor = 1.75; # Larger
+    #       text-scaling-factor = 2.0; # Double
+    #     };
     "org/gnome/desktop/calendar" = {
       show-weekdate = true;
     };
@@ -27,9 +35,11 @@ with lib.hm.gvariant;
     };
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = true;
+      # speed = -0.8;
     };
     "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;
+      # speed = 0.25;
     };
     "org/gnome/desktop/privacy" = {
       remove-old-trash-files = true;
@@ -43,6 +53,7 @@ with lib.hm.gvariant;
     };
     "org/gnome/desktop/sound" = {
       event-sounds = false;
+      # allow-volume-above-100-percent = true;
     };
     "org/gnome/desktop/wm/keybindings" = {
       close = [ ];
@@ -79,6 +90,10 @@ with lib.hm.gvariant;
     #   binding = "<Alt><Ctrl>0";
     #   command = "gnome-sessing-quit";
     #   name = "Log Out Of GNOME";
+    # };
+    # "org/virt-manager/virt-manager/connections" = {
+    #   autoconnect = [ "qemu:///system" ];
+    #   uris = [ "qemu:///system" ];
     # };
     "org/gnome/settings-daemon/plugins/power" = {
       idle-dim = false;
