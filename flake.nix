@@ -16,32 +16,16 @@
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lnbits = {
-      url = "github:lnbits/lnbits/main";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # This is the nix-bitcoin branch you normally want
     nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
-    # nixpkgs-2411.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # VSCode / VSCodium extensions
-    # nix-vscode-extensions = {
-    #   url = "github:nix-community/nix-vscode-extensions";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    # This is the nix-bitcoin branch to use temporarily until the below PR is merged:
+    # https://github.com/fort-nix/nix-bitcoin/pull/787
+    # nix-bitcoin.url = "github:erikarvstedt/nix-bitcoin/mempool-3.2.1";
     # NixGL for graphics driver issues on non-NixOS
     nixgl = {
       url = "github:guibou/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Configure Firefox extensions via Home Manager
-    # firefox-addons = {
-    #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-    #   inputs.nixpkgs.follows = "nixpkgs-2411";
-    # };
-    # nixneovim = {
-    #   url = "github:nixneovim/nixneovim";
-    #   inputs.nixpkgs.follows = "nixpkgs-2411";
-    # };
     # nixpkgs-python = {
     #   url = "github:cachix/nixpkgs-python";
     #   # inputs.nixpkgs.follows = "nixpkgs-2411";
@@ -62,24 +46,14 @@
   };
 
   outputs =
-    {
-      # android-nixpkgs,
-      home-manager
+    { home-manager
     , lanzaboote
     , lnbits
     , nix-bitcoin
-      # , nixpkgs-2411
     , nixpkgs
-      # , nixpkgs-python
-      # , nixpkgs-py27
     , nixgl
-      # , nixneovim
-      # , nixpkgs-neovim-094
-      # , nixpkgs-nixos-nixd-123
     , sops-nix
     , system-manager
-      # , xremap-flake
-      # , nixpkgs-micro-2-0-12
     , ...
     }@inputs:
     let
@@ -89,8 +63,6 @@
       # pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
       #   system = "x86_64-linux";
       # };
-      # uncomment this next line if servers need pkgs arg for home-manager
-      # pkgs = nixpkgs.legacyPackages."x86_64-linux";
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         overlays = [ nixgl.overlay ];

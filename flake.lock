@@ -250,16 +250,16 @@
         "nixpkgs-unstable": "nixpkgs-unstable"
       },
       "locked": {
-        "lastModified": 1748187031,
-        "narHash": "sha256-F4zdOfeg0xjEnvFjlHvoMmdmh/FxK1qIsZyscnGDgA0=",
-        "owner": "fort-nix",
+        "lastModified": 1748854015,
+        "narHash": "sha256-KG3RJErgaXT2l5hIdUvZEcsu8djfcl4pWCPiEDSONUk=",
+        "owner": "erikarvstedt",
         "repo": "nix-bitcoin",
-        "rev": "a06d1d8118865af14a9187e7d1a7a141dd89af74",
+        "rev": "7822e2c9d39a0a738992a231d0b7d25e2ce7c22a",
         "type": "github"
       },
       "original": {
-        "owner": "fort-nix",
-        "ref": "release",
+        "owner": "erikarvstedt",
+        "ref": "mempool-3.2.1",
         "repo": "nix-bitcoin",
         "type": "github"
       }

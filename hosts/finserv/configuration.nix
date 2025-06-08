@@ -153,7 +153,7 @@
       rpcAddress = "0.0.0.0";
     };
     mempool = {
-      enable = true;
+      enable = false;
       electrumServer = "fulcrum";
       frontend = {
         enable = true;
