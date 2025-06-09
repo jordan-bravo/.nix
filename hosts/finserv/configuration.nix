@@ -108,22 +108,22 @@
     liquidd = {
       enable = true;
     };
-    lnbits = {
-      enable = false;
-      host = "0.0.0.0";
-      env = {
-        # If setting these values declaritively doesn't work, set
-        # them manually in the GUI under Server > Funding Sources
-        LNBITS_BACKEND_WALLET_CLASS = "LndWallet";
-        LND_GRPC_ENDPOINT = "127.0.0.1";
-        LND_GRPC_PORT = "10009";
-        LND_GRPC_CERT = "/etc/nix-bitcoin-secrets/lnd-cert";
-        LND_GRPC_MACAROON = "/var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon";
-        # LNBITS_ADMIN_UI = "true";
-        # Enable/Disable account creation for new users
-        # LNBITS_ALLOW_NEW_ACCOUNTS = "true";
-      };
-    };
+    # lnbits = {
+    #   enable = false;
+    #   host = "0.0.0.0";
+    #   env = {
+    #     # If setting these values declaritively doesn't work, set
+    #     # them manually in the GUI under Server > Funding Sources
+    #     LNBITS_BACKEND_WALLET_CLASS = "LndWallet";
+    #     LND_GRPC_ENDPOINT = "127.0.0.1";
+    #     LND_GRPC_PORT = "10009";
+    #     LND_GRPC_CERT = "/etc/nix-bitcoin-secrets/lnd-cert";
+    #     LND_GRPC_MACAROON = "/var/lib/lnd/chain/bitcoin/mainnet/admin.macaroon";
+    #     # LNBITS_ADMIN_UI = "true";
+    #     # Enable/Disable account creation for new users
+    #     # LNBITS_ALLOW_NEW_ACCOUNTS = "true";
+    #   };
+    # };
     lnd = {
       enable = true;
       lndconnect.enable = true;
@@ -153,7 +153,7 @@
       rpcAddress = "0.0.0.0";
     };
     mempool = {
-      enable = false;
+      enable = true;
       electrumServer = "fulcrum";
       frontend = {
         enable = true;

@@ -17,10 +17,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # This is the nix-bitcoin branch you normally want
-    nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
-    # This is the nix-bitcoin branch to use temporarily until the below PR is merged:
-    # https://github.com/fort-nix/nix-bitcoin/pull/787
-    # nix-bitcoin.url = "github:erikarvstedt/nix-bitcoin/mempool-3.2.1";
+    # nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
+    # This is the branch to use temporarily until the releaes branch is up-to-date
+    nix-bitcoin.url = "github:fort-nix/nix-bitcoin/master";
     # NixGL for graphics driver issues on non-NixOS
     nixgl = {
       url = "github:guibou/nixGL";
@@ -48,7 +47,6 @@
   outputs =
     { home-manager
     , lanzaboote
-    , lnbits
     , nix-bitcoin
     , nixpkgs
     , nixgl
@@ -120,7 +118,6 @@
               home-manager.users.main = import ./hosts/finserv/home.nix;
             }
             nix-bitcoin.nixosModules.default
-            lnbits.nixosModules.default
           ];
         };
       };
