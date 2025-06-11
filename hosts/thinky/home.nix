@@ -21,6 +21,7 @@
       gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
       gh # GitHub CLI
       ghostty # Fast, native, feature-rich terminal emulator pushing modern features
+      heroku # Heroku CLI
       git-crypt # Transparent file encryption in git
       grim # Grab images from a Wayland compositor
       hello # CLI hello world
@@ -40,6 +41,7 @@
       pinentry-gnome3 # GnuPG’s interface to passphrase input
       # postman # API client
       procs # Modern ps
+      rustlings # Explore the Rust programming language and learn more about it while doing exercises
       sd # Intuitive find & replace CLI (sed alternative)
       # seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
       slurp # Select a region of the screen in a Wayland compositor
@@ -227,6 +229,17 @@
     udiskie = {
       enable = true;
       tray = "never";
+    };
+  };
+  systemd.user.services.copyq = {
+    Unit = {
+      Description = "Launch copyq on login";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+    Service = {
+      ExecStart = "/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=copyq com.github.hluk.copyq --start-server";
     };
   };
   systemd.user.targets = {
