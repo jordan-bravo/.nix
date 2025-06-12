@@ -17,6 +17,7 @@
       evil-helix # Helix editor with vim keybindings
       fontconfig
       fd # Simple, fast and user-friendly alternative to find
+      fnm # Fast and simple Node.js version manager
       # gcc # GNU compiler collection
       gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
       gh # GitHub CLI
@@ -36,6 +37,7 @@
       nautilus # File manager for GNOME
       neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
+      # nodejs-14.nodejs-14_x # NodeJS 14
       openssh # Implementation of the SSH protocol
       pamixer # Pulseaudio command line mixer
       pinentry-gnome3 # GnuPG’s interface to passphrase input
@@ -214,7 +216,7 @@
   };
 
   services = {
-    # copyq.enable = true;
+    copyq.enable = true;
     gnome-keyring = {
       enable = false;
       components = [ "pkcs11" "secrets" "ssh" ];
@@ -231,17 +233,17 @@
       tray = "never";
     };
   };
-  systemd.user.services.copyq = {
-    Unit = {
-      Description = "Launch copyq on login";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-    Service = {
-      ExecStart = "/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=copyq com.github.hluk.copyq --start-server";
-    };
-  };
+  # systemd.user.services.copyq = {
+  #   Unit = {
+  #     Description = "Launch copyq on login";
+  #   };
+  #   Install = {
+  #     WantedBy = [ "graphical.target" ];
+  #   };
+  #   Service = {
+  #     ExecStart = "/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=copyq com.github.hluk.copyq --start-server";
+  #   };
+  # };
   systemd.user.targets = {
     sway-session = {
       Unit = {
