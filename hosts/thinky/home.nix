@@ -208,9 +208,9 @@
         v = "nvim";
 
         # Connect to machines on tailnet
-        medserv = "waypipe ssh main@$(tailscale status | grep medserv | awk '{print $1}')";
-        finserv = "waypipe ssh main@$(tailscale status | grep finserv | awk '{print $1}')";
-        sovserv = "waypipe ssh main@$(tailscale status | grep sovserv | awk '{print $1}')";
+        medserv = "ssh main@$(tailscale status | grep medserv | awk '{print $1}')";
+        finserv = "ssh main@$(tailscale status | grep finserv | awk '{print $1}')";
+        sovserv = "ssh main@$(tailscale status | grep sovserv | awk '{print $1}')";
       };
     };
   };
