@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, sparrow-pkgs, ... }:
 
 {
   imports = [
@@ -16,7 +16,7 @@
 
   environment.systemPackages = with pkgs; [
     element-desktop # Matrix client
-    sparrow # Bitcoin wallet
+    sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
   ];
 
   # fonts.packages = with pkgs; [
@@ -24,8 +24,8 @@
   # ];
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   networking.hostName = "tux";
 

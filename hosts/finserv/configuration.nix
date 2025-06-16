@@ -27,7 +27,6 @@
   nix-bitcoin.generateSecrets = true;
 
   # Enable some services.
-  # See ../configuration.nix for all available features.
   services = {
     backups.enable = true; # backs up data to /var/lib/localBackups
     borgbackup = {

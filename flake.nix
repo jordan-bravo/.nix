@@ -25,6 +25,7 @@
       url = "github:guibou/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # nixpkgs-python = {
     #   url = "github:cachix/nixpkgs-python";
     #   # inputs.nixpkgs.follows = "nixpkgs-2411";
@@ -33,6 +34,7 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sparrow-nixpkgs.url = "github:nixos/nixpkgs/bdac72d387dca7f836f6ef1fe547755fb0e9df61"; # bdac72d387dca7f836f6ef1fe547755fb0e9df61
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -51,6 +53,7 @@
     , nixpkgs
     , nixgl
     , sops-nix
+    , sparrow-nixpkgs
     , system-manager
     , ...
     }@inputs:
@@ -66,13 +69,14 @@
         overlays = [ nixgl.overlay ];
         # You can now reference pkgs.nixgl.nixGLIntel
       };
+      sparrow-pkgs = import sparrow-nixpkgs { system = "x86_64-linux"; };
     in
     {
       nixosConfigurations = {
         # Workstations (Laptops / Desktops)
         tux = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs sparrow-pkgs; };
           modules = [
             ./hosts/tux/configuration.nix
             # lanzaboote.nixosModules.lanzaboote

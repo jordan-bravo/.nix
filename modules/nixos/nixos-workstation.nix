@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   environment.sessionVariables = {
@@ -13,6 +13,7 @@
     gnome-tweaks
     nextcloud-client
     mullvad-vpn
+    steam-run
     zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
   ];
 
