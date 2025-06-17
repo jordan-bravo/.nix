@@ -329,25 +329,25 @@
         Icon=nextcloud
       '';
     };
-    signal-desktop-entry = {
-      target = ".local/share/applications/org.signal.Signal.desktop";
-      enable = true;
-      text = ''
-        [Desktop Entry]
-        Name=Signal
-        Exec=flatpak run org.signal.Signal --use-tray-icon --no-sandbox %U --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
-        Terminal=false
-        Type=Application
-        Icon=org.signal.Signal
-        StartupWMClass=Signal
-        Comment=Private messaging from your desktop
-        MimeType=x-scheme-handler/sgnl;x-scheme-handler/signalcaptcha;
-        Categories=Network;InstantMessaging;Chat;
-        X-Desktop-File-Install-Version=0.28
-        X-Flatpak-RenamedFrom=signal-desktop.desktop;
-        X-Flatpak=org.signal.Signal
-      '';
-    };
+    # signal-desktop-entry = {
+    #   target = ".local/share/applications/org.signal.Signal.desktop";
+    #   enable = true;
+    #   text = ''
+    #     [Desktop Entry]
+    #     Name=Signal
+    #     Exec=flatpak run org.signal.Signal --use-tray-icon --no-sandbox %U --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland
+    #     Terminal=false
+    #     Type=Application
+    #     Icon=org.signal.Signal
+    #     StartupWMClass=Signal
+    #     Comment=Private messaging from your desktop
+    #     MimeType=x-scheme-handler/sgnl;x-scheme-handler/signalcaptcha;
+    #     Categories=Network;InstantMessaging;Chat;
+    #     X-Desktop-File-Install-Version=0.28
+    #     X-Flatpak-RenamedFrom=signal-desktop.desktop;
+    #     X-Flatpak=org.signal.Signal
+    #   '';
+    # };
     trayscale-desktop-entry = {
       target = ".local/share/applications/dev.deedles.Trayscale.desktop";
       enable = true;
