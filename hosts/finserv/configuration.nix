@@ -193,7 +193,8 @@
   # The downsides are increased evaluation times and increased system
   # closure size.
   #
-  nix-bitcoin.useVersionLockedPkgs = true;
+  # You probably only want to enable this if a package build fails
+  # nix-bitcoin.useVersionLockedPkgs = true;
 
   # WireGuard
   # networking.wg-quick.interfaces = {
