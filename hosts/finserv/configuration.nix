@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-server.nix
-    ../../secrets/finserv-secrets.nix
+    ../../secrets/secrets.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -126,7 +126,7 @@
     lnd = {
       enable = true;
       lndconnect.enable = true;
-      # certificate.extraIPs = [ "<this-is-secret>" ]; # look in finserv-secrets.nix
+      # certificate.extraIPs = [ "<this-is-secret>" ]; # look in secrets.nix
       extraConfig = ''
         protocol.simple-taproot-chans=true
         alias=Antares

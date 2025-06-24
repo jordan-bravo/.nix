@@ -7,6 +7,10 @@
     #   url = "github:tadfisher/android-nixpkgs";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    # disko = {
+    #   url = "github:nix-commumity/disko";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,10 +51,11 @@
   };
 
   outputs =
-    { home-manager
+    { nixpkgs
+    , disko
+    , home-manager
     , lanzaboote
     , nix-bitcoin
-    , nixpkgs
     , nixgl
     , sops-nix
     , sparrow-nixpkgs
@@ -124,6 +129,31 @@
             nix-bitcoin.nixosModules.default
           ];
         };
+        punk = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/punk/configuration.nix
+            # home-manager.nixosModules.home-manager
+            # {
+            #   home-manager.extraSpecialArgs = { inherit inputs; };
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            #   home-manager.users.main = import ./hosts/punk/home.nix;
+            # }
+          ];
+        };
+        # nixos-anywhere target machine
+        # nixos-anywhere --flake .#generic --generate-hardware-config nixos-generate-config ./hosts/generic/hardware-configuration.nix root@<host-ip-address>
+        # generic = nixpkgs.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   modules = [
+        #     disko.nixosModules.disko
+        #     ./hosts/generic/configuration.nix
+        #     ./hosts/generic/hardware-configuration.nix
+        #   ];
+        # };
+
       };
       # Home-Manager standalone configurations
       homeConfigurations = {

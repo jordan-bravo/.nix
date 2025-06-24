@@ -53,6 +53,10 @@
     ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan" 1> /dev/null 2>&1
   '';
 
+  programs.ssh.extraConfig = ''
+    ForwardAgent yes
+  '';
+
   ### Auto-update flatpaks daily
   # Create the systemd service and timer
   systemd.services.flatpak-update = {

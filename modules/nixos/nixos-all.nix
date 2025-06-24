@@ -37,16 +37,12 @@
   # boot.kernelParams = [ "ipv6.disable=1" ];
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    # substituters = [ "https://hyprland.cachix.org" ];
-    # trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-    # sandbox = false; # This is true by default. Only set to false if necessary.
-  };
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
     fira-code
     fontconfig
     gcc # GNU Compiler Collection, version 13.2.0 (wrapper script)
+    gh # GitHub CLI
     git-crypt
     home-manager
     neovim
