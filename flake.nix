@@ -52,9 +52,9 @@
 
   outputs =
     { nixpkgs
-    , disko
+      # , disko
     , home-manager
-    , lanzaboote
+      # , lanzaboote
     , nix-bitcoin
     , nixgl
     , sops-nix
@@ -131,7 +131,7 @@
         };
         punk = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          # specialArgs = { inherit inputs; };
           modules = [
             ./hosts/punk/configuration.nix
             # home-manager.nixosModules.home-manager

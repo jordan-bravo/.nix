@@ -1,1 +1,4 @@
-secrets/git-crypt-secrets.nix filter=git-crypt diff=git-crypt
+hosts/sovserv/secrets.nix filter=git-crypt diff=git-crypt
+hosts/finserv/secrets.nix filter=git-crypt diff=git-crypt
+hosts/punk/secrets.nix filter=git-crypt diff=git-crypt
+modules/nixos/workstation-secrets.nix filter=git-crypt diff=git-crypt

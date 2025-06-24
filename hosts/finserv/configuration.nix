@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-server.nix
-    ../../secrets/git-crypt-secrets.nix
+    ../secrets.nix
   ];
 
   environment.systemPackages = with pkgs; [

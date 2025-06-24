@@ -1,13 +1,11 @@
-{ modulesPath
-, lib
+{ lib
 , pkgs
 , ...
 } @ args:
 {
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-    (modulesPath + "/profiles/qemu-guest.nix")
-    ./disk-config.nix
+    ./hardware-configuration.nix
+    ./secrets.nix
   ];
   boot.loader.grub = {
     # no need to set devices, disko will add all devices that have a EF02 partition to the list already
@@ -26,8 +24,9 @@
 
   networking = {
     hostName = "change-this";
-    interfaces.eth0.ipv4.addresses = [{ address = "store-in-secrets"; prefixLength = 24; }];
-    defaultGateway = "also-store-in-secrets";
+    # next two options read from ./secrets.nix
+    # interfaces.eth0.ipv4.addresses = [{ address = "stored-in-secrets"; prefixLength = 24; }];
+    # defaultGateway = "also-stored-in-secrets";
     nameservers = [ "82.197.81.10" "1.1.1.1" "8.8.4.4" ]; # hostinger, cloudflare, google
     firewall.allowedTCPPorts = [ 80 443 22 ];
   };
