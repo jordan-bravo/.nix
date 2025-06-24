@@ -87,7 +87,7 @@
     ../../modules/home-manager/kanshi.nix
     ../../modules/home-manager/nvim-deps.nix
     ../../modules/home-manager/ripgrep.nix
-    ../../secrets/workstations-secrets.nix
+    ../../secrets/git-crypt-secrets.nix
     # ../../modules/home-manager/zellij.nix
     ../../modules/home-manager/zsh.nix
   ];

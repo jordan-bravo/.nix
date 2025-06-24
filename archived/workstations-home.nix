@@ -116,7 +116,7 @@
   # Programs with more extensive config are imported from separate modules.
   imports = [
     # ../shared/kanshi.nix
-    ../../secrets/workstations-secrets.nix
+    ../../secrets/git-crypt-secrets.nix
     # ../shared/kitty.nix
   ];
 
