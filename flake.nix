@@ -8,7 +8,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     disko = {
-      url = "github:nix-commumity/disko";
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -134,6 +134,7 @@
           # specialArgs = { inherit inputs; };
           modules = [
             ./hosts/punk/configuration.nix
+            ./hosts/punk/disk-config.nix
             # home-manager.nixosModules.home-manager
             # {
             #   home-manager.extraSpecialArgs = { inherit inputs; };
