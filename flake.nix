@@ -7,10 +7,10 @@
     #   url = "github:tadfisher/android-nixpkgs";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    # disko = {
-    #   url = "github:nix-commumity/disko";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    disko = {
+      url = "github:nix-commumity/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,7 +52,7 @@
 
   outputs =
     { nixpkgs
-      # , disko
+    , disko
     , home-manager
       # , lanzaboote
     , nix-bitcoin
