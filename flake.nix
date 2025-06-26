@@ -134,7 +134,7 @@
           # specialArgs = { inherit inputs; };
           modules = [
             ./hosts/punk/configuration.nix
-            ./hosts/punk/disk-config.nix
+            disko.nixosModules.disko
             # home-manager.nixosModules.home-manager
             # {
             #   home-manager.extraSpecialArgs = { inherit inputs; };
