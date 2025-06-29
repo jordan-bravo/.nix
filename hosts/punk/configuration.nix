@@ -16,15 +16,20 @@
   };
   services.openssh.enable = true;
 
-  environment.systemPackages = map lib.lowPrio [
-    pkgs.curl
-    pkgs.gitMinimal
-    pkgs.neovim
-    pkgs.wl-clipboard
+  environment.systemPackages = with pkgs; [
+    bat
+    curl
+    delta
+    gcc
+    git
+    lsd
+    neovim
+    trash-cli
+    wl-clipboard
   ];
 
   networking = {
-    hostName = "change-this";
+    hostName = "punk";
     # next two options read from ./secrets.nix
     # interfaces.eth0.ipv4.addresses = [{ address = "stored-in-secrets"; prefixLength = 24; }];
     # defaultGateway = "also-stored-in-secrets";
@@ -32,7 +37,7 @@
     firewall.allowedTCPPorts = [ 80 443 22 ];
   };
 
-  users.users.root.initialHashedPassword = "$y$j9T$8Sk5rvIZbjXDqYTlsgDzS.$4z7A1Ixu8T49tzTgyupKG/bwWbRMZVXfrRHOCFbgElD";
+  # users.users.root.initialHashedPassword = "$y$j9T$8Sk5rvIZbjXDqYTlsgDzS.$4z7A1Ixu8T49tzTgyupKG/bwWbRMZVXfrRHOCFbgElD";
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILIqAdolJ5EQgszdsbzcbbIBZ+LMmZEOISlsCkcER/Ne jordan@bravo.cc"
   ];
