@@ -1,5 +1,6 @@
 {
   programs.git = {
+    enable = true;
     aliases = {
       # Deletes branches that have been mergd into master/main, qa, or dev
       tidy = "!git branch --merged | grep -vE \"master|main|qa|staging|development|dev|\\*\" | xargs -n 1 git branch -d";
