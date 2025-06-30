@@ -1,5 +1,5 @@
 {
   imports = [
-    ../../modules/home-manager/hm-server.nix
+    ../../modules/home-manager/hm-all.nix
   ];
 }

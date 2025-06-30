@@ -1,8 +1,5 @@
 {
   imports = [
-    # ../shared/home.nix
-    # ../shared/servers.nix
+    ../../modules/home-manager/hm-all.nix
   ];
-
-  home.stateVersion = "25.05";
 }
