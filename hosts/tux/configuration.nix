@@ -16,8 +16,6 @@
   # This might be needed to specify additional binary caches
   # nix.settings.trusted-users = [ "root" "jordan" ];
 
-  # Should this go in hardware-configuratin.nix?
-
   environment.systemPackages = with pkgs; [
     element-desktop # Matrix client
     sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
