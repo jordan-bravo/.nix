@@ -1,10 +1,9 @@
-{ lib
-, pkgs
-, ...
-} @ args:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
+    # ../../modules/nixos/nixos-all.nix
+    # ../../modules/nixos/nixos-server.nix
     ./secrets.nix
     ./disk-config.nix
   ];
@@ -14,20 +13,6 @@
     efiSupport = true;
     efiInstallAsRemovable = true;
   };
-  services.openssh.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    bat
-    curl
-    delta
-    gcc
-    git
-    lsd
-    neovim
-    trash-cli
-    wl-clipboard
-  ];
-
   networking = {
     hostName = "punk";
     # next two options read from ./secrets.nix
@@ -36,6 +21,16 @@
     nameservers = [ "82.197.81.10" "1.1.1.1" "8.8.4.4" ]; # hostinger, cloudflare, google
     firewall.allowedTCPPorts = [ 80 443 22 ];
   };
+
+  environment.systemPackages = with pkgs; [
+    delta
+    gcc
+    git
+    lsd
+    neovim
+    trash-cli
+    wl-clipboard
+  ];
 
   # users.users.root.initialHashedPassword = "$y$j9T$8Sk5rvIZbjXDqYTlsgDzS.$4z7A1Ixu8T49tzTgyupKG/bwWbRMZVXfrRHOCFbgElD";
   users.users.root.openssh.authorizedKeys.keys = [

@@ -7,18 +7,17 @@
     ../../modules/nixos/nixos-server.nix
     ../secrets.nix
   ];
-
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
+    systemd-boot.configurationLimit = 4;
+  };
+  networking.hostName = "finserv";
+  networking.firewall.allowedTCPPorts = [ 3030 4040 9090 9735 9736 3001 60845 ];
   environment.systemPackages = with pkgs; [
     wireguard-tools
   ];
 
-  networking = {
-    hostName = "finserv";
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [ 3030 4040 9090 9735 9736 3001 60845 ];
-    };
-  };
 
   ### nix-bitcoin section
 

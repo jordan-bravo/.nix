@@ -21,6 +21,7 @@
         publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGU0mISTyHBw9tBs6SuhSq8tvNM8m9eifQxM+88TowPO";
       };
     };
+    startAgent = true;
   };
 
   services.openssh.enable = true;

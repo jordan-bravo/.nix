@@ -7,12 +7,16 @@
     ../../modules/nixos/nixos-workstation.nix
     # inputs.xremap-flake.nixosModules.default
   ];
-
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
+    systemd-boot.configurationLimit = 4;
+  };
+  networking.hostName = "tux";
   # This might be needed to specify additional binary caches
   # nix.settings.trusted-users = [ "root" "jordan" ];
 
   # Should this go in hardware-configuratin.nix?
-  boot.initrd.luks.devices."luks-b833f707-549f-4dc1-a252-b169903c5677".device = "/dev/disk/by-uuid/b833f707-549f-4dc1-a252-b169903c5677";
 
   environment.systemPackages = with pkgs; [
     element-desktop # Matrix client
@@ -27,18 +31,8 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
-  networking.hostName = "tux";
 
   system.stateVersion = "25.05";
-
-  # services.ollama = {
-  #   enable = true;
-  # };
-  #
-  # services.nextjs-ollama-llm-ui = {
-  #   enable = true;
-  #   ollamaUrl = "http://127.0.0.1:11434";
-  # };
 
   # Remap keys
 

@@ -1,11 +1,6 @@
 { pkgs, inputs, ... }:
 
 {
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
-    systemd-boot.configurationLimit = 4;
-  };
   # According to home-manager docs for programs.zsh.enableCompletion, adding the following
   # line enables completion for system packages (e.g. systemd)
   environment.pathsToLink = [ "/share/zsh" ];
@@ -58,7 +53,6 @@
   ];
   programs.git.enable = true;
   programs.gnupg.agent.enable = true;
-  programs.ssh.startAgent = true;
   programs.zoxide = { enable = true; enableZshIntegration = true; };
   programs.zsh = {
     enable = true;
@@ -135,7 +129,6 @@
     enable = true;
     nix-direnv.enable = true;
   };
-  services.openssh.enable = true;
   # # There is an outstanding bug with NetworkManager that causes NixOS rebuilds to fail sometimes, this is the workaround.
   # # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
   systemd.services.NetworkManager-wait-online = {

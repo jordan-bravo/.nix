@@ -106,7 +106,7 @@
             ./hosts/sovserv/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              # home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.main = import ./hosts/sovserv/home.nix;
@@ -121,7 +121,7 @@
             ./hosts/finserv/configuration.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.extraSpecialArgs = { inherit inputs; };
+              # home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.main = import ./hosts/finserv/home.nix;
@@ -135,13 +135,13 @@
           modules = [
             ./hosts/punk/configuration.nix
             disko.nixosModules.disko
-            # home-manager.nixosModules.home-manager
-            # {
-            #   home-manager.extraSpecialArgs = { inherit inputs; };
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            #   home-manager.users.main = import ./hosts/punk/home.nix;
-            # }
+            home-manager.nixosModules.home-manager
+            {
+              # home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.main = import ./hosts/punk/home.nix;
+            }
           ];
         };
         # nixos-anywhere target machine
