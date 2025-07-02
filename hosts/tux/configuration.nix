@@ -30,8 +30,6 @@
   services.desktopManager.gnome.enable = true;
 
 
-  system.stateVersion = "25.05";
-
   # Remap keys
 
   ### Remap keys using xremap
