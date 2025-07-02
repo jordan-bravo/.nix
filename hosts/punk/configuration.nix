@@ -2,8 +2,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    # ../../modules/nixos/nixos-all.nix
-    # ../../modules/nixos/nixos-server.nix
+    ../../modules/nixos/nixos-all.nix
+    ../../modules/nixos/nixos-server.nix
     ./secrets.nix
     ./disk-config.nix
   ];
@@ -22,15 +22,6 @@
     firewall.allowedTCPPorts = [ 80 443 22 ];
   };
 
-  environment.systemPackages = with pkgs; [
-    delta
-    gcc
-    git
-    lsd
-    neovim
-    trash-cli
-    wl-clipboard
-  ];
 
   # users.users.root.initialHashedPassword = "$y$j9T$8Sk5rvIZbjXDqYTlsgDzS.$4z7A1Ixu8T49tzTgyupKG/bwWbRMZVXfrRHOCFbgElD";
   users.users.root.openssh.authorizedKeys.keys = [
