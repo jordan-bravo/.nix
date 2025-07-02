@@ -1,8 +1,8 @@
-{ inputs, config, pkgs, ... }:
+{ config, pkgs, sops-nix, ... }:
 
 {
   imports = [
-    inputs.sops-nix.nixosModules.sops
+    sops-nix.nixosModules.sops
   ];
   users.users.main = {
     description = "main";

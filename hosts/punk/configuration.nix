@@ -22,7 +22,6 @@
     firewall.allowedTCPPorts = [ 80 443 22 ];
   };
 
-
   # users.users.root.initialHashedPassword = "$y$j9T$8Sk5rvIZbjXDqYTlsgDzS.$4z7A1Ixu8T49tzTgyupKG/bwWbRMZVXfrRHOCFbgElD";
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILIqAdolJ5EQgszdsbzcbbIBZ+LMmZEOISlsCkcER/Ne jordan@bravo.cc"
