@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-server.nix
-    ../secrets.nix
+    ./secrets.nix
   ];
   boot.loader = {
     efi.canTouchEfiVariables = true;
