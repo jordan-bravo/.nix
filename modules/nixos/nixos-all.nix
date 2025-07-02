@@ -40,6 +40,8 @@
     gh # GitHub CLI
     git-crypt
     home-manager
+    jq
+    lsd
     neovim
     ripgrep
     trash-cli
@@ -53,6 +55,7 @@
   ];
   programs.git.enable = true;
   programs.gnupg.agent.enable = true;
+  programs.yazi.enable = true;
   programs.zoxide = { enable = true; enableZshIntegration = true; };
   programs.zsh = {
     enable = true;
@@ -101,9 +104,9 @@
     v = "nvim";
 
     # Connect to machines on tailnet
-    medserv = "waypipe ssh main@$(tailscale status | grep medserv | awk '{print $1}')";
-    finserv = "waypipe ssh main@$(tailscale status | grep finserv | awk '{print $1}')";
-    sovserv = "waypipe ssh main@$(tailscale status | grep sovserv | awk '{print $1}')";
+    medserv = "ssh main@$(tailscale status | grep medserv | awk '{print $1}')";
+    finserv = "ssh main@$(tailscale status | grep finserv | awk '{print $1}')";
+    sovserv = "ssh main@$(tailscale status | grep sovserv | awk '{print $1}')";
   };
 
   programs.starship = {
@@ -125,10 +128,7 @@
     settings.theme = "\"Visual Studio Dark+\"";
   };
 
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
+  programs.direnv = { enable = true; nix-direnv.enable = true; };
   # # There is an outstanding bug with NetworkManager that causes NixOS rebuilds to fail sometimes, this is the workaround.
   # # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
   systemd.services.NetworkManager-wait-online = {

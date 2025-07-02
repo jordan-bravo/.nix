@@ -5,4 +5,6 @@
     ../../modules/home-manager/git.nix
     ../../modules/home-manager/ripgrep.nix
   ];
+
+  programs.atuin.enable = true;
 }
