@@ -1,9 +1,6 @@
-{ config, pkgs, sops-nix, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports = [
-    sops-nix.nixosModules.sops
-  ];
   users.users.main = {
     description = "main";
     extraGroups = [ /*"docker"*/ "networkmanager" "wheel" ];

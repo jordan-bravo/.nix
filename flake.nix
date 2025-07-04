@@ -112,11 +112,12 @@
               home-manager.users.main = import ./hosts/sovserv/home.nix;
               home-manager.backupFileExtension = "backup";
             }
+            sops-nix.nixosModules.sops
           ];
         };
         finserv = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs sops-nix; };
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/finserv/configuration.nix
             home-manager.nixosModules.home-manager
@@ -127,11 +128,12 @@
               home-manager.users.main = import ./hosts/finserv/home.nix;
             }
             nix-bitcoin.nixosModules.default
+            sops-nix.nixosModules.sops
           ];
         };
         punk = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs sops-nix; };
+          specialArgs = { inherit inputs; };
           modules = [
             ./hosts/punk/configuration.nix
             disko.nixosModules.disko
@@ -142,6 +144,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.main = import ./hosts/punk/home.nix;
             }
+            sops-nix.nixosModules.sops
           ];
         };
         # nixos-anywhere target machine
