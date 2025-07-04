@@ -11,6 +11,7 @@
     # adwaita-qt # Adwaita style for Qt apps
     gnome-software
     gnome-tweaks
+    grayjay
     nextcloud-client
     mullvad-vpn
     steam-run
