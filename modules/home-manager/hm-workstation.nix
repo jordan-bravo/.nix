@@ -1,6 +1,7 @@
 {
   imports = [
-    ../../modules/home-manager/kitty.nix
+    ./kitty.nix
+    ./workstation-secrets.nix
   ];
 
   services.copyq.enable = true;
