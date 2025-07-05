@@ -92,6 +92,7 @@
     l = "ls -lAhF";
     lal = "ls -AhF";
     gs = "git status";
+    ga = "git add";
     gc = "git commit";
     gf = "git fetch";
     gm = "git merge";
