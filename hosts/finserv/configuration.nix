@@ -28,26 +28,26 @@
   # Enable some services.
   services = {
     backups.enable = true; # backs up data to /var/lib/localBackups
-    borgbackup = {
-      jobs = {
-        finserv-cln = {
-          compression = "auto,lzma";
-          encryption = {
-            mode = "repokey-blake2";
-            passCommand = "cat ${config.sops.secrets."borg/passphrase".path}";
-          };
-          environment = {
-            BORG_RSH = "ssh -i ${config.sops.secrets."borg/ssh-private-key".path}";
-          };
-          paths = "/var/backup/clightning";
-          preHook = ''
-            export BORG_REPO=$(cat ${config.sops.secrets."borg/repos/finserv-cln".path})
-          '';
-          repo = "$BORG_REPO";
-          startAt = "*-*-* 01:30:00";
-        };
-      };
-    };
+    # borgbackup = {
+    #   jobs = {
+    #     finserv-cln = {
+    #       compression = "auto,lzma";
+    #       encryption = {
+    #         mode = "repokey-blake2";
+    #         passCommand = "cat ${config.sops.secrets."borg/passphrase".path}";
+    #       };
+    #       environment = {
+    #         BORG_RSH = "ssh -i ${config.sops.secrets."borg/ssh-private-key".path}";
+    #       };
+    #       paths = "/var/backup/clightning";
+    #       preHook = ''
+    #         export BORG_REPO=$(cat ${config.sops.secrets."borg/repos/finserv-cln".path})
+    #       '';
+    #       repo = "$BORG_REPO";
+    #       startAt = "*-*-* 01:30:00";
+    #     };
+    #   };
+    # };
     bitcoind = {
       enable = true;
       extraConfig = ''
@@ -63,7 +63,7 @@
     ### CLIGHTNING
     # clightning = {
     #   enable = false; # Enable clightning, a Lightning Network implementation in C.
-    #   # address = "82.180.160.3";
+    #   # address = "<ip-address-here>";
     #   # == Plugins
     #   # See ../README.md (Features → clightning) for the list of available plugins.
     #   extraConfig = ''
