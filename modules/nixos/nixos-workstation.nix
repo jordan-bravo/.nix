@@ -33,7 +33,6 @@
   };
   services.flatpak.enable = true;
   services.printing.enable = true;
-  services.tailscale.enable = true;
   services.xserver = {
     # Enable the X11 windowing system.  I think this is required even with Wayland.
     enable = true;

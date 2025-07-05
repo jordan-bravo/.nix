@@ -148,7 +148,6 @@
       databases = [ "nextcloud" ];
       startAt = "*-*-* 03:15:00";
     };
-    tailscale.enable = true;
   };
   sops = {
     age.keyFile = "/home/main/.config/sops/age/keys.txt";

@@ -159,10 +159,7 @@
         # nginxConfig = {};
       };
     };
-    tailscale = {
-      enable = true;
-      useRoutingFeatures = "client";
-    };
+    tailscale.useRoutingFeatures = "client";
     tor = {
       enable = true;
       client.enable = true;

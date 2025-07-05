@@ -21,7 +21,4 @@
     nameservers = [ "82.197.81.10" "1.1.1.1" "8.8.4.4" ]; # hostinger, cloudflare, google
     firewall.allowedTCPPorts = [ 80 443 22 ];
   };
-  users.users.main.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILIqAdolJ5EQgszdsbzcbbIBZ+LMmZEOISlsCkcER/Ne jordan@bravo.cc"
-  ];
 }

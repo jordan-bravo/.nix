@@ -22,6 +22,10 @@
   };
 
   services.openssh.enable = true;
+  services.openssh.settings.PermitRootLogin = "no";
+  users.users.main.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILIqAdolJ5EQgszdsbzcbbIBZ+LMmZEOISlsCkcER/Ne jordan@bravo.cc"
+  ];
 
   programs.zsh.interactiveShellInit = ''
     # Add ssh key

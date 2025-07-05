@@ -129,6 +129,7 @@
   };
 
   programs.direnv = { enable = true; nix-direnv.enable = true; };
+  services.tailscale.enable = true;
   # # There is an outstanding bug with NetworkManager that causes NixOS rebuilds to fail sometimes, this is the workaround.
   # # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
   systemd.services.NetworkManager-wait-online = {
@@ -137,6 +138,7 @@
     };
   };
   system.stateVersion = "25.05";
+  users.users.root.hashedPassword = "!";
   # virtualisa.libvirtd.enable = true;
   virtualisation.docker = {
     enable = true;
