@@ -44,6 +44,7 @@
     lsd
     neovim
     ripgrep
+    termimage
     trash-cli
     wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
 
