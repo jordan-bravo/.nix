@@ -91,11 +91,15 @@
   environment.shellAliases = {
     l = "ls -lAhF";
     lal = "ls -AhF";
-    gexit = "gnome-session-quit --no-prompt";
+    gs = "git status";
+    gc = "git commit";
+    gf = "git fetch";
+    gm = "git merge";
+    gp = "git push";
+    gr = "git rebase";
     hms = "home-manager switch --flake ~/.nix#$(hostname)";
     mise-activate = "eval \"$(~/.local/bin/mise activate zsh)\"";
     nr = "sudo nixos-rebuild switch --flake ~/.nix";
-    s = "git status";
     sauce = "source $HOME/.config/zsh/.zshrc";
     sshk = "kitty +kitten ssh";
     td = "sudo tailscale down";
@@ -105,8 +109,9 @@
     v = "nvim";
 
     # Connect to machines on tailnet
-    medserv = "ssh main@$(tailscale status | grep medserv | awk '{print $1}')";
     finserv = "ssh main@$(tailscale status | grep finserv | awk '{print $1}')";
+    medserv = "ssh main@$(tailscale status | grep medserv | awk '{print $1}')";
+    punk-ubuntu = "ssh main@$(tailscale status | grep punk-ubuntu | awk '{print $1}')";
     sovserv = "ssh main@$(tailscale status | grep sovserv | awk '{print $1}')";
   };
 
