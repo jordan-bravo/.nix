@@ -178,6 +178,12 @@
         # If fd exists, use instead of find
         type fd > /dev/null 2>&1 && alias find=fd
 
+        # If duf exists, use instead of df
+        type duf > /dev/null 2>&1 && alias df=duf
+
+        # If dust exists, use instead of du
+        type dust > /dev/null 2>&1 && alias du=dust
+
         # Accept next word from zsh autosuggestion with Ctrl+U
         bindkey ^U forward-word
 
@@ -195,6 +201,7 @@
         l = "ls -lAhF";
         lal = "ls -AhF";
         gs = "git status";
+        gd = "git diff";
         ga = "git add";
         gc = "git commit";
         gf = "git fetch";

@@ -34,16 +34,19 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
+    duf # Disk Usage/Free Utility
+    dust # du + rust = dust. Like du but more intuitive
+    fd # Simple, fast and user-friendly alternative to find
     fira-code
     fontconfig
     gcc # GNU Compiler Collection, version 13.2.0 (wrapper script)
     gh # GitHub CLI
     git-crypt
     home-manager
-    jq
-    lsd
+    jq # JSON parsing
+    lsd # Next gen ls command
     neovim
-    ripgrep
+    ripgrep # Alternative to grep
     termimage
     trash-cli
     wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
@@ -81,6 +84,12 @@
       # If fd exists, use instead of find
       type fd > /dev/null 2>&1 && alias find=fd
 
+      # If duf exists, use instead of df
+      type duf > /dev/null 2>&1 && alias df=duf
+
+      # If dust exists, use instead of du
+      type dust > /dev/null 2>&1 && alias du=dust
+
       # Accept next word from zsh autosuggestion with Ctrl+U
       bindkey ^U forward-word
 
@@ -92,6 +101,7 @@
     l = "ls -lAhF";
     lal = "ls -AhF";
     gs = "git status";
+    gd = "git diff";
     ga = "git add";
     gc = "git commit";
     gf = "git fetch";
