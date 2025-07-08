@@ -121,6 +121,7 @@
     ssh = {
       enable = true;
       addKeysToAgent = "yes";
+      forwardAgent = true;
       extraConfig = ''
         StrictHostKeyChecking=no
       '';
