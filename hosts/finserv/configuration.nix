@@ -254,6 +254,16 @@
     lnd = {
       postStart = "chmod g+rx ${config.services.lnd.dataDir}/chain{,/bitcoin{,/${config.services.bitcoind.network}}}";
     };
+    # rustdress provides lightning address and NIP-05 functionality
+    rustdress = {
+      after = [ "network.target" ];
+      serviceConfig = {
+        ExecStart = "/home/main/apps/rustdress/target/release/rustdress";
+        Restart = "always";
+        EnvironmentFile = "/home/main/apps/rustdress/.env";
+      };
+      wantedBy = [ "multi-user.target" ];
+    };
   };
   systemd.timers = {
     lnd-connect-to-peers = {
