@@ -210,7 +210,8 @@
         grb = "git rebase";
         grs = "git restore";
         gsw = "git switch";
-        gst = "git status";
+        gsh = "git stash";
+        gsu = "git status";
         hms = "home-manager switch --flake ~/.nix#$(hostname)";
         mise-activate = "eval \"$(~/.local/bin/mise activate zsh)\"";
         nr = "sudo nixos-rebuild switch --flake ~/.nix";
