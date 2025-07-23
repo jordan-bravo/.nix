@@ -201,6 +201,8 @@
       shellAliases = {
         l = "ls -lAhF";
         lal = "ls -AhF";
+        d = "docker";
+        dc = "docker compose";
         gad = "git add";
         gco = "git commit";
         gdi = "git diff";
