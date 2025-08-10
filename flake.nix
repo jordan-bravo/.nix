@@ -98,6 +98,25 @@
             }
           ];
         };
+        ryz = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs sops-nix sparrow-pkgs; };
+          modules = [
+            ./hosts/ryz/configuration.nix
+            # lanzaboote.nixosModules.lanzaboote
+            /*
+              This section uses home-manager as a NixOS module
+            */
+            home-manager.nixosModules.home-manager
+            {
+              # home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.jordan = import ./hosts/ryz/home.nix;
+              home-manager.backupFileExtension = "backup";
+            }
+          ];
+        };
         # Servers
         sovserv = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

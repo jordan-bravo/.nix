@@ -57,6 +57,16 @@
     ForwardAgent yes
   '';
 
+  ### Add flathub as flatpak remote
+  ### This is not working. Need to figure out how to install
+  ### user flatpak instead of system
+  # systemd.services.flatpak-repo = {
+  #   wantedBy = [ "multi-user.target" ];
+  #   path = [ pkgs.flatpak ];
+  #   script = ''
+  #     flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+  #   '';
+  # };
   ### Auto-update flatpaks daily
   # Create the systemd service and timer
   systemd.services.flatpak-update = {
