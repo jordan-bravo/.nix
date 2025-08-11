@@ -9,6 +9,7 @@
       adwaita-qt # Adwaita style for Qt apps
       adwaita-qt6 # Adwaita style for Qt6 apps
       # beekeeper-studio # SQL client
+      bitcoind # Bitcoin core
       # blueman # GTK-based Bluetooth Manager
       brightnessctl # Read and control device brightness
       ccls # C/c++ language server powered by clang
