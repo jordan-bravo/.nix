@@ -87,7 +87,7 @@
       extraApps = with config.services.nextcloud.package.packages.apps; {
         # List of apps we can install that are already packaged in nixpkgs at:
         # github.com/nixos/nixpkgs/blob/nixos-unstable/pkgs/servers/nextcloud/packages/nextcloud-apps.json
-        inherit calendar contacts cookbook forms notes notify_push onlyoffice tasks uppush whiteboard;
+        inherit /* bookmars */ calendar contacts cookbook forms notes notify_push onlyoffice tasks uppush whiteboard;
 
         # Custom app installation example, if cookbook weren't packaged
         # cookbook = pkgs.fetchNextcloudApp {
