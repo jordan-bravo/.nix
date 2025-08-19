@@ -87,7 +87,7 @@
       extraApps = with config.services.nextcloud.package.packages.apps; {
         # List of apps we can install that are already packaged in nixpkgs at:
         # github.com/nixos/nixpkgs/blob/nixos-unstable/pkgs/servers/nextcloud/packages/nextcloud-apps.json
-        inherit /* bookmars */ calendar contacts cookbook forms notes notify_push onlyoffice tasks uppush whiteboard;
+        inherit bookmarks calendar contacts cookbook forms notes notify_push onlyoffice tasks uppush whiteboard;
 
         # Custom app installation example, if cookbook weren't packaged
         # cookbook = pkgs.fetchNextcloudApp {
@@ -99,12 +99,9 @@
       hostName = "nextcloud.sovserv.top";
       https = true;
       maxUploadSize = "32G";
-      # After upgrading to Nextcloud 29, there is a error in Admin settings:
-      # Failed to get an iterator for log entries: Logreader application only supports "file" log_type
-      # The Nextcloud forums list a solution:  remove this line from config.php:
-      # 'log_type' => 'errorlog',
-      # The question is, how to do this on NixOS?
-      package = pkgs.nextcloud30;
+      # When updating nextcloud versions, you might see redis fail to start. If so, disable nextcloud, then 
+      # delete dump.rdb, then re-enable nextcloud
+      package = pkgs.nextcloud31;
       phpOptions = {
         "opcache.interned_strings_buffer" = "48";
       };

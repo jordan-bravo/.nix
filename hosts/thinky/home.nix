@@ -153,7 +153,7 @@
     zsh = {
       enable = true;
       defaultKeymap = "viins";
-      dotDir = ".config/zsh";
+      dotDir = config.xdg.configHome;
       initContent = ''
         # start ssh agent and add key to agent
         eval "$(ssh-agent -s)" > /dev/null

@@ -5,7 +5,7 @@
   programs.zsh = {
     enable = true;
     defaultKeymap = "viins";
-    dotDir = ".config/zsh";
+    dotDir = config.xdg.configHome;
     syntaxHighlighting.enable = true;
     syntaxHighlighting.highlighters = [ "brackets" ];
     autosuggestion.enable = true;
