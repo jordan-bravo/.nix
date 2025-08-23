@@ -10,7 +10,7 @@
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
-    systemd-boot.configurationLimit = 4;
+    systemd-boot.configurationLimit = 8;
   };
   networking.hostName = "ryz";
   # This might be needed to specify additional binary caches
@@ -26,9 +26,20 @@
   #   nerd-fonts.fira-code
   # ];
 
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  # Enable the GNOME Desktop Environment
+  services.desktopManager.gnome.enable = false;
+  # Enable GNOME login manager (GDM)
+  services.displayManager.gdm.enable = false;
+
+  # Enable the COSMIC Desktop Environment
+  services.desktopManager.cosmic.enable = true;
+  # Enable the COSMIC login manager
+  services.displayManager.cosmic-greeter.enable = true;
+  # Enable automatic login with COSMIC login manager
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "jordan";
+  };
 
   # Systemd service to disable ThinkPad Lid LED
   # This doesn't seem to be working when suspended
