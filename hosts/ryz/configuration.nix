@@ -30,6 +30,17 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
+  # Systemd service to disable ThinkPad Lid LED
+  # This doesn't seem to be working when suspended
+  systemd.services.thinkpad-disable-led = {
+    description = "Disables the red logo LED at startup";
+    after = [ "basic.target" "suspend.target" ];
+    serviceConfig = {
+      Type = "exec";
+      ExecStart = "/run/current-system/sw/bin/sh -c 'echo 0 | tee /sys/class/leds/tpacpi::lid_logo_dot/brightness'";
+    };
+    wantedBy = [ "basic.target" "suspend.target" ];
+  };
 
   ### Secure Boot using lanzaboote
 
