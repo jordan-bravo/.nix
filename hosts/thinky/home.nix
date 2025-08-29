@@ -2,12 +2,15 @@
 
 {
   fonts.fontconfig.enable = true;
+  nixpkgs.config.allowUnfree = true;
   home = {
     packages = with pkgs; [
       ### fonts
       fira-code # Monospace font with programming ligatures
+
       adwaita-qt # Adwaita style for Qt apps
       adwaita-qt6 # Adwaita style for Qt6 apps
+      awscli2 # Unified tool to manage your AWS services
       # beekeeper-studio # SQL client
       bitcoind # Bitcoin core
       # blueman # GTK-based Bluetooth Manager
@@ -50,6 +53,8 @@
       slurp # Select a region of the screen in a Wayland compositor
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       swayosd # on screen display for keyboard shortcuts such as volume and brightness
+      terraform # Tool for building, changing, and versioning infrastructure
+      terraform-ls # Terraform Language Server (official)
       tldr # Simplified and community-driven man pages
       trash-cli # Command line interface to the freedesktop.org trashcan
       waypipe # Network proxy for Wayland clients (applications)
