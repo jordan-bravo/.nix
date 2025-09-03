@@ -19,7 +19,7 @@
             status = "disable";
           }
           {
-            criteria = "DP-3";
+            criteria = "DP-8";
             status = "enable";
           }
         ];
