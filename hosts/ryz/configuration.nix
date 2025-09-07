@@ -22,6 +22,10 @@
     sparrow
   ];
 
+  users.users.jordan.packages = with pkgs; [
+    obsidian
+  ];
+
   # fonts.packages = with pkgs; [
   #   nerd-fonts.fira-code
   # ];
