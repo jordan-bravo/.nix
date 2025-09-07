@@ -49,6 +49,7 @@
     ripgrep # Alternative to grep
     termimage
     trash-cli
+    tre-command # Tree command, improved
     wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
 
     # Programming language tools (lang servers, formatters, etc.)
