@@ -12,7 +12,20 @@
         ];
       }
       {
-        profile.name = "home-dp-innocn";
+        profile.name = "home-dp8-innocn";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+          {
+            criteria = "DP-8";
+            status = "enable";
+          }
+        ];
+      }
+      {
+        profile.name = "home-dp9-innocn";
         profile.outputs = [
           {
             criteria = "eDP-1";
