@@ -12,20 +12,7 @@
         ];
       }
       {
-        profile.name = "left-display-port-8";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "disable";
-          }
-          {
-            criteria = "DP-8";
-            status = "enable";
-          }
-        ];
-      }
-      {
-        profile.name = "left-display-port-9";
+        profile.name = "home-dp-innocn";
         profile.outputs = [
           {
             criteria = "eDP-1";
@@ -37,19 +24,19 @@
           }
         ];
       }
-      {
-        profile.name = "right-display-port";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "disable";
-          }
-          {
-            criteria = "DP-1";
-            status = "enable";
-          }
-        ];
-      }
+      # {
+      #   profile.name = "right-display-port";
+      #   profile.outputs = [
+      #     {
+      #       criteria = "eDP-1";
+      #       status = "disable";
+      #     }
+      #     {
+      #       criteria = "DP-1";
+      #       status = "enable";
+      #     }
+      #   ];
+      # }
       {
         profile.name = "hdmi-bitlab";
         profile.outputs = [
