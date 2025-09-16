@@ -12,7 +12,7 @@
         ];
       }
       {
-        profile.name = "left-display-port";
+        profile.name = "left-display-port-8";
         profile.outputs = [
           {
             criteria = "eDP-1";
@@ -20,6 +20,19 @@
           }
           {
             criteria = "DP-8";
+            status = "enable";
+          }
+        ];
+      }
+      {
+        profile.name = "left-display-port-9";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+          {
+            criteria = "DP-9";
             status = "enable";
           }
         ];
