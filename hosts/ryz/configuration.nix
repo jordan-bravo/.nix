@@ -31,19 +31,26 @@
   # ];
 
   # Enable the GNOME Desktop Environment
-  services.desktopManager.gnome.enable = false;
+  services.desktopManager.gnome.enable = true;
   # Enable GNOME login manager (GDM)
-  services.displayManager.gdm.enable = false;
+  services.displayManager.gdm.enable = true;
 
   # Enable the COSMIC Desktop Environment
-  services.desktopManager.cosmic.enable = true;
+  services.desktopManager.cosmic.enable = false;
   # Enable the COSMIC login manager
-  services.displayManager.cosmic-greeter.enable = true;
-  # Enable automatic login with COSMIC login manager
+  services.displayManager.cosmic-greeter.enable = false;
+
+  # Enable automatic login
   services.displayManager.autoLogin = {
     enable = true;
     user = "jordan";
   };
+
+  # Cato VPN client
+  services.cato-client.enable = true;
+
+  # Systemd-resolve
+  # services.resolved.enable = true;
 
   # Systemd service to disable ThinkPad Lid LED
   # This doesn't seem to be working when suspended

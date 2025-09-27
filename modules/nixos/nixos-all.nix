@@ -47,7 +47,7 @@
     lsd # Next gen ls command
     neovim
     ripgrep # Alternative to grep
-    termimage
+    # termimage # Display images in your terminal
     trash-cli
     tre-command # Tree command, improved
     wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
