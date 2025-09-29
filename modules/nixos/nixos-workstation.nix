@@ -50,7 +50,7 @@
   };
   programs.zsh.interactiveShellInit = ''
     # Add ssh key, suppress output
-    ssh-add "$HOME/.ssh/ssh_id_ed25519_jordan" 1> /dev/null 2>&1
+    ssh-add ~/.ssh/ssh_id_ed25519_jordan 1> /dev/null 2>&1
   '';
 
   programs.ssh.extraConfig = ''
