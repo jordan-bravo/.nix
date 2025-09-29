@@ -12,44 +12,18 @@
         ];
       }
       {
-        profile.name = "home-dp8-innocn";
+        profile.name = "home-innocn";
         profile.outputs = [
           {
             criteria = "eDP-1";
             status = "disable";
           }
           {
-            criteria = "DP-8";
+            criteria = "Beihai Century Joint Innovation Technology Co.,Ltd 40C1R 0000000000000";
             status = "enable";
           }
         ];
       }
-      {
-        profile.name = "home-dp9-innocn";
-        profile.outputs = [
-          {
-            criteria = "eDP-1";
-            status = "disable";
-          }
-          {
-            criteria = "DP-9";
-            status = "enable";
-          }
-        ];
-      }
-      # {
-      #   profile.name = "right-display-port";
-      #   profile.outputs = [
-      #     {
-      #       criteria = "eDP-1";
-      #       status = "disable";
-      #     }
-      #     {
-      #       criteria = "DP-1";
-      #       status = "enable";
-      #     }
-      #   ];
-      # }
       {
         profile.name = "hdmi-bitlab";
         profile.outputs = [
@@ -65,7 +39,7 @@
         ];
       }
       {
-        profile.name = "hdmi-home";
+        profile.name = "home-hdmi";
         profile.outputs = [
           {
             criteria = "eDP-1";
@@ -90,15 +64,22 @@
 /*
 
   profile undocked {
-  output eDP-1 enable
+  output "eDP-1" enable
   }
-  profile dpl {
-  output eDP-1 disable
-  output DP-3 enable
+
+  profile home-innocn {
+  output "eDP-1" disable
+  output "Beihai Century Joint Innovation Technology Co.,Ltd 40C1R 0000000000000" enable
   }
-  profile hdmi {
-  output eDP-1 disable
-  output HDMI-A-1 enable scale 0.8
+
+  profile hdmi-bitlab {
+  output "eDP-1" disable
+  output "LG Electronics LG ULTRAGEAR 0x0004C6F2" enable scale 0.800000
+  }
+
+  profile home-hdmi {
+  output "eDP-1" enable scale 1.000000
+  output "Philips Consumer Electronics Company PHL 273V7 UHB1915002425" enable scale 0.800000
   }
 
 */
