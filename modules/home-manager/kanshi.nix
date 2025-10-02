@@ -25,7 +25,22 @@
         ];
       }
       {
-        profile.name = "hdmi-bitlab";
+        profile.name = "home-hdmi";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "enable";
+            scale = 1.0;
+          }
+          {
+            criteria = "Philips Consumer Electronics Company PHL 273V7 UHB1915002425";
+            status = "enable";
+            scale = 0.8;
+          }
+        ];
+      }
+      {
+        profile.name = "bitlab-lg-ultrawide";
         profile.outputs = [
           {
             criteria = "eDP-1";
@@ -39,17 +54,16 @@
         ];
       }
       {
-        profile.name = "home-hdmi";
+        profile.name = "bitlab-samsung-cf27";
         profile.outputs = [
           {
             criteria = "eDP-1";
-            status = "enable";
-            scale = 1.0;
+            status = "disable";
           }
           {
-            criteria = "Philips Consumer Electronics Company PHL 273V7 UHB1915002425";
+            criteria = "Samsung Electric Company C27F398 HCLM902717";
             status = "enable";
-            scale = 0.8;
+            # scale = 0.8;
           }
         ];
       }
