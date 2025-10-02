@@ -18,6 +18,7 @@
       ccls # C/c++ language server powered by clang
       # clang # C language family frontend for LLVM
       curl # Command line tool for transferring files with URL syntax
+      duf # Disk Usage/Free Utility
       evil-helix # Helix editor with vim keybindings
       fontconfig
       fd # Simple, fast and user-friendly alternative to find
@@ -126,8 +127,9 @@
     mise.enable = false;
     ssh = {
       enable = true;
-      addKeysToAgent = "yes";
-      forwardAgent = true;
+      enableDefaultConfig = false;
+      matchBlocks."*".addKeysToAgent = "yes";
+      matchBlocks."*".forwardAgent = true;
       extraConfig = ''
         StrictHostKeyChecking=no
       '';
