@@ -14,7 +14,7 @@
       # beekeeper-studio # SQL client
       bitcoind # Bitcoin core
       # blueman # GTK-based Bluetooth Manager
-      brightnessctl # Read and control device brightness
+      # brightnessctl # Read and control device brightness
       ccls # C/c++ language server powered by clang
       # clang # C language family frontend for LLVM
       curl # Command line tool for transferring files with URL syntax
@@ -33,27 +33,28 @@
       hello # CLI hello world
       kanata # Tool to improve keyboard comfort and usability with advanced customization
       # kdePackages.qt6ct # Qt6 Configuration Tool
-      # kitty # Terminal emulator
       lazydocker # Simple terminal UI for both docker and docker-compose
       lazygit # Simple terminal UI for git commands
       # libsForQt5.qt5.qtwayland # Cross-platform app framework for C++
       # libsForQt5.qt5ct # Qt5 Configuration Tool
       meson # Open source, fast and friendly build system made in Python
-      nautilus # File manager for GNOME
+      # nautilus # File manager for GNOME
       neovim # Text editor / IDE
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       # nodejs-14.nodejs-14_x # NodeJS 14
       openssh # Implementation of the SSH protocol
-      pamixer # Pulseaudio command line mixer
+      # pamixer # Pulseaudio command line mixer
       pinentry-gnome3 # GnuPG’s interface to passphrase input
       # postman # API client
       procs # Modern ps
       rustlings # Explore the Rust programming language and learn more about it while doing exercises
       sd # Intuitive find & replace CLI (sed alternative)
       # seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
-      slurp # Select a region of the screen in a Wayland compositor
+      # slurp # Select a region of the screen in a Wayland compositor
+      somo # Socket and port monitoring tool (replacement for ss)
+      sparrow # Modern desktop Bitcoin wallet application
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
-      swayosd # on screen display for keyboard shortcuts such as volume and brightness
+      # swayosd # on screen display for keyboard shortcuts such as volume and brightness
       terraform # Tool for building, changing, and versioning infrastructure
       terraform-ls # Terraform Language Server (official)
       tldr # Simplified and community-driven man pages
@@ -260,17 +261,6 @@
       tray = "never";
     };
   };
-  # systemd.user.services.copyq = {
-  #   Unit = {
-  #     Description = "Launch copyq on login";
-  #   };
-  #   Install = {
-  #     WantedBy = [ "graphical.target" ];
-  #   };
-  #   Service = {
-  #     ExecStart = "/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=copyq com.github.hluk.copyq --start-server";
-  #   };
-  # };
   systemd.user.targets = {
     sway-session = {
       Unit = {
