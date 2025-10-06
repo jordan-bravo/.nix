@@ -6,10 +6,10 @@
   home = {
     packages = with pkgs; [
       ### fonts
-      fira-code # Monospace font with programming ligatures
+      nerd-fonts.fira-code # Nerd Fonts: Programming ligatures, extension of Fira Mono font, enlarged operators
 
-      adwaita-qt # Adwaita style for Qt apps
-      adwaita-qt6 # Adwaita style for Qt6 apps
+      # adwaita-qt # Adwaita style for Qt apps
+      # adwaita-qt6 # Adwaita style for Qt6 apps
       awscli2 # Unified tool to manage your AWS services
       # beekeeper-studio # SQL client
       bitcoind # Bitcoin core
@@ -32,12 +32,12 @@
       grim # Grab images from a Wayland compositor
       hello # CLI hello world
       kanata # Tool to improve keyboard comfort and usability with advanced customization
-      kdePackages.qt6ct # Qt6 Configuration Tool
-      kitty # Terminal emulator
+      # kdePackages.qt6ct # Qt6 Configuration Tool
+      # kitty # Terminal emulator
       lazydocker # Simple terminal UI for both docker and docker-compose
       lazygit # Simple terminal UI for git commands
-      libsForQt5.qt5.qtwayland # Cross-platform app framework for C++
-      libsForQt5.qt5ct # Qt5 Configuration Tool
+      # libsForQt5.qt5.qtwayland # Cross-platform app framework for C++
+      # libsForQt5.qt5ct # Qt5 Configuration Tool
       meson # Open source, fast and friendly build system made in Python
       nautilus # File manager for GNOME
       neovim # Text editor / IDE
@@ -89,9 +89,10 @@
   };
   imports = [
     ../../modules/home-manager/git.nix
-    ../../modules/home-manager/i3status.nix
+    # ../../modules/home-manager/i3status.nix
     # ../../modules/home-manager/kanata.nix
-    ../../modules/home-manager/kanshi.nix
+    # ../../modules/home-manager/kanshi.nix
+    ../../modules/home-manager/kitty.nix
     ../../modules/home-manager/nvim-deps.nix
     ../../modules/home-manager/ripgrep.nix
     ../../modules/home-manager/workstation-secrets.nix
@@ -199,12 +200,12 @@
         git() { if [[ $@ == "pull" ]]; then command echo "git pull disabled.  Use git fetch + git merge."; else command git "$@"; fi; }
 
       '';
-      profileExtra = ''
-        # automatically start sway
-        if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
-            exec sway
-        fi
-      '';
+      # profileExtra = ''
+      #   # automatically start sway
+      #   if [ -z "$WAYLAND_DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ] ; then
+      #       exec sway
+      #   fi
+      # '';
       shellAliases = {
         l = "ls -lAhF";
         lal = "ls -AhF";
@@ -289,11 +290,19 @@
       # ghostty = {
       #   name = "Ghostty";
       #   genericName = "Terminal Emulator";
-      #   comment = "Fast, feature-rich, GPU based terminal";
+      #   comment = "Fast, native, feature-rich terminal emulator pushing modern features";
       #   exec = "nixGLIntel ghostty";
       #   icon = "ghostty";
       #   categories = [ "System" "TerminalEmulator" ];
       # };
+      kitty = {
+        name = "Kitty";
+        genericName = "Terminal Emulator";
+        comment = "Fast, feature-rich, GPU based terminal";
+        exec = "nixGLIntel kitty";
+        icon = "kitty";
+        categories = [ "System" "TerminalEmulator" ];
+      };
     };
     # Add diretories to XDG_DATA_DIRS
     systemDirs.data = [ "${config.home.homeDirectory}/.local/share/flatpak/exports/share" ];
@@ -324,37 +333,37 @@
         window-decoration = false
       '';
     };
-    nextcloud-desktop-entry = {
-      target = ".local/share/applications/com.nextcloud.desktopclient.nextcloud.desktop";
-      enable = true;
-      text = ''
-        [Desktop Entry]
-        Categories=Utility;X-SuSE-SyncUtility;
-        Type=Application
-        Exec=flatpak run com.nextcloud.desktopclient.nextcloud
-        Name=Nextcloud Desktop
-        Comment=Nextcloud desktop synchronization client
-        GenericName=Folder Sync
-        Icon=com.nextcloud.desktopclient.nextcloud
-        Keywords=Nextcloud;syncing;file;sharing;
-        X-GNOME-Autostart-Delay=3
-        MimeType=application/vnd.nextcloud;x-scheme-handler/nc;
-        SingleMainWindow=true
-        Actions=Quit;
-        Implements=org.freedesktop.CloudProviders
-        X-Flatpak=com.nextcloud.desktopclient.nextcloud
-
-        [org.freedesktop.CloudProviders]
-        BusName=com.nextcloudgmbh.Nextcloud
-        ObjectPath=/com/nextcloudgmbh/Nextcloud
-        Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 com.nextcloud.desktopclient.nextcloud
-
-        [Desktop Action Quit]
-        Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=nextcloud com.nextcloud.desktopclient.nextcloud --quit
-        Name=Quit Nextcloud
-        Icon=nextcloud
-      '';
-    };
+    # nextcloud-desktop-entry = {
+    #   target = ".local/share/applications/com.nextcloud.desktopclient.nextcloud.desktop";
+    #   enable = true;
+    #   text = ''
+    #     [Desktop Entry]
+    #     Categories=Utility;X-SuSE-SyncUtility;
+    #     Type=Application
+    #     Exec=flatpak run com.nextcloud.desktopclient.nextcloud
+    #     Name=Nextcloud Desktop
+    #     Comment=Nextcloud desktop synchronization client
+    #     GenericName=Folder Sync
+    #     Icon=com.nextcloud.desktopclient.nextcloud
+    #     Keywords=Nextcloud;syncing;file;sharing;
+    #     X-GNOME-Autostart-Delay=3
+    #     MimeType=application/vnd.nextcloud;x-scheme-handler/nc;
+    #     SingleMainWindow=true
+    #     Actions=Quit;
+    #     Implements=org.freedesktop.CloudProviders
+    #     X-Flatpak=com.nextcloud.desktopclient.nextcloud
+    #
+    #     [org.freedesktop.CloudProviders]
+    #     BusName=com.nextcloudgmbh.Nextcloud
+    #     ObjectPath=/com/nextcloudgmbh/Nextcloud
+    #     Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 com.nextcloud.desktopclient.nextcloud
+    #
+    #     [Desktop Action Quit]
+    #     Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=nextcloud com.nextcloud.desktopclient.nextcloud --quit
+    #     Name=Quit Nextcloud
+    #     Icon=nextcloud
+    #   '';
+    # };
     # signal-desktop-entry = {
     #   target = ".local/share/applications/org.signal.Signal.desktop";
     #   enable = true;
@@ -374,25 +383,25 @@
     #     X-Flatpak=org.signal.Signal
     #   '';
     # };
-    trayscale-desktop-entry = {
-      target = ".local/share/applications/dev.deedles.Trayscale.desktop";
-      enable = true;
-      text = ''
-        [Desktop Entry]
-        Version=1.0
-        Type=Application
-        Name=Trayscale
-        GenericName=Tailscale Client
-        Comment=An unofficial GUI interface for the Tailscale daemon.
-        Categories=System;GNOME;GTK;
-        Keywords=tailscale;vpn;
-        Icon=dev.deedles.Trayscale
-        Exec=flatpak run dev.deedles.Trayscale --hide-window
-        Terminal=false
-        SingleMainWindow=true
-        X-GNOME-UsesNotifications=true
-        X-Flatpak=dev.deedles.Trayscale
-      '';
-    };
+    # trayscale-desktop-entry = {
+    #   target = ".local/share/applications/dev.deedles.Trayscale.desktop";
+    #   enable = true;
+    #   text = ''
+    #     [Desktop Entry]
+    #     Version=1.0
+    #     Type=Application
+    #     Name=Trayscale
+    #     GenericName=Tailscale Client
+    #     Comment=An unofficial GUI interface for the Tailscale daemon.
+    #     Categories=System;GNOME;GTK;
+    #     Keywords=tailscale;vpn;
+    #     Icon=dev.deedles.Trayscale
+    #     Exec=flatpak run dev.deedles.Trayscale --hide-window
+    #     Terminal=false
+    #     SingleMainWindow=true
+    #     X-GNOME-UsesNotifications=true
+    #     X-Flatpak=dev.deedles.Trayscale
+    #   '';
+    # };
   };
 }
