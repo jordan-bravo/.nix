@@ -32,10 +32,6 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ## TODO (High Level)
 
-### tux
-
-- Configure Hyprland on tux
-
 ### finserv
 
 - Figure out how to connect electrs to liquidd. Note: use [esplora](https://github.com/Blockstream/esplora?tab=readme-ov-file#how-to-run-the-explorer-for-liquid-mainnet)
@@ -54,16 +50,6 @@ I have tried to put as much of the configuration as possible into Home Manager i
 - Obisidian Live Sync (TODO)
 - Vaultwarden (TODO)
 
-### Task List (Low Level)
+### Misc. Task List
 
 - Configure zsh autosuggest/autocomplete (which one? both?) to avoid using arrow keys for completion.
-- Remove repetition by declaring username only once in flake.nix, then passing to other modules.
-
-### Research Needed
-
-- On non-NixOS systems, how to declaritively configure things not available in home manger?
-  I think the answer to this is [system-manager](https://github.com/numtide/system-manager) - Postgres/Redis <-- solution for Alta is to run these in containers - Docker <-- Possibly replace with Podman which doesn't require root and might be nixable - Flatpak <-- Research declarative flatpak
-
----
-
-### Misc. Notes
