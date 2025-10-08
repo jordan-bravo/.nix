@@ -3,7 +3,7 @@
     enable = true;
     font = {
       name = "FiraCodeNerdFont";
-      size = 16;
+      size = 12;
     };
     shellIntegration.enableZshIntegration = true;
     settings = {
