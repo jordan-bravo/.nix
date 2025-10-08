@@ -331,6 +331,14 @@
         window-decoration = false
       '';
     };
+    vimrc = {
+      target = ".vimrc";
+      enable = true;
+      text = ''
+        autocmd InsertEnter * set nu nornu
+        autocmd InsertLeave * set nu rnu
+      '';
+    };
     # nextcloud-desktop-entry = {
     #   target = ".local/share/applications/com.nextcloud.desktopclient.nextcloud.desktop";
     #   enable = true;
