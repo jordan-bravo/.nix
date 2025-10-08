@@ -277,6 +277,12 @@
     enable = true;
     configHome = "${config.home.homeDirectory}/.config";
     desktopEntries = {
+      cursor = {
+        name = "Cursor Editor";
+        genericName = "Editor";
+        comment = "AI Powered Code Editor";
+        exec = "${config.home.homeDirectory}/apps/cursor/run-cursor.sh";
+      };
       # ghostty = {
       #   name = "Ghostty";
       #   genericName = "Terminal Emulator";
