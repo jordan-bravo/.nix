@@ -71,7 +71,7 @@
     preferXdgDirectories = true;
     sessionPath = [ "$HOME/.local/bin" "$HOME/.cargo/bin" "/run/system-manager/sw/bin" ];
     sessionVariables = {
-      _JAVA_AWT_WM_NONREPARENTING = 1;
+      # _JAVA_AWT_WM_NONREPARENTING = 1;
       DOCKER_CONFIG = "$HOME/.config/docker";
       EDITOR = "nvim";
       GTK_THEME = "Adwaita:dark";
@@ -79,11 +79,11 @@
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "adwaita-dark";
       QT_STYLE_OVERRIDE = "adwaita-dark";
-      SDL_VIDEODRIVER = "wayland";
+      # SDL_VIDEODRIVER = "wayland";
       TZ = "America/New_York";
-      XDG_CURRENT_DESKTOP = "sway";
-      XDG_SESSION_DESKTOP = "sway";
-      XDG_SESSION_TYPE = "wayland";
+      # XDG_CURRENT_DESKTOP = "sway";
+      # XDG_SESSION_DESKTOP = "sway";
+      # XDG_SESSION_TYPE = "wayland";
     };
     stateVersion = "25.05";
     username = "jordan";
