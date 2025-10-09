@@ -180,7 +180,7 @@
       };
       # Home-Manager standalone configurations
       homeConfigurations = {
-        # Thinky is running Ubuntu with Sway
+        # Thinky is running Pop!_OS with COSMIC desktop
         thinky = home-manager.lib.homeManagerConfiguration {
           # pkgs = nixpkgs.legacyPackages."x86_64-linux";
           inherit pkgs; # equivalent to pkgs = pkgs;
