@@ -31,14 +31,14 @@
   # ];
 
   # Enable the GNOME Desktop Environment
-  services.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = false;
   # Enable GNOME login manager (GDM)
-  services.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = false;
 
   # Enable the COSMIC Desktop Environment
-  services.desktopManager.cosmic.enable = false;
+  services.desktopManager.cosmic.enable = true;
   # Enable the COSMIC login manager
-  services.displayManager.cosmic-greeter.enable = false;
+  services.displayManager.cosmic-greeter.enable = true;
 
   # Enable automatic login
   services.displayManager.autoLogin = {
