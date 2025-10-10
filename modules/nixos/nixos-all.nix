@@ -131,7 +131,6 @@
     punk-ubuntu = "ssh main@$(tailscale status | grep punk-ubuntu | awk '{print $1}')";
     sovserv = "ssh main@$(tailscale status | grep sovserv | awk '{print $1}')";
   };
-
   programs.starship = {
     enable = true;
     settings = {
@@ -145,13 +144,15 @@
       };
     };
   };
-
   programs.bat = {
     enable = true;
     settings.theme = "\"Visual Studio Dark+\"";
   };
-
-  programs.direnv = { enable = true; nix-direnv.enable = true; };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    silent = true;
+  };
   services.tailscale.enable = true;
   # # There is an outstanding bug with NetworkManager that causes NixOS rebuilds to fail sometimes, this is the workaround.
   # # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
