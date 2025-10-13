@@ -154,8 +154,8 @@
     silent = true;
   };
   services.tailscale.enable = true;
-  # # There is an outstanding bug with NetworkManager that causes NixOS rebuilds to fail sometimes, this is the workaround.
-  # # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
+  # There is an outstanding bug with NetworkManager that causes NixOS rebuilds to fail sometimes, this is the workaround.
+  # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
   systemd.services.NetworkManager-wait-online = {
     serviceConfig = {
       ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
@@ -191,7 +191,7 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-  ### Run garbage collection if storage is low
+  # Run garbage collection if storage is low
   nix.extraOptions = ''
     min-free = ${toString (100 * 1024 * 1024)}
     max-free = ${toString (1024 * 1024 * 1024)}

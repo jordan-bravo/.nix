@@ -81,7 +81,7 @@
         # Workstations (Laptops / Desktops)
         tux = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs sops-nix sparrow-pkgs; };
+          specialArgs = { inherit inputs sops-nix; };
           modules = [
             ./hosts/tux/configuration.nix
             # lanzaboote.nixosModules.lanzaboote

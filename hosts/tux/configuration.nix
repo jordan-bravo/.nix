@@ -1,4 +1,4 @@
-{ pkgs, sparrow-pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -7,27 +7,40 @@
     ../../modules/nixos/nixos-workstation.nix
     # inputs.xremap-flake.nixosModules.default
   ];
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
-    systemd-boot.configurationLimit = 4;
+    # systemd-boot.configurationLimit = 4;
   };
   networking.hostName = "tux";
   # This might be needed to specify additional binary caches
   # nix.settings.trusted-users = [ "root" "jordan" ];
 
+  boot.initrd.luks.devices."luks-5bd61864-93b8-494c-856f-6cde9cc407a1".device = "/dev/disk/by-uuid/5bd61864-93b8-494c-856f-6cde9cc407a1";
+
   environment.systemPackages = with pkgs; [
-    element-desktop # Matrix client
-    sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
+    # element-desktop # Matrix client
+    # sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
+    vim
+    git
+    bitwarden-desktop
+    gnupg
   ];
 
   # fonts.packages = with pkgs; [
   #   nerd-fonts.fira-code
   # ];
 
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  # Enable the GNOME login manager
+  services.displayManager.gdm.enable = false;
+  # Enable the GNOME Desktop Environment
+  services.desktopManager.gnome.enable = false;
+
+  # Enable the COSMIC Desktop Environment
+  services.desktopManager.cosmic.enable = true;
+  # Enable the COSMIC login manager
+  services.displayManager.cosmic-greeter.enable = true;
 
 
   # Remap keys
