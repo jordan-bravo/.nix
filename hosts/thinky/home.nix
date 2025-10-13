@@ -24,7 +24,7 @@
       fd # Simple, fast and user-friendly alternative to find
       fnm # Fast and simple Node.js version manager
       # gcc # GNU compiler collection
-      gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
+      # gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
       gh # GitHub CLI
       ghostty # Fast, native, feature-rich terminal emulator pushing modern features
       heroku # Heroku CLI

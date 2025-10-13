@@ -9,8 +9,8 @@
 
   environment.systemPackages = with pkgs; [
     # adwaita-qt # Adwaita style for Qt apps
-    gnome-software
-    gnome-tweaks
+    # gnome-software
+    # gnome-tweaks
     grayjay
     nextcloud-client
     mullvad-vpn
@@ -40,7 +40,7 @@
     xkb.options = "caps:escape_shifted_capslock";
   };
 
-  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
+  # programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
 
   users.users.jordan = {
     description = "Jordan";
@@ -53,9 +53,11 @@
     ssh-add ~/.ssh/ssh_id_ed25519_jordan 1> /dev/null 2>&1
   '';
 
+  programs.ssh.startAgent = true;
   programs.ssh.extraConfig = ''
     ForwardAgent yes
   '';
+  services.gnome.gcr-ssh-agent.enable = false;
 
   ### Add flathub as flatpak remote
   ### This is not working. Need to figure out how to install
