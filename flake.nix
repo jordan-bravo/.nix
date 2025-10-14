@@ -182,10 +182,17 @@
       homeConfigurations = {
         # Thinky is running Pop!_OS with COSMIC desktop
         thinky = home-manager.lib.homeManagerConfiguration {
-          # pkgs = nixpkgs.legacyPackages."x86_64-linux";
           inherit pkgs; # equivalent to pkgs = pkgs;
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./hosts/thinky/home.nix ];
+        };
+      };
+      homeConfigurations = {
+        # Tuf is running Fedora with COSMIC desktop
+        tuf = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs; # equivalent to pkgs = pkgs;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [ ./hosts/tuf/home.nix ];
         };
       };
       # System-Manager (for controlling services and system config on non-NixOS Linux)
