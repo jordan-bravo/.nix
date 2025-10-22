@@ -11,6 +11,8 @@
     # adwaita-qt # Adwaita style for Qt apps
     # gnome-software
     # gnome-tweaks
+    qemu
+    quickemu
     grayjay
     nextcloud-client
     mullvad-vpn
@@ -20,7 +22,11 @@
 
   services.mullvad-vpn.enable = true;
   programs.adb.enable = true;
+
+  # Virtual machines
   programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
+  boot.kernelModules = [ "kvm-intel" ];
 
   security.rtkit.enable = true;
 
@@ -44,7 +50,7 @@
 
   users.users.jordan = {
     description = "Jordan";
-    extraGroups = [ "adbusers" "docker" "libvirtd" "networkmanager" "wheel" ];
+    extraGroups = [ "adbusers" "docker" "libvirtd" "qemu-libvirtd" "networkmanager" "wheel" ];
     isNormalUser = true;
     shell = pkgs.zsh; # Set the default shell for this user
   };

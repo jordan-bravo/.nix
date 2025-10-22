@@ -163,7 +163,6 @@
   };
   system.stateVersion = "25.05";
   users.users.root.hashedPassword = "!";
-  # virtualisa.libvirtd.enable = true;
   virtualisation.docker = {
     enable = true;
     rootless.enable = true;
