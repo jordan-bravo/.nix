@@ -1,4 +1,5 @@
 {
+  programs.git.enable = true;
   programs.git.settings = {
     aliases = {
       # Deletes branches that have been mergd into master/main, qa, or dev
