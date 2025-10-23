@@ -89,6 +89,7 @@
     username = "jordan";
   };
   imports = [
+    ../../modules/home-manager/delta.nix
     ../../modules/home-manager/git.nix
     # ../../modules/home-manager/i3status.nix
     # ../../modules/home-manager/kanata.nix
