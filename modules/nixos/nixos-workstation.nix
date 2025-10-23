@@ -55,8 +55,10 @@
     shell = pkgs.zsh; # Set the default shell for this user
   };
   programs.zsh.interactiveShellInit = ''
-    # Add ssh key, suppress output
-    ssh-add ~/.ssh/ssh_id_ed25519_jordan 1> /dev/null 2>&1
+    # start ssh agent
+    eval "$(ssh-agent)" > /dev/null
+    # Add ssh key to agent, suppress output
+    ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
   '';
 
   programs.ssh.startAgent = true;

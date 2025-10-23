@@ -166,7 +166,7 @@
       defaultKeymap = "viins";
       initContent = ''
         # start ssh agent and add key to agent
-        eval "$(ssh-agent -s)" > /dev/null
+        eval "$(ssh-agent)" > /dev/null
         ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
         # If BD NPM token exists, source it
         if [ -f $HOME/bd/.misc/.npm-bd ]; then

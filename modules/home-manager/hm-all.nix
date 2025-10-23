@@ -2,6 +2,7 @@
   home.stateVersion = "25.05";
 
   imports = [
+    ./delta.nix
     ./git.nix
     ./ripgrep.nix
     ./zsh.nix
