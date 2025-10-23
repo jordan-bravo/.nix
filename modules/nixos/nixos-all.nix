@@ -104,7 +104,7 @@
     d = "docker";
     dc = "docker compose";
     gad = "git add";
-    gco = "git commit";
+    gcm = "git commit";
     gdi = "git diff";
     gfe = "git fetch";
     gme = "git merge";
