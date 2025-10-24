@@ -246,7 +246,6 @@
   };
 
   services = {
-    copyq.enable = true;
     gnome-keyring = {
       enable = false;
       components = [ "pkcs11" "secrets" "ssh" ];
@@ -259,7 +258,7 @@
       verbose = true;
     };
     udiskie = {
-      enable = true;
+      enable = false;
       tray = "never";
     };
   };
