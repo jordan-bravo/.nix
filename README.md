@@ -52,4 +52,5 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ### Misc. Task List
 
+- For NixOS Cosmic: make gnupg password remembered so you don't have to type it every time you git commit after reboot
 - Configure zsh autosuggest/autocomplete (which one? both?) to avoid using arrow keys for completion.
