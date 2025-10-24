@@ -47,6 +47,7 @@
     lsd # Next gen ls command
     neovim
     ripgrep # Alternative to grep
+    speedtest-go
     # termimage # Display images in your terminal
     trash-cli
     tre-command # Tree command, improved

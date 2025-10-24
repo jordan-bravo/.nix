@@ -3,12 +3,13 @@
 {
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
-    # "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
-    # GTK_THEME = "Adwaita:dark";
+    "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
+    GTK_THEME = "Adwaita:dark";
+    COSMIC_DATA_CONTROL_ENABLED = 1; # Required for cosmic clipboard manager
   };
 
   environment.systemPackages = with pkgs; [
-    # adwaita-qt # Adwaita style for Qt apps
+    adwaita-qt # Adwaita style for Qt apps
     # gnome-software
     # gnome-tweaks
     qemu
