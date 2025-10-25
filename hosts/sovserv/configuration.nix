@@ -164,12 +164,42 @@
     };
   };
 
-  # systemd.services = {
-  #   caddy = {
-  #     serviceConfig = {
-  #       AmbientCapabilities = "cap_net_bind_service";
-  #       EnvironmentFile = "${config.sops.secrets."caddy/cloudflare/api-token-env-var".path}";
-  #     };
+  systemd.services.bravo-site = {
+    description = "Bravo Site Jekyll Build and Python Server";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "simple";
+      User = "main";
+      Group = "users";
+      WorkingDirectory = "/home/main/apps/jordan-bravo.github.io";
+      ExecStartPre = pkgs.writeShellScript "build-bravo-site" ''
+        cd /home/main/apps/jordan-bravo.github.io
+        ${pkgs.nix}/bin/nix develop --command bash -c "bundle install && bundle exec jekyll build"
+      '';
+
+      # Serve the _site directory with Python
+      ExecStart = pkgs.writeShellScript "serve-bravo-site" ''
+        cd /home/main/apps/jordan-bravo.github.io
+        ${pkgs.nix}/bin/nix develop --command python -m http.server 4000 --directory _site
+      '';
+
+      Restart = "on-failure";
+      RestartSec = "10s";
+    };
+  };
+  users.users.bravo-site = {
+    isSystemUser = true;
+    group = "bravo-site";
+    home = "/home/main/apps/jordan-bravo.github.io";
+  };
+  users.groups.bravo-site = { };
+
+  # systemd.services.caddy = {
+  #   serviceConfig = {
+  #     AmbientCapabilities = "cap_net_bind_service";
+  #     EnvironmentFile = "${config.sops.secrets."caddy/cloudflare/api-token-env-var".path}";
   #   };
   # };
 }
