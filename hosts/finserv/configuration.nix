@@ -104,7 +104,7 @@
       # '';
     };
     liquidd = {
-      enable = true;
+      enable = false;
     };
     # lnbits = {
     #   enable = false;
