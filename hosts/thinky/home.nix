@@ -89,28 +89,21 @@
     username = "jordan";
   };
   imports = [
-    ../../modules/home-manager/delta.nix
-    ../../modules/home-manager/git.nix
+    ../../modules/home-manager/hm-all.nix
+    ../../modules/home-manager/hm-workstation.nix
     # ../../modules/home-manager/i3status.nix
     # ../../modules/home-manager/kanata.nix
     # ../../modules/home-manager/kanshi.nix
-    ../../modules/home-manager/kitty.nix
-    ../../modules/home-manager/nvim-deps.nix
-    ../../modules/home-manager/ripgrep.nix
-    ../../modules/home-manager/workstation-secrets.nix
+    # ../../modules/home-manager/nvim-deps.nix
     # ../../modules/home-manager/zellij.nix
-    ../../modules/home-manager/zsh.nix
   ];
   programs = {
-    atuin.enable = true;
     bat = {
       enable = true;
       config = {
         theme = "Visual Studio Dark+";
       };
     };
-    bottom.enable = true;
-    broot.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -118,7 +111,7 @@
       silent = true;
     };
     fzf.enable = true;
-    fuzzel.enable = true;
+    # fuzzel.enable = true;
     # gh.enable = true;
     git.enable = true;
     gpg = {
@@ -126,7 +119,7 @@
       homedir = "${config.xdg.dataHome}/gnupg";
     };
     home-manager.enable = true;
-    i3status-rust.enable = true;
+    # i3status-rust.enable = true;
     jq.enable = true;
     lsd.enable = true;
     mise.enable = false;

@@ -8,7 +8,11 @@
     ./zsh.nix
   ];
 
-  programs.atuin.enable = true;
-  programs.atuin.enableZshIntegration = true;
-  programs.atuin.daemon.enable = true;
+  programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+    daemon.enable = true;
+  };
+  programs.bottom.enable = true;
+  programs.broot.enable = true;
 }
