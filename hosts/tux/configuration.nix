@@ -39,6 +39,8 @@
   # Enable the COSMIC login manager
   services.displayManager.cosmic-greeter.enable = true;
 
+  services.ivpn.enable = true;
+
 
   # Remap keys
 
