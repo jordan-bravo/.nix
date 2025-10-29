@@ -3,25 +3,27 @@
 {
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
-    "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
-    GTK_THEME = "Adwaita:dark";
-    COSMIC_DATA_CONTROL_ENABLED = 1; # Required for cosmic clipboard manager
+    # "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
+    # GTK_THEME = "Adwaita:dark";
+    # COSMIC_DATA_CONTROL_ENABLED = 1; # Required for cosmic clipboard manager
   };
 
   environment.systemPackages = with pkgs; [
     adwaita-qt # Adwaita style for Qt apps
     # gnome-software
     # gnome-tweaks
+    ivpn
+    ivpn-ui
     qemu
     quickemu
     grayjay
     nextcloud-client
-    mullvad-vpn
+    # mullvad-vpn
     steam-run
     zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
   ];
 
-  services.mullvad-vpn.enable = true;
+  # services.mullvad-vpn.enable = true;
   programs.adb.enable = true;
 
   # Virtual machines
@@ -47,7 +49,7 @@
     xkb.options = "caps:escape_shifted_capslock";
   };
 
-  # programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-gnome3;
 
   users.users.jordan = {
     description = "Jordan";
