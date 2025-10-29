@@ -10,6 +10,7 @@
       dynamic_background_opacity = "yes"; # Ctrl+Shift+A, l/m
       enable_audio_bell = false;
       hide_window_decorations = true; # options: true, "titlebar-only", "titlebar-and-corners"
+      confirm_os_window_close = 0; # value of zero will disable confirmation dialogue. Default: -1
       # startup_session = "./kitty-session.conf";
       scrollback_lines = 50000;
       # wayland_titlebar_color = "red"; # options: "background", "system", "gray", "#3b3b3b"

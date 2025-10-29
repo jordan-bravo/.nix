@@ -277,7 +277,7 @@
         comment = "AI Powered Code Editor";
         exec = "${config.home.homeDirectory}/apps/cursor/run-cursor.sh";
       };
-      # ghostty = {
+      # "com.mitchellh.ghostty" = {
       #   name = "Ghostty";
       #   genericName = "Terminal Emulator";
       #   comment = "Fast, native, feature-rich terminal emulator pushing modern features";
