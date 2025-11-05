@@ -30,6 +30,7 @@
     };
   };
   # boot.kernelParams = [ "ipv6.disable=1" ];
+  boot.loader.systemd-boot.configurationLimit = 8;
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
