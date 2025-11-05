@@ -64,11 +64,11 @@
     ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
   '';
 
-  programs.ssh.startAgent = true;
+  # programs.ssh.startAgent = true;
   programs.ssh.extraConfig = ''
     ForwardAgent yes
   '';
-  services.gnome.gcr-ssh-agent.enable = false;
+  # services.gnome.gcr-ssh-agent.enable = false;
 
   ### Add flathub as flatpak remote
   ### This is not working. Need to figure out how to install
