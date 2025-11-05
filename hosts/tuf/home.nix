@@ -6,7 +6,7 @@
   home = {
     packages = with pkgs; [
       ### fonts
-      # nerd-fonts.fira-code # Nerd Fonts: Programming ligatures, extension of Fira Mono font, enlarged operators
+      nerd-fonts.fira-code # Nerd Fonts: Programming ligatures, extension of Fira Mono font, enlarged operators
 
       # adwaita-qt # Adwaita style for Qt apps
       # adwaita-qt6 # Adwaita style for Qt6 apps
@@ -318,10 +318,10 @@
     };
     ghostty-config = {
       target = ".config/ghostty/config";
-      enable = false;
+      enable = true;
       text = ''
         background = 222222
-        font-family = Fira Code
+        font-family = FiraCodeNerdFont
         font-size = 14
         window-decoration = false
       '';

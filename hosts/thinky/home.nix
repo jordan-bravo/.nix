@@ -323,10 +323,10 @@
     };
     ghostty-config = {
       target = ".config/ghostty/config";
-      enable = false;
+      enable = true;
       text = ''
         background = 222222
-        font-family = Fira Code
+        font-family = FiraCodeNerdFont
         font-size = 14
         window-decoration = false
       '';
