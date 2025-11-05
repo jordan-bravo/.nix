@@ -41,6 +41,8 @@
 
   services.ivpn.enable = true;
 
+  # services.gnome.gnome-keyring.enable = false;
+  # security.pam.services.jordan.enableGnomeKeyring = true;
 
   # Remap keys
 
