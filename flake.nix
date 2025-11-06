@@ -182,6 +182,7 @@
       homeConfigurations = {
         # Thinky is running Pop!_OS with COSMIC desktop
         thinky = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs; # equivalent to pkgs = pkgs;
           extraSpecialArgs = { inherit inputs; };
           modules = [
             ./hosts/thinky/home.nix
