@@ -10,7 +10,6 @@
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
-    systemd-boot.configurationLimit = 4;
   };
   networking.hostName = "finserv";
   networking.firewall.allowedTCPPorts = [ 3030 4040 9090 9735 9736 3001 60845 ];
@@ -18,6 +17,7 @@
     wireguard-tools
   ];
 
+  # nix.settings.trusted-users = [ "root" "main" ];
 
   ### nix-bitcoin section
 
@@ -258,9 +258,8 @@
     rustdress = {
       after = [ "network.target" ];
       serviceConfig = {
-        ExecStart = "/home/main/apps/rustdress/target/release/rustdress";
+        ExecStart = "/home/main/apps/rustdress/target/release/rustdress -- --config /home/main/.config/rustdress/rustdress.toml";
         Restart = "always";
-        EnvironmentFile = "/home/main/apps/rustdress/.env";
       };
       wantedBy = [ "multi-user.target" ];
     };
