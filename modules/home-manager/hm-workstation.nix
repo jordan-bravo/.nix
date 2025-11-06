@@ -1,6 +1,7 @@
 {
   imports = [
     ./kitty.nix
+    ./wezterm.nix
     ./workstation-secrets.nix
   ];
 

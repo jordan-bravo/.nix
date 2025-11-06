@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   fonts.fontconfig.enable = true;
@@ -60,11 +60,16 @@
       tldr # Simplified and community-driven man pages
       trash-cli # Command line interface to the freedesktop.org trashcan
       waypipe # Network proxy for Wayland clients (applications)
+      wezterm # Terminal Emulator
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       xdg-utils # Tools that assist applications with a variety of desktop integration tasks
       xorg.xlsclients # Lists any applications running under Xwayland
 
-      # Programming language tools
+      # Programming language tools (lang servers, formatters, etc.)
+      nil
+      nixd
+      nixpkgs-fmt
+      nodePackages.prettier
       python312Packages.python-lsp-server
     ];
     homeDirectory = "/home/${config.home.username}";
@@ -292,6 +297,13 @@
         exec = "nixGLIntel kitty";
         icon = "kitty";
         categories = [ "System" "TerminalEmulator" ];
+      };
+      "org.wezfurlong.wezterm" = {
+        name = "Wezterm";
+        comment = "Wez's Terminal Emulator";
+        exec = "nixGLIntel wezterm --cwd .";
+        icon = "org.wezfurlong.wezterm";
+        categories = [ "System" "TerminalEmulator" "Utility" ];
       };
       sparrow-desktop = {
         name = "Sparrow Testnet";

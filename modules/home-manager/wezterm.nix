@@ -1,29 +1,24 @@
-# ~/.nix/shared/wezterm.nix
+# .nix/modules/home-manager/wezterm.nix
 {
   programs.wezterm = {
-    enable = true;
+    enable = false;
     extraConfig = ''
       -- Pull in the wezterm API
-      local wezterm = require("wezterm")
+      local wezterm = require('wezterm')
 
-      -- This table will hold the configuration.
-      local config = {}
+      -- This will hold the configuration.
+      local config = wezterm.config_builder()
 
-      -- In newer versions of wezterm, use the config_builder which will
-      -- help provide clearer error messages
-      if wezterm.config_builder then
-              config = wezterm.config_builder()
-      end
+      -- This is where you actually apply your config choices.
+      -- -----------------------------------------------------
 
-      -- This is where you actually apply your config choices
+      config.font_size = 12
+      config.color_scheme = 'Vs Code Dark+ (Gogh)'
+      config.font = wezterm.font('FiraCodeNerdFont')
+      config.window_decorations = "NONE"
 
-      -- For example, changing the color scheme:
-      -- config.color_scheme = "Afterglow"
-
-      -- Hide the OS window title bar
-      config.window_decorations = "RESIZE"
-
-      -- and finally, return the configuration to wezterm
+      -- -----------------------------------------------------
+      -- Finally, return the configuration to wezterm:
       return config
     '';
   };
