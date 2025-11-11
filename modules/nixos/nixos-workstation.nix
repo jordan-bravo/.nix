@@ -17,7 +17,7 @@
     qemu
     quickemu
     grayjay
-    nextcloud-client
+    # nextcloud-client
     # mullvad-vpn
     steam-run
     zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
