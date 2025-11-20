@@ -290,14 +290,14 @@
       #   icon = "ghostty";
       #   categories = [ "System" "TerminalEmulator" ];
       # };
-      kitty = {
-        name = "Kitty";
-        genericName = "Terminal Emulator";
-        comment = "Fast, feature-rich, GPU based terminal";
-        exec = "nixGLIntel kitty";
-        icon = "kitty";
-        categories = [ "System" "TerminalEmulator" ];
-      };
+      # kitty = {
+      #   name = "Kitty";
+      #   genericName = "Terminal Emulator";
+      #   comment = "Fast, feature-rich, GPU based terminal";
+      #   exec = "nixGLIntel kitty";
+      #   icon = "kitty";
+      #   categories = [ "System" "TerminalEmulator" ];
+      # };
       "org.wezfurlong.wezterm" = {
         name = "Wezterm";
         comment = "Wez's Terminal Emulator";

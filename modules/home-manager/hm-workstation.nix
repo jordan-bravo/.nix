@@ -1,9 +1,8 @@
 {
   imports = [
-    ./kitty.nix
-    ./wezterm.nix
+    # ./wezterm.nix
     ./workstation-secrets.nix
   ];
 
-  services.copyq.enable = true;
+  # services.copyq.enable = true;
 }
