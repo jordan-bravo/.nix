@@ -12,6 +12,9 @@
     enable = true;
     enableZshIntegration = true;
     daemon.enable = true;
+    settings = {
+      enter_accept = true;
+    };
   };
   programs.bottom.enable = true;
   programs.broot.enable = true;
