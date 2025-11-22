@@ -100,7 +100,7 @@
       maxUploadSize = "32G";
       # When updating nextcloud versions, you might see redis fail to start. If so, disable nextcloud, then 
       # delete dump.rdb, then re-enable nextcloud
-      package = pkgs.nextcloud31;
+      package = pkgs.nextcloud32;
       phpOptions = {
         "opcache.interned_strings_buffer" = "48";
       };
