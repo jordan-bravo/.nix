@@ -35,6 +35,7 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
+    doggo # Replacement for dig
     duf # Disk Usage/Free Utility
     dust # du + rust = dust. Like du but more intuitive
     fd # Simple, fast and user-friendly alternative to find
@@ -44,6 +45,7 @@
     gh # GitHub CLI
     git-crypt
     home-manager
+    host # Resolve domain names to ip addresses and vice versa
     jq # JSON parsing
     lsd # Next gen ls command
     neovim

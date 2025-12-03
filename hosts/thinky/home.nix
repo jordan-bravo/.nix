@@ -18,6 +18,7 @@
       ccls # C/c++ language server powered by clang
       # clang # C language family frontend for LLVM
       curl # Command line tool for transferring files with URL syntax
+      doggo # Replacement for dig
       duf # Disk Usage/Free Utility
       evil-helix # Helix editor with vim keybindings
       fontconfig
@@ -28,6 +29,7 @@
       gh # GitHub CLI
       ghostty # Fast, native, feature-rich terminal emulator pushing modern features
       heroku # Heroku CLI
+      host # Resolve domain names to ip addresses and vice versa
       git-crypt # Transparent file encryption in git
       grim # Grab images from a Wayland compositor
       hello # CLI hello world
