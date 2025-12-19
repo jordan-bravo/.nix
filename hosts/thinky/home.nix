@@ -273,6 +273,56 @@
   #     };
   #   };
   # };
+  /*
+
+    ~/.config/systemd/user/flatpak-update.service
+
+    [Unit]
+    Description=Update Flatpak applications
+
+    [Service]
+    Type=oneshot
+    ExecStart=/usr/bin/flatpak update -y
+
+
+    ~/.config/systemd/user/flatpak-update.timer
+
+    [Unit]
+    Description=Run flatpak update daily at noon
+
+    [Timer]
+    OnCalendar=*-*-* 12:00:00
+    Persistent=true
+
+    [Install]
+    WantedBy=timers.target
+
+  */
+  systemd.user.services = {
+    flatpak-update = {
+      Unit = {
+        Description = "Update Flatpak applications";
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "/usr/bin/flatpak update -y";
+      };
+    };
+  };
+  systemd.user.timers = {
+    flatpak-update = {
+      Unit = {
+        Description = "Run flatpak update daily at noon";
+      };
+      Timer = {
+        OnCalendar = "*-*-* 12:00:00";
+        Persistent = true;
+      };
+      Install = {
+        WantedBy = [ "timers.target" ];
+      };
+    };
+  };
   targets.genericLinux.enable = true;
   xdg = {
     enable = true;
