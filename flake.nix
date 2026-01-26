@@ -34,11 +34,12 @@
     #   url = "github:cachix/nixpkgs-python";
     #   # inputs.nixpkgs.follows = "nixpkgs-2411";
     # };
+    # nixpkgs-node18.url = "github.com/nixos/nixpkgs/507b63021ada5fee621b6ca371c4fca9ca46f52c";
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sparrow-nixpkgs.url = "github:nixos/nixpkgs/bdac72d387dca7f836f6ef1fe547755fb0e9df61"; # bdac72d387dca7f836f6ef1fe547755fb0e9df61
+    sparrow-nixpkgs.url = "github:nixos/nixpkgs/bdac72d387dca7f836f6ef1fe547755fb0e9df61";
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -57,6 +58,7 @@
       # , lanzaboote
     , nix-bitcoin
     , nixgl
+      # , nixpkgs-node18
     , sops-nix
     , sparrow-nixpkgs
     , system-manager

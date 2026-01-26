@@ -17,6 +17,7 @@
       # brightnessctl # Read and control device brightness
       ccls # C/c++ language server powered by clang
       # clang # C language family frontend for LLVM
+      claude-code # Claude Code editor
       curl # Command line tool for transferring files with URL syntax
       doggo # Replacement for dig
       duf # Disk Usage/Free Utility
@@ -72,6 +73,7 @@
       nixd
       nixpkgs-fmt
       nodePackages.prettier
+      # nixpkgs-node18.nodejs_18
       python312Packages.python-lsp-server
     ];
     homeDirectory = "/home/${config.home.username}";
@@ -80,6 +82,7 @@
     sessionVariables = {
       # _JAVA_AWT_WM_NONREPARENTING = 1;
       DOCKER_CONFIG = "$HOME/.config/docker";
+      NIXPKGS_ALLOW_UNFREE = "1";
       EDITOR = "nvim";
       GTK_THEME = "Adwaita:dark";
       LESSHISTFILE = "$XDG_STATE_HOME/less/history";
@@ -164,6 +167,11 @@
     };
     zsh = {
       initContent = ''
+        # Source home-manager session variables (needed for standalone home-manager)
+        # Unset guard to force re-sourcing with latest variables
+        unset __HM_SESS_VARS_SOURCED
+        source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
         # start ssh agent and add key to agent
         eval "$(ssh-agent)" > /dev/null
         ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
