@@ -74,7 +74,7 @@
       nixpkgs-fmt
       nodePackages.prettier
       # nixpkgs-node18.nodejs_18
-      python312Packages.python-lsp-server
+      # python312Packages.python-lsp-server
     ];
     homeDirectory = "/home/${config.home.username}";
     preferXdgDirectories = true;
