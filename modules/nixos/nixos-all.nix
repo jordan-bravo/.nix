@@ -33,8 +33,12 @@
   boot.loader.systemd-boot.configurationLimit = 8;
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
+    claude-code
     doggo # Replacement for dig
     duf # Disk Usage/Free Utility
     dust # du + rust = dust. Like du but more intuitive
@@ -65,7 +69,10 @@
   programs.git.enable = true;
   programs.gnupg.agent.enable = true;
   programs.yazi.enable = true;
-  programs.zoxide = { enable = true; enableZshIntegration = true; };
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
@@ -162,7 +169,10 @@
   # See https://github.com/NixOS/nixpkgs/issues/180175#issuecomment-1658731959
   systemd.services.NetworkManager-wait-online = {
     serviceConfig = {
-      ExecStart = [ "" "${pkgs.networkmanager}/bin/nm-online -q" ];
+      ExecStart = [
+        ""
+        "${pkgs.networkmanager}/bin/nm-online -q"
+      ];
     };
   };
   system.stateVersion = "25.05";
