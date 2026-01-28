@@ -83,7 +83,7 @@
 
         -- Toggle diagnostic virtual text (plugin required)
         -- vim.keymap.set("n", "<leader>v", "<Plug>(toggle-lsp-diag-vtext)", { silent = true, desc = "Toggle Virtual Text" })
-    
+
         -- Diagnostic keymaps
         vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
@@ -93,7 +93,7 @@
         -- Remap for dealing with word wrap
         vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
         vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-  
+
         -- Navigate buffers
         -- vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", { silent = true })
         vim.keymap.set("n", "<Tab>", ":bnext<CR>", { silent = true })

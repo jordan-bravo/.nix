@@ -52,22 +52,21 @@
   };
 
   outputs =
-    { nixpkgs
-    , disko
-    , home-manager
+    {
+      nixpkgs,
+      disko,
+      home-manager,
       # , lanzaboote
-    , nix-bitcoin
-    , nixgl
+      nix-bitcoin,
+      nixgl,
       # , nixpkgs-node18
-    , sops-nix
-    , sparrow-nixpkgs
-    , system-manager
-    , ...
+      sops-nix,
+      sparrow-nixpkgs,
+      system-manager,
+      ...
     }@inputs:
     let
-      /*
-       * Example of pinning a package version
-       */
+      # Example of pinning a package version
       # pkgs-micro-2-0-12 = import nixpkgs-micro-2-0-12 {
       #   system = "x86_64-linux";
       # };
@@ -87,9 +86,7 @@
           modules = [
             ./hosts/tux/configuration.nix
             # lanzaboote.nixosModules.lanzaboote
-            /*
-              This section uses home-manager as a NixOS module
-            */
+            # This section uses home-manager as a NixOS module
             home-manager.nixosModules.home-manager
             {
               # home-manager.extraSpecialArgs = { inherit inputs; };
@@ -106,9 +103,7 @@
           modules = [
             ./hosts/ryz/configuration.nix
             # lanzaboote.nixosModules.lanzaboote
-            /*
-              This section uses home-manager as a NixOS module
-            */
+            # This section uses home-manager as a NixOS module
             home-manager.nixosModules.home-manager
             {
               # home-manager.extraSpecialArgs = { inherit inputs; };

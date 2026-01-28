@@ -10,7 +10,11 @@ stdenv.mkDerivation {
   dontUnpack = true;
   meta.mainProgram = "caddy";
 
-  nativeBuildInputs = [ git go xcaddy ];
+  nativeBuildInputs = [
+    git
+    go
+    xcaddy
+  ];
 
   configurePhase = ''
     export GOCACHE=$TMPDIR/go-cache
@@ -26,7 +30,6 @@ stdenv.mkDerivation {
       ${xcaddy}/bin/xcaddy build latest ${pluginArgs}
       runHook postBuild
     '';
-
 
   installPhase = ''
     runHook preInstall

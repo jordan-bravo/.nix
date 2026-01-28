@@ -76,7 +76,6 @@
 }
 
 /*
-
   profile undocked {
   output "eDP-1" enable
   }
@@ -95,5 +94,4 @@
   output "eDP-1" enable scale 1.000000
   output "Philips Consumer Electronics Company PHL 273V7 UHB1915002425" enable scale 0.800000
   }
-
 */

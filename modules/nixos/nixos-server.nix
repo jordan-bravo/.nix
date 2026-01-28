@@ -3,7 +3,11 @@
 {
   users.users.main = {
     description = "main";
-    extraGroups = [ /*"docker"*/ "networkmanager" "wheel" ];
+    extraGroups = [
+      # "docker"
+      "networkmanager"
+      "wheel"
+    ];
     isNormalUser = true;
     useDefaultShell = true;
   };
@@ -32,6 +36,4 @@
   '';
 }
 
-/*
-  ssh-add ~/.ssh/ssh_id_ed25519_main@${osConfig.networking.hostName} 1> /dev/null 2>&1
-*/
+# ssh-add ~/.ssh/ssh_id_ed25519_main@${osConfig.networking.hostName} 1> /dev/null 2>&1

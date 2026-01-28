@@ -195,7 +195,10 @@
           };
         };
         shared_among = {
-          _args = [ "search" "scroll" ];
+          _args = [
+            "search"
+            "scroll"
+          ];
           "bind \"End\"" = {
             ScrollToBottom = [ ];
           };

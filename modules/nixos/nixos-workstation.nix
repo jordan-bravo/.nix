@@ -53,7 +53,14 @@
 
   users.users.jordan = {
     description = "Jordan";
-    extraGroups = [ /* "adbusers" */ "docker" "libvirtd" "qemu-libvirtd" "networkmanager" "wheel" ];
+    extraGroups = [
+      # "adbusers"
+      "docker"
+      "libvirtd"
+      "qemu-libvirtd"
+      "networkmanager"
+      "wheel"
+    ];
     isNormalUser = true;
     shell = pkgs.zsh; # Set the default shell for this user
   };
