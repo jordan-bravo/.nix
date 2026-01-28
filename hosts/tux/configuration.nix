@@ -20,9 +20,11 @@
   boot.initrd.luks.devices."luks-5bd61864-93b8-494c-856f-6cde9cc407a1".device = "/dev/disk/by-uuid/5bd61864-93b8-494c-856f-6cde9cc407a1";
 
   environment.systemPackages = with pkgs; [
-    element-desktop # Matrix client
-    # sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
     bitwarden-desktop
+    element-desktop # Matrix client
+    rocketchat-desktop
+    # sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
+    # xdg-utils
   ];
 
   # fonts.packages = with pkgs; [

@@ -16,7 +16,7 @@
     ivpn-ui
     qemu
     quickemu
-    grayjay
+    # grayjay
     # nextcloud-client
     # mullvad-vpn
     steam-run
@@ -24,7 +24,7 @@
   ];
 
   # services.mullvad-vpn.enable = true;
-  programs.adb.enable = true;
+  # programs.adb.enable = true;
 
   # Virtual machines
   programs.virt-manager.enable = true;
@@ -53,7 +53,7 @@
 
   users.users.jordan = {
     description = "Jordan";
-    extraGroups = [ "adbusers" "docker" "libvirtd" "qemu-libvirtd" "networkmanager" "wheel" ];
+    extraGroups = [ /* "adbusers" */ "docker" "libvirtd" "qemu-libvirtd" "networkmanager" "wheel" ];
     isNormalUser = true;
     shell = pkgs.zsh; # Set the default shell for this user
   };
