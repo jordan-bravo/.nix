@@ -19,6 +19,7 @@
       # clang # C language family frontend for LLVM
       claude-code # Claude Code editor
       curl # Command line tool for transferring files with URL syntax
+      cursor-cli # Cursor CLI
       doggo # Replacement for dig
       duf # Disk Usage/Free Utility
       evil-helix # Helix editor with vim keybindings
