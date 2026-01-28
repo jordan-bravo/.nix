@@ -7,7 +7,7 @@
     defaultKeymap = "viins";
     dotDir = "${config.xdg.configHome}/zsh";
     syntaxHighlighting.enable = true;
-    syntaxHighlighting.highlighters = [ "brackets" ];
+    syntaxHighlighting.highlighters = [ "main" "brackets" ];
     autosuggestion.enable = true;
     enableCompletion = true;
     history = {
