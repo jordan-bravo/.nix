@@ -22,6 +22,7 @@
       cursor-cli # Cursor CLI
       doggo # Replacement for dig
       duf # Disk Usage/Free Utility
+      dust # du, but more intuitive (disk usage)
       evil-helix # Helix editor with vim keybindings
       fontconfig
       fd # Simple, fast and user-friendly alternative to find
