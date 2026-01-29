@@ -49,10 +49,43 @@
           repo = "$BORG_REPO";
           startAt = "*-*-* 01:05:00";
         };
+        sovserv-obsidian = {
+          compression = "auto,lzma";
+          encryption = {
+            mode = "repokey-blake2";
+            passCommand = "cat ${config.sops.secrets."borg/passphrase".path}";
+          };
+          environment = {
+            BORG_RSH = "ssh -i ${config.sops.secrets."borg/ssh-private-key".path}";
+          };
+          paths = "/var/lib/couchdb";
+          preHook = ''
+            export BORG_REPO=$(cat ${config.sops.secrets."borg/repos/sovserv-obsidian".path})
+          '';
+          repo = "$BORG_REPO";
+          startAt = "*-*-* 01:45:00";
+        };
       };
     };
     couchdb = {
-      enable = false;
+      enable = true;
+      bindAddress = "127.0.0.1";
+      port = 5984;
+      extraConfig = {
+        chttpd = {
+          max_http_request_size = "4294967296";
+          enable_cors = "true";
+        };
+        couchdb = {
+          max_document_size = "50000000";
+        };
+        cors = {
+          origins = "app://obsidian.md,capacitor://localhost,http://localhost";
+          credentials = "true";
+          headers = "accept,authorization,content-type,origin,referer";
+          methods = "GET,PUT,POST,HEAD,DELETE";
+        };
+      };
     };
     matrix-conduit = {
       enable = false;
@@ -126,9 +159,22 @@
       };
     };
     nginx = {
-      # enable = true;
+      enable = true;
       virtualHosts = {
         "nextcloud.sovserv.top".listen = [{ addr = "0.0.0.0"; port = 8080; }];
+        "obsidian.sovserv.top" = {
+          listen = [{ addr = "0.0.0.0"; port = 8081; }];
+          locations."/" = {
+            proxyPass = "http://127.0.0.1:5984";
+            extraConfig = ''
+              proxy_set_header Host $host;
+              proxy_set_header X-Real-IP $remote_addr;
+              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              proxy_set_header X-Forwarded-Proto $scheme;
+              proxy_buffering off;
+            '';
+          };
+        };
       };
     };
     onlyoffice = {
@@ -153,10 +199,14 @@
       "borg/passphrase" = { };
       "borg/repos/sovserv-nextcloud" = { };
       "borg/repos/sovserv-postgresql" = { };
+      "borg/repos/sovserv-obsidian" = { };
       "borg/ssh-private-key" = { };
       # "caddy/cloudflare/api-token-env-var" = {
       #   owner = "caddy";
       # };
+      "couchdb/admin-password" = {
+        owner = "couchdb";
+      };
       "nextcloud/admin-password" = {
         owner = "nextcloud";
       };
@@ -186,6 +236,67 @@
 
       Restart = "on-failure";
       RestartSec = "10s";
+    };
+  };
+
+  systemd.services.couchdb-setup-password = {
+    description = "Setup CouchDB Admin Password";
+    before = [ "couchdb.service" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = pkgs.writeShellScript "couchdb-setup-password" ''
+        # Ensure the couchdb data directory exists
+        mkdir -p /var/lib/couchdb
+
+        # Read admin password from sops secret
+        ADMIN_PASS=$(cat ${config.sops.secrets."couchdb/admin-password".path})
+
+        # Write admin credentials to local.ini (CouchDB will hash it on first read)
+        cat > /var/lib/couchdb/local.ini <<EOF
+[admins]
+admin = $ADMIN_PASS
+EOF
+
+        # Set proper ownership
+        chown couchdb:couchdb /var/lib/couchdb/local.ini
+        chmod 600 /var/lib/couchdb/local.ini
+      '';
+    };
+  };
+
+  systemd.services.couchdb-init = {
+    description = "Initialize CouchDB for Obsidian LiveSync";
+    after = [ "couchdb.service" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = pkgs.writeShellScript "couchdb-init" ''
+        # Wait for CouchDB to be ready
+        until ${pkgs.curl}/bin/curl -s http://127.0.0.1:5984/ > /dev/null 2>&1; do
+          echo "Waiting for CouchDB to start..."
+          sleep 2
+        done
+
+        # Read admin credentials
+        ADMIN_USER="admin"
+        ADMIN_PASS=$(cat ${config.sops.secrets."couchdb/admin-password".path})
+
+        # Configure single node
+        ${pkgs.curl}/bin/curl -s -u "$ADMIN_USER:$ADMIN_PASS" -X PUT "http://127.0.0.1:5984/_node/_local/_config/couchdb/single_node_setup" -d '"true"'
+
+        # Create _users database if it doesn't exist
+        ${pkgs.curl}/bin/curl -s -u "$ADMIN_USER:$ADMIN_PASS" -X PUT "http://127.0.0.1:5984/_users"
+
+        # Create _replicator database if it doesn't exist
+        ${pkgs.curl}/bin/curl -s -u "$ADMIN_USER:$ADMIN_PASS" -X PUT "http://127.0.0.1:5984/_replicator"
+
+        echo "CouchDB initialized for Obsidian LiveSync"
+      '';
     };
   };
   users.users.bravo-site = {
