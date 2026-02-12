@@ -20,6 +20,7 @@
   boot.initrd.luks.devices."luks-5bd61864-93b8-494c-856f-6cde9cc407a1".device = "/dev/disk/by-uuid/5bd61864-93b8-494c-856f-6cde9cc407a1";
 
   environment.systemPackages = with pkgs; [
+    appimage-run
     bitwarden-desktop
     element-desktop # Matrix client
     rocketchat-desktop
