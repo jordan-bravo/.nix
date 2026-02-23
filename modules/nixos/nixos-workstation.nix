@@ -10,6 +10,7 @@
 
   environment.systemPackages = with pkgs; [
     adwaita-qt # Adwaita style for Qt apps
+    gnome-disk-utility
     # gnome-software
     # gnome-tweaks
     ivpn
@@ -30,6 +31,7 @@
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
   boot.kernelModules = [ "kvm-intel" ];
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
 
   security.rtkit.enable = true;
 
