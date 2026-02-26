@@ -17,7 +17,8 @@
   # This might be needed to specify additional binary caches
   # nix.settings.trusted-users = [ "root" "jordan" ];
 
-  boot.initrd.luks.devices."luks-5bd61864-93b8-494c-856f-6cde9cc407a1".device = "/dev/disk/by-uuid/5bd61864-93b8-494c-856f-6cde9cc407a1";
+  boot.initrd.luks.devices."luks-5bd61864-93b8-494c-856f-6cde9cc407a1".device =
+    "/dev/disk/by-uuid/5bd61864-93b8-494c-856f-6cde9cc407a1";
 
   environment.systemPackages = with pkgs; [
     appimage-run
@@ -100,9 +101,7 @@
 
 }
 
-/*
-  Packages currently not being used but handy for later
-*/
+# Packages currently not being used but handy for later
 
 # bisq-desktop # Decentralized Bitcoin exchange
 # cachix # Command-line client for Nix binary cache hosting https://cachix.org

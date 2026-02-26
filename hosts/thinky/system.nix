@@ -128,7 +128,7 @@
 
   [Install]
   WantedBy=multi-user.target
- */
+*/
 
 /*
   ❯ cat -p /etc/systemd/system/multi-user.target.wants/docker.service

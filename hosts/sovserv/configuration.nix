@@ -69,7 +69,7 @@
     };
     couchdb = {
       enable = true;
-      bindAddress = "127.0.0.1";
+      bindAddress = "0.0.0.0";
       port = 5984;
       extraConfig = {
         chttpd = {
@@ -119,7 +119,19 @@
       extraApps = with config.services.nextcloud.package.packages.apps; {
         # List of apps we can install that are already packaged in nixpkgs at:
         # github.com/nixos/nixpkgs/blob/nixos-unstable/pkgs/servers/nextcloud/packages/nextcloud-apps.json
-        inherit bookmarks calendar contacts cookbook forms notes notify_push onlyoffice tasks uppush whiteboard;
+        inherit
+          bookmarks
+          calendar
+          contacts
+          cookbook
+          forms
+          notes
+          notify_push
+          onlyoffice
+          tasks
+          uppush
+          whiteboard
+          ;
 
         # Custom app installation example, if cookbook weren't packaged
         # cookbook = pkgs.fetchNextcloudApp {
@@ -131,7 +143,7 @@
       hostName = "nextcloud.sovserv.top";
       https = true;
       maxUploadSize = "32G";
-      # When updating nextcloud versions, you might see redis fail to start. If so, disable nextcloud, then 
+      # When updating nextcloud versions, you might see redis fail to start. If so, disable nextcloud, then
       # delete dump.rdb, then re-enable nextcloud
       package = pkgs.nextcloud32;
       phpOptions = {
@@ -161,20 +173,12 @@
     nginx = {
       enable = true;
       virtualHosts = {
-        "nextcloud.sovserv.top".listen = [{ addr = "0.0.0.0"; port = 8080; }];
-        "obsidian.sovserv.top" = {
-          listen = [{ addr = "0.0.0.0"; port = 8081; }];
-          locations."/" = {
-            proxyPass = "http://127.0.0.1:5984";
-            extraConfig = ''
-              proxy_set_header Host $host;
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-              proxy_set_header X-Forwarded-Proto $scheme;
-              proxy_buffering off;
-            '';
-          };
-        };
+        "nextcloud.sovserv.top".listen = [
+          {
+            addr = "0.0.0.0";
+            port = 8080;
+          }
+        ];
       };
     };
     onlyoffice = {
@@ -239,39 +243,38 @@
     };
   };
 
-  systemd.services.couchdb-setup-password = {
-    description = "Setup CouchDB Admin Password";
-    before = [ "couchdb.service" ];
-    wantedBy = [ "multi-user.target" ];
-
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStart = pkgs.writeShellScript "couchdb-setup-password" ''
-        # Ensure the couchdb data directory exists
-        mkdir -p /var/lib/couchdb
-
-        # Read admin password from sops secret
-        ADMIN_PASS=$(cat ${config.sops.secrets."couchdb/admin-password".path})
-
-        # Write admin credentials to local.ini (CouchDB will hash it on first read)
-        cat > /var/lib/couchdb/local.ini <<EOF
-[admins]
-admin = $ADMIN_PASS
-EOF
-
-        # Set proper ownership
-        chown couchdb:couchdb /var/lib/couchdb/local.ini
-        chmod 600 /var/lib/couchdb/local.ini
-      '';
-    };
-  };
+  # systemd.services.couchdb-setup-password = {
+  #   description = "Setup CouchDB Admin Password";
+  #   before = [ "couchdb.service" ];
+  #   wantedBy = [ "multi-user.target" ];
+  #
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     RemainAfterExit = true;
+  #     ExecStart = pkgs.writeShellScript "couchdb-setup-password" ''
+  #               # Ensure the couchdb data directory exists
+  #               mkdir -p /var/lib/couchdb
+  #
+  #               # Read admin password from sops secret
+  #               ADMIN_PASS=$(cat ${config.sops.secrets."couchdb/admin-password".path})
+  #
+  #               # Write admin credentials to local.ini (CouchDB will hash it on first read)
+  #               cat > /var/lib/couchdb/local.ini <<EOF
+  #       [admins]
+  #       admin = $ADMIN_PASS
+  #       EOF
+  #
+  #               # Set proper ownership
+  #               chown couchdb:couchdb /var/lib/couchdb/local.ini
+  #               chmod 600 /var/lib/couchdb/local.ini
+  #     '';
+  #   };
+  # };
 
   systemd.services.couchdb-init = {
     description = "Initialize CouchDB for Obsidian LiveSync";
     after = [ "couchdb.service" ];
     wantedBy = [ "multi-user.target" ];
-
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;

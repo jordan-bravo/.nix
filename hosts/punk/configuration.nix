@@ -18,7 +18,15 @@
     # next two options read from ./secrets.nix
     # interfaces.eth0.ipv4.addresses = [{ address = "stored-in-secrets"; prefixLength = 24; }];
     # defaultGateway = "also-stored-in-secrets";
-    nameservers = [ "82.197.81.10" "1.1.1.1" "8.8.4.4" ]; # hostinger, cloudflare, google
-    firewall.allowedTCPPorts = [ 80 443 22 ];
+    nameservers = [
+      "82.197.81.10"
+      "1.1.1.1"
+      "8.8.4.4"
+    ]; # hostinger, cloudflare, google
+    firewall.allowedTCPPorts = [
+      80
+      443
+      22
+    ];
   };
 }
