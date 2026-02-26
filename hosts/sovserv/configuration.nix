@@ -15,6 +15,9 @@
   networking.hostName = "sovserv";
 
   services = {
+    actual = {
+      enable = true;
+    };
     borgbackup = {
       jobs = {
         sovserv-nextcloud = {
