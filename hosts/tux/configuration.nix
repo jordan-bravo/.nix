@@ -24,6 +24,7 @@
     appimage-run
     bitwarden-desktop
     element-desktop # Matrix client
+    gnome-tweaks
     rocketchat-desktop
     # sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
     # xdg-utils
@@ -33,15 +34,15 @@
   #   nerd-fonts.fira-code
   # ];
 
-  # Enable the GNOME login manager
-  services.displayManager.gdm.enable = false;
   # Enable the GNOME Desktop Environment
-  services.desktopManager.gnome.enable = false;
+  services.desktopManager.gnome.enable = true;
+  # Enable the GNOME login manager
+  services.displayManager.gdm.enable = true;
 
   # Enable the COSMIC Desktop Environment
-  services.desktopManager.cosmic.enable = true;
+  services.desktopManager.cosmic.enable = false;
   # Enable the COSMIC login manager
-  services.displayManager.cosmic-greeter.enable = true;
+  services.displayManager.cosmic-greeter.enable = false;
 
   services.ivpn.enable = true;
 
