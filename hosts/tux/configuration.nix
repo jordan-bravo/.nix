@@ -36,6 +36,11 @@
 
   # Enable the GNOME Desktop Environment
   services.desktopManager.gnome.enable = true;
+  # Enable fractional scaling in GNOME
+  services.desktopManager.gnome.extraGSettingsOverrides = ''
+    [org.gnome.mutter]
+    experimental-features=['scale-monitor-framebuffer']
+  '';
   # Enable the GNOME login manager
   services.displayManager.gdm.enable = true;
 
