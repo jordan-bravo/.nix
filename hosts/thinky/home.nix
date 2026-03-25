@@ -24,9 +24,10 @@
       duf # Disk Usage/Free Utility
       dust # du, but more intuitive (disk usage)
       evil-helix # Helix editor with vim keybindings
-      fontconfig
       fd # Simple, fast and user-friendly alternative to find
+      ffmpeg # Audio conversion
       fnm # Fast and simple Node.js version manager
+      fontconfig
       # gcc # GNU compiler collection
       # gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
       gh # GitHub CLI
@@ -45,6 +46,7 @@
       meson # Open source, fast and friendly build system made in Python
       # nautilus # File manager for GNOME
       neovim # Text editor / IDE
+      nixfmt # Code formatter for nix
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       # nodejs-14.nodejs-14_x # NodeJS 14
       openssh # Implementation of the SSH protocol
