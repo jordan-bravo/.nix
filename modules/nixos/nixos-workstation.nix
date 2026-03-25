@@ -10,15 +10,17 @@
 
   environment.systemPackages = with pkgs; [
     adwaita-qt # Adwaita style for Qt apps
+    gnome-disk-utility
     # gnome-software
     # gnome-tweaks
+    # grayjay
     ivpn
     ivpn-ui
+    # mullvad-vpn
+    # nextcloud-client
+    nixfmt
     qemu
     quickemu
-    # grayjay
-    # nextcloud-client
-    # mullvad-vpn
     steam-run
     zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
   ];
@@ -30,6 +32,7 @@
   programs.virt-manager.enable = true;
   virtualisation.libvirtd.enable = true;
   boot.kernelModules = [ "kvm-intel" ];
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
 
   security.rtkit.enable = true;
 

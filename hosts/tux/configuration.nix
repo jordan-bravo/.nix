@@ -17,12 +17,14 @@
   # This might be needed to specify additional binary caches
   # nix.settings.trusted-users = [ "root" "jordan" ];
 
-  boot.initrd.luks.devices."luks-5bd61864-93b8-494c-856f-6cde9cc407a1".device = "/dev/disk/by-uuid/5bd61864-93b8-494c-856f-6cde9cc407a1";
+  boot.initrd.luks.devices."luks-5bd61864-93b8-494c-856f-6cde9cc407a1".device =
+    "/dev/disk/by-uuid/5bd61864-93b8-494c-856f-6cde9cc407a1";
 
   environment.systemPackages = with pkgs; [
     appimage-run
     bitwarden-desktop
     element-desktop # Matrix client
+    gnome-tweaks
     rocketchat-desktop
     # sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
     # xdg-utils
@@ -32,15 +34,20 @@
   #   nerd-fonts.fira-code
   # ];
 
-  # Enable the GNOME login manager
-  services.displayManager.gdm.enable = false;
   # Enable the GNOME Desktop Environment
-  services.desktopManager.gnome.enable = false;
+  services.desktopManager.gnome.enable = true;
+  # Enable fractional scaling in GNOME
+  services.desktopManager.gnome.extraGSettingsOverrides = ''
+    [org.gnome.mutter]
+    experimental-features=['scale-monitor-framebuffer']
+  '';
+  # Enable the GNOME login manager
+  services.displayManager.gdm.enable = true;
 
   # Enable the COSMIC Desktop Environment
-  services.desktopManager.cosmic.enable = true;
+  services.desktopManager.cosmic.enable = false;
   # Enable the COSMIC login manager
-  services.displayManager.cosmic-greeter.enable = true;
+  services.displayManager.cosmic-greeter.enable = false;
 
   services.ivpn.enable = true;
 
@@ -100,9 +107,7 @@
 
 }
 
-/*
-  Packages currently not being used but handy for later
-*/
+# Packages currently not being used but handy for later
 
 # bisq-desktop # Decentralized Bitcoin exchange
 # cachix # Command-line client for Nix binary cache hosting https://cachix.org

@@ -1,4 +1,7 @@
-{ pkgs, /* sparrow-pkgs, */ ... }:
+{
+  pkgs, # sparrow-pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -56,12 +59,18 @@
   # This doesn't seem to be working when suspended
   systemd.services.thinkpad-disable-led = {
     description = "Disables the red logo LED at startup";
-    after = [ "basic.target" "suspend.target" ];
+    after = [
+      "basic.target"
+      "suspend.target"
+    ];
     serviceConfig = {
       Type = "exec";
       ExecStart = "/run/current-system/sw/bin/sh -c 'echo 0 | tee /sys/class/leds/tpacpi::lid_logo_dot/brightness'";
     };
-    wantedBy = [ "basic.target" "suspend.target" ];
+    wantedBy = [
+      "basic.target"
+      "suspend.target"
+    ];
   };
 
   ### Secure Boot using lanzaboote
@@ -78,9 +87,7 @@
 
 }
 
-/*
-  Packages currently not being used but handy for later
-*/
+# Packages currently not being used but handy for later
 
 # bisq-desktop # Decentralized Bitcoin exchange
 # cachix # Command-line client for Nix binary cache hosting https://cachix.org

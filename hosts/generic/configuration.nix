@@ -1,8 +1,9 @@
-{ modulesPath
-, lib
-, pkgs
-, ...
-} @ args:
+{
+  modulesPath,
+  lib,
+  pkgs,
+  ...
+}@args:
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -26,10 +27,23 @@
 
   networking = {
     hostName = "change-this";
-    interfaces.eth0.ipv4.addresses = [{ address = "store-in-secrets"; prefixLength = 24; }];
+    interfaces.eth0.ipv4.addresses = [
+      {
+        address = "store-in-secrets";
+        prefixLength = 24;
+      }
+    ];
     defaultGateway = "also-store-in-secrets";
-    nameservers = [ "82.197.81.10" "1.1.1.1" "8.8.4.4" ]; # hostinger, cloudflare, google
-    firewall.allowedTCPPorts = [ 80 443 22 ];
+    nameservers = [
+      "82.197.81.10"
+      "1.1.1.1"
+      "8.8.4.4"
+    ]; # hostinger, cloudflare, google
+    firewall.allowedTCPPorts = [
+      80
+      443
+      22
+    ];
   };
 
   users.users.root.initialHashedPassword = "$y$j9T$8Sk5rvIZbjXDqYTlsgDzS.$4z7A1Ixu8T49tzTgyupKG/bwWbRMZVXfrRHOCFbgElD";
@@ -39,7 +53,10 @@
 
   system.stateVersion = "25.05";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   i18n = {
     defaultLocale = "en_US.UTF-8";

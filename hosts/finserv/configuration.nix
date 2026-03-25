@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -12,7 +17,15 @@
     systemd-boot.enable = true;
   };
   networking.hostName = "finserv";
-  networking.firewall.allowedTCPPorts = [ 3030 4040 9090 9735 9736 3001 60845 ];
+  networking.firewall.allowedTCPPorts = [
+    3030
+    4040
+    9090
+    9735
+    9736
+    3001
+    60845
+  ];
   environment.systemPackages = with pkgs; [
     wireguard-tools
   ];

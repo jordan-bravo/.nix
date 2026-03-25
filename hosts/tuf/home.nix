@@ -247,7 +247,11 @@
     copyq.enable = true;
     gnome-keyring = {
       enable = false;
-      components = [ "pkcs11" "secrets" "ssh" ];
+      components = [
+        "pkcs11"
+        "secrets"
+        "ssh"
+      ];
     };
     gpg-agent = {
       enable = true;
@@ -286,7 +290,10 @@
         comment = "Fast, feature-rich, GPU based terminal";
         exec = "nixGLIntel kitty";
         icon = "kitty";
-        categories = [ "System" "TerminalEmulator" ];
+        categories = [
+          "System"
+          "TerminalEmulator"
+        ];
       };
       # sparrow-desktop = {
       #   name = "Sparrow Testnet";

@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   fonts.fontconfig.enable = true;
@@ -82,7 +87,11 @@
     ];
     homeDirectory = "/home/${config.home.username}";
     preferXdgDirectories = true;
-    sessionPath = [ "$HOME/.local/bin" "$HOME/.cargo/bin" "/run/system-manager/sw/bin" ];
+    sessionPath = [
+      "$HOME/.local/bin"
+      "$HOME/.cargo/bin"
+      "/run/system-manager/sw/bin"
+    ];
     sessionVariables = {
       # _JAVA_AWT_WM_NONREPARENTING = 1;
       DOCKER_CONFIG = "$HOME/.config/docker";
@@ -260,7 +269,11 @@
   services = {
     gnome-keyring = {
       enable = false;
-      components = [ "pkcs11" "secrets" "ssh" ];
+      components = [
+        "pkcs11"
+        "secrets"
+        "ssh"
+      ];
     };
     gpg-agent = {
       enable = true;
@@ -286,7 +299,6 @@
   #   };
   # };
   /*
-
     ~/.config/systemd/user/flatpak-update.service
 
     [Unit]
@@ -295,7 +307,6 @@
     [Service]
     Type=oneshot
     ExecStart=/usr/bin/flatpak update -y
-
 
     ~/.config/systemd/user/flatpak-update.timer
 
@@ -308,7 +319,6 @@
 
     [Install]
     WantedBy=timers.target
-
   */
   systemd.user.services = {
     flatpak-update = {
@@ -367,7 +377,11 @@
         comment = "Wez's Terminal Emulator";
         exec = "nixGLIntel wezterm --cwd .";
         icon = "org.wezfurlong.wezterm";
-        categories = [ "System" "TerminalEmulator" "Utility" ];
+        categories = [
+          "System"
+          "TerminalEmulator"
+          "Utility"
+        ];
       };
       sparrow-desktop = {
         name = "Sparrow Testnet";
