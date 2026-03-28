@@ -24,6 +24,11 @@
     };
   };
 
+  # Lock the command line with: pyslock
+  services.physlock.enable = true;
+  # Optionally allow non-root users to use physlock:
+  services.physlock.allowAnyUser = true;
+
   services.openssh.enable = true;
   services.openssh.settings.PermitRootLogin = "no";
   users.users.main.openssh.authorizedKeys.keys = [
