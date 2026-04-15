@@ -22,6 +22,7 @@
       ccls # C/c++ language server powered by clang
       # clang # C language family frontend for LLVM
       claude-code # Claude Code editor
+      # code-cursor # Cursor IDE
       curl # Command line tool for transferring files with URL syntax
       cursor-cli # Cursor CLI
       doggo # Replacement for dig
@@ -351,12 +352,12 @@
     enable = true;
     configHome = "${config.home.homeDirectory}/.config";
     desktopEntries = {
-      cursor = {
-        name = "Cursor Editor";
-        genericName = "Editor";
-        comment = "AI Powered Code Editor";
-        exec = "${config.home.homeDirectory}/apps/cursor/run-cursor.sh";
-      };
+      # cursor = {
+      #   name = "Cursor Editor";
+      #   genericName = "Editor";
+      #   comment = "AI Powered Code Editor";
+      #   exec = "${config.home.homeDirectory}/apps/cursor/run-cursor.sh";
+      # };
       # "com.mitchellh.ghostty" = {
       #   name = "Ghostty";
       #   genericName = "Terminal Emulator";
