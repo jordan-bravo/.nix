@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }:
 
 {
@@ -49,6 +48,7 @@
       # libsForQt5.qt5.qtwayland # Cross-platform app framework for C++
       # libsForQt5.qt5ct # Qt5 Configuration Tool
       meson # Open source, fast and friendly build system made in Python
+      mise # Front-end to your dev env
       # nautilus # File manager for GNOME
       neovim # Text editor / IDE
       nixfmt # Code formatter for nix
@@ -75,7 +75,7 @@
       wezterm # Terminal Emulator
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       xdg-utils # Tools that assist applications with a variety of desktop integration tasks
-      xorg.xlsclients # Lists any applications running under Xwayland
+      xlsclients # Lists any applications running under Xwayland
 
       # Programming language tools (lang servers, formatters, etc.)
       nil
@@ -173,6 +173,7 @@
     yazi = {
       enable = true;
       enableZshIntegration = true;
+      shellWrapperName = "y";
     };
     zoxide = {
       enable = true;
@@ -247,7 +248,7 @@
         gsh = "git stash";
         gsu = "git status";
         hms = "home-manager switch --flake ~/.nix#$(hostname)";
-        mise-activate = "eval \"$(~/.local/bin/mise activate zsh)\"";
+        mise-activate = "eval \"$(~/.nix-profile/bin/mise activate zsh)\"";
         nr = "sudo nixos-rebuild switch --flake ~/.nix";
         sauce = "source $HOME/.config/zsh/.zshrc";
         sshk = "kitty +kitten ssh";
