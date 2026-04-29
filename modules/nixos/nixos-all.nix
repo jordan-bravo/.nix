@@ -126,7 +126,7 @@
     gsh = "git stash";
     gsu = "git status";
     hms = "home-manager switch --flake ~/.nix#$(hostname)";
-    mise-activate = "eval \"$(~/.local/bin/mise activate zsh)\"";
+    mise-activate = "eval \"$(~/.nix-profile/bin/mise activate zsh)\"";
     nr = "sudo nixos-rebuild switch --flake ~/.nix";
     sauce = "source $HOME/.config/zsh/.zshrc";
     sshk = "kitty +kitten ssh";
