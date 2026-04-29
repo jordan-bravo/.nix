@@ -67,18 +67,12 @@
     isNormalUser = true;
     shell = pkgs.zsh; # Set the default shell for this user
   };
-  programs.zsh.interactiveShellInit = ''
-    # start ssh agent
-    eval "$(ssh-agent)" > /dev/null
-    # Add ssh key to agent, suppress output
-    ssh-add -q ~/.ssh/ssh_id_ed25519_jordan_bravo
-  '';
-
-  # programs.ssh.startAgent = true;
+  programs.ssh.startAgent = true;
+  services.gnome.gcr-ssh-agent.enable = false;
   programs.ssh.extraConfig = ''
+    AddKeysToAgent yes
     ForwardAgent yes
   '';
-  # services.gnome.gcr-ssh-agent.enable = false;
 
   ### Add flathub as flatpak remote
   ### This is not working. Need to figure out how to install

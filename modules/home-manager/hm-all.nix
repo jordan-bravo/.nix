@@ -11,7 +11,7 @@
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
-    daemon.enable = true;
+    daemon.enable = false;
     settings = {
       enter_accept = true;
     };
