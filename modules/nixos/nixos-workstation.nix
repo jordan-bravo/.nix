@@ -71,6 +71,7 @@
   services.gnome.gcr-ssh-agent.enable = false;
   programs.ssh.extraConfig = ''
     AddKeysToAgent yes
+    IdentityFile ~/.ssh/ssh_id_ed25519_jordan_bravo
     ForwardAgent yes
   '';
 
