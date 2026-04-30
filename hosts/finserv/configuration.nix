@@ -270,7 +270,7 @@
     rustdress = {
       after = [ "network.target" ];
       serviceConfig = {
-        ExecStart = "/home/main/apps/rustdress/target/release/rustdress -- --config /home/main/.config/rustdress/rustdress.toml";
+        ExecStart = "${pkgs.rustdress}/bin/rustdress -- --config /home/main/.config/rustdress/rustdress.toml";
         Restart = "always";
       };
       wantedBy = [ "multi-user.target" ];
