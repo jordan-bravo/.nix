@@ -50,6 +50,7 @@
       # libsForQt5.qt5ct # Qt5 Configuration Tool
       meson # Open source, fast and friendly build system made in Python
       mise # Front-end to your dev env
+      mongosh # MongoDB Shell
       # nautilus # File manager for GNOME
       neovim # Text editor / IDE
       nixfmt # Code formatter for nix
