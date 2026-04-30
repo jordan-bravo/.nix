@@ -63,8 +63,8 @@
     # Programming language tools (lang servers, formatters, etc.)
     nil
     nixd
-    nixpkgs-fmt
-    nodePackages.prettier
+    nixfmt
+    prettier
   ];
   programs.git.enable = true;
   programs.gnupg.agent.enable = true;
