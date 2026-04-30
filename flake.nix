@@ -39,7 +39,6 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sparrow-nixpkgs.url = "github:nixos/nixpkgs/bdac72d387dca7f836f6ef1fe547755fb0e9df61";
     system-manager = {
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,7 +59,6 @@
     , nixgl
     , # , nixpkgs-node18
       sops-nix
-    , sparrow-nixpkgs
     , system-manager
     , ...
     }@inputs:
@@ -70,11 +68,10 @@
       #   system = "x86_64-linux";
       # };
       pkgs = import nixpkgs {
-        system = "x86_64-linux";
+        localSystem = "x86_64-linux";
         overlays = [ nixgl.overlay ];
         # You can now reference pkgs.nixgl.nixGLIntel
       };
-      sparrow-pkgs = import sparrow-nixpkgs { system = "x86_64-linux"; };
     in
     {
       nixosConfigurations = {
@@ -98,7 +95,7 @@
         };
         ryz = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs sops-nix sparrow-pkgs; };
+          specialArgs = { inherit inputs sops-nix; };
           modules = [
             ./hosts/ryz/configuration.nix
             # lanzaboote.nixosModules.lanzaboote

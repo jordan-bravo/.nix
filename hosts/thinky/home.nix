@@ -1,6 +1,5 @@
 { config
 , pkgs
-, lib
 , ...
 }:
 
@@ -82,8 +81,8 @@
       # Programming language tools (lang servers, formatters, etc.)
       nil
       nixd
-      nixpkgs-fmt
-      nodePackages.prettier
+      nixfmt
+      prettier
       # nixpkgs-node18.nodejs_18
       # python312Packages.python-lsp-server
     ];

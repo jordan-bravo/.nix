@@ -476,7 +476,6 @@
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_2",
         "sops-nix": "sops-nix",
-        "sparrow-nixpkgs": "sparrow-nixpkgs",
         "system-manager": "system-manager"
       }
     },
@@ -522,22 +521,6 @@
       "original": {
         "owner": "mic92",
         "repo": "sops-nix",
-        "type": "github"
-      }
-    },
-    "sparrow-nixpkgs": {
-      "locked": {
-        "lastModified": 1748186667,
-        "narHash": "sha256-UQubDNIQ/Z42R8tPCIpY+BOhlxO8t8ZojwC9o2FW3c8=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "bdac72d387dca7f836f6ef1fe547755fb0e9df61",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "bdac72d387dca7f836f6ef1fe547755fb0e9df61",
         "type": "github"
       }
     },
