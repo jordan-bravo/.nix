@@ -263,11 +263,16 @@
       postStart = "chmod g+rx ${config.services.lnd.dataDir}/chain{,/bitcoin{,/${config.services.bitcoind.network}}}";
     };
     # rustdress provides lightning address and NIP-05 functionality
+    # retrieve rustdress.toml from secrets manager, copy to /etc/rustdress/rustdress.toml
+    # then make it part of lnd group: sudo chown root:lnd /etc/rustdress/rustdress.toml
+    # then tighten permissions: sudo chmod 640 /etc/rustdress/rustdress.toml
     rustdress = {
-      after = [ "network.target" ];
+      after = [ "network.target" "lnd.service" ];
+      wants = [ "lnd.service" ];
       serviceConfig = {
-        ExecStart = "${pkgs.rustdress}/bin/rustdress -- --config /home/main/.config/rustdress/rustdress.toml";
+        ExecStart = "${pkgs.rustdress}/bin/rustdress -- --config /etc/rustdress/rustdress.toml";
         Restart = "always";
+        User = "lnd";
       };
       wantedBy = [ "multi-user.target" ];
     };
