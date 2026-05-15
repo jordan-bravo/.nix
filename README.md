@@ -16,7 +16,7 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 `tux`: My main personal laptop running NixOS and using Home Manager.
 
-`thinky`: My work laptop, currently running Ubuntu and using the Nix package manager and Home Manager.
+`pine`: My work laptop, currently running Pop OS with Cosmic desktop and using the Nix package manager, home-manager, and system-manager.
 
 `mbp`: My former work laptop, a MacBook with M1 (ARM) chip running MacOS, using Nix-Darwin and Home Manager. No longer in use, config is likely outdated. ISA: `aarch64-darwin`
 

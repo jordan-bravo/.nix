@@ -173,12 +173,12 @@
       };
       # Home-Manager standalone configurations
       homeConfigurations = {
-        # Thinky is running Pop!_OS with COSMIC desktop
-        thinky = home-manager.lib.homeManagerConfiguration {
+        # Pine is running Pop!_OS with COSMIC desktop
+        pine = home-manager.lib.homeManagerConfiguration {
           inherit pkgs; # equivalent to pkgs = pkgs;
           extraSpecialArgs = { inherit inputs; };
           modules = [
-            ./hosts/thinky/home.nix
+            ./hosts/pine/home.nix
           ];
         };
         # Tuf is running Fedora with COSMIC desktop
@@ -191,8 +191,8 @@
       # System-Manager (for controlling services and system config on non-NixOS Linux)
       # Currently not used, need to configure
       systemConfigs = {
-        thinky = system-manager.lib.makeSystemConfig {
-          modules = [ ./system-manager/thinky/default.nix ];
+        pine = system-manager.lib.makeSystemConfig {
+          modules = [ ./system-manager/pine/default.nix ];
         };
       };
     };
