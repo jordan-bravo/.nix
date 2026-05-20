@@ -25,6 +25,7 @@
     bitwarden-desktop
     element-desktop # Matrix client
     gnome-tweaks
+    # mullvad
     rocketchat-desktop
     # sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
     # xdg-utils
@@ -49,7 +50,8 @@
   # Enable the COSMIC login manager
   services.displayManager.cosmic-greeter.enable = false;
 
-  services.ivpn.enable = true;
+  # services.ivpn.enable = true;
+  services.mullvad-vpn.enable = true;
 
   # services.gnome.gnome-keyring.enable = false;
   # security.pam.services.jordan.enableGnomeKeyring = true;
