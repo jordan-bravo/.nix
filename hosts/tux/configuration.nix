@@ -22,6 +22,7 @@
 
   environment.systemPackages = with pkgs; [
     (appimage-run.override { extraPkgs = p: [ p.libepoxy ]; })
+    android-tools # for flashing grapheneos
     bitwarden-desktop
     element-desktop # Matrix client
     gnome-tweaks
