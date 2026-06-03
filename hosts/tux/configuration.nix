@@ -27,8 +27,10 @@
     element-desktop # Matrix client
     gnome-tweaks
     # mullvad
+    python314
     rocketchat-desktop
     # sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
+    uv # python package manager
     # xdg-utils
   ];
 
@@ -92,21 +94,21 @@
   #   pkiBundle = "/etc/secureboot";
   # };
 
-  # The following is to get customer engine working on NixOS
-  # programs.nix-ld = {
-  #   enable = true;
-  #   libraries = with pkgs; [
-  #     stdenv.cc.cc.lib
-  #     xorg.libX11
-  #     xorg.libxcb
-  #     # xorg.libXcomposite # For VSCodium extension Markdown PDF
-  #     # zlib # numpy
-  #     # libgcc # sqlalchemy
-  #     # zlib
-  #     # that's where the shared libs go, you can find which one you need using
-  #     # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
-  #   ];
-  # };
+  # The following is to get binaries working on NixOS that require dynamic linking
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      # xorg.libX11
+      # xorg.libxcb
+      # xorg.libXcomposite # For VSCodium extension Markdown PDF
+      zlib # numpy
+      # libgcc # sqlalchemy
+      # zlib
+      # that's where the shared libs go, you can find which one you need using
+      # nix-locate --top-level libstdc++.so.6  (replace this with your lib)
+    ];
+  };
 
 }
 
