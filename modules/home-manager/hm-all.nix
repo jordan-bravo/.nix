@@ -8,6 +8,8 @@
     ./zsh.nix
   ];
 
+  home.sessionPath = [ "$HOME/.local/bin" ]; 
+
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
