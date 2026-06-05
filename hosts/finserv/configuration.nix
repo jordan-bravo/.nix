@@ -1,7 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
+{
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 
 {
@@ -267,7 +268,10 @@
     # then make it part of lnd group: sudo chown root:lnd /etc/rustdress/rustdress.toml
     # then tighten permissions: sudo chmod 640 /etc/rustdress/rustdress.toml
     rustdress = {
-      after = [ "network.target" "lnd.service" ];
+      after = [
+        "network.target"
+        "lnd.service"
+      ];
       wants = [ "lnd.service" ];
       serviceConfig = {
         ExecStart = "${pkgs.rustdress}/bin/rustdress -- --config /etc/rustdress/rustdress.toml";

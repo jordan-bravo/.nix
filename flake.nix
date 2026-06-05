@@ -51,16 +51,17 @@
   };
 
   outputs =
-    { nixpkgs
-    , disko
-    , home-manager
-    , # , lanzaboote
-      nix-bitcoin
-    , nixgl
-    , # , nixpkgs-node18
-      sops-nix
-    , system-manager
-    , ...
+    {
+      nixpkgs,
+      disko,
+      home-manager,
+      # , lanzaboote
+      nix-bitcoin,
+      nixgl,
+      # , nixpkgs-node18
+      sops-nix,
+      system-manager,
+      ...
     }@inputs:
     let
       # Example of pinning a package version
