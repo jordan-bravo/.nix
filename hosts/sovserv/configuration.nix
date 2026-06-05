@@ -114,7 +114,6 @@
         adminuser = "admin";
         adminpassFile = config.sops.secrets."nextcloud/admin-password".path;
         dbtype = "pgsql";
-        extraTrustedDomains = [ "sovserv.snowy-hops.ts.net" ];
       };
       caching.redis = true;
       configureRedis = true;
@@ -147,15 +146,18 @@
       hostName = "nextcloud.sovserv.top";
       https = true;
       maxUploadSize = "32G";
-      # When updating nextcloud versions, you might see redis fail to start. If so, disable nextcloud, then
-      # delete dump.rdb, then re-enable nextcloud
-      package = pkgs.nextcloud32;
+      # When updating nextcloud versions, you might see redis fail to start. If so, first disable nextcloud service and comment out sops.secrets."nextcloud/admin-password"
+      # then
+      # delete /var/lib/redis-nextcloud/dump.rdb, then re-enable nextcloud (revert changes to config)
+      package = pkgs.nextcloud33;
       phpOptions = {
         "opcache.interned_strings_buffer" = "48";
       };
       settings = {
         overwriteprotocol = "https";
+        trusted_domains = [ "sovserv.snowy-hops.ts.net" ];
         default_phone_region = "US";
+        upgrade.disable_web = true;
         enabledPreviewProviders = [
           "OC\\Preview\\BMP"
           "OC\\Preview\\GIF"
