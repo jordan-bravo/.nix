@@ -114,6 +114,7 @@
         adminuser = "admin";
         adminpassFile = config.sops.secrets."nextcloud/admin-password".path;
         dbtype = "pgsql";
+        extraTrustedDomains = [ "sovserv.snowy-hops.ts.net" ];
       };
       caching.redis = true;
       configureRedis = true;
@@ -176,12 +177,15 @@
     nginx = {
       enable = true;
       virtualHosts = {
-        "nextcloud.sovserv.top".listen = [
-          {
-            addr = "0.0.0.0";
-            port = 8080;
-          }
-        ];
+        "nextcloud.sovserv.top" = {
+          listen = [
+            {
+              addr = "0.0.0.0";
+              port = 8080;
+            }
+          ];
+          serverAliases = [ "sovserv.snowy-hops.ts.net" ];
+        };
       };
     };
     onlyoffice = {
