@@ -131,8 +131,8 @@
     sauce = "source $HOME/.config/zsh/.zshrc";
     sshk = "kitty +kitten ssh";
     td = "sudo tailscale down";
-    te = "sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true --accept-dns=false --operator=$USER";
-    tu = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false --accept-dns=false --operator=$USER";
+    te = "sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true --accept-dns=true --operator=$USER";
+    tu = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false --accept-dns=true --operator=$USER";
     ts = "tailscale status";
     v = "nvim";
 

@@ -20,6 +20,10 @@
   boot.initrd.luks.devices."luks-5bd61864-93b8-494c-856f-6cde9cc407a1".device =
     "/dev/disk/by-uuid/5bd61864-93b8-494c-856f-6cde9cc407a1";
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
+
   environment.systemPackages = with pkgs; [
     (appimage-run.override { extraPkgs = p: [ p.libepoxy ]; })
     android-tools # for flashing grapheneos
