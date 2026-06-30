@@ -56,6 +56,7 @@
       nixfmt # Code formatter for nix
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       # nodejs-14.nodejs-14_x # NodeJS 14
+      nodejs_24
       openssh # Implementation of the SSH protocol
       # pamixer # Pulseaudio command line mixer
       pinentry-gnome3 # GnuPG’s interface to passphrase input
