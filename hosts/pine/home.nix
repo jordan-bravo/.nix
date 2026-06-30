@@ -152,8 +152,8 @@
     ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks."*".addKeysToAgent = "yes";
-      matchBlocks."*".forwardAgent = true;
+      settings."*".addKeysToAgent = "yes";
+      settings."*".forwardAgent = true;
       extraConfig = ''
         StrictHostKeyChecking=no
       '';
