@@ -28,8 +28,11 @@
     (appimage-run.override { extraPkgs = p: [ p.libepoxy ]; })
     android-tools # for flashing grapheneos
     bitwarden-desktop
+    dotnet-sdk_10
     element-desktop # Matrix client
+    fira-code
     gnome-tweaks
+    kitty # terminal
     # mullvad
     nextcloud-client
     python314
