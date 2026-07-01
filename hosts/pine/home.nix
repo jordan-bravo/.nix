@@ -429,6 +429,7 @@
       target = ".vimrc";
       enable = true;
       text = ''
+        set ignorecase smartcase
         autocmd InsertEnter * set nu nornu
         autocmd InsertLeave * set nu rnu
       '';
