@@ -33,6 +33,7 @@
     fira-code
     gnome-tweaks
     kitty # terminal
+    loupe # image viewer
     # mullvad
     nextcloud-client
     python314
