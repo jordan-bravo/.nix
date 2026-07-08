@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ../../modules/home-manager/hm-all.nix
@@ -5,6 +6,15 @@
   ];
 
   services.trayscale.enable = true;
+
+  # The AppIndicator GNOME extension spawns `gjs` from PATH to re-discover
+  # existing tray icons whenever the extension re-enables (e.g. after screen
+  # unlock). Without gjs in PATH, already-running tray apps like trayscale
+  # lose their icon after every lock/unlock.
+  home.packages = [
+    pkgs.gjs
+    pkgs.gnomeExtensions.appindicator
+  ];
 
   # GNOME Specific:
   # The following disables the notification sound that plays in GNOME when
