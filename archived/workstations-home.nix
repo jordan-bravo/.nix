@@ -129,8 +129,4 @@
       '';
     };
   };
-
-  services = {
-    copyq.enable = true;
-  };
 }

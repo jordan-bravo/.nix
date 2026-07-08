@@ -136,7 +136,7 @@
       enableZshIntegration = true;
       silent = true;
     };
-    fzf.enable = true;
+    fzf.enable = false;
     # fuzzel.enable = true;
     # gh.enable = true;
     git.enable = true;
