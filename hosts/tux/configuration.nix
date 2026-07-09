@@ -13,6 +13,13 @@
     systemd-boot.enable = true;
     # systemd-boot.configurationLimit = 4;
   };
+  # Do NOT set mem_sleep_default=deep: S3 suspends but firmware hangs on
+  # resume (black screen, hard poweroff required; tested 2026-07-09).
+  # This machine must use the default s2idle.
+
+  # Firmware updates via LVFS (fwupdmgr refresh && fwupdmgr get-updates);
+  services.fwupd.enable = true;
+
   networking.hostName = "tux";
   # This might be needed to specify additional binary caches
   # nix.settings.trusted-users = [ "root" "jordan" ];
