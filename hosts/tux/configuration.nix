@@ -17,6 +17,15 @@
   # resume (black screen, hard poweroff required; tested 2026-07-09).
   # This machine must use the default s2idle.
 
+  # Lid close: suspend now, hibernate later. With HibernateDelaySec unset,
+  # systemd estimates battery drain and hibernates before the battery runs
+  # low (on AC it stays suspended). Resume from hibernate cold-boots and
+  # reloads RAM from swap, so it avoids the broken S3 resume path.
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  # Hibernation image lives in the LUKS-encrypted swap; this device must be
+  # unlocked in initrd (it is, via boot.initrd.luks.devices below)
+  boot.resumeDevice = "/dev/mapper/luks-5bd61864-93b8-494c-856f-6cde9cc407a1";
+
   # Firmware updates via LVFS (fwupdmgr refresh && fwupdmgr get-updates);
   services.fwupd.enable = true;
 
