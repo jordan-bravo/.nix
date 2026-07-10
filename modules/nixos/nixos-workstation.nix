@@ -29,8 +29,8 @@
   # programs.adb.enable = true;
 
   # Virtual machines
-  programs.virt-manager.enable = true;
-  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = false;
+  virtualisation.libvirtd.enable = false;
   boot.kernelModules = [ "kvm-intel" ];
   networking.firewall.trustedInterfaces = [ "virbr0" ];
 
