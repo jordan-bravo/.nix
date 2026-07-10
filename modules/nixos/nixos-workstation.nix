@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   environment.sessionVariables = {
@@ -44,6 +44,32 @@
     pulse.enable = true;
   };
   services.flatpak.enable = true;
+  # Flatpak sandboxes only see host fonts under FHS paths like
+  # /usr/share/fonts; on NixOS fonts live in /nix/store, which isn't mounted
+  # in the sandbox. Aggregate fonts.packages and bindfs-mount them (symlinks
+  # resolved to real files) where flatpak expects them.
+  system.fsPackages = [ pkgs.bindfs ];
+  fileSystems."/usr/share/fonts" =
+    let
+      aggregatedFonts = pkgs.buildEnv {
+        name = "system-fonts";
+        paths = config.fonts.packages;
+        pathsToLink = [ "/share/fonts" ];
+        # NixOS's default X11 bitmap fonts collide on legacy fonts.dir/
+        # fonts.alias index files; fontconfig ignores those, so pick one
+        # arbitrarily instead of failing.
+        ignoreCollisions = true;
+      };
+    in
+    {
+      device = "${aggregatedFonts}/share/fonts";
+      fsType = "fuse.bindfs";
+      options = [
+        "ro"
+        "resolve-symlinks"
+        "x-gvfs-hide"
+      ];
+    };
   services.printing.enable = true;
   services.xserver = {
     # Enable the X11 windowing system.  I think this is required even with Wayland.

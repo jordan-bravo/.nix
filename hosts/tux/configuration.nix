@@ -21,7 +21,7 @@
   # systemd estimates battery drain and hibernates before the battery runs
   # low (on AC it stays suspended). Resume from hibernate cold-boots and
   # reloads RAM from swap, so it avoids the broken S3 resume path.
-  services.logind.lidSwitch = "suspend-then-hibernate";
+  services.logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
   # Hibernation image lives in the LUKS-encrypted swap; this device must be
   # unlocked in initrd (it is, via boot.initrd.luks.devices below)
   boot.resumeDevice = "/dev/mapper/luks-5bd61864-93b8-494c-856f-6cde9cc407a1";
@@ -59,9 +59,10 @@
     # xdg-utils
   ];
 
-  # fonts.packages = with pkgs; [
-  #   nerd-fonts.fira-code
-  # ];
+  fonts.packages = with pkgs; [
+    ibm-plex
+    nerd-fonts.fira-code
+  ];
 
   # Enable the GNOME Desktop Environment
   services.desktopManager.gnome.enable = true;
