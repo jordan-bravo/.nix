@@ -25,7 +25,7 @@ with lib.hm.gvariant;
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
       cursor-theme = "Adwaita";
-      gtk-theme = "Adwaita";
+      gtk-theme = "Adwaita-dark";
       icon-theme = "Adwaita";
       show-battery-percentage = true;
     };

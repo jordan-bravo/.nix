@@ -24,6 +24,8 @@
     # nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
     # This is the branch to use temporarily until the releaes branch is up-to-date
     nix-bitcoin.url = "github:fort-nix/nix-bitcoin/master";
+    # Declarative flatpak management (remotes, apps, overrides, auto-update)
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     # NixGL for graphics driver issues on non-NixOS
     nixgl = {
       url = "github:guibou/nixGL";
@@ -89,6 +91,7 @@
               # home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.sharedModules = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
               home-manager.users.jordan = import ./hosts/tux/home.nix;
               home-manager.backupFileExtension = "backup";
             }
@@ -106,6 +109,7 @@
               # home-manager.extraSpecialArgs = { inherit inputs; };
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.sharedModules = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
               home-manager.users.jordan = import ./hosts/ryz/home.nix;
               home-manager.backupFileExtension = "backup";
             }
@@ -179,6 +183,7 @@
           inherit pkgs; # equivalent to pkgs = pkgs;
           extraSpecialArgs = { inherit inputs; };
           modules = [
+            inputs.nix-flatpak.homeManagerModules.nix-flatpak
             ./hosts/pine/home.nix
           ];
         };
@@ -186,7 +191,10 @@
         tuf = home-manager.lib.homeManagerConfiguration {
           inherit pkgs; # equivalent to pkgs = pkgs;
           extraSpecialArgs = { inherit inputs; };
-          modules = [ ./hosts/tuf/home.nix ];
+          modules = [
+            inputs.nix-flatpak.homeManagerModules.nix-flatpak
+            ./hosts/tuf/home.nix
+          ];
         };
       };
       # System-Manager (for controlling services and system config on non-NixOS Linux)

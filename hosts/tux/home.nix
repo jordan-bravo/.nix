@@ -7,6 +7,32 @@
 
   services.trayscale.enable = true;
 
+  # Flatpak apps for this host (shared flatpak config lives in
+  # modules/home-manager/flatpak.nix; apps are declared per host).
+  services.flatpak.packages = [
+    "app.grayjay.Grayjay"
+    "com.brave.Browser"
+    "com.github.PintaProject.Pinta"
+    "com.github.tchx84.Flatseal"
+    "com.mattjakeman.ExtensionManager"
+    "com.tdameritrade.ThinkOrSwim"
+    "md.obsidian.Obsidian"
+    "org.asamk.SignalCli"
+    "org.cubocore.CoreRenamer"
+    "org.fedoraproject.MediaWriter"
+    "org.gajim.Gajim"
+    "org.gnome.Calculator"
+    "org.kde.krename"
+    "org.libreoffice.LibreOffice"
+    "org.mozilla.firefox"
+    "org.mozilla.thunderbird_esr"
+    "org.onlyoffice.desktopeditors"
+    "org.qbittorrent.qBittorrent"
+    "org.signal.Signal"
+    "org.torproject.torbrowser-launcher"
+    "org.videolan.VLC"
+  ];
+
   # The AppIndicator GNOME extension spawns `gjs` from PATH to re-discover
   # existing tray icons whenever the extension re-enables (e.g. after screen
   # unlock). Without gjs in PATH, already-running tray apps like trayscale
