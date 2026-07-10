@@ -3,6 +3,7 @@
   imports = [
     ../../modules/home-manager/hm-all.nix
     ../../modules/home-manager/hm-workstation.nix
+    ../../modules/home-manager/dconf.nix
   ];
 
   services.trayscale.enable = true;
