@@ -24,7 +24,12 @@
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
       cursor-theme = "Adwaita";
-      gtk-theme = "Adwaita-dark";
+      # Keep this "Adwaita", not "Adwaita-dark": GTK4 readers (Chromium/Electron
+      # title bars, mutter-x11-frames) have no built-in Adwaita-dark theme and
+      # fall back to light when the lookup fails. Dark mode comes from
+      # color-scheme above; for a stubborn legacy GTK3 app, use a per-app
+      # GTK_THEME override instead.
+      gtk-theme = "Adwaita";
       icon-theme = "Adwaita";
       show-battery-percentage = true;
     };
