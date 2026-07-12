@@ -183,7 +183,11 @@
     rootless.setSocketVariable = true;
   };
 
-  ### Auto-update system daily
+  ### Auto-update system weekly
+  # Saturday morning so failures surface while someone is around to notice;
+  # missed runs (machine off/asleep) fire on the next boot/wake (persistent
+  # timer). Workstations override operation to "boot" in nixos-workstation.nix
+  # so a live desktop session is never torn down by activation.
   system.autoUpgrade = {
     enable = true;
     flake = inputs.self.outPath;
@@ -192,7 +196,7 @@
       "nixpkgs"
       "--print-build-logs"
     ];
-    dates = "12:30";
+    dates = "Sat 09:00";
     randomizedDelaySec = "45min";
   };
 
