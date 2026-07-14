@@ -183,22 +183,24 @@
     rootless.setSocketVariable = true;
   };
 
-  ### Auto-update system weekly
-  # Saturday morning so failures surface while someone is around to notice;
-  # missed runs (machine off/asleep) fire on the next boot/wake (persistent
-  # timer). Workstations override operation to "boot" in nixos-workstation.nix
-  # so a live desktop session is never torn down by activation.
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--print-build-logs"
-    ];
-    dates = "Sat 09:00";
-    randomizedDelaySec = "45min";
-  };
+  ### Auto-upgrades disabled (2026-07-13): upgrades are fully manual.
+  # The upgrade mechanism is: `nix flake update` + commit + rebuild each host.
+  # autoUpgrade used to run daily with --update-input nixpkgs, which upgraded
+  # the running system past the repo's flake.lock; a later manual rebuild then
+  # jumped *backwards* to the committed pin, and on workstations that large
+  # delta restarted the GNOME user units and tore down the live session
+  # (happened on tux 2026-07-12/13). Without --update-input the timer would
+  # only rebuild the already-running generation, so it is pointless — hence
+  # disabled rather than kept as a weekly no-op.
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   flake = inputs.self.outPath;
+  #   flags = [
+  #     "--print-build-logs"
+  #   ];
+  #   dates = "Sat 09:00";
+  #   randomizedDelaySec = "45min";
+  # };
 
   ### Auto-optimize storage
   nix.optimise.automatic = true;

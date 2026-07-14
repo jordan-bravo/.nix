@@ -25,11 +25,12 @@
     zed-editor # High-performance, multiplayer code editor from the creators of Atom and Tree-sitter
   ];
 
-  # Auto-upgrades (scheduled in nixos-all.nix) only set the new generation as
-  # the boot default here instead of activating it live: activation restarts
-  # changed user units, which can tear down the running desktop session
-  # (happened on tux 2026-07-12). Servers keep the default "switch".
-  system.autoUpgrade.operation = "boot";
+  # autoUpgrade is disabled (see nixos-all.nix); this override is kept for
+  # reference should it ever be re-enabled. It made auto-upgrades on
+  # workstations only set the new generation as the boot default instead of
+  # activating it live: activation restarts changed user units, which can tear
+  # down the running desktop session (happened on tux 2026-07-12).
+  # system.autoUpgrade.operation = "boot";
 
   # services.mullvad-vpn.enable = true;
   # programs.adb.enable = true;
