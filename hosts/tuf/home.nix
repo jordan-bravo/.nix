@@ -226,7 +226,8 @@
         gsu = "git status";
         hms = "home-manager switch --flake ~/.nix#$(hostname)";
         mise-activate = "eval \"$(~/.local/bin/mise activate zsh)\"";
-        nr = "sudo nixos-rebuild switch --flake ~/.nix";
+        nrb = "sudo nixos-rebuild boot --flake ~/.nix";
+        nrs = "sudo nixos-rebuild switch --flake ~/.nix";
         sauce = "source $HOME/.config/zsh/.zshrc";
         sshk = "kitty +kitten ssh";
         td = "sudo tailscale down";
