@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "FiraCodeNerdFont";
+      name = "FiraCode Nerd Font Mono";
       size = 12;
     };
     shellIntegration.enableZshIntegration = true;

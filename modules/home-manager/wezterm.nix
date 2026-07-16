@@ -14,7 +14,7 @@
 
       config.font_size = 12
       config.color_scheme = 'Vs Code Dark+ (Gogh)'
-      config.font = wezterm.font('FiraCodeNerdFont')
+      config.font = wezterm.font('FiraCode Nerd Font Mono')
       config.window_decorations = "NONE"
 
       -- -----------------------------------------------------
