@@ -187,15 +187,6 @@
             ./hosts/pine/home.nix
           ];
         };
-        # Tuf is running Fedora with COSMIC desktop
-        tuf = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs; # equivalent to pkgs = pkgs;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            inputs.nix-flatpak.homeManagerModules.nix-flatpak
-            ./hosts/tuf/home.nix
-          ];
-        };
       };
       # System-Manager (for controlling services and system config on non-NixOS Linux)
       # Currently not used, need to configure
