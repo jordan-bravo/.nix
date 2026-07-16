@@ -14,12 +14,11 @@
 
       # adwaita-qt # Adwaita style for Qt apps
       # adwaita-qt6 # Adwaita style for Qt6 apps
-      awscli2 # Unified tool to manage your AWS services
+      # awscli2 # Unified tool to manage your AWS services
       # beekeeper-studio # SQL client
-      bitcoind # Bitcoin core
+      # bitcoind # Bitcoin core
       # blueman # GTK-based Bluetooth Manager
       # brightnessctl # Read and control device brightness
-      ccls # C/c++ language server powered by clang
       # clang # C language family frontend for LLVM
       claude-code # Claude Code editor
       # code-cursor # Cursor IDE
@@ -28,7 +27,7 @@
       doggo # Replacement for dig
       duf # Disk Usage/Free Utility
       dust # du, but more intuitive (disk usage)
-      evil-helix # Helix editor with vim keybindings
+      # evil-helix # Helix editor with vim keybindings
       fd # Simple, fast and user-friendly alternative to find
       ffmpeg # Audio conversion
       fnm # Fast and simple Node.js version manager
@@ -36,57 +35,57 @@
       # gcc # GNU compiler collection
       # gcr # GNOME crypto services (daemon and tools), required for gpg pinentry-gnome3
       gh # GitHub CLI
-      ghostty # Fast, native, feature-rich terminal emulator pushing modern features
-      heroku # Heroku CLI
-      host # Resolve domain names to ip addresses and vice versa
+      # ghostty # Fast, native, feature-rich terminal emulator pushing modern features
+      # heroku # Heroku CLI
+      # host # Resolve domain names to ip addresses and vice versa
       git-crypt # Transparent file encryption in git
-      grim # Grab images from a Wayland compositor
-      hello # CLI hello world
-      kanata # Tool to improve keyboard comfort and usability with advanced customization
+      # grim # Grab images from a Wayland compositor
+      # hello # CLI hello world
+      # kanata # Tool to improve keyboard comfort and usability with advanced customization
       # kdePackages.qt6ct # Qt6 Configuration Tool
       lazydocker # Simple terminal UI for both docker and docker-compose
       lazygit # Simple terminal UI for git commands
       # libsForQt5.qt5.qtwayland # Cross-platform app framework for C++
       # libsForQt5.qt5ct # Qt5 Configuration Tool
-      meson # Open source, fast and friendly build system made in Python
+      # meson # Open source, fast and friendly build system made in Python
       mise # Front-end to your dev env
-      mongosh # MongoDB Shell
+      # mongosh # MongoDB Shell
       # nautilus # File manager for GNOME
       neovim # Text editor / IDE
-      nixfmt # Code formatter for nix
       nixgl.nixGLIntel # Helps some Nix packages run on non-NixOS
       # nodejs-14.nodejs-14_x # NodeJS 14
       nodejs_24
+      opencode # terminal-based open source ai agent
       openssh # Implementation of the SSH protocol
       # pamixer # Pulseaudio command line mixer
       pinentry-gnome3 # GnuPG’s interface to passphrase input
       # postman # API client
       procs # Modern ps
-      rustlings # Explore the Rust programming language and learn more about it while doing exercises
+      # rustlings # Explore the Rust programming language and learn more about it while doing exercises
       sd # Intuitive find & replace CLI (sed alternative)
       # seahorse # Application for managing encryption keys and passwords in the GnomeKeyring
       # slurp # Select a region of the screen in a Wayland compositor
       somo # Socket and port monitoring tool (replacement for ss)
-      sparrow # Modern desktop Bitcoin wallet application
+      # sparrow # Modern desktop Bitcoin wallet application
       speedtest-go # CLI and Go API to Test Internet Speed using speedtest.net
       # swayosd # on screen display for keyboard shortcuts such as volume and brightness
-      terraform # Tool for building, changing, and versioning infrastructure
-      terraform-ls # Terraform Language Server (official)
+      # terraform # Tool for building, changing, and versioning infrastructure
       tldr # Simplified and community-driven man pages
       trash-cli # Command line interface to the freedesktop.org trashcan
-      waypipe # Network proxy for Wayland clients (applications)
-      wezterm # Terminal Emulator
+      # waypipe # Network proxy for Wayland clients (applications)
+      # wezterm # Terminal Emulator
       wl-clipboard # Wayland clipboard utilities, wl-copy and wl-paste
       xdg-utils # Tools that assist applications with a variety of desktop integration tasks
       xlsclients # Lists any applications running under Xwayland
 
       # Programming language tools (lang servers, formatters, etc.)
+      ccls # C/c++ language server powered by clang
       nil
       nixd
-      nixfmt
+      nixfmt # Code formatter for nix
       prettier
-      # nixpkgs-node18.nodejs_18
       # python312Packages.python-lsp-server
+      terraform-ls # Terraform Language Server (official)
     ];
     homeDirectory = "/home/${config.home.username}";
     preferXdgDirectories = true;
