@@ -171,7 +171,7 @@
         };
       };
     };
-    waybar.enable = true;
+    # waybar.enable = true;
     yazi = {
       enable = true;
       enableZshIntegration = true;
@@ -376,25 +376,25 @@
       #   icon = "kitty";
       #   categories = [ "System" "TerminalEmulator" ];
       # };
-      "org.wezfurlong.wezterm" = {
-        name = "Wezterm";
-        comment = "Wez's Terminal Emulator";
-        exec = "nixGLIntel wezterm --cwd .";
-        icon = "org.wezfurlong.wezterm";
-        categories = [
-          "System"
-          "TerminalEmulator"
-          "Utility"
-        ];
-      };
-      sparrow-desktop = {
-        name = "Sparrow Testnet";
-        genericName = "Bitcoin wallet";
-        exec = "sparrow-desktop --network testnet";
-        icon = "sparrow-desktop";
-        categories = [ "Finance" ];
-        mimeType = [ "application/psbt" ];
-      };
+      # "org.wezfurlong.wezterm" = {
+      #   name = "Wezterm";
+      #   comment = "Wez's Terminal Emulator";
+      #   exec = "nixGLIntel wezterm --cwd .";
+      #   icon = "org.wezfurlong.wezterm";
+      #   categories = [
+      #     "System"
+      #     "TerminalEmulator"
+      #     "Utility"
+      #   ];
+      # };
+      # sparrow-desktop = {
+      #   name = "Sparrow Testnet";
+      #   genericName = "Bitcoin wallet";
+      #   exec = "sparrow-desktop --network testnet";
+      #   icon = "sparrow-desktop";
+      #   categories = [ "Finance" ];
+      #   mimeType = [ "application/psbt" ];
+      # };
     };
     # Add diretories to XDG_DATA_DIRS
     systemDirs.data = [ "${config.home.homeDirectory}/.local/share/flatpak/exports/share" ];
