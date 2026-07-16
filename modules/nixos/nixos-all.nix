@@ -125,7 +125,7 @@
     gsw = "git switch";
     gsh = "git stash";
     gsu = "git status";
-    hms = "home-manager switch --flake ~/.nix#$(hostname)";
+    hms = "home-manager switch --flake ~/.nix#$(uname -n)";
     mise-activate = "eval \"$(~/.nix-profile/bin/mise activate zsh)\"";
     nrb = "sudo nixos-rebuild boot --flake ~/.nix";
     nrs = "sudo nixos-rebuild switch --flake ~/.nix";
