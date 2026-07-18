@@ -81,68 +81,10 @@
       # Fix bug on NixOS with zsh-autocomplete when pressing up or down arrows (nixos.wiki/wiki/Zsh)
       bindkey "''${key[Up]}" up-line-or-search
 
-      # If bat exists, use instead of cat
-      type bat > /dev/null 2>&1 && alias cat=bat
-
-      # If lsd exists, use instead of ls
-      type lsd > /dev/null 2>&1 && alias ls=lsd
-
-      # If zoxide exists, use instead of cd
-      type zoxide > /dev/null 2>&1 && alias cd=z
-
-      # If ripgrep exists, use instead of grep
-      type rg > /dev/null 2>&1 && alias grep=rg
-
-      # If fd exists, use instead of find
-      type fd > /dev/null 2>&1 && alias find=fd
-
-      # If duf exists, use instead of df
-      type duf > /dev/null 2>&1 && alias df=duf
-
-      # If dust exists, use instead of du
-      type dust > /dev/null 2>&1 && alias du=dust
-
-      # Accept next word from zsh autosuggestion with Ctrl+U
-      bindkey ^U forward-word
-
-      # Disable git pull
-      git() { if [[ $@ == "pull" ]]; then command echo "git pull disabled.  Use git fetch + git merge."; else command git "$@"; fi; }
+      ${builtins.readFile ../zsh-init.sh}
     '';
   };
-  environment.shellAliases = {
-    l = "ls -lAhF";
-    lal = "ls -AhF";
-    d = "docker";
-    dc = "docker compose";
-    gad = "git add";
-    gcm = "git commit";
-    gdi = "git diff";
-    gfe = "git fetch";
-    gme = "git merge";
-    gpu = "git push";
-    grb = "git rebase";
-    grs = "git restore";
-    gsw = "git switch";
-    gsh = "git stash";
-    gsu = "git status";
-    hms = "home-manager switch --flake ~/.nix#$(uname -n)";
-    mise-activate = "eval \"$(~/.nix-profile/bin/mise activate zsh)\"";
-    nrb = "sudo nixos-rebuild boot --flake ~/.nix";
-    nrs = "sudo nixos-rebuild switch --flake ~/.nix";
-    sauce = "source $HOME/.config/zsh/.zshrc";
-    sshk = "kitty +kitten ssh";
-    td = "sudo tailscale down";
-    te = "sudo tailscale up --exit-node=us-atl-wg-001.mullvad.ts.net --exit-node-allow-lan-access=true --accept-dns=true --operator=$USER";
-    tu = "sudo tailscale up --exit-node= --exit-node-allow-lan-access=false --accept-dns=true --operator=$USER";
-    ts = "tailscale status";
-    v = "nvim";
-
-    # Connect to machines on tailnet
-    finserv = "ssh main@$(tailscale status | grep finserv | awk '{print $1}')";
-    medserv = "ssh main@$(tailscale status | grep medserv | awk '{print $1}')";
-    punk-ubuntu = "ssh main@$(tailscale status | grep punk-ubuntu | awk '{print $1}')";
-    sovserv = "ssh main@$(tailscale status | grep sovserv | awk '{print $1}')";
-  };
+  environment.shellAliases = import ../shell-aliases.nix;
   programs.starship = {
     enable = true;
     settings = {
