@@ -311,6 +311,22 @@
       '';
     };
   };
+  systemd.services.tailscale-serve-obsidian = {
+    description = "Expose Obsidian CouchDB sync server via Tailscale Serve";
+    after = [
+      "tailscaled.service"
+      "couchdb-init.service"
+    ];
+    wants = [ "tailscaled.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      User = "main";
+      ExecStart = "${config.services.tailscale.package}/bin/tailscale serve --bg --https=5984 http://127.0.0.1:5984";
+    };
+  };
+
   users.users.bravo-site = {
     isSystemUser = true;
     group = "bravo-site";
