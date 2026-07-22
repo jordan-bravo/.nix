@@ -123,6 +123,20 @@
     # ../../modules/home-manager/nvim-deps.nix
     # ../../modules/home-manager/zellij.nix
   ];
+
+  # Flatpak apps for this host (shared flatpak config lives in
+  # modules/home-manager/flatpak.nix; apps are declared per host).
+  services.flatpak.packages = [
+    "app.grayjay.Grayjay"
+    "com.brave.Browser"
+    # "com.github.PintaProject.Pinta"
+    "com.github.tchx84.Flatseal"
+    "md.obsidian.Obsidian"
+    "org.gnome.Calculator"
+    "org.mozilla.firefox"
+    "org.signal.Signal"
+  ];
+
   programs = {
     bat = {
       enable = true;
@@ -235,53 +249,9 @@
   #     };
   #   };
   # };
-  /*
-    ~/.config/systemd/user/flatpak-update.service
-
-    [Unit]
-    Description=Update Flatpak applications
-
-    [Service]
-    Type=oneshot
-    ExecStart=/usr/bin/flatpak update -y
-
-    ~/.config/systemd/user/flatpak-update.timer
-
-    [Unit]
-    Description=Run flatpak update daily at noon
-
-    [Timer]
-    OnCalendar=*-*-* 12:00:00
-    Persistent=true
-
-    [Install]
-    WantedBy=timers.target
-  */
-  systemd.user.services = {
-    flatpak-update = {
-      Unit = {
-        Description = "Update Flatpak applications";
-      };
-      Service = {
-        Type = "oneshot";
-        ExecStart = "/usr/bin/flatpak update -y";
-      };
-    };
-  };
-  systemd.user.timers = {
-    flatpak-update = {
-      Unit = {
-        Description = "Run flatpak update daily at noon";
-      };
-      Timer = {
-        OnCalendar = "*-*-* 12:00:00";
-        Persistent = true;
-      };
-      Install = {
-        WantedBy = [ "timers.target" ];
-      };
-    };
-  };
+  # Flatpak auto-update is handled declaratively by nix-flatpak
+  # (services.flatpak.update.auto in modules/home-manager/flatpak.nix), so the
+  # old imperative flatpak-update systemd service/timer is no longer needed.
   targets.genericLinux.enable = true;
   xdg = {
     enable = true;
