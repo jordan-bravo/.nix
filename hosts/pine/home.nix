@@ -56,7 +56,7 @@
       # nodejs-14.nodejs-14_x # NodeJS 14
       nodejs_24
       opencode # terminal-based open source ai agent
-      openssh # Implementation of the SSH protocol
+      # openssh # Implementation of the SSH protocol — disabled: use Fedora's /usr/bin/ssh so crypto-policies KEX algos (mlkem) parse
       # pamixer # Pulseaudio command line mixer
       pinentry-gnome3 # GnuPG’s interface to passphrase input
       # postman # API client
