@@ -41,10 +41,10 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    system-manager = {
-      url = "github:numtide/system-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # system-manager = {
+    #   url = "github:numtide/system-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     # xremap-flake = {
     #   url = "github:xremap/nix-flake";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -62,7 +62,7 @@
       nixgl,
       # , nixpkgs-node18
       sops-nix,
-      system-manager,
+      # system-manager,
       ...
     }@inputs:
     let
@@ -190,10 +190,10 @@
       };
       # System-Manager (for controlling services and system config on non-NixOS Linux)
       # Currently not used, need to configure
-      systemConfigs = {
-        pine = system-manager.lib.makeSystemConfig {
-          modules = [ ./system-manager/pine/default.nix ];
-        };
-      };
+      # systemConfigs = {
+      #   pine = system-manager.lib.makeSystemConfig {
+      #     modules = [ ./system-manager/pine/default.nix ];
+      #   };
+      # };
     };
 }
