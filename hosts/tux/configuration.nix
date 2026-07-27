@@ -85,6 +85,9 @@
 
   # services.gnome.gnome-keyring.enable = false;
   # security.pam.services.jordan.enableGnomeKeyring = true;
+  # Auto-unlock the GNOME "login" keyring at graphical (GDM) sign-in, so it
+  # decrypts with the login password instead of prompting after login.
+  security.pam.services.gdm-password.enableGnomeKeyring = true;
 
   # Remap keys
 
