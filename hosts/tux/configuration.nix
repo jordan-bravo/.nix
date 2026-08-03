@@ -55,7 +55,7 @@
     opencode
     python314
     rocketchat-desktop
-    # sparrow-pkgs.sparrow # Pinned to v2.0.0 because v2.2.1 has a bug where clicking on the "send" tab doesn't work
+    sparrow
     uv # python package manager
     # xdg-utils
   ];
