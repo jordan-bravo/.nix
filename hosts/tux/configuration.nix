@@ -41,7 +41,15 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    (appimage-run.override { extraPkgs = p: [ p.libepoxy ]; })
+    (appimage-run.override {
+      extraPkgs = p: [
+        p.libepoxy
+        # Buzz AppImage: libelf.so.1, libffi.so.8, libzstd.so.1
+        p.elfutils
+        p.libffi
+        p.zstd
+      ];
+    })
     android-tools # for flashing grapheneos
     bitwarden-desktop
     dotnet-sdk_10
