@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
@@ -44,7 +44,7 @@
     (appimage-run.override { extraPkgs = p: [ p.libepoxy ]; })
     android-tools # for flashing grapheneos
     bitwarden-desktop
-    (callPackage ../../pkgs/buzz/package.nix { }) # Buzz desktop app + CLI
+    inputs.buzz.packages.${pkgs.stdenv.hostPlatform.system}.default # Buzz desktop app + CLI
     dotnet-sdk_10
     element-desktop # Matrix client
     fira-code

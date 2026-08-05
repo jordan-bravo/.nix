@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "buzz": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785959437,
+        "narHash": "sha256-8n9tnqEM8wVQFMNiK2J3JApC7Lf0BTna6mTGpx/yMps=",
+        "owner": "jordan-bravo",
+        "repo": "buzz-nix",
+        "rev": "9e50352b119d329511286777e7664bba4627c48c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jordan-bravo",
+        "repo": "buzz-nix",
+        "type": "github"
+      }
+    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -396,6 +416,7 @@
     },
     "root": {
       "inputs": {
+        "buzz": "buzz",
         "disko": "disko",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",

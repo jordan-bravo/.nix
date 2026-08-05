@@ -7,6 +7,11 @@
     #   url = "github:tadfisher/android-nixpkgs";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    # Buzz desktop app, repacked from upstream's .deb
+    buzz = {
+      url = "github:jordan-bravo/buzz-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
