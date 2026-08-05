@@ -43,11 +43,6 @@
     pkgs.gnomeExtensions.appindicator
   ];
 
-  # GNOME Specific:
-  # The following disables the notification sound that plays in GNOME when
-  # a charging cable is plugged in or unplugged.
-  # Sound theme that inherits everything from the default but disables the
-  # charger plug/unplug sounds (a "<name>.disabled" file mutes that event).
   # The Buzz AppImage's WebKit does not pass GST_PLUGIN_SYSTEM_PATH_1_0 down to
   # its WebKitWebProcess, so GStreamer there falls back to its built-in search
   # paths and sees only the core plugins. Missing appsink/appsrc/autoaudiosink
@@ -69,6 +64,11 @@
         }
       }/lib/gstreamer-1.0";
 
+    # GNOME Specific:
+    # The following disables the notification sound that plays in GNOME when
+    # a charging cable is plugged in or unplugged.
+    # Sound theme that inherits everything from the default but disables the
+    # charger plug/unplug sounds (a "<name>.disabled" file mutes that event).
     "sounds/__custom/index.theme".text = ''
       [Sound Theme]
       Name=Custom
