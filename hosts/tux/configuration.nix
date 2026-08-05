@@ -41,17 +41,10 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    (appimage-run.override {
-      extraPkgs = p: [
-        p.libepoxy
-        # Buzz AppImage: libelf.so.1, libffi.so.8, libzstd.so.1
-        p.elfutils
-        p.libffi
-        p.zstd
-      ];
-    })
+    (appimage-run.override { extraPkgs = p: [ p.libepoxy ]; })
     android-tools # for flashing grapheneos
     bitwarden-desktop
+    (callPackage ../../pkgs/buzz/package.nix { }) # Buzz desktop app + CLI
     dotnet-sdk_10
     element-desktop # Matrix client
     fira-code

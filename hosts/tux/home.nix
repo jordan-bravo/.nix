@@ -43,27 +43,7 @@
     pkgs.gnomeExtensions.appindicator
   ];
 
-  # The Buzz AppImage's WebKit does not pass GST_PLUGIN_SYSTEM_PATH_1_0 down to
-  # its WebKitWebProcess, so GStreamer there falls back to its built-in search
-  # paths and sees only the core plugins. Missing appsink/appsrc/autoaudiosink
-  # makes the web process abort, and the Buzz window vanishes on launch.
-  # ~/.local/share/gstreamer-1.0/plugins is one of those fallback paths and
-  # needs no environment variable, so populating it fixes the crash.
   xdg.dataFile = {
-    "gstreamer-1.0/plugins".source =
-      "${
-        pkgs.symlinkJoin {
-          name = "appimage-gst-plugins";
-          paths = with pkgs.gst_all_1; [
-            gst-plugins-base # appsink, appsrc
-            gst-plugins-good # autoaudiosink
-            gst-plugins-bad
-            gst-libav # decoders for decodebin
-            pkgs.pipewire # pipewiresink
-          ];
-        }
-      }/lib/gstreamer-1.0";
-
     # GNOME Specific:
     # The following disables the notification sound that plays in GNOME when
     # a charging cable is plugged in or unplugged.
