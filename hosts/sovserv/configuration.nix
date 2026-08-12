@@ -137,9 +137,22 @@
           notify_push
           onlyoffice
           tasks
-          uppush
           whiteboard
           ;
+
+        # nixpkgs' pinned hash for uppush 2.5.0 is stale (upstream bug in
+        # pkgs/servers/nextcloud/packages/33.json causes a fixed-output hash
+        # mismatch), so fetch it manually with the correct hash until nixpkgs
+        # updates it. Once fixed upstream, delete this override and move
+        # `uppush` back into the `inherit` list above.
+        uppush = pkgs.fetchNextcloudApp {
+          appName = "uppush";
+          appVersion = "2.5.0";
+          license = "agpl3Plus";
+          url = "https://codeberg.org/NextPush/uppush/archive/2.5.0.tar.gz";
+          hash = "sha256-SRRFA1nQk0OsCm+FEaEN32bDTNCbcKyM0ZOhy5yXUEc=";
+          description = "Once the mobile phone is connected with NextPush, push notifications can be forwarded to applications implementing UnifiedPush.\n\nMore information about UnifiedPush at https://unifiedpush.org";
+        };
 
         # Custom app installation example, if cookbook weren't packaged
         # cookbook = pkgs.fetchNextcloudApp {
