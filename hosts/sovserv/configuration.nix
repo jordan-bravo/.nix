@@ -167,7 +167,7 @@
       # When updating nextcloud versions, you might see redis fail to start. If so, first disable nextcloud service and comment out sops.secrets."nextcloud/admin-password"
       # then
       # delete /var/lib/redis-nextcloud/dump.rdb, then re-enable nextcloud (revert changes to config)
-      package = pkgs.nextcloud33;
+      package = pkgs.nextcloud34;
       phpOptions = {
         "opcache.interned_strings_buffer" = "48";
       };
