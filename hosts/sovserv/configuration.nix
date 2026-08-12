@@ -72,7 +72,12 @@
     };
     couchdb = {
       enable = true;
-      bindAddress = "0.0.0.0";
+      # Loopback only: reachable exclusively via `tailscale-serve-obsidian`
+      # (tailscale serve --https=5984 http://127.0.0.1:5984). Binding wider
+      # than 127.0.0.1 races tailscaled for the tailnet address on every
+      # rebuild that restarts both services, causing couchdb to crash with
+      # eaddrinuse if tailscaled reclaims its persisted serve listener first.
+      bindAddress = "127.0.0.1";
       port = 5984;
       extraConfig = {
         chttpd = {
