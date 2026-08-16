@@ -53,6 +53,7 @@
     loupe # image viewer
     # mullvad
     nextcloud-client
+    ollama
     opencode
     python314
     rocketchat-desktop
