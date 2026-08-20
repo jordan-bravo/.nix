@@ -100,7 +100,7 @@
   };
   programs.bat = {
     enable = true;
-    settings.theme = "\"Visual Studio Dark+\"";
+    settings.theme = "Visual Studio Dark+";
   };
   programs.direnv = {
     enable = true;
