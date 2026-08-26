@@ -99,9 +99,12 @@
       enable = false;
       settings.global = {
         allow_federation = true;
-        allow_registration = true;
-        # You will need this token when creating your first account.
-        registration_token = "rigel";
+        allow_registration = false;
+        # registration_token was hardcoded in the public repo ("rigel") — rotated
+        # and removed. To re-enable registration: add the token to
+        # "matrix/registration_token" in sops-secrets.yaml, set
+        # allow_registration = true, and inject the token from the secret file
+        # (e.g. via a systemd ExecStartPre or sops template).
         server_name = "matrix.sovserv.top";
         port = 6167;
         address = "0.0.0.0";
@@ -241,6 +244,7 @@
       "nextcloud/admin-password" = {
         owner = "nextcloud";
       };
+      "matrix/registration_token" = { };
     };
   };
 
