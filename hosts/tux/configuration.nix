@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./lid-watchdog.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-workstation.nix
     # inputs.xremap-flake.nixosModules.default
@@ -22,9 +23,26 @@
   # low (on AC it stays suspended). Resume from hibernate cold-boots and
   # reloads RAM from swap, so it avoids the broken S3 resume path.
   services.logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
+  # HandleLidSwitchDocked is deliberately left at its default of "ignore" so
+  # clamshell use with an external monitor keeps working. That default is also
+  # why a lid close while docked can silently do nothing; ./lid-watchdog.nix
+  # re-checks afterwards and suspends once the monitor is gone.
   # Hibernation image lives in the LUKS-encrypted swap; this device must be
   # unlocked in initrd (it is, via boot.initrd.luks.devices below)
   boot.resumeDevice = "/dev/mapper/luks-5bd61864-93b8-494c-856f-6cde9cc407a1";
+
+  ### TEMPORARY (added 2026-08-21): logind debug logging.
+  # Every path where logind receives a lid-close and then declines to act logs
+  # at debug - "Refusing %s operation, %s is inhibited.", "System is docked.",
+  # "Action %s already in progress." At the default level of info you see
+  # "Lid closed." followed by silence, which is exactly what happened on
+  # 2026-08-19 (lid shut 15:00:11, no suspend until 16:38:11, 98 minutes
+  # running in a closed bag).
+  #
+  # This is chatty. REMOVE IT once a failure has been caught and the reason is
+  # known - grep for "Lid closed" in the journal and read the lines after it.
+  # ./lid-watchdog.nix is the actual mitigation and should stay regardless.
+  systemd.services.systemd-logind.environment.SYSTEMD_LOG_LEVEL = "debug";
 
   # Firmware updates via LVFS (fwupdmgr refresh && fwupdmgr get-updates);
   services.fwupd.enable = true;
