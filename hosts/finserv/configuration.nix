@@ -105,13 +105,16 @@
     #     onion = false;
     #   };
     # };
+    # Bind RPC/API/front-end services to loopback only. Access them remotely
+    # via Tailscale (e.g. `tailscale serve`) or SSH port forwarding, not by
+    # exposing them on 0.0.0.0.
     electrs = {
       enable = false;
-      address = "0.0.0.0";
+      address = "127.0.0.1";
     };
     fulcrum = {
       enable = true;
-      address = "0.0.0.0";
+      address = "127.0.0.1";
       # extraConfig = ''
       #   admin = 0.0.0.0:9999
       # '';
@@ -159,14 +162,14 @@
       # package = config.nix-bitcoin.pkgs.lnd.overrideAttrs (old: {
       #   tags = old.tags ++ [ "peersrpc" ];
       # });
-      rpcAddress = "0.0.0.0";
+      rpcAddress = "127.0.0.1";
     };
     mempool = {
       enable = true;
       electrumServer = "fulcrum";
       frontend = {
         enable = true;
-        address = "0.0.0.0";
+        address = "127.0.0.1";
         # nginxConfig = {};
       };
     };
@@ -231,6 +234,8 @@
       serviceConfig = {
         ExecStart = "${pkgs.nodejs_22}/bin/node /home/main/apps/listmaker-node-3030/build/index.js";
         Restart = "always";
+        User = "main";
+        Group = "users";
       };
       wantedBy = [ "multi-user.target" ];
     };
@@ -239,6 +244,8 @@
       serviceConfig = {
         ExecStart = "${pkgs.nodejs_22}/bin/node /home/main/apps/listmaker-node-4040/build/index.js";
         Restart = "always";
+        User = "main";
+        Group = "users";
       };
       wantedBy = [ "multi-user.target" ];
     };

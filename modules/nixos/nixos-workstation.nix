@@ -2,6 +2,7 @@
 
 {
   environment.sessionVariables = {
+    PATH = [ "/usr/bin" ]; # Fixes a bug with the Pinta flatpak on NixOS
     NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
     # "QT_STYLE_OVERRIDE" = pkgs.lib.mkForce "adwaita-dark";
     # GTK_THEME = "Adwaita:dark";
