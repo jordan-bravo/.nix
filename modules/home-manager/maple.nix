@@ -32,11 +32,11 @@
 
 let
   pname = "maple";
-  version = "3.3.4";
+  version = "3.3.8";
 
   src = pkgs.fetchurl {
     url = "https://github.com/OpenSecretCloud/Maple/releases/download/v${version}/Maple_${version}_amd64.AppImage";
-    hash = "sha256-G1Tgq6EOmqgxCWuAN8WnvvL7kgu8JNOG/X+xRXM3eDk=";
+    hash = "sha256-6G7GXZHIumxO7calAad8Iwhw64P9Tg5XrRqzDXc64Ig=";
   };
 
   contents = pkgs.appimageTools.extract {
