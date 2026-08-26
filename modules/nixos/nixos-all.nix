@@ -32,6 +32,11 @@
   # boot.kernelParams = [ "ipv6.disable=1" ];
   boot.loader.systemd-boot.configurationLimit = 8;
 
+  # programs.nano is enabled by default upstream and sets EDITOR=nano at
+  # mkOverride 900; defining it here at normal priority wins. Anything that
+  # shells out to $EDITOR (sops, git, systemctl edit) then gets neovim.
+  environment.variables.EDITOR = "nvim";
+
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [
     "nix-command"
