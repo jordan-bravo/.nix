@@ -151,10 +151,8 @@
         # This next line is a workaround for a bug where the health check keeps failing and
         # then LND shuts down. See https://github.com/lightningnetwork/lnd/issues/4669
         healthcheck.chainbackend.attempts=0
-        # these next three options are required for LNDK (for bolt12 offers)
+        # required for LNDK (for bolt12 offers)
         protocol.custom-message=513
-        protocol.custom-nodeann=39
-        protocol.custom-init=39
       '';
       # LNDK is a program that runs alongside LND and provides BOLT12 functionality, although
       # as of 2024-09-26 it cannot receive BOLT12 payments, it can only send them. Also,
