@@ -195,6 +195,16 @@
         # maintenance = true; # set this to true to manually enable maintenance mode
         maintenance_window_start = "1";
         trusted_proxies = [ "127.0.0.1" ];
+        onlyoffice = {
+          DocumentServerUrl = "https://sovserv.snowy-hops.ts.net:8081/";
+          # Nextcloud reaches the doc server locally rather than round-tripping
+          # through Tailscale Serve.
+          DocumentServerInternalUrl = "http://127.0.0.1:8081/";
+          # jwt_secret is intentionally not set here: `settings` is written into
+          # the world-readable Nix store. See
+          # systemd.services.nextcloud-onlyoffice-config, which sets it from the
+          # sops secret at runtime instead.
+        };
       };
     };
     nginx = {
@@ -209,11 +219,22 @@
           ];
           serverAliases = [ "sovserv.snowy-hops.ts.net" ];
         };
+        # OnlyOffice is reached only via Tailscale Serve on its own port
+        # (see systemd.services.tailscale-serve-onlyoffice), not a public
+        # domain, so nginx only needs to bind loopback here.
+        "sovserv.snowy-hops.ts.net".listen = [
+          {
+            addr = "127.0.0.1";
+            port = 8081;
+          }
+        ];
       };
     };
     onlyoffice = {
-      enable = false;
-      hostname = "onlyoffice.sovserv.top";
+      enable = true;
+      hostname = "sovserv.snowy-hops.ts.net";
+      jwtSecretFile = config.sops.secrets."onlyoffice/jwt-secret".path;
+      securityNonceFile = config.sops.secrets."onlyoffice/security-nonce".path;
     };
     postgresql = {
       ensureDatabases = [ "nextcloud" ];
@@ -245,6 +266,19 @@
         owner = "nextcloud";
       };
       "matrix/registration_token" = { };
+      "onlyoffice/jwt-secret" = {
+        owner = "onlyoffice";
+        # Also readable by nextcloud-onlyoffice-config, which pushes this
+        # value into the Nextcloud ONLYOFFICE connector app's config at
+        # runtime.
+        group = "nextcloud";
+        mode = "0440";
+      };
+      "onlyoffice/security-nonce" = {
+        owner = "onlyoffice";
+        group = "onlyoffice";
+        mode = "0440";
+      };
     };
   };
 
@@ -348,6 +382,45 @@
       ExecStart = "${config.services.tailscale.package}/bin/tailscale serve --bg --https=5984 http://127.0.0.1:5984";
     };
   };
+  systemd.services.tailscale-serve-onlyoffice = {
+    description = "Expose OnlyOffice document server via Tailscale Serve";
+    after = [
+      "tailscaled.service"
+      "nginx.service"
+    ];
+    wants = [ "tailscaled.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      User = "main";
+      ExecStart = "${config.services.tailscale.package}/bin/tailscale serve --bg --https=8081 http://127.0.0.1:8081";
+    };
+  };
+  systemd.services.nextcloud-onlyoffice-config = {
+    description = "Configure Nextcloud ONLYOFFICE connector app";
+    after = [ "nextcloud-setup.service" ];
+    wants = [ "nextcloud-setup.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      User = "nextcloud";
+    };
+    script = ''
+      OCC=${config.services.nextcloud.occ}/bin/nextcloud-occ
+      "$OCC" config:app:set onlyoffice jwt_secret --value="$(cat ${
+        config.sops.secrets."onlyoffice/jwt-secret".path
+      })"
+    '';
+  };
+
+  # CouchDB already runs its own standalone `epmd -daemon` and holds port
+  # 4369. Enabling rabbitmq (pulled in by onlyoffice) auto-enables systemd's
+  # own epmd.socket unit, which then fails to bind the same port. RabbitMQ
+  # works fine reusing CouchDB's epmd, so just disable the redundant unit
+  # instead of leaving it as permanent noise in `systemctl --failed`.
+  systemd.sockets.epmd.enable = false;
 
   users.users.bravo-site = {
     isSystemUser = true;
