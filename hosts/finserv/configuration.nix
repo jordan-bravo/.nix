@@ -229,6 +229,14 @@
     # };
   };
   systemd.services = {
+    # nix-bitcoin regenerates /etc/nix-bitcoin-secrets/lnd-cert when the SAN list
+    # changes, but lnd only reads the cert at startup and its unit definition
+    # doesn't change, so a rebuild would otherwise leave lnd serving the old
+    # cert and clients (Zeus) failing certificate validation.
+    lnd.restartTriggers = [
+      (toString config.services.lnd.certificate.extraIPs)
+      (toString config.services.lnd.certificate.extraDomains)
+    ];
     listmaker-node-3030 = {
       after = [ "network.target" ];
       serviceConfig = {
