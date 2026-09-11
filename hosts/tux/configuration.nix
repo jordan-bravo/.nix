@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./lid-watchdog.nix
-    ./ucsi-storm-watchdog.nix
+    ./ucsi-flood-watchdog.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-workstation.nix
     # inputs.xremap-flake.nixosModules.default
