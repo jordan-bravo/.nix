@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./lid-watchdog.nix
+    ./ucsi-flood-watchdog.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-workstation.nix
     # inputs.xremap-flake.nixosModules.default
@@ -143,6 +144,40 @@
   #   enable = true;
   #   pkiBundle = "/etc/secureboot";
   # };
+
+  ### Steam
+  #
+  # Nancy Drew: Message in a Haunted Mansion (Steam app 615770) is the
+  # original 2000 release: Windows-only, DirectX 7, 16-bit colour, 640x480.
+  # There is no native build, so it runs under Proton.
+  programs.steam = {
+    enable = true;
+    # GE-Proton over stock Proton: it ships the Media Foundation and legacy
+    # codec patches that Valve leaves out for licensing reasons, which is
+    # what the pre-2005 point-and-click titles need for their FMV cutscenes.
+    # Selected per-game in Steam under Properties -> Compatibility.
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+    # Lets winetricks-style fixes (codecs, DLL overrides) be applied to one
+    # game's Proton prefix without disturbing the others.
+    protontricks.enable = true;
+  };
+  # Expect a "collision between ... steam-run" warning when rebuilding tux.
+  # This module installs its own steam-run built against hardware.graphics,
+  # which is a different derivation than the pkgs.steam-run that
+  # ../../modules/nixos/nixos-workstation.nix puts in systemPackages. Both
+  # provide bin/steam-run. system.path sets ignoreCollisions, so the build
+  # succeeds and either binary works; only tux hits this, since it is the
+  # only workstation with Steam enabled.
+
+  # tux's panel is 2560x1600 and this game renders at a fixed 640x480. Left to
+  # itself the game either tries a modeset or draws into a postage-stamp
+  # window; gamescope gives it a private 640x480 display and scales that to
+  # the panel, so the mode switch never reaches the real output. Launch
+  # options for the game (Steam -> Properties -> General -> Launch Options):
+  #   gamescope -w 640 -h 480 -W 2560 -H 1600 -F fsr -f -- %command%
+  # Drop `-F fsr` for `-S integer` if the sharpened upscale looks wrong; 640
+  # and 480 do not divide 2560x1600 evenly, so integer scaling will letterbox.
+  programs.gamescope.enable = true;
 
   # The following is to get binaries working on NixOS that require dynamic linking
   programs.nix-ld = {
