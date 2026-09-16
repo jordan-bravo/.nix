@@ -133,6 +133,14 @@
   # users.groups.uinput.members = [ "jordan" ];
   # users.groups.input.members = [ "jordan" ];
 
+  ### Mouse pointer speed (E-Yooso X-31)
+  # Re-plug the receiver after rebuilding
+  services.udev.extraHwdb = ''
+    mouse:usb:v25a7pfa61:name:Compx 2.4G Receiver Mouse:*
+     ID_INPUT_TRACKBALL=0
+     MOUSE_DPI=3200@1000
+  '';
+
   ### Secure Boot using lanzaboote
 
   # Lanzaboote currently replaces the systemd-boot module.
