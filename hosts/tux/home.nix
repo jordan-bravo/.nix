@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ../../modules/home-manager/hm-all.nix
@@ -34,6 +34,29 @@
     "org.torproject.torbrowser-launcher"
     "org.videolan.VLC"
   ];
+
+  # thinkorswim's OAuth login runs in JxBrowser 9, whose Chromium refuses to
+  # start without its user-namespace sandbox, which Flatpak blocks — leaving
+  # the login panel blank (SandboxNotSupportedException in client.log). This
+  # Java agent swaps the engine's --do-not-de-elevate switch for --no-sandbox
+  # at class-load time. Source is from the unmerged upstream fix:
+  # https://github.com/flathub/com.tdameritrade.ThinkOrSwim/pull/26
+  # Drop this block once that lands. The jar is copied (not symlinked) because
+  # the sandbox can't see /nix/store.
+  services.flatpak.overrides."com.tdameritrade.ThinkOrSwim".Environment = {
+    JAVA_TOOL_OPTIONS = "-javaagent:/home/jordan/.var/app/com.tdameritrade.ThinkOrSwim/data/tos-nosandbox-agent.jar";
+  };
+  home.activation.thinkorswimNoSandboxAgent =
+    let
+      agent = pkgs.runCommand "tos-nosandbox-agent" { nativeBuildInputs = [ pkgs.jdk21_headless ]; } ''
+        cp ${./thinkorswim/NoSandboxAgent.java} NoSandboxAgent.java
+        javac --release 21 NoSandboxAgent.java
+        jar cfm $out ${./thinkorswim/MANIFEST.MF} NoSandboxAgent*.class
+      '';
+    in
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      run install -Dm644 ${agent} $HOME/.var/app/com.tdameritrade.ThinkOrSwim/data/tos-nosandbox-agent.jar
+    '';
 
   # The AppIndicator GNOME extension spawns `gjs` from PATH to re-discover
   # existing tray icons whenever the extension re-enables (e.g. after screen
