@@ -135,10 +135,19 @@
 
   ### Mouse pointer speed (E-Yooso X-31)
   # Re-plug the receiver after rebuilding
+  #
+  ### Fn+F9 touchpad toggle
+  # Firmware sends the Windows-style Ctrl+Meta+F24 (scancode 0x76). Remapping
+  # it to F21 makes xkb produce XF86TouchpadToggle, which GNOME already binds
+  # as <Ctrl><Super>XF86TouchpadToggle (media-keys touchpad-toggle-static).
+  # udev rewrites "(MK1)" in the DMI modalias to "_MK1_", hence the "?" globs.
   services.udev.extraHwdb = ''
     mouse:usb:v25a7pfa61:name:Compx 2.4G Receiver Mouse:*
      ID_INPUT_TRACKBALL=0
      MOUSE_DPI=3200@1000
+
+    evdev:atkbd:dmi:*:svnTUXEDO:pnTUXEDOInfinityBookProGen7?MK1?:*
+     KEYBOARD_KEY_76=f21
   '';
 
   ### Secure Boot using lanzaboote
