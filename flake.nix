@@ -25,6 +25,10 @@
       url = "github:nix-community/lanzaboote/v0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Maple Work (maple-agent), the native GPUI successor to the Maple desktop
+    # app. Built from source via upstream's own flake. nixpkgs deliberately not
+    # followed: upstream pins its own nixpkgs + rust-overlay toolchain.
+    maple-agent.url = "github:MaplePrivacyLabs/Maple?dir=apps/maple-agent";
     # This is the nix-bitcoin branch you normally want
     # nix-bitcoin.url = "github:fort-nix/nix-bitcoin/release";
     # This is the branch to use temporarily until the releaes branch is up-to-date

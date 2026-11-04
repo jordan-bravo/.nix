@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./lid-watchdog.nix
+    ./maple-agent.nix
     ./ucsi-flood-watchdog.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-workstation.nix
