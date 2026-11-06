@@ -1,71 +1,82 @@
 # Maple Work (upstream: apps/maple-agent in MaplePrivacyLabs/Maple), the native
-# GPUI successor to the Tauri "Maple" app in modules/home-manager/maple.nix.
+# GPUI successor to the Tauri "Maple" chat app (no longer installed here).
 #
-# Built from source with upstream's own flake (input `maple-agent`). Upstream
-# publishes Linux builds only as CI artifacts / a self-updating tar bundle, so
-# there is nothing stable to fetch.
+# Repacked from upstream's prebuilt Prod Linux bundle. It isn't on GitHub
+# releases (those are Maple Chat only); the app's own update feed points at it:
+#   curl -s https://updates.maple.ai/agent/stable/linux/latest.json
+# To update: take `version`, the bundle `path` and its `sha256` from that feed's
+# `manifest` (hex sha256; `nix hash convert --hash-algo sha256 <hex>` for SRI).
+# Building from source instead (upstream's flake) takes ~25 min per bump because
+# of fat LTO with codegen-units=1, and needed a vendoring fix for cua-driver.
 #
-# A plain `nix build` of upstream's flake produces the "unpackaged" profile
-# ("Maple Work Debug", app_id ...agent.debug, no hosted browser sign-in return).
-# We set the same env as upstream's scripts/build-release.sh to get the real
-# Prod profile instead. Prod's self-updater can't replace a read-only store path,
-# so it is switched off; update with `nix flake update maple-agent`.
-{ inputs, pkgs, ... }:
+# Prod's self-updater can't replace a read-only store path, so it is switched off.
+{ pkgs, lib, ... }:
 
 let
   bundleId = "cloud.opensecret.maple.agent";
 
-  cuaSkills = pkgs.fetchFromGitHub {
-    owner = "trycua";
-    repo = "cua";
-    rev = "2a3975570a885f45ef83f7e81bba54a01804ebd0";
-    sparseCheckout = [ "libs/cua-driver/rust/Skills" ];
-    hash = "sha256-rZ/zEsv1PZHMTd7GbP5c4zrIkouAJ8Z2A4Q0yxlLLn0=";
-  };
+  maple-agent = pkgs.stdenv.mkDerivation (finalAttrs: {
+    pname = "maple-agent";
+    version = "0.0.18";
 
-  maple-agent = inputs.maple-agent.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
-    env = (old.env or { }) // {
-      MAPLE_RELEASE_PROFILE = "prod";
-      VITE_OPEN_SECRET_PCR_ENVIRONMENT = "production";
+    src = pkgs.fetchurl {
+      url = "https://updates.maple.ai/agent/stable/releases/${finalAttrs.version}/maple-agent-prod-${finalAttrs.version}-568f790-linux-x86_64.tar.gz";
+      hash = "sha256-Zjxh3rRnnwPMy97vjuojZ0Kjq6Uva6+CUarBoX/YmpI=";
     };
 
-    # Upstream's Nix package is broken since the cua-driver 0.38.0 bump: the
-    # cua-driver-core crate include_str!s ../../../Skills/cua-driver/*.md,
-    # outside its crate dir. Cargo's git checkout has those files, nixpkgs'
-    # per-crate vendoring doesn't. From the writable vendor copy at
-    # $NIX_BUILD_TOP/cargo-vendor-dir/<crate>/src it resolves to $NIX_BUILD_TOP/Skills
-    # ($cargoDepsCopy is not visible to preBuild in the sandbox, so not used).
-    # Keep `rev` in sync with cua-driver-core in apps/maple-agent/Cargo.lock;
-    # drop this once upstream's own `nix build` works again.
-    preBuild = (old.preBuild or "") + ''
-      cp -r ${cuaSkills}/libs/cua-driver/rust/Skills "$NIX_BUILD_TOP/Skills"
+    nativeBuildInputs = with pkgs; [
+      autoPatchelfHook
+      makeWrapper
+    ];
+
+    # Linked libraries. The bundle ships its own copies in usr/lib; these are
+    # used instead so they match the rest of the system.
+    buildInputs = with pkgs; [
+      alsa-lib
+      libxcb
+      libxkbcommon
+      libx11
+      libxi
+    ];
+
+    # GPUI and the embedded Cua driver dlopen these, so ELF scanning misses
+    # them (list from upstream's flake). autoPatchelf adds them to RUNPATH
+    # rather than LD_LIBRARY_PATH, which would leak into the agent's shell tools.
+    runtimeDependencies = with pkgs; [
+      addDriverRunpath.driverLink
+      libglvnd
+      libxkbcommon
+      vulkan-loader
+      wayland
+      libxtst
+    ];
+
+    dontConfigure = true;
+    dontBuild = true;
+
+    installPhase = ''
+      runHook preInstall
+
+      install -Dm755 usr/bin/maple-agent "$out/bin/maple-agent"
+      mkdir -p "$out/share"
+      cp -r usr/share/applications usr/share/icons "$out/share/"
+
+      runHook postInstall
     '';
 
-    postFixup = (old.postFixup or "") + ''
+    postFixup = ''
       wrapProgram "$out/bin/maple-agent" --set MAPLE_DISABLE_UPDATE_CHECK 1
     '';
 
-    # Mirrors the desktop entry upstream's scripts/linux-install.py writes; the
-    # Icon/StartupWMClass must equal the bundle id, which GPUI uses as app_id.
-    postInstall = (old.postInstall or "") + ''
-      install -Dm444 ${inputs.maple-agent}/app/packaging/maple-agent.png \
-        "$out/share/icons/hicolor/512x512/apps/${bundleId}.png"
-      install -Dm444 ${desktopItem}/share/applications/${bundleId}.desktop \
-        "$out/share/applications/${bundleId}.desktop"
-    '';
+    meta = {
+      description = "Native Maple desktop app built with GPUI";
+      homepage = "https://github.com/MaplePrivacyLabs/Maple/tree/master/apps/maple-agent";
+      license = lib.licenses.mit;
+      sourceProvenance = [ lib.sourceTypes.binaryNativeCode ];
+      platforms = [ "x86_64-linux" ];
+      mainProgram = "maple-agent";
+    };
   });
-
-  desktopItem = pkgs.makeDesktopItem {
-    name = bundleId;
-    exec = "maple-agent %U";
-    icon = bundleId;
-    desktopName = "Maple Work";
-    categories = [
-      "Office"
-      "Utility"
-    ];
-    startupWMClass = bundleId;
-  };
 in
 {
   environment.systemPackages = [ maple-agent ];

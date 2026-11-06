@@ -4,10 +4,43 @@
     ../../modules/home-manager/hm-all.nix
     ../../modules/home-manager/hm-workstation.nix
     ../../modules/home-manager/dconf.nix
-    ../../modules/home-manager/maple.nix
   ];
 
   services.trayscale.enable = true;
+  # trayscale 0.19.0 (nixpkgs) subscribes to IPN bus bits that tailscaled 1.104
+  # rejects with 400 ("NotifyInitialNetMap ... no longer supported"), so the GUI
+  # never connects. 0.21.0 builds against tailscale 1.104. Mirrors nixpkgs PR
+  # https://github.com/NixOS/nixpkgs/pull/576958 — drop this once it merges.
+  services.trayscale.package = pkgs.trayscale.overrideAttrs (finalAttrs: old: {
+    version = "0.21.0";
+    src = old.src.override {
+      tag = "v${finalAttrs.version}";
+      hash = "sha256-8Wv+jLkGVpPfvEMVBpliOAJNG6/XVX93q3l9qIChVpg=";
+    };
+    vendorHash = "sha256-bxiloB4cJHY45nMYczEToCExj3ZlvDKqA7yYAbgGmi4=";
+    # 0.21 dlopens GTK via puregotk instead of linking with cgo.
+    postInstall = ''
+      wrapProgram $out/bin/trayscale \
+        --set-default PUREGOTK_LIB_FOLDER ${finalAttrs.passthru.libraryPath}/lib
+
+      sh ./dist.sh install-data $out
+      glib-compile-schemas $out/share/glib-2.0/schemas
+    '';
+    passthru = (old.passthru or { }) // {
+      libraryPath = pkgs.symlinkJoin {
+        name = "trayscale-puregotk-lib";
+        paths = with pkgs; [
+          cairo
+          gdk-pixbuf
+          glib.out
+          graphene
+          gtk4
+          libadwaita
+          pango.out
+        ];
+      };
+    };
+  });
 
   # Flatpak apps for this host (shared flatpak config lives in
   # modules/home-manager/flatpak.nix; apps are declared per host).
