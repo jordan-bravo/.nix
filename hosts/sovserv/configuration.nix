@@ -1,6 +1,6 @@
 # sovserv/configuration.nix
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -176,7 +176,14 @@
       };
       settings = {
         overwriteprotocol = "https";
-        trusted_domains = [ "sovserv.snowy-hops.ts.net" ];
+        trusted_domains = [
+          "sovserv.snowy-hops.ts.net"
+          # Lets the onlyoffice docservice call back into Nextcloud over
+          # loopback (see settings.onlyoffice.StorageUrl below) instead of
+          # needing to resolve the tailnet hostname itself — this host isn't
+          # configured to use Tailscale's MagicDNS resolver.
+          "127.0.0.1"
+        ];
         default_phone_region = "US";
         upgrade.disable_web = true;
         enabledPreviewProviders = [
@@ -199,7 +206,12 @@
           DocumentServerUrl = "https://sovserv.snowy-hops.ts.net:8081/";
           # Nextcloud reaches the doc server locally rather than round-tripping
           # through Tailscale Serve.
-          DocumentServerInternalUrl = "http://127.0.0.1:8081/";
+          DocumentServerInternalUrl = "http://127.0.0.1/";
+          # The reverse path: the docservice calling back into Nextcloud to
+          # fetch/save files. This box doesn't resolve its own tailnet
+          # hostname (Tailscale DNS is disabled locally), so rewrite the
+          # public URL prefix to loopback instead of letting it try DNS.
+          StorageUrl = "http://127.0.0.1:8080/";
           # jwt_secret is intentionally not set here: `settings` is written into
           # the world-readable Nix store. See
           # systemd.services.nextcloud-onlyoffice-config, which sets it from the
@@ -209,6 +221,15 @@
     };
     nginx = {
       enable = true;
+      # Build-time nginx.conf validation runs gixy, a security linter, which
+      # flags the sovserv.snowy-hops.ts.net vhost's `proxy_set_header Host
+      # $http_host;` (below) as a host-spoofing risk and fails the build.
+      # That check assumes an internet-facing server; this vhost is
+      # loopback-only, reached solely by the local tailscale-serve-onlyoffice
+      # unit, so the concern doesn't apply. This only drops the gixy lint —
+      # nginx's own preStart still runs a real `nginx -t` syntax check on
+      # every (re)start independent of this option.
+      validateConfigFile = false;
       virtualHosts = {
         "nextcloud.sovserv.top" = {
           listen = [
@@ -219,15 +240,34 @@
           ];
           serverAliases = [ "sovserv.snowy-hops.ts.net" ];
         };
-        # OnlyOffice is reached only via Tailscale Serve on its own port
+        # OnlyOffice is reached externally only via Tailscale Serve on :8081
         # (see systemd.services.tailscale-serve-onlyoffice), not a public
-        # domain, so nginx only needs to bind loopback here.
-        "sovserv.snowy-hops.ts.net".listen = [
-          {
-            addr = "127.0.0.1";
-            port = 8081;
-          }
-        ];
+        # domain, so nginx only needs to bind loopback here. This listens on
+        # the *default* http port (80) rather than 8081: several internal
+        # docservice/converter self-calls reconstruct their own base URL from
+        # request headers and fall back to the default port when nothing
+        # propagates a non-standard one — matching that default avoids
+        # chasing that header plumbing through every hop.
+        "sovserv.snowy-hops.ts.net" = {
+          listen = [
+            {
+              addr = "127.0.0.1";
+              port = 80;
+            }
+          ];
+          # nginx's $host variable strips the port from the Host header by
+          # design, so the docservice never learns it's being reached on
+          # :8081 externally and bakes port-less URLs (e.g. cache/files/...)
+          # into what it sends back to the browser — breaking cross-origin
+          # since the editor's service worker is scoped to :8081. $http_host
+          # preserves the port. mkAfter guarantees this lands after (so wins
+          # over) the onlyoffice module's own `proxy_set_header Host $host;`
+          # regardless of module import order.
+          extraConfig = lib.mkAfter ''
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Forwarded-Host $http_host;
+          '';
+        };
       };
     };
     onlyoffice = {
@@ -235,6 +275,10 @@
       hostname = "sovserv.snowy-hops.ts.net";
       jwtSecretFile = config.sops.secrets."onlyoffice/jwt-secret".path;
       securityNonceFile = config.sops.secrets."onlyoffice/security-nonce".path;
+      # The whole stack is on private/Tailscale addresses (100.64.0.0/10 or
+      # loopback), so the docservice's anti-SSRF filter otherwise blocks its
+      # own callback requests back to Nextcloud ("checkIpFilter error").
+      allowLocalConnections = true;
     };
     postgresql = {
       ensureDatabases = [ "nextcloud" ];
@@ -394,7 +438,7 @@
       Type = "oneshot";
       RemainAfterExit = true;
       User = "main";
-      ExecStart = "${config.services.tailscale.package}/bin/tailscale serve --bg --https=8081 http://127.0.0.1:8081";
+      ExecStart = "${config.services.tailscale.package}/bin/tailscale serve --bg --https=8081 http://127.0.0.1:80";
     };
   };
   systemd.services.nextcloud-onlyoffice-config = {
@@ -414,6 +458,30 @@
       })"
     '';
   };
+
+  # The docservice signs browser-facing cache/storage URLs (e.g. Editor.bin)
+  # using a base URL it derives per-request from Host/X-Forwarded-Host, which
+  # goes through several hops (websocket upgrade, internal self-calls) we
+  # can't fully control via nginx header rewriting alone — it kept coming out
+  # port-less, landing on a different origin than the editor's own service
+  # worker scope (:8081) and getting blocked cross-origin. `storage.externalHost`
+  # is a static override in the docservice's own config that short-circuits
+  # all of that per-request derivation; the module doesn't expose it as an
+  # option, so patch it into the generated default.json ourselves, ordered
+  # (via mkAfter) after the module's own prestart script that creates the file.
+  systemd.services.onlyoffice-docservice.serviceConfig.ExecStartPre = lib.mkAfter [
+    (pkgs.writeShellScript "onlyoffice-external-host-patch" ''
+      set -eu
+      PATH=$PATH:${
+        lib.makeBinPath [
+          pkgs.jq
+          pkgs.moreutils
+        ]
+      }
+      jq '.storage.externalHost = "https://sovserv.snowy-hops.ts.net:8081"' \
+        /run/onlyoffice/config/default.json | sponge /run/onlyoffice/config/default.json
+    '')
+  ];
 
   # CouchDB already runs its own standalone `epmd -daemon` and holds port
   # 4369. Enabling rabbitmq (pulled in by onlyoffice) auto-enables systemd's

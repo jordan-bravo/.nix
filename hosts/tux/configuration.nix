@@ -4,6 +4,8 @@
   imports = [
     ./hardware-configuration.nix
     ./lid-watchdog.nix
+    ./maple-agent.nix
+    ./ucsi-flood-watchdog.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-workstation.nix
     # inputs.xremap-flake.nixosModules.default
@@ -72,7 +74,14 @@
     # mullvad
     nextcloud-client
     ollama
-    opencode
+    # nixpkgs' opencode 2.2.5 node_modules hash is stale; fixed on master in
+    # NixOS/nixpkgs@c399e1b7fb but not yet in nixos-unstable. Drop the override
+    # (back to plain `opencode`) once the channel includes it.
+    (opencode.overrideAttrs (old: {
+      node_modules = old.node_modules.overrideAttrs {
+        outputHash = "sha256-prx9dX7kUvs/E3zopkaPk5LXh3xJAy5sZeum/W8L7cA=";
+      };
+    }))
     python314
     rocketchat-desktop
     sparrow
@@ -132,6 +141,23 @@
   # users.groups.uinput.members = [ "jordan" ];
   # users.groups.input.members = [ "jordan" ];
 
+  ### Mouse pointer speed (E-Yooso X-31)
+  # Re-plug the receiver after rebuilding
+  #
+  ### Fn+F9 touchpad toggle
+  # Firmware sends the Windows-style Ctrl+Meta+F24 (scancode 0x76). Remapping
+  # it to F21 makes xkb produce XF86TouchpadToggle, which GNOME already binds
+  # as <Ctrl><Super>XF86TouchpadToggle (media-keys touchpad-toggle-static).
+  # udev rewrites "(MK1)" in the DMI modalias to "_MK1_", hence the "?" globs.
+  services.udev.extraHwdb = ''
+    mouse:usb:v25a7pfa61:name:Compx 2.4G Receiver Mouse:*
+     ID_INPUT_TRACKBALL=0
+     MOUSE_DPI=3200@1000
+
+    evdev:atkbd:dmi:*:svnTUXEDO:pnTUXEDOInfinityBookProGen7?MK1?:*
+     KEYBOARD_KEY_76=f21
+  '';
+
   ### Secure Boot using lanzaboote
 
   # Lanzaboote currently replaces the systemd-boot module.
@@ -143,6 +169,40 @@
   #   enable = true;
   #   pkiBundle = "/etc/secureboot";
   # };
+
+  ### Steam
+  #
+  # Nancy Drew: Message in a Haunted Mansion (Steam app 615770) is the
+  # original 2000 release: Windows-only, DirectX 7, 16-bit colour, 640x480.
+  # There is no native build, so it runs under Proton.
+  programs.steam = {
+    enable = true;
+    # GE-Proton over stock Proton: it ships the Media Foundation and legacy
+    # codec patches that Valve leaves out for licensing reasons, which is
+    # what the pre-2005 point-and-click titles need for their FMV cutscenes.
+    # Selected per-game in Steam under Properties -> Compatibility.
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+    # Lets winetricks-style fixes (codecs, DLL overrides) be applied to one
+    # game's Proton prefix without disturbing the others.
+    protontricks.enable = true;
+  };
+  # Expect a "collision between ... steam-run" warning when rebuilding tux.
+  # This module installs its own steam-run built against hardware.graphics,
+  # which is a different derivation than the pkgs.steam-run that
+  # ../../modules/nixos/nixos-workstation.nix puts in systemPackages. Both
+  # provide bin/steam-run. system.path sets ignoreCollisions, so the build
+  # succeeds and either binary works; only tux hits this, since it is the
+  # only workstation with Steam enabled.
+
+  # tux's panel is 2560x1600 and this game renders at a fixed 640x480. Left to
+  # itself the game either tries a modeset or draws into a postage-stamp
+  # window; gamescope gives it a private 640x480 display and scales that to
+  # the panel, so the mode switch never reaches the real output. Launch
+  # options for the game (Steam -> Properties -> General -> Launch Options):
+  #   gamescope -w 640 -h 480 -W 2560 -H 1600 -F fsr -f -- %command%
+  # Drop `-F fsr` for `-S integer` if the sharpened upscale looks wrong; 640
+  # and 480 do not divide 2560x1600 evenly, so integer scaling will letterbox.
+  programs.gamescope.enable = true;
 
   # The following is to get binaries working on NixOS that require dynamic linking
   programs.nix-ld = {

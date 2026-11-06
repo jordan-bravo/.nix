@@ -1,13 +1,46 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ../../modules/home-manager/hm-all.nix
     ../../modules/home-manager/hm-workstation.nix
     ../../modules/home-manager/dconf.nix
-    ../../modules/home-manager/maple.nix
   ];
 
   services.trayscale.enable = true;
+  # trayscale 0.19.0 (nixpkgs) subscribes to IPN bus bits that tailscaled 1.104
+  # rejects with 400 ("NotifyInitialNetMap ... no longer supported"), so the GUI
+  # never connects. 0.21.0 builds against tailscale 1.104. Mirrors nixpkgs PR
+  # https://github.com/NixOS/nixpkgs/pull/576958 — drop this once it merges.
+  services.trayscale.package = pkgs.trayscale.overrideAttrs (finalAttrs: old: {
+    version = "0.21.0";
+    src = old.src.override {
+      tag = "v${finalAttrs.version}";
+      hash = "sha256-8Wv+jLkGVpPfvEMVBpliOAJNG6/XVX93q3l9qIChVpg=";
+    };
+    vendorHash = "sha256-bxiloB4cJHY45nMYczEToCExj3ZlvDKqA7yYAbgGmi4=";
+    # 0.21 dlopens GTK via puregotk instead of linking with cgo.
+    postInstall = ''
+      wrapProgram $out/bin/trayscale \
+        --set-default PUREGOTK_LIB_FOLDER ${finalAttrs.passthru.libraryPath}/lib
+
+      sh ./dist.sh install-data $out
+      glib-compile-schemas $out/share/glib-2.0/schemas
+    '';
+    passthru = (old.passthru or { }) // {
+      libraryPath = pkgs.symlinkJoin {
+        name = "trayscale-puregotk-lib";
+        paths = with pkgs; [
+          cairo
+          gdk-pixbuf
+          glib.out
+          graphene
+          gtk4
+          libadwaita
+          pango.out
+        ];
+      };
+    };
+  });
 
   # Flatpak apps for this host (shared flatpak config lives in
   # modules/home-manager/flatpak.nix; apps are declared per host).
@@ -35,6 +68,29 @@
     "org.videolan.VLC"
   ];
 
+  # thinkorswim's OAuth login runs in JxBrowser 9, whose Chromium refuses to
+  # start without its user-namespace sandbox, which Flatpak blocks — leaving
+  # the login panel blank (SandboxNotSupportedException in client.log). This
+  # Java agent swaps the engine's --do-not-de-elevate switch for --no-sandbox
+  # at class-load time. Source is from the unmerged upstream fix:
+  # https://github.com/flathub/com.tdameritrade.ThinkOrSwim/pull/26
+  # Drop this block once that lands. The jar is copied (not symlinked) because
+  # the sandbox can't see /nix/store.
+  services.flatpak.overrides."com.tdameritrade.ThinkOrSwim".Environment = {
+    JAVA_TOOL_OPTIONS = "-javaagent:/home/jordan/.var/app/com.tdameritrade.ThinkOrSwim/data/tos-nosandbox-agent.jar";
+  };
+  home.activation.thinkorswimNoSandboxAgent =
+    let
+      agent = pkgs.runCommand "tos-nosandbox-agent" { nativeBuildInputs = [ pkgs.jdk21_headless ]; } ''
+        cp ${./thinkorswim/NoSandboxAgent.java} NoSandboxAgent.java
+        javac --release 21 NoSandboxAgent.java
+        jar cfm $out ${./thinkorswim/MANIFEST.MF} NoSandboxAgent*.class
+      '';
+    in
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      run install -Dm644 ${agent} $HOME/.var/app/com.tdameritrade.ThinkOrSwim/data/tos-nosandbox-agent.jar
+    '';
+
   # The AppIndicator GNOME extension spawns `gjs` from PATH to re-discover
   # existing tray icons whenever the extension re-enables (e.g. after screen
   # unlock). Without gjs in PATH, already-running tray apps like trayscale
@@ -61,4 +117,43 @@
   };
 
   dconf.settings."org/gnome/desktop/sound".theme-name = "__custom";
+
+  ### Idle-suspend on AC: a lid-independent safety net.
+  #
+  # tux's lid is unreliable at the *firmware* level. \_SB.LID1._LID does not
+  # query hardware - it is `Return (LIDS)`, a cached AML variable written only
+  # by the EC query handlers _Q16 (open) / _Q19 (closed) and by _WAK on resume.
+  # When the EC drops the _Q19 dispatch for a lid close, LIDS keeps its old
+  # value, so the SW_LID event, _LID, and /proc/acpi/button/lid/*/state all go
+  # stale together and report "open" for as long as the lid stays shut. Opening
+  # the lid makes the stale value accidentally correct again, so each lid close
+  # is an independent coin flip and the fault leaves no trace afterwards.
+  #
+  # That is why logind's lid handling and ../../hosts/tux/lid-watchdog.nix do
+  # not fail independently - both hang off _Q19, so they go blind together. On
+  # 2026-09-01 the lid shut at 13:48:47 and the machine ran awake on AC for
+  # 7h33m; the watchdog polled 278 times and read "open" every time. The one
+  # firmware resync path, _WAK, only runs on resume from S3/S4 and this machine
+  # is forced onto s2idle - so it must suspend to fix its lid state and cannot
+  # suspend because its lid state is broken. See
+  # ../../docs/tux-lid-acpi-q15-firmware-bug.md.
+  #
+  # Idle-suspend is the only backstop that survives this, because it never
+  # consults lid state: gsd-power reads mutter's idle monitor directly. The
+  # battery half already works (it fired at 11:49 on 2026-09-01), but AC was
+  # left at "nothing"/7200 by an older revision of
+  # ../../modules/home-manager/dconf.nix, where these keys are now commented
+  # out - and both bad events (2026-08-19, 2026-09-01) happened on AC.
+  #
+  # logind's own IdleAction= is NOT a substitute: GNOME only reports a session
+  # idle to logind when the screensaver engages, and idle-delay is 0 ("never
+  # blank"), so logind's IdleHint never flips. Verified on 2026-09-01 -
+  # IdleSinceHint sat unchanged at 11:52:54 through the entire 7.5h window.
+  #
+  # Both keys are int32 in the schema, so plain integers are correct here
+  # (contrast org/gnome/desktop/session idle-delay, which needs mkUint32).
+  dconf.settings."org/gnome/settings-daemon/plugins/power" = {
+    sleep-inactive-ac-type = "suspend";
+    sleep-inactive-ac-timeout = 1200; # 20 min
+  };
 }
