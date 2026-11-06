@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-server.nix
+    ./i2pd-proto-compat.nix
     ./secrets.nix
   ];
   boot.loader = {
