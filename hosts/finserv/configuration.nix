@@ -30,6 +30,21 @@
     wireguard-tools
   ];
 
+  # rustdress hardcodes a 300s invoice expiry (src/server/utils.rs) with no
+  # config option for it. Submarine swap providers require the invoice to stay
+  # payable long enough for the on-chain funding tx to confirm (>= 3600s), so
+  # bump it to 2h.
+  nixpkgs.overlays = [
+    (final: prev: {
+      rustdress = prev.rustdress.overrideAttrs (old: {
+        postPatch = (old.postPatch or "") + ''
+          substituteInPlace src/server/utils.rs \
+            --replace-fail "expiry: 300," "expiry: 7200,"
+        '';
+      });
+    })
+  ];
+
   # nix.settings.trusted-users = [ "root" "main" ];
 
   ### nix-bitcoin section
