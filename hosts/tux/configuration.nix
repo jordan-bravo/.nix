@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./lid-resync.nix
     ./lid-watchdog.nix
     ./maple-agent.nix
     ./ucsi-flood-watchdog.nix
@@ -19,6 +20,17 @@
   # Do NOT set mem_sleep_default=deep: S3 suspends but firmware hangs on
   # resume (black screen, hard poweroff required; tested 2026-07-09).
   # This machine must use the default s2idle.
+
+  # Stop the EC from waking the CPU during s2idle. Without this, the EC keeps
+  # sending battery/AC status events (_Q06/_Q07) while asleep; each one queues
+  # a power_supply uevent that frozen userspace can't consume. After long
+  # sleeps over 1,000 pile up, and at resume upower/udev re-read BAT0/AC0
+  # for each, flooding the EC. The EC also runs the keyboard, so typing on the
+  # lock screen froze for 10-30 s (diagnosed 2026-11-11).
+  # Trade-off: opening the lid no longer wakes the laptop; press a key or the
+  # power button. systemd's suspend-then-hibernate is unaffected: BAT0 has no
+  # ACPI alarm, so it uses RTC timer wakeups instead.
+  boot.kernelParams = [ "acpi.ec_no_wakeup=1" ];
 
   # Lid close: suspend now, hibernate later. With HibernateDelaySec unset,
   # systemd estimates battery drain and hibernates before the battery runs
