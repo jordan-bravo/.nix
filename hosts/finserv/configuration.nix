@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-server.nix
+    ./i2pd-proto-compat.nix
     ./secrets.nix
   ];
   boot.loader = {
@@ -28,6 +29,21 @@
   ];
   environment.systemPackages = with pkgs; [
     wireguard-tools
+  ];
+
+  # rustdress hardcodes a 300s invoice expiry (src/server/utils.rs) with no
+  # config option for it. Submarine swap providers require the invoice to stay
+  # payable long enough for the on-chain funding tx to confirm (>= 3600s), so
+  # bump it to 2h.
+  nixpkgs.overlays = [
+    (final: prev: {
+      rustdress = prev.rustdress.overrideAttrs (old: {
+        postPatch = (old.postPatch or "") + ''
+          substituteInPlace src/server/utils.rs \
+            --replace-fail "expiry: 300," "expiry: 7200,"
+        '';
+      });
+    })
   ];
 
   # nix.settings.trusted-users = [ "root" "main" ];
@@ -114,6 +130,11 @@
     };
     fulcrum = {
       enable = true;
+      # Loopback only: reachable exclusively via `tailscale-serve-fulcrum`
+      # (tailscale serve --tcp=50001 tcp://127.0.0.1:50001), which is what
+      # Electrum clients like Sparrow connect to. The Electrum protocol on
+      # 50001 is plaintext, so it must never be bound wider than 127.0.0.1 —
+      # the tailnet (WireGuard) provides the transport encryption instead.
       address = "127.0.0.1";
       # extraConfig = ''
       #   admin = 0.0.0.0:9999
@@ -292,6 +313,24 @@
         User = "lnd";
       };
       wantedBy = [ "multi-user.target" ];
+    };
+    # Exposes Fulcrum's Electrum port on the tailnet so Sparrow (and other
+    # Electrum clients) can reach finserv.snowy-hops.ts.net:50001. Uses --tcp
+    # rather than --https because the Electrum protocol is raw TCP, not HTTP.
+    tailscale-serve-fulcrum = {
+      description = "Expose Fulcrum Electrum server via Tailscale Serve";
+      after = [
+        "tailscaled.service"
+        "fulcrum.service"
+      ];
+      wants = [ "tailscaled.service" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        User = "main";
+        ExecStart = "${config.services.tailscale.package}/bin/tailscale serve --bg --tcp=50001 tcp://127.0.0.1:50001";
+      };
     };
   };
   systemd.timers = {

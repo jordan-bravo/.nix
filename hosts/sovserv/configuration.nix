@@ -119,8 +119,6 @@
       enable = true;
       autoUpdateApps.enable = true;
       config = {
-        adminuser = "admin";
-        adminpassFile = config.sops.secrets."nextcloud/admin-password".path;
         dbtype = "pgsql";
       };
       caching.redis = true;
