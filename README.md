@@ -32,11 +32,6 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ## TODO (High Level)
 
-### finserv
-
-- Figure out how to connect electrs to liquidd. Note: use [esplora](https://github.com/Blockstream/esplora?tab=readme-ov-file#how-to-run-the-explorer-for-liquid-mainnet)
-- Figure out how to connect mempool to liquidd
-
 ### medserv
 
 - Install NixOS
@@ -44,13 +39,6 @@ I have tried to put as much of the configuration as possible into Home Manager i
 
 ### sovserv
 
-- Personal portfolio website (TODO)
 - Matrix server (TODO)
 - Gitea (TODO)
-- Obisidian Live Sync (TODO)
 - Vaultwarden (TODO)
-
-### Misc. Task List
-
-- For NixOS Cosmic: make gnupg password remembered so you don't have to type it every time you git commit after reboot
-- Configure zsh autosuggest/autocomplete (which one? both?) to avoid using arrow keys for completion.
