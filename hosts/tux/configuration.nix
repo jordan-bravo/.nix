@@ -7,6 +7,7 @@
     ./lid-watchdog.nix
     ./maple-agent.nix
     ./ucsi-flood-watchdog.nix
+    ./vocaster.nix
     ../../modules/nixos/nixos-all.nix
     ../../modules/nixos/nixos-workstation.nix
     # inputs.xremap-flake.nixosModules.default
