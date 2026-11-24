@@ -102,8 +102,9 @@
       GTK_THEME = "Adwaita:dark";
       LESSHISTFILE = "$XDG_STATE_HOME/less/history";
       QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "adwaita-dark";
-      QT_STYLE_OVERRIDE = "adwaita-dark";
+      # QT_QPA_PLATFORMTHEME and QT_STYLE_OVERRIDE are set by the `qt` module
+      # below (which also installs the adwaita style plugins and exports the
+      # vars to the systemd user session so services like copyq pick them up).
       # SDL_VIDEODRIVER = "wayland";
       TZ = "America/New_York";
       # XDG_CURRENT_DESKTOP = "sway";
@@ -113,6 +114,19 @@
     stateVersion = "25.05";
     username = "jordan";
   };
+
+  # Force Adwaita Dark on native (non-flatpak) Qt apps such as copyq and any
+  # rpm/system Qt apps. Sets QT_STYLE_OVERRIDE=adwaita-dark +
+  # QT_QPA_PLATFORMTHEME=adwaita, installs the adwaita-qt/adwaita-qt6 style
+  # plugins, and exports these to both the shell and the systemd user session
+  # (so the copyq user service, which does not read hm-session-vars.sh, still
+  # finds the style). Flatpak Qt apps are themed separately in flatpak.nix.
+  qt = {
+    enable = true;
+    platformTheme.name = "adwaita";
+    style.name = "adwaita-dark";
+  };
+
   imports = [
     ../../modules/home-manager/hm-all.nix
     ../../modules/home-manager/hm-workstation.nix
@@ -135,7 +149,20 @@
     "org.gnome.Calculator"
     "org.mozilla.firefox"
     "org.signal.Signal"
+    "org.videolan.VLC"
   ];
+
+  # Flatpak Qt dark-theme override, pine-specific. The shared flatpak.nix sets
+  # QT_QPA_PLATFORMTHEME=gnome (works on tux/GNOME). On COSMIC that leaves Qt
+  # flatpaks light: no "gnome" plugin in the KDE runtime, and neither the
+  # xdg-desktop-portal theme nor the QT_STYLE_OVERRIDE=Adwaita-Dark style hands
+  # a Qt5 app (e.g. VLC) a dark palette. The one path that works is the KDE
+  # runtime's own "kde" platform theme (plasma-integration), which reads
+  # ~/.config/kdeglobals — and COSMIC already writes a dark "CosmicDark" scheme
+  # there, exposed to the sandbox via the shared override's kdeglobals:ro mount.
+  # (Verified dark for VLC/Qt5 and kcalc/Qt6 by screenshot pixel-sampling.)
+  services.flatpak.overrides.global.Environment.QT_QPA_PLATFORMTHEME =
+    pkgs.lib.mkForce "kde";
 
   programs = {
     bat = {
@@ -256,6 +283,12 @@
   xdg = {
     enable = true;
     configHome = "${config.home.homeDirectory}/.config";
+    # Adwaita Dark palette for Qt apps that use the KDE "kde" platform theme
+    # (all our KDE-runtime Qt flatpaks, via QT_QPA_PLATFORMTHEME=kde above).
+    # This replaces COSMIC's own CosmicDark kdeglobals; COSMIC's UI is GTK/iced
+    # and does not read kdeglobals, so only Qt apps are affected. See the header
+    # of ./kdeglobals for the full rationale.
+    configFile."kdeglobals".source = ./kdeglobals;
     desktopEntries = {
       # cursor = {
       #   name = "Cursor Editor";

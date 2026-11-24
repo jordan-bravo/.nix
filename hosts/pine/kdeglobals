@@ -1,0 +1,142 @@
+# Adwaita Dark KDE color scheme.
+#
+# Consumed by the KDE runtime's "kde" platform theme (plasma-integration) that
+# Qt flatpaks use via QT_QPA_PLATFORMTHEME=kde (see the flatpak override in
+# home.nix). Symlinked to ~/.config/kdeglobals, which the flatpak sandbox
+# bind-mounts read-only onto $XDG_CONFIG_HOME/kdeglobals, so every KDE-runtime
+# Qt flatpak reads these colors.
+#
+# Why this file exists at all: on COSMIC there is no native Qt platform-theme
+# plugin that produces the Adwaita palette for the current KDE runtime
+# (QGnomePlatform, the plugin that does this and auto-installs on GNOME, is not
+# built for org.kde.Platform 5.15-25.08). The Adwaita-Dark *style* only draws
+# widget shapes, not colors. So we hand the palette to plasma-integration as a
+# color scheme. Values are the official libadwaita dark named-colors
+# (window_bg #242424, view_bg #1e1e1e, headerbar #303030, accent #3584e4, ...).
+[General]
+ColorScheme=AdwaitaDark
+Name=Adwaita Dark
+shadeSortColumn=true
+
+[KDE]
+contrast=4
+
+[Icons]
+Theme=Adwaita
+
+[Colors:Window]
+BackgroundNormal=36,36,36
+BackgroundAlternate=48,48,48
+ForegroundNormal=255,255,255
+ForegroundInactive=180,180,180
+ForegroundActive=120,174,237
+ForegroundLink=120,174,237
+ForegroundVisited=53,132,228
+ForegroundNegative=255,123,99
+ForegroundNeutral=245,194,17
+ForegroundPositive=143,240,164
+DecorationFocus=53,132,228
+DecorationHover=53,132,228
+[Colors:View]
+BackgroundNormal=30,30,30
+BackgroundAlternate=36,36,36
+ForegroundNormal=255,255,255
+ForegroundInactive=180,180,180
+ForegroundActive=120,174,237
+ForegroundLink=120,174,237
+ForegroundVisited=53,132,228
+ForegroundNegative=255,123,99
+ForegroundNeutral=245,194,17
+ForegroundPositive=143,240,164
+DecorationFocus=53,132,228
+DecorationHover=53,132,228
+[Colors:Button]
+BackgroundNormal=48,48,48
+BackgroundAlternate=56,56,56
+ForegroundNormal=255,255,255
+ForegroundInactive=180,180,180
+ForegroundActive=120,174,237
+ForegroundLink=120,174,237
+ForegroundVisited=53,132,228
+ForegroundNegative=255,123,99
+ForegroundNeutral=245,194,17
+ForegroundPositive=143,240,164
+DecorationFocus=53,132,228
+DecorationHover=53,132,228
+[Colors:Header]
+BackgroundNormal=48,48,48
+BackgroundAlternate=36,36,36
+ForegroundNormal=255,255,255
+ForegroundInactive=180,180,180
+ForegroundActive=120,174,237
+ForegroundLink=120,174,237
+ForegroundVisited=53,132,228
+ForegroundNegative=255,123,99
+ForegroundNeutral=245,194,17
+ForegroundPositive=143,240,164
+DecorationFocus=53,132,228
+DecorationHover=53,132,228
+[Colors:Tooltip]
+BackgroundNormal=56,56,56
+BackgroundAlternate=36,36,36
+ForegroundNormal=255,255,255
+ForegroundInactive=180,180,180
+ForegroundActive=120,174,237
+ForegroundLink=120,174,237
+ForegroundVisited=53,132,228
+ForegroundNegative=255,123,99
+ForegroundNeutral=245,194,17
+ForegroundPositive=143,240,164
+DecorationFocus=53,132,228
+DecorationHover=53,132,228
+[Colors:Complementary]
+BackgroundNormal=36,36,36
+BackgroundAlternate=48,48,48
+ForegroundNormal=255,255,255
+ForegroundInactive=180,180,180
+ForegroundActive=120,174,237
+ForegroundLink=120,174,237
+ForegroundVisited=53,132,228
+ForegroundNegative=255,123,99
+ForegroundNeutral=245,194,17
+ForegroundPositive=143,240,164
+DecorationFocus=53,132,228
+DecorationHover=53,132,228
+[Colors:Selection]
+BackgroundNormal=53,132,228
+BackgroundAlternate=53,132,228
+ForegroundNormal=255,255,255
+ForegroundInactive=255,255,255
+ForegroundActive=255,255,255
+ForegroundLink=255,255,255
+ForegroundVisited=255,255,255
+ForegroundNegative=255,123,99
+ForegroundNeutral=245,194,17
+ForegroundPositive=143,240,164
+DecorationFocus=53,132,228
+DecorationHover=53,132,228
+[WM]
+activeBackground=48,48,48
+activeForeground=255,255,255
+inactiveBackground=36,36,36
+inactiveForeground=180,180,180
+
+[ColorEffects:Disabled]
+Color=36,36,36
+ColorAmount=0
+ColorEffect=0
+ContrastAmount=0.65
+ContrastEffect=1
+IntensityAmount=0.1
+IntensityEffect=2
+
+[ColorEffects:Inactive]
+ChangeSelectionColor=false
+Color=112,111,110
+ColorAmount=0.025
+ColorEffect=2
+ContrastAmount=0.1
+ContrastEffect=2
+Enable=false
+IntensityAmount=0
+IntensityEffect=0
