@@ -131,6 +131,7 @@
     ../../modules/home-manager/hm-all.nix
     ../../modules/home-manager/hm-workstation.nix
     ../../modules/home-manager/caps-escape.nix
+    ./refresh-rate.nix
     # ../../modules/home-manager/i3status.nix
     # ../../modules/home-manager/kanata.nix
     # ../../modules/home-manager/kanshi.nix
