@@ -1,11 +1,13 @@
-{ inputs, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   imports = [
     ./hardware-configuration.nix
+    ./card-reader-pm.nix
     ./lid-resync.nix
     ./lid-watchdog.nix
     ./maple-agent.nix
+    ./psr-enable.nix
     ./ucsi-flood-watchdog.nix
     ./vocaster.nix
     ../../modules/nixos/nixos-all.nix
@@ -31,13 +33,30 @@
   # Trade-off: opening the lid no longer wakes the laptop; press a key or the
   # power button. systemd's suspend-then-hibernate is unaffected: BAT0 has no
   # ACPI alarm, so it uses RTC timer wakeups instead.
+  # (Panel self-refresh is enabled by ./psr-enable.nix, not a kernel param.)
   boot.kernelParams = [ "acpi.ec_no_wakeup=1" ];
 
-  # Lid close: suspend now, hibernate later. With HibernateDelaySec unset,
-  # systemd estimates battery drain and hibernates before the battery runs
-  # low (on AC it stays suspended). Resume from hibernate cold-boots and
-  # reloads RAM from swap, so it avoids the broken S3 resume path.
+  # Lid close: suspend now, hibernate later. Resume from hibernate cold-boots
+  # and reloads RAM from swap, so it avoids the broken S3 resume path.
   services.logind.settings.Login.HandleLidSwitch = "suspend-then-hibernate";
+
+  # Hibernate after 1 h of suspend on battery; stay suspended on AC.
+  # s2idle here costs ~1.2-1.7 %/h. HibernateDelaySec used to be unset
+  # (battery-estimate mode), which only hibernates near empty: one 27.7 h
+  # suspend on 2026-11-20 went 93 % -> 69 % and never hibernated.
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = "1h";
+    HibernateOnACPower = false;
+  };
+
+  # Make every suspend (GNOME idle, menu, `systemctl suspend`) a
+  # suspend-then-hibernate, not just lid close. GNOME idle requests plain
+  # suspend, which never hibernates (e.g. 4 h idle suspend on 2026-11-22).
+  # suspend.target is still reached, so post-resume hooks on it keep working.
+  systemd.services.systemd-suspend.serviceConfig.ExecStart = [
+    ""
+    "${config.systemd.package}/lib/systemd/systemd-sleep suspend-then-hibernate"
+  ];
   # HandleLidSwitchDocked is deliberately left at its default of "ignore" so
   # clamshell use with an external monitor keeps working. That default is also
   # why a lid close while docked can silently do nothing; ./lid-watchdog.nix
