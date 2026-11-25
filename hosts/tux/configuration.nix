@@ -106,14 +106,6 @@
     # mullvad
     nextcloud-client
     ollama
-    # nixpkgs' opencode 2.2.5 node_modules hash is stale; fixed on master in
-    # NixOS/nixpkgs@c399e1b7fb but not yet in nixos-unstable. Drop the override
-    # (back to plain `opencode`) once the channel includes it.
-    (opencode.overrideAttrs (old: {
-      node_modules = old.node_modules.overrideAttrs {
-        outputHash = "sha256-prx9dX7kUvs/E3zopkaPk5LXh3xJAy5sZeum/W8L7cA=";
-      };
-    }))
     python314
     rocketchat-desktop
     sparrow
@@ -128,11 +120,6 @@
 
   # Enable the GNOME Desktop Environment
   services.desktopManager.gnome.enable = true;
-  # Enable fractional scaling in GNOME
-  services.desktopManager.gnome.extraGSettingsOverrides = ''
-    [org.gnome.mutter]
-    experimental-features=['scale-monitor-framebuffer']
-  '';
   # Enable the GNOME login manager
   services.displayManager.gdm.enable = true;
 
