@@ -8,6 +8,7 @@
     ./lid-watchdog.nix
     ./maple-agent.nix
     ./psr-enable.nix
+    ./home-wifi.nix
     ./ucsi-flood-watchdog.nix
     ./vocaster.nix
     ../../modules/nixos/nixos-all.nix
@@ -108,6 +109,7 @@
     ollama
     python314
     rocketchat-desktop
+    sops # edit secrets/sops-secrets.yaml
     sparrow
     uv # python package manager
     # xdg-utils
